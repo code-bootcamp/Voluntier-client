@@ -1,12 +1,17 @@
 import styled from "@emotion/styled"
+import { breakPoints } from '../../../commons/styles/Media';
 
-export const Wrapper = styled.div`
+
+export const Form =styled.form`
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media ${breakPoints.mobile} {
+        width: 100%;
+    }
 `
 export const SignUpWrapper = styled.div`
     width: 40%;
@@ -18,18 +23,34 @@ export const SignUpWrapper = styled.div`
     background: #00B05C;
     border: 1px solid #00B05C;
     border-radius: 50px;
-    margin-top: 5%;
+    @media ${breakPoints.tablet} {
+        width: 80%;
+    }
+    @media ${breakPoints.mobile} {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+    }
 `
 export const Logo = styled.img`
     width: 50%;
     height: 30%;
     margin-top: 5%;
     margin-bottom: 5%;
+    @media ${breakPoints.mobile} {
+        width: 70%;
+        height: 13%;
+        border-radius: 0px;
+        margin : 0% 0% 10% 0%;
+    }
 `
 export const InputWrapper = styled.div`
     width: 80%;
     height: auto;
-    margin-bottom: 5%;
+
+    @media ${breakPoints.mobile} {
+
+    }
 `
 export const Name = styled.div`
     margin-bottom: 2%;
@@ -37,6 +58,9 @@ export const Name = styled.div`
     font-weight: 700;
     font-size: 18px;
     color : white;
+    @media ${breakPoints.mobile} {
+        font-size: 15px;
+    }
 `
 export const NameInput = styled.input`
     width: 100%;
@@ -48,7 +72,13 @@ export const NameInput = styled.input`
     color : white;
     ::placeholder{
         font-size: 13px;
-        color : white
+        color : white;
+    }
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    ::placeholder{
+        font-size: 10px;
+    }
     }
 `
 
@@ -58,6 +88,9 @@ export const Email = styled.div`
     font-weight: 700;
     font-size: 18px;
     color : white;
+    @media ${breakPoints.mobile} {
+        font-size: 15px;
+    }
 `
 export const EmailInput = styled.input`
     width: 100%;
@@ -69,8 +102,14 @@ export const EmailInput = styled.input`
     color : white;
     ::placeholder{
         font-size: 13px;
-        color : white
+        color : white;
     }
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    ::placeholder{
+        font-size: 10px;
+    }
+}
 `
 export const Password = styled.div`
     margin-bottom: 2%;
@@ -78,6 +117,9 @@ export const Password = styled.div`
     font-weight: 700;
     font-size: 18px;
     color : white;
+    @media ${breakPoints.mobile} {
+        font-size: 15px;
+    }
 `
 export const PasswordInput = styled.input`
     width: 100%;
@@ -91,6 +133,12 @@ export const PasswordInput = styled.input`
         font-size: 13px;
         color : white
     }
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    ::placeholder{
+        font-size: 10px;
+    }
+}
 `
 export const PasswordCheck = styled.div`
     margin-bottom: 2%;
@@ -98,6 +146,9 @@ export const PasswordCheck = styled.div`
     font-weight: 700;
     font-size: 18px;
     color : white;
+    @media ${breakPoints.mobile} {
+        font-size: 15px;
+    }
 `
 export const PasswordCheckInput = styled.input`
     width: 100%;
@@ -111,6 +162,12 @@ export const PasswordCheckInput = styled.input`
         font-size: 13px;
         color : white
     }
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    ::placeholder{
+        font-size: 10px;
+    }
+}
 `
 export const PhoneNumber = styled.div`
     margin-bottom: 2%;
@@ -118,6 +175,9 @@ export const PhoneNumber = styled.div`
     font-weight: 700;
     font-size: 18px;
     color : white;
+    @media ${breakPoints.mobile} {
+        font-size: 15px;
+    }
 `
 export const PhoneNumberInputWrapper = styled.div`
     display: flex;
@@ -136,14 +196,23 @@ export const PhoneNumberInput = styled.input`
         font-size: 13px;
         color : white
     }
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    ::placeholder{
+        font-size: 10px;
+    }
+}
 `
 export const FrontNumber = styled.div`
     width: 20%;
     border: none;
     border-bottom: 2px solid white;
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     color : white;
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    }
 `
 export const CertificationButton = styled.button`
     width: 20%;
@@ -151,9 +220,12 @@ export const CertificationButton = styled.button`
     background: #231815;
     border: none;
     border-radius: 30px;
-    font-size: 1vw;
+    font-size: 1.2rem;
     color : white;
     cursor: pointer;
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    }
 `
 export const CertificationInput = styled.input`
     width: 40%;
@@ -167,6 +239,12 @@ export const CertificationInput = styled.input`
         font-size: 13px;
         color : white
     }
+    @media ${breakPoints.mobile} {
+        font-size: 10px;
+    ::placeholder{
+        font-size: 10px;
+    }
+}
 `
 export const CertificationCheckButton = styled.button`
     width: 15%;
@@ -174,10 +252,12 @@ export const CertificationCheckButton = styled.button`
     background: #231815;
     border: none;
     border-radius: 30px;
-    
-    width: 3rem;
+    font-size: 1rem;
     color : white;
     cursor: pointer;
+    @media ${breakPoints.mobile} {
+        
+}
 `
 export const SignUpSubmit = styled.button`
     width: 80%;
@@ -190,4 +270,10 @@ export const SignUpSubmit = styled.button`
     font-size: 18px;
     color: #000000;
     cursor: pointer;
+`
+export const ErrorMsg = styled.div`
+    width: 100%;
+    font-size: 5px;
+    color: red;
+    margin-bottom: 4%;
 `
