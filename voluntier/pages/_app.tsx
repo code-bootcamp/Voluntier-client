@@ -6,13 +6,16 @@ import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { AppProps } from "next/app";
 import { RecoilRoot } from 'recoil';
+import LayOut from '../src/commons/layout';
 
 function MyApp({ Component, pageProps }:AppProps) {
   return (
   <>
   <RecoilRoot>
     <Global styles={globalStyles}/>
+    <LayOut>
     <Component {...pageProps} />
+    </LayOut>
   </RecoilRoot>
   </>
   )

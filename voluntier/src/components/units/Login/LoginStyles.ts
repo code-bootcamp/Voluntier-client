@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/Media";
 
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
     width: 100%;
     height: 100vh;
     display: flex;
@@ -58,8 +58,6 @@ export const Email = styled.div`
     color : #FFFFFF;
     font-size: 16px;
     font-weight: 700;
-
-
 `
 export const EmailDetail = styled.input`
     border: none;
@@ -76,7 +74,7 @@ export const Password = styled.div`
     color : #FFFFFF;
     font-size: 16px;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 15px;
     
 `
 export const PasswordDetail = styled.input`
@@ -98,6 +96,7 @@ export const LoginButton = styled.button`
     margin-top: 20px;
     font-weight: 600;
     padding: 10px;
+    cursor: pointer;
     @media ${breakPoints.mobile} {
         width: 100%;
         height: 8%;
@@ -117,7 +116,6 @@ export const Social = styled.div`
   }
 `
 export const SocialTitle = styled.div`
-
     font-weight: 400;
     font-size: 10px;
     text-align: center;
@@ -205,4 +203,10 @@ export const Question = styled.div`
     @media ${breakPoints.mobile} {
         font-size: 11px;
   }
+`
+export const ErrorMsg = styled.div`
+    width: 100%;
+    font-size: 5px;
+    color: red;
+    margin-bottom: 4%;
 `

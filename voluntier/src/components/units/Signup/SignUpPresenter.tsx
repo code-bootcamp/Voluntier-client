@@ -25,7 +25,7 @@ export default function SignUpUI(props:IPropsSignUpUI){
                 </S.InputWrapper>
                 <S.InputWrapper>
                     <S.Password>Password</S.Password>
-                    <S.PasswordInput type="password" {...props.register("password")} placeholder="비밀번호는 영문, 숫자, 특수문자를 포함한 8자리 이내여야 합니다"/>
+                    <S.PasswordInput type="password" {...props.register("password")} placeholder="비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자리여야 합니다"/>
                     <S.ErrorMsg>{props.formState.errors.password?.message}</S.ErrorMsg>
                 </S.InputWrapper>
                 <S.InputWrapper>
