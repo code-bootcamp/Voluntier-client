@@ -8,6 +8,7 @@ html, body {
   * {
     margin: 0;
     box-sizing: border-box;
+    width:100%;
     font-size: 10px;
   }
 `;

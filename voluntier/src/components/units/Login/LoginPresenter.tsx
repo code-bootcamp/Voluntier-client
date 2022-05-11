@@ -3,9 +3,7 @@ import * as S from './LoginStyles'
 export default function LoginUI(){
 
     return(
-        <>
         <S.Wrapper>
-            <S.Left src='/images/Frame.png'></S.Left>
             <S.Login>
                 <S.Logo src='/images/로고.png'></S.Logo>
                 <S.Contents>
@@ -25,10 +23,11 @@ export default function LoginUI(){
                 </S.Social>
                 <S.Question> 계정이 없으신가요? 회원가입하기</S.Question>
             </S.Login>
-            <S.Right src='/images/Frame (1).png'></S.Right>
-            
+            <S.IconBox>
+                <S.Left src='/images/Frame.png'></S.Left>
+                <S.Right src='/images/Frame (1).png'></S.Right>
+            </S.IconBox>
         </S.Wrapper>
-        </>
     )
     
 }
