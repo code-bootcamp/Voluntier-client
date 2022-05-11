@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,6 +18,7 @@ export const SignUpWrapper = styled.div`
     background: #00B05C;
     border: 1px solid #00B05C;
     border-radius: 50px;
+    margin-top: 5%;
 `
 export const Logo = styled.img`
     width: 50%;
@@ -150,7 +151,7 @@ export const CertificationButton = styled.button`
     background: #231815;
     border: none;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 1vw;
     color : white;
     cursor: pointer;
 `
@@ -173,7 +174,8 @@ export const CertificationCheckButton = styled.button`
     background: #231815;
     border: none;
     border-radius: 30px;
-    font-size: 18px;
+    
+    width: 3rem;
     color : white;
     cursor: pointer;
 `
