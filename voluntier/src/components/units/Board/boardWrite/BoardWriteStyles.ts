@@ -1,16 +1,23 @@
 import styled from "@emotion/styled";
+import { breakPoints } from '../../../../commons/styles/Media';
 
 export const Wrapper = styled.div`
   padding: 104px 70px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  @media ${breakPoints.mobile}{
+    padding: 10px;
+  }
 `;
 
 export const TitleWrapper = styled.div`
   width: 100%;
   display: flex;
   margin-bottom: 32px;
+  @media ${breakPoints.mobile}{
+    margin-bottom: 16px;
+  }
 `;
 
 export const Title = styled.div`
@@ -19,6 +26,9 @@ export const Title = styled.div`
   font-size: 24px;
   font-weight: 700;
   margin-right: 8px;
+  @media ${breakPoints.mobile}{
+    font-size: 20px
+  }
 `;
 
 export const TitleInput = styled.input`
@@ -33,12 +43,20 @@ export const InputWrapper = styled.div`
   display: flex;
   padding: 49px 20px 49px 20px;
   margin-bottom: 20px;
+  @media ${breakPoints.mobile}{
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+  }
 `;
 
 export const InputWrapperLeft = styled.div`
   width: 41%;
   height: 100%;
   margin-right: 15px;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+  }
 `;
 
 export const Map = styled.div`
@@ -46,6 +64,9 @@ export const Map = styled.div`
   height: 424px;
   border: 1px solid red;
   margin-bottom: 13px;
+  @media ${breakPoints.mobile}{
+    height: 200px;
+  }
 `;
 
 export const LocationWrapper = styled.div``;
@@ -72,6 +93,9 @@ export const AddressDetail = styled.input`
 
 export const InputWrapperRight = styled.div`
   width: 58%;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+  }
 `;
 
 export const LabelWrapper = styled.div`
@@ -84,11 +108,20 @@ export const LabelImage = styled.img`
   width: 18px;
   height: 20px;
   margin-right: 10px;
+  @media ${breakPoints.mobile}{
+    width: 13px;
+    height: 15px;
+    margin-right: 5px;
+  }
 `;
 
 export const Label = styled.div`
   font-weight: 700;
   font-size: 18px;
+  @media ${breakPoints.mobile}{
+  font-weight: 500;
+  font-size: 10px;
+  }
 `;
 
 export const SmallInputWrapper = styled.div`
@@ -106,7 +139,23 @@ export const SmallInput = styled.input`
 export const HalfWrapper = styled.div`
   display: flex;
   margin-bottom: 12px;
+  @media (min-width: 768px) and (max-width: 1382px){
+  width: 100%;
+  }
+  @media ${breakPoints.mobile}{
+  width: 100%;
+  }
 `;
+export const Volun = styled.div`
+  width: 25%;
+  @media (min-width: 768px) and (max-width: 1382px){
+  width: 50%;
+  }
+  @media ${breakPoints.mobile}{
+  width: 50%;
+  margin-right: 1%;
+  }
+`
 
 export const SubmitButton = styled.button`
   width: 99px;
@@ -117,4 +166,9 @@ export const SubmitButton = styled.button`
   background-color: #000000;
   border-radius: 30px;
   border: none;
+  @media ${breakPoints.mobile}{
+    width: 20%;
+    height: 30px;
+    font-size: 13px;
+  }
 `;
