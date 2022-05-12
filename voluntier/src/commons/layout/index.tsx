@@ -21,11 +21,13 @@ interface LayOutPageProps {
   children: ReactNode;
 }
 
-const HIDDEN = ["/login" , "/signup"];
+const HIDDEN = ["/login" , "/signup", "/"];
 
 export default function LayOut(props: LayOutPageProps) {
   const router = useRouter();
   const isHidden = HIDDEN.includes(router.asPath);
+
+
   return (
     <Wrapper>
     {!isHidden&& 
