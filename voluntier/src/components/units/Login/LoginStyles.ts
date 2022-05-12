@@ -23,7 +23,7 @@ export const Form = styled.form`
 export const Login = styled.div`
     width: 44%;
     height: auto;
-    background-color: #00B05C;
+    background-color: #0085CB;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
@@ -131,12 +131,12 @@ export const SocialContents = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 0% 10%;
+    width: 100%;
     
 
 `
 export const Kakao = styled.img`
-    width: 25%;
+    width: 20%;
     height: 80%;
     @media ${breakPoints.mobile} {   
         width: 20%;
@@ -144,7 +144,7 @@ export const Kakao = styled.img`
   }
 `
 export const Naver = styled.img`
-    width: 25%;
+    width: 20%;
     height: 80%;
     @media ${breakPoints.mobile} {   
         width: 20%;  
@@ -152,7 +152,7 @@ export const Naver = styled.img`
   }
 `
 export const FaceBook = styled.img`
-    width: 25%;
+    width: 23%;
     height: 80%;
     @media ${breakPoints.mobile} {   
         width: 20%;  

@@ -15,13 +15,13 @@ export const Form =styled.form`
     }
 `
 export const SignUpWrapper = styled.div`
-    width: 700px;
-    height: auto;
+    width: 630px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #00B05C;
+    background: #0085CB;
     border: 1px solid #00B05C;
     border-radius: 50px;
     @media ${breakPoints.tablet} {
@@ -34,20 +34,21 @@ export const SignUpWrapper = styled.div`
     }
 `
 export const Logo = styled.img`
-    width: 50%;
-    height: 30%;
+    width: 48%;
+    height: 12%;
     margin-top: 5%;
     margin-bottom: 5%;
     @media ${breakPoints.mobile} {
         width: 70%;
         height: 13%;
         border-radius: 0px;
-        margin : 0% 0% 10% 0%;
+        margin : 5% 0% 10% 0%;
     }
 `
 export const InputWrapper = styled.div`
     width: 80%;
-    height: auto;
+
+    margin-bottom: 5px;
 
     @media ${breakPoints.mobile} {
 
@@ -66,7 +67,7 @@ export const Name = styled.div`
 export const NameInput = styled.input`
     width: 100%;
     border: none;
-    background-color: #00B05C;
+    background: #0085CB;
     border-bottom: 2px solid #FFFFFF;
     outline: none;
     font-size: 18px;
@@ -74,6 +75,7 @@ export const NameInput = styled.input`
     ::placeholder{
         font-size: 13px;
         color : white;
+        font-weight: lighter;
     }
     @media ${breakPoints.mobile} {
         font-size: 10px;
@@ -96,7 +98,7 @@ export const Email = styled.div`
 export const EmailInput = styled.input`
     width: 100%;
     border: none;
-    background-color: #00B05C;
+    background: #0085CB;
     border-bottom: 2px solid #FFFFFF;
     outline: none;
     font-size: 18px;
@@ -125,7 +127,7 @@ export const Password = styled.div`
 export const PasswordInput = styled.input`
     width: 100%;
     border: none;
-    background-color: #00B05C;
+    background: #0085CB;
     border-bottom: 2px solid #FFFFFF;
     outline: none;
     font-size: 18px;
@@ -154,7 +156,7 @@ export const PasswordCheck = styled.div`
 export const PasswordCheckInput = styled.input`
     width: 100%;
     border: none;
-    background-color: #00B05C;
+    background: #0085CB;
     border-bottom: 2px solid #FFFFFF;
     outline: none;
     font-size: 18px;
@@ -188,7 +190,7 @@ export const PhoneNumberInput = styled.input`
     width: 50%;
     margin-left: 5%;
     border: none;
-    background-color: #00B05C;
+    background: #0085CB;
     border-bottom: 2px solid #FFFFFF;
     outline: none;
     font-size: 18px;
@@ -231,7 +233,7 @@ export const CertificationButton = styled.button`
 export const CertificationInput = styled.input`
     width: 40%;
     border: none;
-    background-color: #00B05C;
+    background: #0085CB;
     border-bottom: 2px solid #FFFFFF;
     outline: none;
     font-size: 18px;
@@ -262,7 +264,8 @@ export const CertificationCheckButton = styled.button`
 `
 export const SignUpSubmit = styled.button`
     width: 80%;
-    margin-bottom: 5%;
+    height: 7%;
+    margin: 5% 0%;
     background: #FFFFFF;
     border-radius: 30px;
     border: none;

@@ -13,10 +13,12 @@ export default function BoardListUI() {
       </S.UrgentList>
       <S.SearchWrapper>
         <S.Dropdown>
-          <option></option>
+          <option>서울</option>
+          <option>경기</option>
+          <option>인천</option>
         </S.Dropdown>
         <S.Dropdown>
-          <option></option>
+          <option>서울일때 서울의 구</option>
         </S.Dropdown>
         <div>서치바 컴포넌트 자리</div>
         <S.SearchButton>
