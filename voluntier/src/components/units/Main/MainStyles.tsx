@@ -30,13 +30,75 @@ export const MySlider = styled(Slider)`
       width: 100%;
       height: 300px;
   }
-  /* @media (max-width: 500px) {
-    height: 310px;
-  }
-  @media (max-width: 390px) {
-    height: 270px;
-  } */
 `;
+export const SliderItem1 = styled.div`
+  width: 1440px;
+  height: 1200px;
+  background: url("../../../../images/main/메인 이미지 blue.png") no-repeat center;
+  background-size: cover;
+
+
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+  }
+    @media ${breakPoints.mobile} {
+    height: 500px;
+        
+  }
+  @media (max-width: 376px) {
+    height: 330px;
+  }  
+  `;
+  export const SliderDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 5% 12%;
+  @media ${breakPoints.tablet} {
+    padding: 3% 8%;
+  }
+  @media (max-width: 376px) {
+    padding: 3% 5%;
+  } 
+  `
+  export const SliderBean = styled.div`
+    width: 400px;
+    height: 660px;
+    background: url("../../../../images/main/콩모음집.png") no-repeat center;
+    background-size: cover;
+    margin-top: -220px;
+    animation: motion 2s linear 0s infinite alternate; 
+    @keyframes motion {
+	0% {margin-top: -100px;}
+	100% {margin-top: -350px;}
+}
+@media ${breakPoints.tablet} {
+   width: 220px;
+    height: 360px;
+    @keyframes motion {
+	0% {margin-top: -20px;}
+	100% {margin-top: -280px;}
+}
+  }
+@media ${breakPoints.mobile} {
+    width: 130px;
+    height: 220px;
+    @keyframes motion {
+	0% {margin-top: 10px;}
+	100% {margin-top: -180px;}
+}
+  }
+  @media (max-width: 376px) {
+    width: 120px;
+    height: 200px;
+  @keyframes motion {
+	0% {margin-top: 10px;}
+	100% {margin-top: -100px;}
+}
+  }  
+      
+    `
 
 
 export const SliderItem = styled.div`
@@ -54,7 +116,9 @@ export const SliderItem = styled.div`
     background-size: cover;
   }
     @media ${breakPoints.mobile} {
-    height: 500px;
+      width: 100%;
+    height: 700px;
+    background-size: cover;
         
   }
   @media (max-width: 376px) {
@@ -72,13 +136,15 @@ export const Text = styled.div`
   width: 500px;
   @media ${breakPoints.tablet} {
     font-size: 24px;
+    width: 330px;
   }
     @media ${breakPoints.mobile} {
-      font-size: 16px;
-        
+    font-size: 16px;
+    width: 220px;
   }
   @media (max-width: 376px) {
     font-size: 10px;
+    width: 120px;
 
   }  
 
@@ -106,7 +172,7 @@ export const DogBiscuit = styled.img`
   @media (max-width: 376px) {
     width: 80px;
     height: 30px;
-    margin-right: 180px;
+    margin-right: 250px;
     margin-bottom: 40px;
   }  
 
@@ -165,8 +231,10 @@ export const Category = styled.div`
 `;
 
 export const CategoryText = styled.div`
+  width: 100%;
   font-size: 36px;
   font-weight: 600;
+  text-align: center;
 
   @media ${breakPoints.tablet} {
     font-size: 20px;

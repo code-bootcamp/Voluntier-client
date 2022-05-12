@@ -1,12 +1,27 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   padding: 50px 24px;
+  @media ${breakPoints.mobile} {
+    padding: 10px 24px;
+  }
 `;
 
 export const DogBiscuit = styled.img`
   width: 230px;
   margin-bottom: 70px;
+
+  @media ${breakPoints.tablet} {
+    width: 180px;
+  margin-bottom: 20px;
+  }
+    @media ${breakPoints.mobile} {
+      width:  120px;
+      height: 45px;
+  margin-bottom: 30px;
+  }
+
 `;
 
 export const UrgentList = styled.div`
@@ -19,12 +34,22 @@ export const Urgent = styled.div`
   height: 200px;
   border-radius: 20px;
   background-color: #0085cb;
-  padding: 16px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-bottom: 60px;
-`;
+
+  @media ${breakPoints.tablet} {
+  width: 180px;
+  height: 180px;
+  }
+    @media ${breakPoints.mobile} {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 10px;
+  }
+  `;
 
 export const DeadLine = styled.div`
   width: 99px;
@@ -39,16 +64,31 @@ export const DeadLine = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  @media ${breakPoints.mobile} {
+  width: 70px;
+  height:25px;
+  font-size: 10px;
+  }
 `;
 
 export const Detail = styled.div`
+  width: 100%;
   font-weight: 700;
   font-size: 18px;
   color: #ffffff;
+  text-align: center;
+  @media ${breakPoints.tablet} {
+  font-weight: 500;
+  font-size: 14px;
+  }
+  @media ${breakPoints.mobile} {
+  font-weight: 500;
+  font-size: 10px;
+  }
 `;
 
 export const SearchWrapper = styled.div`
-  height: 50px;
+
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -57,8 +97,11 @@ export const SearchWrapper = styled.div`
 export const Dropdown = styled.select`
   width: 20%;
   border-radius: 0px;
-  margin-right: 10px;
+
+ 
 `;
+
+
 
 export const SearchButton = styled.div`
   /* width: 6%; */
@@ -71,6 +114,10 @@ export const SearchButton = styled.div`
 
 export const SearchButtonImage = styled.img`
   width: 50%;
+  @media ${breakPoints.mobile} {
+
+    width: 30%;
+}
 `;
 
 export const TableWrapper = styled.div`
@@ -91,11 +138,19 @@ export const Row = styled.div`
 `;
 
 export const ColumnHeaderBasic = styled.div`
-  width: 10%;
+  width: 20%;
   font-size: 18px;
+  @media ${breakPoints.mobile} {
+
+  font-size: 14px;
+  }
 `;
 
 export const ColumnHeaderTitle = styled.div`
   width: 70%;
   font-size: 18px;
+  @media ${breakPoints.mobile} {
+
+  font-size: 14px;
+  }
 `;

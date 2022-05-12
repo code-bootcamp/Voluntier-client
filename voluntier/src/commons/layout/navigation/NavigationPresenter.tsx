@@ -1,6 +1,7 @@
 import * as S from '../navigation/NavigationStyles'
-import { Popover, Button } from 'antd';
+
 import { useEffect, useState } from 'react';
+
 
 interface IPropsNavigationUI{
     hide : () => void
@@ -31,33 +32,34 @@ export default function NavigationUI(props:IPropsNavigationUI){
     return(
     <S.Wrapper> 
         <S.LogoImg src="/Logo_세로.png"/>
-        <S.ProfileImg src="/Ellipse5.png"/>
+        <S.ProfileImg src="/images/Group 8.png"/>
         <S.LoginInfoWrapper>
             <S.Login>Login</S.Login>
             <S.Mark></S.Mark>
             <S.Join>Join</S.Join>
         </S.LoginInfoWrapper>
         {windowSize?
-        <Popover 
+        <S.MyPopover 
             color={"#0085CB"}
+            style={{width:"100%"}}
             content={
                 <S.PopoverContents>
-            <S.ContentsWrapper>
-                <S.Information>봉사조회 및 신청</S.Information>
-                <S.Recruit>봉사 모집하기</S.Recruit>
-                <S.Donation>젤리 후원하기</S.Donation>
-                <S.JellyShop>젤리샵</S.JellyShop>
-            </S.ContentsWrapper>    
-            <a style={{color:"white"}} onClick={props.hide}>Close</a>
+                    <S.ContentsWrapper>
+                            <S.Information>봉사조회 및 신청</S.Information>
+                            <S.Recruit>봉사 모집하기</S.Recruit>
+                            <S.Donation>젤리 후원하기</S.Donation>
+                            <S.JellyShop>젤리샵</S.JellyShop>
+                    </S.ContentsWrapper>    
+                    <a style={{color:"white"}} onClick={props.hide}>닫기</a>
             </S.PopoverContents>
             }
-            title="Menu"
+            title= "Category"
             trigger="click"
             visible={props.visible}
             onVisibleChange={props.handleVisibleChange}
             >
-            <Button type="primary">Menu</Button>
-        </Popover>
+            <S.HambugerButton> </S.HambugerButton>
+        </S.MyPopover>
         :
         <S.ContentsWrapper>
             <S.Information>봉사조회 및 신청</S.Information>

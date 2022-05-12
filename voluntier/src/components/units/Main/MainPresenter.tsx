@@ -14,14 +14,17 @@ export default function MainUI(props) {
           slidesToShow={props.settings.slidesToShow}
           slidesToScroll={props.settings.slidesToScroll}
         >
-            <S.SliderItem style={{ paddingTop: "5%", paddingLeft: "1%" }}>
+            <S.SliderItem1 style={{ paddingTop: "5%", paddingLeft: "1%" }}>
               <Header />
-              
-              <S.SliderText>
-                <S.Text style={{marginTop: "2%", marginLeft: "15%" }}>보호소 동물친구들과 </S.Text>
-                <S.Text  style={{marginLeft: "15%" }}>당신을 이어줄 특별한 공간</S.Text>
-              </S.SliderText>
-            </S.SliderItem>
+              <S.SliderDisplay>
+
+                <S.SliderText>
+                  <S.Text>보호소 동물친구들과 </S.Text>
+                  <S.Text>당신을 이어줄 특별한 공간</S.Text>
+                </S.SliderText>
+                <S.SliderBean></S.SliderBean>
+              </S.SliderDisplay>
+            </S.SliderItem1>
           
           
             
@@ -51,7 +54,7 @@ export default function MainUI(props) {
      
         </S.MySlider>
 
-      <S.DogBiscuit src="/images/main/dog_biscuit.png" />
+      <S.DogBiscuit src="/images/main/뼈다귀.png" />
       <S.CategoryWrapper>
         <S.Category
           style={{
