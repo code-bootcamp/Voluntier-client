@@ -44,7 +44,7 @@ export const SliderItem1 = styled.div`
     background-size: cover;
   }
     @media ${breakPoints.mobile} {
-    height: 500px;
+    height: 445px;
         
   }
   @media (max-width: 376px) {
@@ -56,7 +56,7 @@ export const SliderItem1 = styled.div`
   flex-direction: row;
   padding: 5% 12%;
   @media ${breakPoints.tablet} {
-    padding: 3% 8%;
+    padding: 3% 12% 3% 8%;
   }
   @media (max-width: 376px) {
     padding: 3% 5%;
@@ -82,8 +82,9 @@ export const SliderItem1 = styled.div`
 }
   }
 @media ${breakPoints.mobile} {
-    width: 130px;
-    height: 220px;
+    width: 160px;
+    height: 270px;
+    margin-left: -5%;
     @keyframes motion {
 	0% {margin-top: 10px;}
 	100% {margin-top: -180px;}
@@ -112,12 +113,12 @@ export const SliderItem = styled.div`
 
   @media ${breakPoints.tablet} {
     width: 100%;
-    height: 700px;
+    height: 600px;
     background-size: cover;
   }
     @media ${breakPoints.mobile} {
-      width: 100%;
-    height: 700px;
+    width: 100%;
+    height: 600px;
     background-size: cover;
         
   }
@@ -135,12 +136,12 @@ export const Text = styled.div`
   font-size: 38px;
   width: 500px;
   @media ${breakPoints.tablet} {
-    font-size: 24px;
-    width: 330px;
+    font-size: 20px;
+    width: 290px;
   }
     @media ${breakPoints.mobile} {
-    font-size: 16px;
-    width: 220px;
+    font-size: 14px;
+    width: 160px;
   }
   @media (max-width: 376px) {
     font-size: 10px;
@@ -160,6 +161,7 @@ export const DogBiscuit = styled.img`
     width: 120px;
     height: 50px;
     margin-right: 650px;
+    margin-top: 20px;
   }
 
   @media ${breakPoints.mobile} {
@@ -167,6 +169,8 @@ export const DogBiscuit = styled.img`
     height: 40px;
     margin-right: 460px;
     margin-bottom: 40px;
+    margin-top: 29px;
+    margin-left: 50px;
         
   }
   @media (max-width: 376px) {

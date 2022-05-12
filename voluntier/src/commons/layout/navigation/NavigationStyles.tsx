@@ -8,7 +8,7 @@ export const PopoverContents = styled.div`
     width: 60px;
 `
 export const Wrapper = styled.div`
-    width: 300px;
+    width: 335px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -35,32 +35,34 @@ export const LogoImg = styled.img`
     margin-top: 15%;
     width: 68%;
     height: 13%;
-    @media (min-width: 376px) and (max-width:767px){
+    /* @media (min-width: 376px) and (max-width:767px){
         margin: 0% 50% 0% 0%;
         padding-left: 10%;
         width: 220px;
         height: 55px;
-    }
-    @media  (max-width: 375px){
-        justify-self: flex-start;
-        margin: 0% 5% 0% 2%;
-        width: 80px;
-        height: 70%;
-    }
+    } */
+`
+export const LogoImgPhone = styled.img`
+    
+    justify-self: flex-start;
+        margin: 0% 0% 0% 2%;
+        width: 70px;
+        height: 48px; 
 `
 export const ProfileImg = styled.img`
     margin-top: 10%;
     width: 80%;
     height: 23%;
     @media  (max-width: 375px){
-        margin: 0% 3% 0% 0%;
+        margin: 0% 0% 0% 28%;
         width: 50px;
         height: 50px;
     }
     @media (min-width: 376px) and (max-width:767px){
-        margin: 0% 7% 0% 0%;
+        margin: 0% 7% 0% 50%;
         width: 50px;
         height: 50px;
+
     }
 `
 export const LoginInfoWrapper = styled.div`
