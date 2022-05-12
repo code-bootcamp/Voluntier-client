@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }:AppProps) {
   <RecoilRoot>
     <Global styles={globalStyles}/>
     <LayOut>
-    <Component {...pageProps} />
+      <Component {...pageProps} />
     </LayOut>
   </RecoilRoot>
   </>
