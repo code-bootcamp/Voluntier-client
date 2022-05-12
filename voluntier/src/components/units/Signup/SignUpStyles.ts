@@ -9,12 +9,13 @@ export const Form =styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10%;
     @media ${breakPoints.mobile} {
         width: 100%;
     }
 `
 export const SignUpWrapper = styled.div`
-    width: 40%;
+    width: 700px;
     height: auto;
     display: flex;
     flex-direction: column;

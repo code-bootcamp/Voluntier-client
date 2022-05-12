@@ -1,16 +1,25 @@
 import * as S from './LoginStyles'
 
-export default function LoginUI(){
+interface IPropsLoginUI{
+    register:any
+    handleSubmit:any 
+    formState: any
+    onClickLogin : (data:any) => void
+}
+
+export default function LoginUI(props:IPropsLoginUI){
 
     return(
-        <S.Wrapper>
+        <S.Form onSubmit={props.handleSubmit(props.onClickLogin)}>
             <S.Login>
                 <S.Logo src='/images/로고.png'></S.Logo>
                 <S.Contents>
                     <S.Email>E-mail</S.Email>
-                    <S.EmailDetail type='text' placeholder='이메일을 입력하세요.'/>
+                    <S.EmailDetail {...props.register("email")} type='text' placeholder='이메일을 입력하세요.'/>
+                    <S.ErrorMsg>{props.formState.errors.email?.message}</S.ErrorMsg>
                     <S.Password>Password</S.Password>
-                    <S.PasswordDetail type='password'placeholder='비밀번호를 입력하세요.'/>
+                    <S.PasswordDetail {...props.register("password")} type='password'placeholder='비밀번호를 입력하세요.'/>
+                    <S.ErrorMsg>{props.formState.errors.password?.message}</S.ErrorMsg>
                 </S.Contents>
                 <S.LoginButton>Login</S.LoginButton>
                 <S.Social>
@@ -27,7 +36,7 @@ export default function LoginUI(){
                 <S.Left src='/images/Frame.png'></S.Left>
                 <S.Right src='/images/Frame (1).png'></S.Right>
             </S.IconBox>
-        </S.Wrapper>
+        </S.Form>
     )
     
 }

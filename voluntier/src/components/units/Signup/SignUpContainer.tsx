@@ -8,10 +8,10 @@ const schema = yup.object({
     email: yup.string().email("이메일의 형식이 올바르지 않습니다.").required("이메일은 필수 입력사항 입니다."),
     name: yup.string().required("이름은 필수 입력사항입니다."),
     password: yup.string().matches( 
-        /^(?=.[A-Za-z])(?=.\d)(?=.[$@$!%#?&])[A-Za-z\d$@$!%#?&]{1,8}$/,
-        "비밀번호는 영문, 숫자, 특수문자를 포함한 8자리 이내여야 합니다"),
+        /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/,
+        "비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자리여야 합니다"),
     passwordCheck : yup.string().oneOf([yup.ref('password'), null], "패스워드와 일치하지 않습니다."),
-    phoneNumber : yup.number().typeError("핸드폰 번호는 숫자로만 입력해주세요.").required("핸드폰 번호는 필수 입려사항 입니다."),
+    phoneNumber : yup.number().typeError("핸드폰 번호는 숫자로만 입력해주세요.").required("핸드폰 번호는 필수 입력사항 입니다."),
     phoneNumberCheck : yup.number().typeError("핸드폰 번호 인증은 숫자로만 입력해주세요").required("핸드폰 번호 인증은 필수입니다.")
 })
 
