@@ -82,6 +82,7 @@ export default function BoardDetailUI() {
           <VolunteerList />
         </S.InnerWrapperRight>
       </S.InnerWrapper>
+      
     </S.Wrapper>
   );
 }

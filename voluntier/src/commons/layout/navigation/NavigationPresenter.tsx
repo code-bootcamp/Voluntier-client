@@ -31,7 +31,12 @@ export default function NavigationUI(props:IPropsNavigationUI){
 
     return(
     <S.Wrapper> 
+        {windowSize
+        ?
+        <S.LogoImgPhone src="/images/Group.png"/>
+        :
         <S.LogoImg src="/Logo_세로.png"/>
+    }
         <S.ProfileImg src="/images/Group 8.png"/>
         <S.LoginInfoWrapper>
             <S.Login>Login</S.Login>
