@@ -43,21 +43,21 @@ export default function BoardWriteUI() {
             토스트 UI 자리
           </div>
           <S.HalfWrapper>
-            <div style={{ width: "25%" }}>
+            <S.Volun>
               <S.LabelWrapper>
                 <S.LabelImage src="/images/boardWrite/time.png" />
                 <S.Label>봉사 소요 시간</S.Label>
               </S.LabelWrapper>
               <S.SmallInput type="number" />
               시간
-            </div>
-            <div style={{ width: "25%" }}>
+            </S.Volun>
+            <S.Volun>
               <S.LabelWrapper>
                 <S.LabelImage src="/images/boardWrite/volunteer.png" />
                 <S.Label>봉사 인원</S.Label>
               </S.LabelWrapper>
               <S.SmallInput type="number" />명
-            </div>
+            </S.Volun>
           </S.HalfWrapper>
           <S.LabelWrapper>
             <S.LabelImage src="/images/boardWrite/calendar.png" />
