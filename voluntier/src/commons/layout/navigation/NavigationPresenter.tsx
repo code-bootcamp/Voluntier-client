@@ -7,6 +7,7 @@ interface IPropsNavigationUI{
     hide : () => void
     handleVisibleChange : () => void
     visible: boolean
+    onClickMutation: () => void
 }
 
 export default function NavigationUI(props:IPropsNavigationUI){
@@ -53,7 +54,7 @@ export default function NavigationUI(props:IPropsNavigationUI){
                             <S.Information>봉사조회 및 신청</S.Information>
                             <S.Recruit>봉사 모집하기</S.Recruit>
                             <S.Donation>젤리 후원하기</S.Donation>
-                            <S.JellyShop>젤리샵</S.JellyShop>
+                            <S.JellyShop onClick={props.onClickMutation}>젤리샵</S.JellyShop>
                     </S.ContentsWrapper>    
                     <a style={{color:"white"}} onClick={props.hide}>닫기</a>
             </S.PopoverContents>
@@ -70,7 +71,7 @@ export default function NavigationUI(props:IPropsNavigationUI){
             <S.Information>봉사조회 및 신청</S.Information>
             <S.Recruit>봉사 모집하기</S.Recruit>
             <S.Donation>젤리 후원하기</S.Donation>
-            <S.JellyShop>젤리샵</S.JellyShop>
+            <S.JellyShop onClick={props.onClickMutation}>젤리샵</S.JellyShop>
         </S.ContentsWrapper>
         }
     </S.Wrapper>
