@@ -81,7 +81,7 @@ export const LabelWrapper = styled.div`
 `;
 
 export const LabelImage = styled.img`
-  width: 20px;
+  width: 18px;
   height: 20px;
   margin-right: 10px;
 `;
