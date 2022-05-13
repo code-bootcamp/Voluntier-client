@@ -1,5 +1,8 @@
+import { useMoveToPage } from "../../../components/commons/hooks/useMoveToPage";
 import HeaderUI from "./HeaderPresenter";
 
 export default function Header() {
-  return <HeaderUI />;
+  const { moveToPage } = useMoveToPage();
+
+  return <HeaderUI moveToPage={moveToPage} />;
 }
