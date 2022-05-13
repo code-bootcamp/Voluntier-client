@@ -21,9 +21,9 @@ export const MySlider = styled(Slider)`
     width: 100%;
     height: 440px;
   }
-  @media (max-width: 376px) {
-    width: 100%;
-    height: 300px;
+  @media (max-width: 470px) {
+      width: 100%;
+      height: 300px;
   }
 `;
 export const SliderItem1 = styled.div`
@@ -32,16 +32,49 @@ export const SliderItem1 = styled.div`
   background: url("../../../../images/main/메인 이미지 blue.png") no-repeat
     center;
   background-size: cover;
-
   @media ${breakPoints.tablet} {
     width: 100%;
-    height: 700px;
+    height: 600px;
     background-size: cover;
   }
-  @media ${breakPoints.mobile} {
-    height: 445px;
+    @media ${breakPoints.mobile} {
+    height: 430px;        
   }
-  @media (max-width: 376px) {
+  @media (max-width:470px) {
+    height: 330px;
+  }  
+  `;
+  export const SliderItem2 = styled.div`
+  width: 1440px;
+  height: 1200px;
+  background: url("../../../../images/main/캐러셀2.png") no-repeat center;
+  background-size: cover;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+  }
+    @media ${breakPoints.mobile} {
+    height: 430px;        
+  }
+  @media (max-width:470px) {
+    height: 330px;
+  }  
+  `;
+  export const SliderItem3 = styled.div`
+  width: 1440px;
+  height: 1200px;
+  background: url("../../../../images/main/캐러셀3.png") no-repeat center;
+  background-size: cover;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+  }
+    @media ${breakPoints.mobile} {
+    height: 430px;        
+  }
+  @media (max-width:470px) {
     height: 330px;
   }
 `;
@@ -52,7 +85,7 @@ export const SliderDisplay = styled.div`
   @media ${breakPoints.tablet} {
     padding: 3% 12% 3% 8%;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
     padding: 3% 5%;
   }
 `;
@@ -96,7 +129,7 @@ export const SliderBean = styled.div`
       }
     }
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
     width: 120px;
     height: 200px;
     @keyframes motion {
@@ -129,7 +162,7 @@ export const SliderItem = styled.div`
     height: 600px;
     background-size: cover;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
     height: 330px;
   }
 `;
@@ -150,19 +183,31 @@ export const Text = styled.div`
     font-size: 14px;
     width: 160px;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
     font-size: 10px;
     width: 120px;
   }
 `;
 
-export const DogBiscuit = styled.img`
-  width: 410px;
-  height: 130px;
-  margin-right: 1150px;
-  margin-bottom: 40px;
-
-  @media ${breakPoints.tablet} {
+export const DogBiscuit = styled.div`
+    width: 410px;
+    height: 130px;
+    background-image: url('../../../../../images/UnionBiscuit.png');
+    font-family: "Sniglet";
+    margin-right: 1150px;
+    margin-bottom: 40px;
+    background-repeat: no-repeat;
+    font-size: 32px;
+    color: black;
+    letter-spacing: 1px;
+    padding: 20px 20px 20px 28px;
+    @media ${breakPoints.tablet} {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-size: contain;
+      font-size: 16px;
     width: 120px;
     height: 50px;
     margin-right: 650px;
@@ -170,6 +215,12 @@ export const DogBiscuit = styled.img`
   }
 
   @media ${breakPoints.mobile} {
+    display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-size: contain;
+      font-size: 14px;
     width: 100px;
     height: 40px;
     margin-right: 460px;
@@ -177,9 +228,12 @@ export const DogBiscuit = styled.img`
     margin-top: 29px;
     margin-left: 50px;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
+    color: white;
+    font-size: 10px;
     width: 80px;
     height: 30px;
+    padding: 0px;
     margin-right: 250px;
     margin-bottom: 40px;
   }
@@ -200,10 +254,11 @@ export const CategoryWrapper = styled.div`
     margin-bottom: 20px;
     width: 100%;
   }
-  @media (max-width: 376px) {
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    width: 280px;
+
+  @media (max-width: 470px) {
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  width: 280px;
     margin-bottom: 10px;
   }
 `;
@@ -231,7 +286,7 @@ export const Category = styled.div`
     width: 100px;
     height: 110px;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
     width: 115px;
     height: 125px;
     margin-bottom: 10px;
@@ -252,7 +307,7 @@ export const CategoryText = styled.div`
   @media ${breakPoints.mobile} {
     font-size: 10px;
   }
-  @media (max-width: 376px) {
+  @media (max-width: 470px) {
     font-size: 10px;
   }
 `;

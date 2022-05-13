@@ -8,18 +8,30 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const DogBiscuit = styled.img`
+export const DogBiscuit = styled.div`
+  background-image: url('../../../../../images/UnionBiscuit.png');
+  font-family: "Sniglet";
+  background-size: cover;
   width: 230px;
+  height: 82px;
   margin-bottom: 70px;
-
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   @media ${breakPoints.tablet} {
-    width: 180px;
+    width: 169px;
+    height: 60px;
   margin-bottom: 20px;
+  background-size: contain;
   }
     @media ${breakPoints.mobile} {
       width:  120px;
-      height: 45px;
+      height: 43px;
   margin-bottom: 30px;
+  font-size: 18px;
+  background-size: contain;
   }
 
 `;

@@ -29,4 +29,12 @@ export const globalStyles = css`
     /* font-weight: 600; */
     src: url("/fonts/NotoSansKR-Medium.otf");
   }
+
+    /* Sniglet-Regular */
+    @font-face {
+    font-family: "Sniglet";
+    font-style: normal;
+    font-weight: 800;
+    src: url("/fonts/Sniglet-ExtraBold.ttf");
+  }
 `;

@@ -37,28 +37,48 @@ export default function MainUI(props) {
           </S.SliderText>
         </S.SliderItem>
 
-        <S.SliderItem
-          style={{
-            paddingTop: "16%",
-            paddingLeft: "35%",
-            paddingRight: "35%",
-          }}
-        >
-          <Header />
-          <S.SliderText>
-            <S.Text style={{ paddingTop: "6%", marginLeft: "65%" }}>
-              {" "}
-              후원하고 받은 적립금으로{" "}
-            </S.Text>
-            <S.Text style={{ marginLeft: "65%" }}>
-              {" "}
-              귀여운 굿즈를 받아가세요!
-            </S.Text>
-          </S.SliderText>
-        </S.SliderItem>
-      </S.MySlider>
+                <S.SliderText>
+                  <S.Text>보호소 동물친구들과 </S.Text>
+                  <S.Text>당신을 이어줄 특별한 공간</S.Text>
+                </S.SliderText>
+                <S.SliderBean></S.SliderBean>
+              </S.SliderDisplay>
+            </S.SliderItem1>
+          
+          
+            
+            <S.SliderItem2 style={{ paddingTop: "16%", paddingLeft: "60%" }}>
+            <Header />
+            <S.SliderDisplay>
 
-      <S.DogBiscuit src="/images/main/뼈다귀.png" />
+              <S.SliderText>
+              <S.Text style={{paddingTop: "10%", marginLeft: "15%" }} >여러분의 소중한 후원 젤리는 </S.Text>
+              <S.Text style={{marginLeft: "15%" }}>보호소 동물친구들을 위한 </S.Text>
+              <S.Text style={{marginLeft: "15%" }}>활동에 사용됩니다</S.Text>
+              </S.SliderText>
+              <S.SliderBean></S.SliderBean>
+            </S.SliderDisplay>
+            </S.SliderItem2>
+       
+         
+            
+            <S.SliderItem3
+              style={{
+                paddingTop: "16%",
+                paddingLeft: "35%",
+                paddingRight: "35%",
+              }}
+            ><Header />
+                <S.SliderText>
+                <S.Text style={{paddingTop: "6%", marginLeft: "65%" }}> 후원하고 받은 적립금으로 </S.Text>
+                <S.Text style={{marginLeft: "65%" }}> 귀여운 굿즈를 받아가세요!</S.Text>
+                </S.SliderText>
+            </S.SliderItem3>
+     
+        </S.MySlider>
+
+
+      <S.DogBiscuit>Category</S.DogBiscuit>
       <S.CategoryWrapper>
         <S.Category
           style={{
