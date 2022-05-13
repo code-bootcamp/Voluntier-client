@@ -1,3 +1,4 @@
+import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 import MainUI from "./MainPresenter";
 
 export default function Main() {
@@ -7,16 +8,14 @@ export default function Main() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    responsive:[
-      {breakpoint: 1024,
-      
-      }
-    ]
+    responsive: [{ breakpoint: 1024 }],
   };
+
+  const { moveToPage } = useMoveToPage();
 
   return (
     <>
-      <MainUI settings={settings} />
+      <MainUI settings={settings} moveToPage={moveToPage} />
     </>
   );
 }

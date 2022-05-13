@@ -5,6 +5,8 @@ interface IPropsSignUpUI {
     handleSubmit:any 
     formState: any
     onClickSignUp : (data:any) => void
+    onClickSendPhone : () => void
+    onClickCheckPhoneAuthToken : () => void
 }
 
 export default function SignUpUI(props:IPropsSignUpUI){
@@ -36,16 +38,16 @@ export default function SignUpUI(props:IPropsSignUpUI){
                 <S.InputWrapper>
                     <S.PhoneNumber>PhoneNumber</S.PhoneNumber>
                     <S.PhoneNumberInputWrapper>
-                        
-                        <S.PhoneNumberInput {...props.register("phoneNumber")} placeholder="핸드폰 번호를 입력해주세요."/>
-                        <S.CertificationButton type='button'>인증받기</S.CertificationButton>
+                        <S.FrontNumber>010</S.FrontNumber>
+                        <S.PhoneNumberInput {...props.register("phone")} placeholder="핸드폰 번호를 입력해주세요."/>
+                        <S.CertificationButton onClick={props.onClickSendPhone} type='button'>인증받기</S.CertificationButton>
                     </S.PhoneNumberInputWrapper>
                     <S.ErrorMsg>{props.formState.errors.phoneNumber?.message}</S.ErrorMsg>
                 </S.InputWrapper>
                 <S.InputWrapper>
                     <S.PhoneNumberInputWrapper>
                         <S.CertificationInput {...props.register("phoneNumberCheck")} placeholder="인증번호를 입력해주세요"/>
-                        <S.CertificationCheckButton type='button'>인증</S.CertificationCheckButton>
+                        <S.CertificationCheckButton onClick={props.onClickCheckPhoneAuthToken} type='button'>인증</S.CertificationCheckButton>
                     </S.PhoneNumberInputWrapper>
                     <S.ErrorMsg>{props.formState.errors.phoneNumberCheck?.message}</S.ErrorMsg>
                 </S.InputWrapper>
