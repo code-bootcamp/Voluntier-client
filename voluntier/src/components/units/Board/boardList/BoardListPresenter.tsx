@@ -3,7 +3,7 @@ import * as S from "./BoardListStyles";
 export default function BoardListUI() {
   return (
     <S.Wrapper>
-      <S.DogBiscuit src="/images/boardList/dog_biscuit.png" />
+      <S.DogBiscuit>Apply</S.DogBiscuit>
       <S.UrgentList>
         <S.Urgent>
           <S.DeadLine>D-{}</S.DeadLine>

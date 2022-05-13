@@ -9,13 +9,15 @@ export const Title = styled.div`
 `;
 export const Image = styled.div`
  background-image: url('../../../../../images/UnionBiscuit.png');
+ font-family: "Sniglet";
  width: 200px;
  height: 100px;
  background-size: contain;
  background-repeat: no-repeat;
  text-align: center;
- font-size: 18px;
+ font-size: 20px;
  color: white;
+ letter-spacing: 1px;
  line-height: 375%;
 
 
