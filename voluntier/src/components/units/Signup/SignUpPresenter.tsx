@@ -36,7 +36,7 @@ export default function SignUpUI(props:IPropsSignUpUI){
                 <S.InputWrapper>
                     <S.PhoneNumber>PhoneNumber</S.PhoneNumber>
                     <S.PhoneNumberInputWrapper>
-                        <S.FrontNumber>010</S.FrontNumber>
+                        
                         <S.PhoneNumberInput {...props.register("phoneNumber")} placeholder="핸드폰 번호를 입력해주세요."/>
                         <S.CertificationButton type='button'>인증받기</S.CertificationButton>
                     </S.PhoneNumberInputWrapper>
