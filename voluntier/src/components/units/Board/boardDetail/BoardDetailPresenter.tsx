@@ -1,3 +1,4 @@
+import KakaoMap from "../../../commons/kakaomap";
 import VolunteerList from "../../../commons/volunteerList";
 import * as S from "./BoardDetailStyles";
 
@@ -13,7 +14,9 @@ export default function BoardDetailUI() {
           <S.InnerWrapperLeftUpper>
             <S.InfoWrapper>
               <S.InfoLeftWrapper>
-                <S.Map>카카오맵 자리</S.Map>
+                <S.Map>
+                  <KakaoMap/>
+                </S.Map>
                 <S.LocationWrapper>
                   <S.LabelImage src="/images/boardWrite/location.png" />
                   <S.Location></S.Location>

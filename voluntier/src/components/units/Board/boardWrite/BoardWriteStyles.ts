@@ -62,14 +62,15 @@ export const InputWrapperLeft = styled.div`
 export const Map = styled.div`
   width: 100%;
   height: 424px;
-  border: 1px solid red;
   margin-bottom: 13px;
   @media ${breakPoints.mobile}{
     height: 200px;
   }
 `;
 
-export const LocationWrapper = styled.div``;
+export const LocationWrapper = styled.div`
+
+`;
 
 export const SearchButton = styled.button`
   width: 100px;
@@ -78,11 +79,12 @@ export const SearchButton = styled.button`
   margin-bottom: 8px;
 `;
 
-export const Address = styled.div`
+export const Address = styled.input`
   width: 100%;
   height: 30px;
   border: 1px solid #676767;
   margin-bottom: 8px;
+  /* font-size: 10px; */
 `;
 
 export const AddressDetail = styled.input`

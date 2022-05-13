@@ -1,6 +1,18 @@
+import KakaoMap from "../../../commons/kakaomap";
 import * as S from "./BoardWriteStyles";
+import { Modal } from 'antd';
+import DaumPostcode from 'react-daum-postcode';
 
-export default function BoardWriteUI() {
+interface IPropsBoardWriteUI{
+    showModal : any
+    isModalVisible : boolean
+    handleOk : any
+    handleCancel : any
+    handleComplete : any
+    address: string
+}
+
+export default function BoardWriteUI(props:IPropsBoardWriteUI) {
   return (
     <S.Wrapper>
       <S.TitleWrapper>
@@ -9,10 +21,12 @@ export default function BoardWriteUI() {
       </S.TitleWrapper>
       <S.InputWrapper>
         <S.InputWrapperLeft>
-          <S.Map>카카오맵 들어올 자리</S.Map>
+          <S.Map>
+            <KakaoMap address={props.address}/>
+          </S.Map>
           <S.LocationWrapper>
-            <S.SearchButton>지역 선택</S.SearchButton>
-            <S.Address></S.Address>
+            <S.SearchButton onClick={props.showModal}>지역 선택</S.SearchButton>
+            <S.Address readOnly value={props.address}/>
             <S.AddressDetail />
           </S.LocationWrapper>
         </S.InputWrapperLeft>
@@ -67,6 +81,15 @@ export default function BoardWriteUI() {
         </S.InputWrapperRight>
       </S.InputWrapper>
       <S.SubmitButton>등록하기</S.SubmitButton>
+      {props.isModalVisible && (
+          <Modal 
+            visible={true}
+            onOk={props.handleOk}
+            onCancel={props.handleCancel}
+          >
+            <DaumPostcode onComplete={props.handleComplete} />
+          </Modal>
+        )}x
     </S.Wrapper>
   );
 }
