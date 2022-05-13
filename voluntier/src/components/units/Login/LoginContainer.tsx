@@ -2,6 +2,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import LoginUI from "./LoginPresenter";
 import * as yup from 'yup';
+import { gql, useMutation } from "@apollo/client";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
+import { Modal } from "antd";
+import { useRouter } from "next/router";
+
 
 const schema = yup.object({
     email: yup.string().email("이메일의 형식이 올바르지 않습니다.").required("이메일은 필수 입력사항 입니다."),
@@ -15,14 +21,34 @@ interface IFormValues {
     password : string
 }
 
+const LOGIN = gql`
+    mutation login($email:String!,$password:String!){
+        login(email:$email,password:$password)
+    }
+`
+
 export default function Login(){
+    const [login] = useMutation(LOGIN)
+    const [, setAccessToken] = useRecoilState(accessTokenState);
+    const router = useRouter()
     const {register , handleSubmit, formState} = useForm({
         resolver : yupResolver(schema),
         mode:"onChange",
     })
-    const onClickLogin = (data:IFormValues) => {
-        console.log(data)
+    const onClickLogin = async (data:IFormValues) => {
+        try{
+            const result = await login({
+                variables:{...data}
+            })
+            const accessToken = result.data.login
+            setAccessToken(accessToken)
+            Modal.success({content:"로그인에 성공하였습니다."})
+            router.push('/boards')
+        }catch(error){
+            Modal.error({content:"로그인에 실패하였습니다."})
+        }
     }
+
     return (
     <LoginUI
     register={register} 
