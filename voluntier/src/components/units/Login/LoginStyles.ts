@@ -135,15 +135,19 @@ export const SocialContents = styled.div`
     
 
 `
-export const Kakao = styled.img`
-    width: 20%;
+export const KakaoA = styled.a`
+width: 20%;
     height: 80%;
     @media ${breakPoints.mobile} {   
         width: 20%;
         height: 100%;  
   }
 `
-export const Naver = styled.img`
+export const Kakao = styled.img`
+    width: 100%;
+    height: 100%;
+`
+export const NaverA = styled.a`
     width: 20%;
     height: 80%;
     @media ${breakPoints.mobile} {   
@@ -151,13 +155,23 @@ export const Naver = styled.img`
         height: 100%; 
   }
 `
-export const FaceBook = styled.img`
+
+export const Naver = styled.img`
+    width: 100%;
+    height: 100%;
+`
+export const GoogleA = styled.a`
     width: 23%;
     height: 80%;
     @media ${breakPoints.mobile} {   
         width: 20%;  
         height: 100%; 
   }
+`
+
+export const Google = styled.img`
+    width: 100%;
+    height: 100%;
 `
 export const IconBox = styled.div`
     width: 100%;

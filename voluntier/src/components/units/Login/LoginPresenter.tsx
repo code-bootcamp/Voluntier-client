@@ -25,9 +25,15 @@ export default function LoginUI(props:IPropsLoginUI){
                 <S.Social>
                     <S.SocialTitle>소셜 아이디로 간편 로그인</S.SocialTitle>
                     <S.SocialContents>
+                        <S.KakaoA href='https://backendapi.voluntier.site/login/kakao'>
                         <S.Kakao src='/images/btn-kakao.png'/>
+                        </S.KakaoA>
+                        <S.NaverA href='http://backendapi.voluntier.site/login/naver'>
                         <S.Naver src='/images/btn-naver.png'/>
-                        <S.FaceBook src='/images/btn-facebook.png'/>
+                        </S.NaverA>
+                        <S.GoogleA href='https://backendapi.voluntier.site/login/google'>
+                        <S.Google src='/google.png'/>
+                        </S.GoogleA>
                     </S.SocialContents>
                 </S.Social>
                 <S.Question> 계정이 없으신가요? 회원가입하기</S.Question>
