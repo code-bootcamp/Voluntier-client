@@ -37,7 +37,7 @@ export default function NavigationUI(props: IPropsNavigationUI) {
           onClick={props.moveToPage("/")}
         />
       ) : (
-        <S.LogoImg src="/Logo_세로.png" onClick={props.moveToPage("/")} />
+        <S.LogoImg src="/images/Logo_blue.png" onClick={props.moveToPage("/")} />
       )}
       <S.ProfileImg
         src="/images/Group 8.png"
@@ -64,7 +64,6 @@ export default function NavigationUI(props: IPropsNavigationUI) {
                 <S.Donation onClick={props.moveToPage("/donation")}>
                   젤리 후원하기
                 </S.Donation>
-                {/* <S.JellyShop onClick={props.onClickMutation}>젤리샵</S.JellyShop> */}
                 <S.JellyShop onClick={props.moveToPage("/products")}>
                   젤리샵
                 </S.JellyShop>

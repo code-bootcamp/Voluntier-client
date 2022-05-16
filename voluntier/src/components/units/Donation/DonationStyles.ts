@@ -1,148 +1,207 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 import Slider from "react-slick";
-import { breakPoints } from '../../../commons/styles/Media';
-
-
-export const Wrapper = styled.div`
-    padding: 50px 70px 119px 20px;
-`
 export const Body = styled.div`
-    width: 100%;
-    height: 100vh;
+
+    height: auto;
     display: flex;
     flex-direction: column;
+    padding: 20px 0px 0px 200px;
+
 `
-export const DogBiscuit = styled.img`
-    width: 20%;
-    height: 10%;
-    margin-bottom: 7%;
+
+export const Top = styled.div`
+    background-image: url('../../../../images/donation/후원박스.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 920px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
 `
-export const DonationBody = styled.div`
-    width: 100%;
-    height: 40%;
+export const TopTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+`
+export const Title1 = styled.div`
+    font-size: 30px;
+    font-family: "GmarketSans";
+    color: #FF6A9E;
+    font-weight: bolder;
+    line-height: 30px;
+`
+export const Title2 = styled.div`
+    font-size: 30px;
+    font-family: "GmarketSans";
+    color: #FF6A9E;
+    font-weight: bolder;
+`
+export const TopContents = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    padding: 45px 0px 34px 0px;
-    margin-bottom: 84px;
-    border: 1px solid #B5B5B5;
-    border-radius: 20px;
-`
-export const DonationComment = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-export const Comment = styled.text`
-    margin-bottom: 5%;
-    font-family: 'GmarketSans';
-    font-weight: 400;
-    font-size: 18px;
-    color: #000000;
-    @media (max-width:1200px){
-        font-size: 13px;
-    }
-`
-export const MySlider = styled(Slider)`
-    width: 400px;
-    height: 100%;
-    margin-left: 47px;
-    @media (max-width:1285px){
-        width: 350px;
-    }
-    @media(max-width: 1092px){
-        width: 300px;
-    }
-`
-export const DonationImg1 = styled.img`
-    width: 100%;
-    height: 100%;
-`
-export const DonationImg2 = styled.img`
-    width: 100%;
-    height: 100%;
-`
-export const DonationWrapper = styled.div`
-    display: flex;
-    justify-content: space-around;
-    @media ${breakPoints.mobile}{
-        display: flex;
-        flex-direction: column;
-    }
+    height: 50%;
+
 `
 
-export const Button1 = styled.div`
+export const Contents = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media ${breakPoints.mobile}{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+
 `
-export const Button2 = styled.div`
+export const ContentsJelly1 = styled.div`
+    font-family: "NotoSans";
+    font-size: 40px;
+    font-weight: bolder;
+    color: #FF6A9E;
+
+`
+export const ContentsJelly2 = styled.div`
+    font-family: "NotoSans";
+    font-size: 40px;
+    font-weight: bolder;
+    color: #0085CB;
+
+`
+export const ContentsDetail = styled.div`
+font-family: "NotoSans";
+    font-size: 20px;
+
+`
+
+export const Middle = styled.div`
+    height: 50%;
+    width : 950px;
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+export const MiddleTitle = styled.div`
+    font-size: 15px;
+
+`
+export const MiddleContents = styled.div`
+
+`
+export const MySlider = styled(Slider)`
+        width: 900px;
+        height: auto;
+        
+
+`
+
+export const Slider1 = styled.div`
+        background-color: aliceblue;
+        width: 100px;
+        height: 380px;
+
+`
+
+export const Slider2 = styled.div`
+        background-color: lightpink;
+        width: 100px;
+        height: 380px;
+
+`
+export const Slider3 = styled.div`
+        background-color: coral;
+        width: 100px;
+        height: 380px;
+
+`
+export const Slider4 = styled.div`
+        background-color: yellow;
+        width: 100px;
+        height: 380px;
+
+`
+export const Footer = styled.div`
+    width: 950px;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+`
+export const Price1 = styled.div`
+    background-image: url('../../../../images/donation/고양이발(치즈).png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    @media ${breakPoints.mobile}{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+    padding-top: 12%;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    :hover{
+        height: 500px;
+        transform: translate(0px,-100px);
+        transition-duration: 1.5s;
+
     }
+
 `
-export const Button3 = styled.div`
+export const Price2 = styled.div`
+    background-image: url('../../../../images/donation/고양이발(호랭이).png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    @media ${breakPoints.mobile}{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+    padding-top: 12%;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    :hover{
+        height: 500px;
+        transform: translate(0px,-100px);
+        transition-duration: 1.5s;
+
     }
+
 `
-export const Button4 = styled.div`
+export const Price3 = styled.div`
+    background-image: url('../../../../images/donation/고양이발(회색).png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    @media ${breakPoints.mobile}{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+    padding-top: 12%;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    :hover{
+        height: 500px;
+        transform: translate(0px,-100px);
+        transition-duration: 1.5s;
+
     }
+
 `
-export const ButtonImg = styled.img`
-    width: 100%;
-    height: 159px;
-    @media ${breakPoints.mobile}{
-        width: 150px;
-        height: 50%;
-    }
+
+export const PriceDetail = styled.div`
+font-family: "GmarketSans";
+    font-size: 20px;
+    font-weight: bolder;
+    color: indianred;
+
 `
-export const DogGum = styled.img`
-    width: 70%;
-    height: 40px;
-    
-`
-export const Ten = styled.img`
-    margin-top: 24px;
-    width: 50%;
-    height: 36px;
-`
-export const Chew = styled.img`
-    margin-top: 10px;
-    width: 70%;
-    height: 26px;
-`
-export const DogHome = styled.img`
-    width: 70%;
-    height: 99px;
-`
-export const HungryDogCat = styled.img`
-    width: 70%;
-    height: 95px;
-`
+
+

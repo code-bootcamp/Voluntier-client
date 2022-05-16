@@ -37,4 +37,12 @@ export const globalStyles = css`
     font-weight: 800;
     src: url("/fonts/Sniglet-ExtraBold.ttf");
   }
+
+  @font-face {
+    font-family: "Sniglet2";
+    font-style: normal;
+    font-weight: 800;
+    src: url("/fonts/Sniglet-Regular.ttf");
+  }
+
 `;
