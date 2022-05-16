@@ -1,6 +1,8 @@
 import JellyshopModal from "../../../commons/jellyshop/JellyshopContainer";
 import * as S from "./ProductDetailStyles";
 
+
+
 export default function ProductDetailUI(props) {
   return (
     <>
@@ -11,7 +13,6 @@ export default function ProductDetailUI(props) {
           onCancel={props.onToggleModal}
           closable={false}
           bodyStyle={{
-            width: "800px",
             // height: "600px",
             border: "3px solid #696969",
             borderRadius: "30px",
@@ -28,14 +29,14 @@ export default function ProductDetailUI(props) {
           <S.InnerWrapperLeft>
             <S.TitleWrapper>
               <S.Label>상품명</S.Label>
-              <S.ProductName></S.ProductName>
+              <S.ProductName>{props.data?.fetchProduct.name}</S.ProductName>
             </S.TitleWrapper>
             <S.SliderWrapper>
               <div>슬라이더 자리</div>
             </S.SliderWrapper>
             <S.PriceWrapper>
               <S.Label>차감 젤리</S.Label>
-              <S.Price>{}개</S.Price>
+              <S.Price>{props.data?.fetchProduct.price}개</S.Price>
             </S.PriceWrapper>
           </S.InnerWrapperLeft>
           <S.InnerWrapperRight>
@@ -44,11 +45,13 @@ export default function ProductDetailUI(props) {
               <S.Image />
             </S.ImageWrapper>
             <S.Label>상품 정보</S.Label>
-            <S.InfoDetail></S.InfoDetail>
+            <S.InfoDetail>{props.data?.fetchProduct.details}</S.InfoDetail>
           </S.InnerWrapperRight>
         </S.InnerWrapper>
         <S.ButtonWrapper>
           <S.BuyButton onClick={props.onToggleModal}>젤리 사용하기</S.BuyButton>
+          <S.BuyButton onClick={props.ProductEdit}>수정하기</S.BuyButton>
+          <S.BuyButton onClick={props.ProductDelete}>삭제하기</S.BuyButton>
         </S.ButtonWrapper>
       </S.Wrapper>
     </>

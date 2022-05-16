@@ -1,14 +1,23 @@
 import styled from "@emotion/styled";
 import { Modal } from "antd";
+import { breakPoints } from '../../../../commons/styles/Media';
 
 export const MyModal = styled(Modal)`
   .ant-modal-content {
     border-radius: 30px;
+    width: 800px;
+    @media ${breakPoints.mobile}{
+      width: 370px;
+    }
   }
 `;
 
 export const Wrapper = styled.div`
   padding: 104px 70px;
+  @media ${breakPoints.mobile}{
+    padding: 3%;
+    width: 100%;
+  }
 `;
 
 export const InnerWrapper = styled.div`
@@ -16,12 +25,21 @@ export const InnerWrapper = styled.div`
   border: 1px solid #b5b5b5;
   border-radius: 20px;
   margin-bottom: 24px;
+  @media ${breakPoints.mobile}{
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px;
+    border: none;
+  }
 `;
 
 export const InnerWrapperLeft = styled.div`
   width: 38%;
   height: 100%;
   /* border-right: 1px solid #b5b5b5; */
+  @media ${breakPoints.mobile}{
+    width: 100%;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -46,18 +64,28 @@ export const SliderWrapper = styled.div`
   height: 300px;
   margin-bottom: 24px;
   border: 1px solid red;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+  }
 `;
 
 export const PriceWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 24px;
+  @media ${breakPoints.mobile}{
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Price = styled.div`
   color: #0085cb;
   font-size: 24px;
   font-weight: 400;
+  @media ${breakPoints.mobile}{
+    margin-left: 3%;
+  }
 `;
 
 export const InnerWrapperRight = styled.div`
@@ -65,6 +93,10 @@ export const InnerWrapperRight = styled.div`
   height: 100%;
   padding: 61px 52px;
   border-left: 1px solid #b5b5b5;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+    border: none;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -81,6 +113,11 @@ export const Image = styled.img`
   height: 150px;
   margin-right: 45px;
   border-radius: 10px;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+    height: auto;
+    margin-right: 0px;
+  }
 `;
 
 export const InfoDetail = styled.div`

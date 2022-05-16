@@ -1,20 +1,33 @@
 import styled from "@emotion/styled";
+import { breakPoints } from '../../../commons/styles/Media';
 
 export const Wrapper = styled.div`
   padding: 36px 53px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media ${breakPoints.mobile}{
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+  }
 `;
 
 export const UpperWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  @media ${breakPoints.mobile}{
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const UpperLeftWrapper = styled.div`
   width: 54%;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -27,6 +40,9 @@ export const Label = styled.div`
   font-size: 24px;
   font-weight: 700;
   margin-right: 10px;
+  @media ${breakPoints.mobile}{
+    font-size: 12px;
+  }
 `;
 
 export const ProductName = styled.div`
@@ -37,16 +53,27 @@ export const ProductName = styled.div`
 export const BigImageWrapper = styled.div`
   width: 300px;
   height: 300px;
+  @media ${breakPoints.mobile}{
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 export const SmallImageWrapper = styled.div`
   height: 80px;
+  @media ${breakPoints.mobile}{
+    height: 40px;
+  }
 `;
 
 export const SmallImage = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 10px;
+  @media ${breakPoints.mobile}{
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const UpperRightWrapper = styled.div`
@@ -54,12 +81,18 @@ export const UpperRightWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: spac;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+  }
 `;
 
 export const SmallLabel = styled.div`
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
+  @media ${breakPoints.mobile}{
+    font-size: 12px;
+  }
 `;
 
 export const Input = styled.input`
@@ -69,6 +102,10 @@ export const Input = styled.input`
   border: 1px solid #676767;
   background-color: transparent;
   margin-bottom: 8px;
+  @media ${breakPoints.mobile}{
+    height: 20px;
+    font-size: 10px;
+  }
 `;
 
 export const ZipcodeWrapper = styled.div`
@@ -88,6 +125,9 @@ export const Zipcode = styled.input`
   padding-left: 18px;
   background-color: transparent;
   margin-right: 13px;
+  @media ${breakPoints.mobile}{
+    height: 20px
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -99,6 +139,10 @@ export const SearchButton = styled.button`
   background-color: #000000;
   border: none;
   border-radius: 30px;
+  @media ${breakPoints.mobile}{
+    height: 20px;
+    font-size: 12px;
+  }
 `;
 
 export const Address = styled.div``;
@@ -113,6 +157,9 @@ export const PriceWrapper = styled.div`
 export const Price = styled.div`
   color: #0085cb;
   font-size: 24px;
+  @media ${breakPoints.mobile}{
+    font-size: 12px;
+  }
 `;
 
 export const BuyButton = styled.button`
@@ -124,4 +171,8 @@ export const BuyButton = styled.button`
   border: none;
   border-radius: 10px;
   background-color: #0085cb;
+  @media ${breakPoints.mobile}{
+    height: 25px;
+    font-size: 15px;
+  }
 `;
