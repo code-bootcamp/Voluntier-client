@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #0085cb;
   @media (min-width: 376px) and (max-width: 767px) {
     display: flex;
     flex-direction: row;
@@ -31,15 +30,9 @@ export const Wrapper = styled.div`
 `;
 export const LogoImg = styled.img`
   margin-top: 15%;
-  width: 68%;
+  width: 55%;
   height: 13%;
   cursor: pointer;
-  /* @media (min-width: 376px) and (max-width:767px){
-        margin: 0% 50% 0% 0%;
-        padding-left: 10%;
-        width: 220px;
-        height: 55px;
-    } */
 `;
 export const LogoImgPhone = styled.img`
   justify-self: flex-start;
@@ -84,7 +77,7 @@ export const Login = styled.div`
   font-family: "Noto Sans";
   font-weight: 600;
   font-size: 18px;
-  color: #ffffff;
+  color: #0085cb;
   cursor: pointer;
 
   @media (max-width: 375px) {
@@ -102,7 +95,8 @@ export const Mark = styled.div`
   height: 70%;
   margin: 0% 15% 0% 15%;
   border: none;
-  border-left: 1px solid #0085cb;
+  border-left: 3px solid #0085cb;
+  border-radius: 100px;
   @media (max-width: 375px) {
     margin: 0% 5% 1.5% 5%;
     height: 12px;
@@ -120,7 +114,7 @@ export const Join = styled.div`
   font-family: "Noto Sans";
   font-weight: 600;
   font-size: 18px;
-  color: #ffffff;
+  color: #0085cb;
   cursor: pointer;
 
   @media (max-width: 375px) {
@@ -160,8 +154,10 @@ export const Information = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #ffffff;
   cursor: pointer;
+  :hover{
+    color: #0085CB;
+  }
 
   @media (max-width: 375px) {
     margin: 0% 3% 0% 0%;
@@ -173,7 +169,7 @@ export const Information = styled.div`
     margin: 0% 3% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
+
   }
 `;
 export const Recruit = styled.div`
@@ -182,20 +178,23 @@ export const Recruit = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #ffffff;
+
   cursor: pointer;
+  :hover{
+    color: #0085CB;
+  }
 
   @media (max-width: 375px) {
     margin: 0% 3% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
+
   }
   @media (min-width: 376px) and (max-width: 767px) {
     margin: 0% 3% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
+
   }
 `;
 export const Donation = styled.div`
@@ -204,20 +203,20 @@ export const Donation = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #ffffff;
   cursor: pointer;
+  :hover{
+    color: #0085CB;
+  }
 
   @media (max-width: 375px) {
     margin: 0% 3% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
   }
   @media (min-width: 376px) and (max-width: 767px) {
     margin: 0% 3% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
   }
 `;
 export const JellyShop = styled.div`
@@ -226,20 +225,23 @@ export const JellyShop = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #ffffff;
+
   cursor: pointer;
+  :hover{
+    color: #0085CB;
+  }
 
   @media (max-width: 375px) {
     margin: 0% 0% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
+
   }
   @media (min-width: 376px) and (max-width: 767px) {
     margin: 0% 3% 0% 0%;
     font-size: 15px;
     font-weight: 300;
-    color: #ffffff;
+
   }
 `;
 export const MyPopover = styled(Popover)`

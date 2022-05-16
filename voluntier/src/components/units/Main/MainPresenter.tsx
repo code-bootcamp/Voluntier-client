@@ -12,6 +12,7 @@ export default function MainUI(props) {
         speed={props.settings.speed}
         slidesToShow={props.settings.slidesToShow}
         slidesToScroll={props.settings.slidesToScroll}
+        arrow = "false"
       >
         <S.SliderItem1 style={{ paddingTop: "5%", paddingLeft: "1%" }}>
           <Header />
@@ -24,8 +25,10 @@ export default function MainUI(props) {
           </S.SliderDisplay>
         </S.SliderItem1>
 
-        <S.SliderItem style={{ paddingTop: "16%", paddingLeft: "60%" }}>
+        <S.SliderItem2 style={{ paddingTop: "16%", paddingLeft: "60%" }}>
           <Header />
+          <S.SliderDisplay>
+
           <S.SliderText>
             <S.Text style={{ paddingTop: "10%", marginLeft: "15%" }}>
               여러분의 소중한 후원 젤리는{" "}
@@ -35,9 +38,11 @@ export default function MainUI(props) {
             </S.Text>
             <S.Text style={{ marginLeft: "15%" }}>활동에 사용됩니다</S.Text>
           </S.SliderText>
-        </S.SliderItem>
+          <S.SliderBean></S.SliderBean>
+          </S.SliderDisplay>
+        </S.SliderItem2>
 
-        <S.SliderItem
+        <S.SliderItem3
           style={{
             paddingTop: "16%",
             paddingLeft: "35%",
@@ -55,7 +60,7 @@ export default function MainUI(props) {
               귀여운 굿즈를 받아가세요!
             </S.Text>
           </S.SliderText>
-        </S.SliderItem>
+        </S.SliderItem3>
       </S.MySlider>
 
       <S.DogBiscuit>Category</S.DogBiscuit>
