@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@hookform/resolvers": "^2.8.8",
+    "@types/apollo-upload-client": "^17.0.0",
     "@types/lodash": "^4.14.181",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.9",

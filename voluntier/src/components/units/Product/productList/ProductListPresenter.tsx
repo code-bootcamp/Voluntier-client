@@ -1,6 +1,6 @@
 import * as S from './ProductListStyles'
 
-export default function ProductListUI(){
+export default function ProductListUI(props){
 
 
     return (
@@ -14,11 +14,11 @@ export default function ProductListUI(){
             </S.Search>
         </S.Title>
         <S.Contents>
-            {[1,2,3].map((el)=>(                
-                <S.ProductWrapper key={el}>
-                <S.ProductImage></S.ProductImage>
-                <S.ProductName>발룬티어키링</S.ProductName>
-                <S.ProductPrice>5000원</S.ProductPrice>
+            {props.data?.fetchProducts.map((el)=>(             
+                <S.ProductWrapper key={el.id}>
+                <S.ProductImage onClick={props.MoveProduct} id={el.id}></S.ProductImage>
+                <S.ProductName>{el.name}</S.ProductName>
+                <S.ProductPrice>{el.price}원</S.ProductPrice>
             </S.ProductWrapper>
                 ))}
         </S.Contents>

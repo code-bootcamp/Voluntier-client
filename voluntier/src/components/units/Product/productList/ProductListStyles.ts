@@ -52,18 +52,15 @@ font-size: 20px;
 export const Contents = styled.div`
 padding: 3%;
 display: flex;
-flex-direction: column;
-justify-content: space-around;
-/* flex-wrap: wrap;  */
-/* 써서 반응형 편하게 해볼예정  */
-
+flex-direction: row;
+/* justify-content: space-around; */
+flex-wrap: wrap;
 `;
 export const ProductWrapper = styled.div`
     width: 200px;
     height: 200px;
     background-color: lightblue;
     margin: 1%;
-    
 `;
 export const ProductImage = styled.div`
     height: 75%;
