@@ -19,9 +19,9 @@ export const Wrapper = styled.div`
     margin-top: 15px;
     padding: 0px 50px;
   }
-  @media (max-width: 370px) {
+  @media (max-width: 400px) {
     margin-top: 10px;
-    padding: 0px 30px;
+    padding: 0px 50px 0px 30px;
   }
 `;
 
@@ -32,8 +32,8 @@ export const Logo = styled.img`
   @media ${breakPoints.mobile} {
     width: 150px;
   }
-  @media (max-width: 370px) {
-    width: 120px;
+  @media (max-width: 400px) {
+    width: 100px;
   }
 `;
 
@@ -66,9 +66,9 @@ export const Button = styled.button`
     transform: translate(-20%, -20%) scale(0.8);
     display: inline-block;
   }
-  @media (max-width: 370px) {
-    width: 80%;
-    height: 18px;
+  @media (max-width: 400px) {
+    width: 100%;
+    height: 20px;
     transform: translate(-15%, -20%) scale(0.8);
     display: inline-block;
     font-size: 1px;

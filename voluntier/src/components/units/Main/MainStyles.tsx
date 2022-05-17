@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
-  width: 105%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,6 @@ export const MySlider = styled(Slider)`
   width: 1900px;
 
 
-  
   @media ${breakPoints.tablet} {
     width: 100%;
     height: 650px;
@@ -56,7 +55,6 @@ export const SliderItem1 = styled.div`
   @media ${breakPoints.tablet} {
     width: 100%;
     height: 600px;
-    background-size: cover;
   }
     @media ${breakPoints.mobile} {
     height: 430px;        
@@ -94,7 +92,7 @@ export const SliderItem1 = styled.div`
   } 
   `
   export const SliderBean = styled.div`
-    width: 350px;
+    width: 400px;
     height: 660px;
     background: url("../../../../images/main/콩모음집.png") no-repeat center;
     background-size: cover;
@@ -102,14 +100,14 @@ export const SliderItem1 = styled.div`
     animation: motion 2s linear 0s infinite alternate; 
     @keyframes motion {
 	0% {margin-top: -100px;}
-	100% {margin-top: -350px;}
+	100% {margin-top: -300px;}
 }
 @media ${breakPoints.tablet} {
    width: 220px;
     height: 360px;
     @keyframes motion {
 	0% {margin-top: -20px;}
-	100% {margin-top: -280px;}
+	100% {margin-top: -200px;}
 }
   }
 @media ${breakPoints.mobile} {
@@ -124,7 +122,7 @@ export const SliderItem1 = styled.div`
   @media (max-width: 470px) {
     width: 120px;
     height: 200px;
-  @keyframes motion {
+  @keyframes motion { 
 	0% {margin-top: 10px;}
 	100% {margin-top: -100px;}
 }
@@ -165,7 +163,8 @@ export const SliderText = styled.div`
 
 export const Text = styled.div`
   font-size: 38px;
-  width: 400px;
+  width: 490px;
+
   @media ${breakPoints.tablet} {
     font-size: 20px;
     width: 290px;
@@ -186,14 +185,14 @@ export const DogBiscuit = styled.div`
     width: 410px;
     height: 130px;
     background-image: url('../../../../../images/UnionBiscuit.png');
-    font-family: "Sniglet";
+    font-family: "Sniglet2";
     margin-right: 1150px;
     margin-bottom: 40px;
     background-repeat: no-repeat;
     font-size: 32px;
-    color: black;
+    color: white;
     letter-spacing: 1px;
-    padding: 20px 20px 20px 28px;
+    padding: 20px 20px 20px 40px;
     @media ${breakPoints.tablet} {
       display: flex;
       flex-direction: row;
@@ -201,10 +200,11 @@ export const DogBiscuit = styled.div`
       align-items: center;
       background-size: contain;
       font-size: 16px;
-    width: 120px;
-    height: 50px;
-    margin-right: 650px;
-    margin-top: 20px;
+      width: 120px;
+      height: 50px;
+      margin-right: 650px;
+      margin-top: 20px;
+      padding: 20px 20px 20px 26px;
   }
 
   @media ${breakPoints.mobile} {
@@ -220,6 +220,7 @@ export const DogBiscuit = styled.div`
     margin-bottom: 40px;
     margin-top: 29px;
     margin-left: 50px;
+    padding: 20px 20px 20px 20px;
         
   }
   @media (max-width: 470px) {
