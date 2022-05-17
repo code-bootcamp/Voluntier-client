@@ -2,18 +2,25 @@ import KakaoMap from "../../../commons/kakaomap";
 import * as S from "./BoardWriteStyles";
 import { Modal } from 'antd';
 import DaumPostcode from 'react-daum-postcode';
+import dynamic from 'next/dynamic'
+import { IPropsBoardWriteUI } from "./BoardWriteTypes";
 
-interface IPropsBoardWriteUI{
-    showModal : any
-    isModalVisible : boolean
-    handleOk : any
-    handleCancel : any
-    handleComplete : any
-    address: string
-}
+
+const EditorUI = dynamic(()=>import('../../../commons/texteditor/editor'),{ssr:false})
+
+
+
 
 export default function BoardWriteUI(props:IPropsBoardWriteUI) {
+
+  
+  
+  
+
+
   return (
+    <form>
+
     <S.Wrapper>
       <S.TitleWrapper>
         <S.Title>Title</S.Title>
@@ -24,11 +31,6 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
           <S.Map>
             <KakaoMap address={props.address}/>
           </S.Map>
-          <S.LocationWrapper>
-            <S.SearchButton onClick={props.showModal}>지역 선택</S.SearchButton>
-            <S.Address readOnly value={props.address}/>
-            <S.AddressDetail />
-          </S.LocationWrapper>
         </S.InputWrapperLeft>
         <S.InputWrapperRight>
           <S.LabelWrapper>
@@ -47,15 +49,6 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
             <S.SmallInput placeholder="센터명 입력" />
             <S.SmallInput placeholder="센터 전화번호 입력" />
           </S.SmallInputWrapper>
-          <S.LabelWrapper>
-            <S.LabelImage src="/images/boardWrite/activity.png" />
-            <S.Label>활동 내용</S.Label>
-          </S.LabelWrapper>
-          <div
-            style={{ color: "red", marginTop: "32px", marginBottom: "32px" }}
-          >
-            토스트 UI 자리
-          </div>
           <S.HalfWrapper>
             <S.Volun>
               <S.LabelWrapper>
@@ -77,19 +70,37 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
             <S.LabelImage src="/images/boardWrite/calendar.png" />
             <S.Label>봉사 날짜</S.Label>
           </S.LabelWrapper>
+          <S.LabelWrapper>
           <div>캘린더 혹은 캘린더 모달 버튼 자리</div>
+          </S.LabelWrapper>
+            <S.LabelWrapper>
+            <S.LabelImage src="/images/boardWrite/location.png"/>
+            <S.Label>상세주소</S.Label>
+            <S.SearchButton onClick={props.showModal}>지역 선택</S.SearchButton>
+            </S.LabelWrapper>
+            <S.Address readOnly value={props.address}/>
+          <S.AddressDetail />
+          
         </S.InputWrapperRight>
       </S.InputWrapper>
-      <S.SubmitButton>등록하기</S.SubmitButton>
+
+      <S.LabelWrapper>
+        <S.LabelImage src="/images/boardWrite/activity.png" />
+        <S.Label>활동 내용</S.Label>
+      </S.LabelWrapper>
+      <EditorUI editorRef={props.editorRef}/>
+      
+      <S.SubmitButton onClick={props.onClickSubmit}>등록하기</S.SubmitButton>
       {props.isModalVisible && (
-          <Modal 
-            visible={true}
-            onOk={props.handleOk}
-            onCancel={props.handleCancel}
-          >
+        <Modal 
+        visible={true}
+        onOk={props.handleOk}
+        onCancel={props.handleCancel}
+        >
             <DaumPostcode onComplete={props.handleComplete} />
           </Modal>
-        )}x
+        )}
     </S.Wrapper>
+        </form>
   );
 }

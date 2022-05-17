@@ -9,6 +9,7 @@ export default function Main() {
     slidesToShow: 1,
     slidesToScroll: 1,
     responsive: [{ breakpoint: 1024 }],
+    arrows: false,
   };
 
   const { moveToPage } = useMoveToPage();

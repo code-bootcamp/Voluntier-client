@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   padding: 104px 70px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   @media ${breakPoints.mobile}{
     padding: 10px;
   }
@@ -76,11 +76,11 @@ export const SearchButton = styled.button`
   width: 100px;
   height: 30px;
   border: none;
-  margin-bottom: 8px;
+  margin: 0px 0px 0px 10px;
 `;
 
 export const Address = styled.input`
-  width: 100%;
+  width: 55%;
   height: 30px;
   border: 1px solid #676767;
   margin-bottom: 8px;
@@ -88,7 +88,7 @@ export const Address = styled.input`
 `;
 
 export const AddressDetail = styled.input`
-  width: 100%;
+  width: 55%;
   height: 30px;
   border: 1px solid #676767;
 `;
@@ -162,12 +162,14 @@ export const Volun = styled.div`
 export const SubmitButton = styled.button`
   width: 99px;
   height: 51px;
+  align-self: flex-end;
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
   background-color: #000000;
   border-radius: 30px;
   border: none;
+  cursor: pointer;
   @media ${breakPoints.mobile}{
     width: 20%;
     height: 30px;

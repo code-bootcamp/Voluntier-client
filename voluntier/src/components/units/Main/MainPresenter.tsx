@@ -7,12 +7,7 @@ export default function MainUI(props) {
   return (
     <S.Wrapper>
       <S.MySlider
-        dots={props.settings.dots}
-        infinite={props.settings.infinite}
-        speed={props.settings.speed}
-        slidesToShow={props.settings.slidesToShow}
-        slidesToScroll={props.settings.slidesToScroll}
-        arrow = "false"
+        {...props.settings}
       >
         <S.SliderItem1 style={{ paddingTop: "5%", paddingLeft: "1%" }}>
           <Header />
