@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import * as yup from "yup"
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { CHECK_PHONE_AUTH, CREATE_USER, SEND_PHONE_AUTH } from "./SignUpQueries";
+import { IFormValuesSignUp } from "./SignUpTypes";
 
 const schema = yup.object({
     email: yup.string().email("이메일의 형식이 올바르지 않습니다.").required("이메일은 필수 입력사항 입니다."),
@@ -17,33 +19,6 @@ const schema = yup.object({
     phone : yup.string().required("핸드폰 번호는 필수 입력사항 입니다."),
     phoneNumberCheck : yup.string().required("핸드폰 번호 인증은 필수입니다.")
 })
-
-interface IFormValues {
-    email : string
-    name: string
-    password : string
-    passwordCheck : string
-    phone: string
-    phoneNumberCheck: string
-}
-
-const CREATE_USER = gql`
-    mutation createUser($createUserInput: CreateUserInput!){
-        createUser(createUserInput: $createUserInput){
-            id
-        }
-    }
-`
-const SEND_PHONE_AUTH = gql`
-    mutation sendPhoneAuthToken($phone:String!){
-        sendPhoneAuthToken(phone:$phone)
-    }
-`
-const CHECK_PHONE_AUTH = gql`
-    mutation checkPhoneAuthToken($phone:String! $token:String!){
-        checkPhoneAuthToken(phone:$phone, token:$token)
-    }
-`
 
 export default function SignUp(){
     const [sendPhoneAuthToken] = useMutation(SEND_PHONE_AUTH)
@@ -80,7 +55,7 @@ export default function SignUp(){
         }
     }
 
-    const onClickSignUp = async (data:IFormValues) => {
+    const onClickSignUp = async (data:IFormValuesSignUp) => {
         if(phoneAuth===false){
             return Modal.info({content:"휴대폰 인증을 먼저 받아주세요."})
         }

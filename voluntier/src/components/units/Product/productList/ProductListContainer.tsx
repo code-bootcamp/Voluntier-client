@@ -1,6 +1,7 @@
 import ProductListUI from "./ProductListPresenter";
 import { gql, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import { MouseEvent } from "react";
 
 const FETCH_PRODUCTS = gql`
     query fetchProducts{
@@ -8,6 +9,9 @@ const FETCH_PRODUCTS = gql`
             id
             name
             price
+            productImage{
+                imageUrl
+            }
         }
     }
 `
@@ -16,8 +20,8 @@ export default function ProductList(){
 const router = useRouter()
 const {data} = useQuery(FETCH_PRODUCTS)
 console.log(data)
-const MoveProduct = (event) => {
-    router.push(`/products/${event.target.id}`)
+const MoveProduct = (event:MouseEvent<HTMLImageElement>) => {
+    router.push(`/products/${(event.target as HTMLImageElement).id}`)
 }
     return (<ProductListUI data={data} MoveProduct={MoveProduct}/>)
 }

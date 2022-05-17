@@ -2,10 +2,12 @@ import ProductWriteUI from "./ProductWritePresenter";
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { useState} from 'react';
+import { useMutation } from "@apollo/client"
 import { Modal } from "antd";
 import { useRouter } from 'next/router';
+import {CREATE_PRODUCT, UPDATE_PRODUCT} from "./ProductWriteQueries";
+import { IFormValuesProductWrite, IPropsProductWrite, IUpdate } from "./ProductWriteTypes";
 
 const schema = yup.object({
   name: yup.string(),
@@ -18,49 +20,10 @@ const nonSchema = yup.object({
   details:yup.string(),
 })
 
-const CREATE_PRODUCT = gql`
-  mutation createProduct($createProductInput:CreateProductInput!){
-    createProduct(createProductInput:$createProductInput){
-      id
-      name
-    }
-  }
-`
-const UPDATE_PRODUCT = gql`
-  mutation updateProduct($productId: String! $updateProductInput: UpdateProductInput!){
-    updateProduct(productId:$productId updateProductInput: $updateProductInput){
-      id
-      name
-    }
-  }
-`
-const UPLOAD_IMAGE = gql`
-  mutation uploadImage($file: Upload!) {
-    uploadImage(file: $file)
-  }
-`;
-
-interface IFormValues {
-  name : string
-  price : number
-  details : string
-}
-
-interface IPropsProductWrite{
-  isEdit?:boolean
-  data?:any
-}
-
-interface IUpdate{
-  name? : string
-  price? : number
-  details? : string
-}
 
 export default function ProductWrite(props:IPropsProductWrite) {
   const [createProduct] = useMutation(CREATE_PRODUCT)
   const [updateProduct] = useMutation(UPDATE_PRODUCT)
-  const [uploadImage] = useMutation(UPLOAD_IMAGE);
   const router = useRouter()
   const [myImage,setMyImage] = useState<string[]>([])
   const {register , handleSubmit, formState} = useForm({
@@ -68,34 +31,34 @@ export default function ProductWrite(props:IPropsProductWrite) {
     mode:"onChange",
 })
 
-  const CreateProduct = async (data:IFormValues) => {
-    if (myImage.length) {
-      const result1 = await uploadImage({
-        variables:{file : myImage}
-      })
-      console.log(result1)
-    }else {
-      try{
-        const result = await createProduct({
-          variables:{createProductInput:{
-            ...data,
-          }}
-        })
-        console.log(result)
-        Modal.success({content:"게시물 등록에 성공했습니다."})
-        router.push(`/products/${result.data?.createProduct.id}`)
-      }catch(error){
-        Modal.error({content:error.message})
-      }
-    }
-    
-  }
 
-  const UpdateProduct = async (data:IFormValues) => {
+  const CreateProduct = async (data:IFormValuesProductWrite) => {
+
+      try{
+        data.imageUrls = myImage
+        const result = await createProduct({
+            variables:{createProductInput:{
+              ...data,
+            }}
+          })
+          console.log(result)
+          Modal.success({content:"게시물 등록에 성공했습니다."})
+          router.push(`/products/${result.data?.createProduct.id}`)
+        }catch(error){
+          Modal.error({content:error.message})
+        }
+  }
+  
+
+  const UpdateProduct = async (data:IFormValuesProductWrite) => {
+    const currentFiles = JSON.stringify(myImage);
+    const defaultFiles = JSON.stringify(props.data.fetchProduct.productImage.myImage);
+    const isChangedFiles = currentFiles !== defaultFiles;
     const updateProductInput : IUpdate = {}
     if(data.name) updateProductInput.name = data.name
     if(data.price) updateProductInput.price = data.price
     if(data.details) updateProductInput.details = data.details
+    if(isChangedFiles) updateProductInput.imageUrls = myImage
 
     try{
       const result = await updateProduct({
@@ -110,6 +73,7 @@ export default function ProductWrite(props:IPropsProductWrite) {
     }
 
   }
+
 
   return <ProductWriteUI 
     register={register} 

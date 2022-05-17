@@ -12,9 +12,12 @@ const Wrapper = styled.div`
     flex-direction: column;
   }
 `
+const MyNavigation = styled(Navigation)`
+  position: absolute;
+`
 
 const Body = styled.div`
-  width: 100%;
+width: 100%;
 `;
 
 interface LayOutPageProps {
@@ -31,7 +34,7 @@ export default function LayOut(props: LayOutPageProps) {
   return (
     <Wrapper>
     {!isHidden&& 
-      <Navigation/>
+      <MyNavigation/>
     }
       <Body>{props.children}</Body>
     </Wrapper>
