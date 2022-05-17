@@ -1,7 +1,7 @@
 import * as S from "./ProductWriteStyles";
 import UploadFile from '../../../commons/ImageUpload/index';
 
-interface IPropsIProdcutWriteUI{
+interface IPropsIProductWriteUI{
   register : any
   handleSubmit : any
   formState: any
@@ -13,7 +13,7 @@ interface IPropsIProdcutWriteUI{
   data : any
 }
 
-export default function ProductWriteUI(props:IPropsIProdcutWriteUI) {
+export default function ProductWriteUI(props:IPropsIProductWriteUI) {
   return (
     <S.Wrapper>
       <S.Title>젤리샵 상품 등록</S.Title>
@@ -37,6 +37,7 @@ export default function ProductWriteUI(props:IPropsIProdcutWriteUI) {
           <UploadFile data={props.data} myImage={props.myImage} setMyImage={props.setMyImage}/>
           <S.ButtonWrapper>
             <S.Button type="submit">{props.isEdit? "수정하기":"등록하기"}</S.Button>
+            {/* <S.Button type="button">제발</S.Button> */}
           </S.ButtonWrapper>
         </S.Form>
       </S.InnerWrapper>

@@ -1,13 +1,5 @@
 import * as S from '../Signup/SignUpStyles'
-
-interface IPropsSignUpUI {
-    register:any
-    handleSubmit:any 
-    formState: any
-    onClickSignUp : (data:any) => void
-    onClickSendPhone : () => void
-    onClickCheckPhoneAuthToken : () => void
-}
+import { IPropsSignUpUI } from './SignUpTypes'
 
 export default function SignUpUI(props:IPropsSignUpUI){
 

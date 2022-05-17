@@ -16,7 +16,7 @@ const schema = yup.object({
         "비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자리여야 합니다"),
 })
 
-interface IFormValues {
+interface IFormValuesLogin {
     email : string
     password : string
 }
@@ -35,7 +35,7 @@ export default function Login(){
         resolver : yupResolver(schema),
         mode:"onChange",
     })
-    const onClickLogin = async (data:IFormValues) => {
+    const onClickLogin = async (data:IFormValuesLogin) => {
         try{
             const result = await login({
                 variables:{...data}

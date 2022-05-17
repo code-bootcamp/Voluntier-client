@@ -13,10 +13,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
-`;
+  `
 
 const Body = styled.div`
-  width: 100%;
+width: 100%;
 `;
 
 const MobileWrapper = styled.div`
