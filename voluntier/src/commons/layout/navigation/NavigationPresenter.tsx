@@ -1,12 +1,12 @@
 import * as S from "../navigation/NavigationStyles";
-
 import { useEffect, useState } from "react";
 
 interface IPropsNavigationUI {
-  hide: () => void;
-  handleVisibleChange: () => void;
-  visible: boolean;
-  onClickMutation: () => void;
+  moveToPage(arg0: string): import("react").MouseEventHandler<HTMLImageElement>;
+  // hide: () => void;
+  // handleVisibleChange: () => void;
+  // visible: boolean;
+  // onClickMutation: () => void;
 }
 
 export default function NavigationUI(props: IPropsNavigationUI) {
@@ -19,6 +19,7 @@ export default function NavigationUI(props: IPropsNavigationUI) {
       setWindowSize(false);
     }
   };
+
   useEffect(() => {
     if (window.innerWidth <= 767) {
       setWindowSize(true);
@@ -31,71 +32,87 @@ export default function NavigationUI(props: IPropsNavigationUI) {
 
   return (
     <S.Wrapper>
-      {windowSize ? (
-        <S.LogoImgPhone
-          src="/images/Group.png"
-          onClick={props.moveToPage("/")}
-        />
-      ) : (
-        <S.LogoImg src="/images/Logo_blue.png" onClick={props.moveToPage("/")} />
+      {/* 웹 */}
+      {!windowSize && (
+        <>
+          <S.LogoImg
+            src="/images/Logo_green.png"
+            onClick={props.moveToPage("/")}
+          />
+          <S.ProfileImg
+            src="/images/Group 8.png"
+            onClick={props.moveToPage("/mypage")}
+          />
+          <S.LoginInfoWrapper>
+            <S.LoginJoin onClick={props.moveToPage("/login")}>
+              Login
+            </S.LoginJoin>
+            <S.Mark></S.Mark>
+            <S.LoginJoin onClick={props.moveToPage("/signup")}>
+              Join
+            </S.LoginJoin>
+          </S.LoginInfoWrapper>
+          <S.ContentsWrapper>
+            <S.Category onClick={props.moveToPage("/boards")}>
+              봉사조회 및 신청
+            </S.Category>
+            <S.Category onClick={props.moveToPage("/boards/new")}>
+              봉사 모집하기
+            </S.Category>
+            <S.Category onClick={props.moveToPage("/donation")}>
+              젤리 후원하기
+            </S.Category>
+            {/* <S.Category onClick={props.onClickMutation}>젤리샵</S.Category> */}
+            <S.Category onClick={props.moveToPage("/products")}>
+              젤리샵
+            </S.Category>
+          </S.ContentsWrapper>
+        </>
       )}
-      <S.ProfileImg
-        src="/images/Group 8.png"
-        onClick={props.moveToPage("/mypage")}
-      />
-      <S.LoginInfoWrapper>
-        <S.Login onClick={props.moveToPage("/login")}>Login</S.Login>
-        <S.Mark></S.Mark>
-        <S.Join onClick={props.moveToPage("/signup")}>Join</S.Join>
-      </S.LoginInfoWrapper>
-      {windowSize ? (
-        <S.MyPopover
-          color={"#0085CB"}
-          style={{ width: "100%" }}
-          content={
-            <S.PopoverContents>
-              <S.ContentsWrapper>
-                <S.Information onClick={props.moveToPage("/boards")}>
-                  봉사조회 및 신청
-                </S.Information>
-                <S.Recruit onClick={props.moveToPage("/boards/new")}>
-                  봉사 모집하기
-                </S.Recruit>
-                <S.Donation onClick={props.moveToPage("/donation")}>
-                  젤리 후원하기
-                </S.Donation>
-                <S.JellyShop onClick={props.moveToPage("/products")}>
-                  젤리샵
-                </S.JellyShop>
-              </S.ContentsWrapper>
-              <a style={{ color: "white" }} onClick={props.hide}>
-                닫기
-              </a>
-            </S.PopoverContents>
-          }
-          title="Category"
-          trigger="click"
-          visible={props.visible}
-          onVisibleChange={props.handleVisibleChange}
-        >
-          <S.HambugerButton> </S.HambugerButton>
-        </S.MyPopover>
-      ) : (
-        <S.ContentsWrapper>
-          <S.Information onClick={props.moveToPage("/boards")}>
-            봉사조회 및 신청
-          </S.Information>
-          <S.Recruit onClick={props.moveToPage("/boards/new")}>
-            봉사 모집하기
-          </S.Recruit>
-          <S.Donation onClick={props.moveToPage("/donation")}>
-            젤리 후원하기
-          </S.Donation>
-          {/* <S.JellyShop onClick={props.onClickMutation}>젤리샵</S.JellyShop> */}
-          <S.JellyShop onClick={props.moveToPage("/products")}>
-            젤리샵
-          </S.JellyShop>
-        </S.ContentsWrapper>
+
+      {/* 모바일 */}
+      {windowSize && (
+        <S.MobileCategoryWrapper>
+          <S.MobileCategory>
+            <S.CategoryIcon
+              src="/images/navigation/home.png"
+              onClick={props.moveToPage("/")}
+            />
+            <S.CategoryText onClick={props.moveToPage("/")}>
+              Home
+            </S.CategoryText>
+          </S.MobileCategory>
+          <S.MobileCategory>
+            <S.CategoryIcon
+              src="/images/navigation/donation.png"
+              onClick={props.moveToPage("/donation")}
+            />
+            <S.CategoryText onClick={props.moveToPage("/donation")}>
+              Donation
+            </S.CategoryText>
+          </S.MobileCategory>
+          <S.MobileCategory>
+            <S.CategoryIcon
+              src="/images/navigation/shop.png"
+              onClick={props.moveToPage("/products")}
+            />
+            <S.CategoryText onClick={props.moveToPage("/products")}>
+              Shop
+            </S.CategoryText>
+          </S.MobileCategory>
+          <S.MobileCategory>
+            <S.CategoryIcon
+              src="/images/navigation/mypage.png"
+              // style={{ color: "#8E8E93" }}
+              style={{ filter: "opacity(.47) drop-shadow(0 0 0 #8E8E93)" }}
+              onClick={props.moveToPage("/mypage")}
+            />
+            {/* <S.MyUserOutlined /> */}
+            <S.CategoryText onClick={props.moveToPage("/mypage")}>
+              Mypage
+            </S.CategoryText>
+          </S.MobileCategory>
+        </S.MobileCategoryWrapper>
       )}
     </S.Wrapper>
   );
