@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 105%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const MySlider = styled(Slider)`
   width: 1900px;
 
 
-
+  
   @media ${breakPoints.tablet} {
     width: 100%;
     height: 650px;
@@ -32,7 +32,7 @@ export const MySlider = styled(Slider)`
   }
 `;
 export const SliderItem1 = styled.div`
-  width: 1440px;
+  width: 900px;
   height: 1200px;
   background: url("../../../../images/main/메인 이미지 blue.png") no-repeat center;
   background-size: cover;
@@ -94,7 +94,7 @@ export const SliderItem1 = styled.div`
   } 
   `
   export const SliderBean = styled.div`
-    width: 400px;
+    width: 350px;
     height: 660px;
     background: url("../../../../images/main/콩모음집.png") no-repeat center;
     background-size: cover;
@@ -165,7 +165,7 @@ export const SliderText = styled.div`
 
 export const Text = styled.div`
   font-size: 38px;
-  width: 500px;
+  width: 400px;
   @media ${breakPoints.tablet} {
     font-size: 20px;
     width: 290px;
