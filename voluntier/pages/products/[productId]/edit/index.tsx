@@ -9,6 +9,9 @@ const FETCH_PRODUCT = gql`
         price
         details
         createdAt
+        productImage{
+          imageUrl
+        }
     }
   }
 `

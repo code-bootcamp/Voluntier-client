@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -60,10 +61,16 @@ export const ProductWrapper = styled.div`
     width: 200px;
     height: 200px;
     background-color: lightblue;
-    margin: 1%;
+    margin: 3%;
+ @media ${breakPoints.mobile}{
+    width: 125px;
+    height: 125px;
+    margin: 6%;
+  }
 `;
-export const ProductImage = styled.div`
+export const ProductImage = styled.img`
     height: 75%;
+    width: 100%;
     background-color: blue;
     
 `;
@@ -72,11 +79,16 @@ export const ProductName = styled.div`
     padding: 2%;
     font-size: 16px;
     font-weight: 800;
-    
+    @media ${breakPoints.mobile}{
+    font-size: 11px;
+  }
 `;
 export const ProductPrice = styled.div`
     height: 10%;
     padding: 2%;
     font-size: 13px;
     font-weight: lighter;
+    @media ${breakPoints.mobile}{
+    font-size: 11px;
+  }
 `;

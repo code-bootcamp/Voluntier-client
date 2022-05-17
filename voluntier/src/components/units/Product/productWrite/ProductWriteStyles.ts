@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   padding: 104px 70px;
+  @media ${breakPoints.mobile}{
+  padding: 3%;
+}
 `;
 
 export const Title = styled.h1`
@@ -21,11 +25,18 @@ export const Form = styled.form``;
 
 export const InputWrapper = styled.div`
   display: flex;
+  @media ${breakPoints.mobile}{
+  display: flex;
+  flex-direction: column;
+}
 `;
 
 export const Label = styled.div`
   width: 20%;
   font-size: 20px;
+  @media ${breakPoints.mobile}{
+  width: 100%;
+}
 `;
 
 export const Input = styled.input`

@@ -1,6 +1,8 @@
 
+import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
-import { useRef, ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { Modal } from "antd";
+import { useRef, ChangeEvent, MouseEvent, useEffect} from 'react';
 import { v4 as uuidv4 } from "uuid";
 
 
@@ -29,29 +31,29 @@ const Wrapper = styled.div`
     data?:any
   }
 
+  const UPLOAD_IMAGE = gql`
+  mutation uploadImage($file: Upload!) {
+    uploadImage(file: $file)
+  }
+`;
+
 export default function UploadFile(props:IUploadFile) {
   const fileRef = useRef<HTMLInputElement>(null);
-  const [imgUrl, setImgUrl] = useState([]);
+  const [uploadImage] = useMutation(UPLOAD_IMAGE);
 
   const addImage = (event:ChangeEvent<HTMLInputElement>) =>{
     const file:null|any = event.target.files
-    if (!file) {
-        return alert("파일이 없습니다.");
-      }
     const ImageURLList = [...file]
-    const fileReader = new FileReader()
-    ImageURLList.map(async(el:any) =>{
-      await fileReader.readAsDataURL(el)
+    ImageURLList.map(async (el:any) =>{
+    try{
+        const result = await uploadImage({
+          variables:{file : el}
+        })
+        props.setMyImage((prev:string[]) =>[...prev ,result.data.uploadImage])
+      }catch(error){
+        if(error instanceof Error) Modal.error({content:error.message})
+      }
     })
-    fileReader.onload = (data) => {
-        if (typeof data.target?.result === "string") {
-            const img = data.target?.result
-            setImgUrl((prev:string[]) =>[...prev ,img]);
-            ImageURLList.map(async(el:any) =>{
-              await props.setMyImage((prev:string[]) =>[...prev ,el]);
-            })
-          }
-    }
   }
 
   
@@ -60,25 +62,28 @@ export default function UploadFile(props:IUploadFile) {
 
   }
   const deleteImage = (event:MouseEvent<HTMLImageElement>) => {
-    imgUrl.splice(Number((event.target as HTMLImageElement).id), 1)
-    setImgUrl([...imgUrl])
     props.myImage.splice(Number((event.target as HTMLImageElement).id), 1)
-    props.setMyImage([...imgUrl])
+    props.setMyImage([...props.myImage])
   }
 
+  
+  
+
   useEffect(() => {
-    if(props.data?.fetchProduct.images?.length){
-      props.setMyImage([...props.data?.fetchProduct.images])
+    if(props.data?.fetchProduct.productImage?.length){
+      const imageArr = props.data?.fetchProduct.productImage.map((el) => {
+        return  el.imageUrl
+      })
+      props.setMyImage(imageArr)
     }
   },[props.data])
-  
- 
+
   return (
     <Wrapper>
         <Button type="button" onClick={onClickImg}>이미지등록</Button>
         <InputImage ref={fileRef} style={{display:"none"}} type="file" multiple onChange={addImage} accept=".jpg,.jpeg,.png"/>
-      {imgUrl.map((image:any ,index:number)=>(
-         <Img key={uuidv4()} id={String(index)} onClick={deleteImage}  src={image}/>
+     {props.myImage.map((el:any ,index:number)=>(
+         <Img key={uuidv4()} id={String(index)} onClick={deleteImage} src={`https://storage.googleapis.com/${el}`}/>
       ))}
     </Wrapper>
   );

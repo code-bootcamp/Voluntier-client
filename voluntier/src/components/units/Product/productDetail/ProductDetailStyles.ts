@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Modal } from "antd";
 import { breakPoints } from '../../../../commons/styles/Media';
+import Slider from "react-slick";
 
 export const MyModal = styled(Modal)`
   .ant-modal-content {
@@ -36,6 +37,8 @@ export const InnerWrapper = styled.div`
 export const InnerWrapperLeft = styled.div`
   width: 38%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   /* border-right: 1px solid #b5b5b5; */
   @media ${breakPoints.mobile}{
     width: 100%;
@@ -43,9 +46,9 @@ export const InnerWrapperLeft = styled.div`
 `;
 
 export const TitleWrapper = styled.div`
-  margin: 61px 52px 24px 52px;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  margin: 61px 52px 24px 52px;
 `;
 
 export const Label = styled.div`
@@ -57,25 +60,31 @@ export const Label = styled.div`
 export const ProductName = styled.div`
   font-size: 20px;
   font-weight: 400;
+  line-height: 38px;
 `;
 
-export const SliderWrapper = styled.div`
+export const MySlider = styled(Slider)`
   width: 100%;
   height: 300px;
   margin-bottom: 24px;
-  border: 1px solid red;
-  @media ${breakPoints.mobile}{
+  align-self: center;
+`
+export const Wow = styled.img`
+  width: 100%;
+  height: 280px;
+  background-color: red;
+ @media ${breakPoints.mobile}{
     width: 100%;
   }
-`;
+`
 
 export const PriceWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 24px;
+  margin: 0px 0px 24px 52px;
   @media ${breakPoints.mobile}{
     display: flex;
     justify-content: center;
+    margin: 0px;
   }
 `;
 
@@ -83,6 +92,7 @@ export const Price = styled.div`
   color: #0085cb;
   font-size: 24px;
   font-weight: 400;
+  margin-left: 3%;
   @media ${breakPoints.mobile}{
     margin-left: 3%;
   }
@@ -123,6 +133,7 @@ export const Image = styled.img`
 export const InfoDetail = styled.div`
   border: 1px solid #b5b5b5;
   margin-top: 24px;
+  padding: 5%;
   font-size: 20px;
   font-weight: 400;
   min-height: 150px;
