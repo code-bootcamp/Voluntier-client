@@ -1,207 +1,236 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 import Slider from "react-slick";
+import { breakPoints } from "../../../commons/styles/Media";
+
 export const Body = styled.div`
-
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0px 0px 200px;
-
-`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 20px 20px;
+`;
 
 export const Top = styled.div`
-    background-image: url('../../../../images/donation/후원박스.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 920px;
-    height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+  /* width: 920px; */
+  width: 100%;
+  height: 259px;
+  background-image: url("../../../../images/donation/후원박스.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 10px;
 
-`
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    height: 200px;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 110px;
+  }
+`;
+
 export const TopTitle = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-    align-items: center;
-`
-export const Title1 = styled.div`
-    font-size: 30px;
-    font-family: "GmarketSans";
-    color: #FF6A9E;
-    font-weight: bolder;
-    line-height: 30px;
-`
-export const Title2 = styled.div`
-    font-size: 30px;
-    font-family: "GmarketSans";
-    color: #FF6A9E;
-    font-weight: bolder;
-`
+export const Title = styled.div`
+  font-size: 30px;
+  font-family: "GmarketSans";
+  color: #ff6a9e;
+  font-weight: bolder;
+  line-height: 30px;
+
+  @media ${breakPoints.tablet} {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 13px;
+    line-height: 20px;
+  }
+`;
+
 export const TopContents = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 50%;
-
-`
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
 export const Contents = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
 
-`
-export const ContentsJelly1 = styled.div`
-    font-family: "NotoSans";
-    font-size: 40px;
-    font-weight: bolder;
-    color: #FF6A9E;
+  @media ${breakPoints.tablet} {
+    width: 50%;
+  }
 
-`
-export const ContentsJelly2 = styled.div`
-    font-family: "NotoSans";
-    font-size: 40px;
-    font-weight: bolder;
-    color: #0085CB;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
 
-`
-export const ContentsDetail = styled.div`
-font-family: "NotoSans";
-    font-size: 20px;
+export const ContentPink = styled.div`
+  font-size: 40px;
+  font-weight: bolder;
+  color: #ff6a9e;
 
-`
+  @media ${breakPoints.tablet} {
+    font-size: 25px;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 15px;
+  }
+`;
+
+export const ContentBlue = styled.div`
+  font-size: 40px;
+  font-weight: bolder;
+  color: #0085cb;
+
+  @media ${breakPoints.tablet} {
+    font-size: 25px;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 15px;
+  }
+`;
+
+export const ContentDetail = styled.div`
+  font-size: 20px;
+
+  @media ${breakPoints.tablet} {
+    font-size: 14px;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 9px;
+  }
+`;
 
 export const Middle = styled.div`
-    height: 50%;
-    width : 950px;
-    border: 1px solid lightgray;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
+
 export const MiddleTitle = styled.div`
-    font-size: 15px;
+  font-size: 15px;
+  margin-bottom: 10px;
 
-`
-export const MiddleContents = styled.div`
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
 
-`
+  @media ${breakPoints.mobile} {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+`;
+
 export const MySlider = styled(Slider)`
-        width: 900px;
-        height: auto;
-        
+  width: 900px;
+  height: auto;
 
-`
+  @media ${breakPoints.tablet} {
+    width: 500px;
+  }
 
-export const Slider1 = styled.div`
-        background-color: aliceblue;
-        width: 100px;
-        height: 380px;
+  @media ${breakPoints.mobile} {
+    width: 300px;
+  }
+`;
 
-`
+export const SliderContent = styled.div`
+  border: 1px solid red;
+  width: 200px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-export const Slider2 = styled.div`
-        background-color: lightpink;
-        width: 100px;
-        height: 380px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 
-`
-export const Slider3 = styled.div`
-        background-color: coral;
-        width: 100px;
-        height: 380px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
 
-`
-export const Slider4 = styled.div`
-        background-color: yellow;
-        width: 100px;
-        height: 380px;
+export const Bottom = styled.div`
+  width: 950px;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+`;
 
-`
-export const Footer = styled.div`
-    width: 950px;
-    height: 20%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 50px;
-`
-export const Price1 = styled.div`
-    background-image: url('../../../../images/donation/고양이발(치즈).png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: 200px;
+export const Price = styled.div`
+  width: 200px;
+  height: 200px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  text-align: center;
+  cursor: pointer;
+  :hover {
+    height: 500px;
+    transform: translate(0px, -100px);
+    transition-duration: 1.5s;
+  }
+
+  @media ${breakPoints.tablet} {
+    width: 150px;
+    height: 300px;
+    padding-top: 17%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100px;
     height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 12%;
-    line-height: 20px;
-    text-align: center;
+    padding-top: 17%;
     cursor: pointer;
-    :hover{
-        height: 500px;
-        transform: translate(0px,-100px);
-        transition-duration: 1.5s;
-
-    }
-
-`
-export const Price2 = styled.div`
-    background-image: url('../../../../images/donation/고양이발(호랭이).png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 12%;
-    line-height: 20px;
-    text-align: center;
-    cursor: pointer;
-    :hover{
-        height: 500px;
-        transform: translate(0px,-100px);
-        transition-duration: 1.5s;
-
-    }
-
-`
-export const Price3 = styled.div`
-    background-image: url('../../../../images/donation/고양이발(회색).png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 12%;
-    line-height: 20px;
-    text-align: center;
-    cursor: pointer;
-    :hover{
-        height: 500px;
-        transform: translate(0px,-100px);
-        transition-duration: 1.5s;
-
-    }
-
-`
+  }
+`;
 
 export const PriceDetail = styled.div`
-font-family: "GmarketSans";
-    font-size: 20px;
-    font-weight: bolder;
-    color: indianred;
+  font-family: "GmarketSans";
+  font-size: 15px;
+  font-weight: bolder;
+  color: #0085cb;
 
-`
+  @media ${breakPoints.tablet} {
+  }
 
-
+  @media ${breakPoints.mobile} {
+    font-size: 10px;
+  }
+`;
