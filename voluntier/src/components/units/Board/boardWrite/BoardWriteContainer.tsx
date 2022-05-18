@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from 'react';
 import BoardWriteUI from "./boardWritePresenter";
 import {useForm} from "react-hook-form"
 import { Editor } from "@toast-ui/react-editor";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOARD } from "./BoardWriteQueries";
+import useAuth from '../../../commons/hooks/useAuth';
 
 
 interface IFormValues {
@@ -21,6 +22,7 @@ interface IFormValues {
 
 
 export default function BoardWrite() {
+useAuth()
 const [isModalVisible, setIsModalVisible] = useState(false);
 const [address,setAddress] = useState("")
 const editorRef = useRef<Editor>(null);
@@ -69,7 +71,7 @@ const handleComplete = (data: any) => {
   //   })
   //   console.log(contentsvalue)
   // }
-
+  
   return <BoardWriteUI
         address={address}
         handleComplete={handleComplete} 

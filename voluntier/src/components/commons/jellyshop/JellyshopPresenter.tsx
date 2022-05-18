@@ -1,8 +1,10 @@
 import { Modal } from "antd";
 import * as S from "./JellyshopStyles";
 import DaumPostcode from "react-daum-postcode";
+import useAuth from "../hooks/useAuth";
 
 export default function JellyshopModalUI(props) {
+  useAuth()
   return (
     <>
       {props.isOpen && (

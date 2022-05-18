@@ -5,10 +5,29 @@ import VolunteerRecords from "../../commons/volunteerRecords";
 import DonationRecords from "../../commons/donationRecords";
 import BoardRecords from "../../commons/boardRecords";
 import PurchaseRecords from "../../commons/purchaseRecords";
+import { gql, useQuery } from "@apollo/client";
+
+const FETCH_USER_LOGIN = gql`
+    query fetchLoginUser{
+        fetchLoginUser{
+            id
+            name
+            email
+            phone
+            isAdmin
+            profileImageUrl
+            donationAmount
+            point
+            serviceTime
+            provider
+        }
+    }
+`
 
 const { TabPane } = Tabs;
 
 export default function MypageUI(props) {
+  const {data} = useQuery(FETCH_USER_LOGIN)
   return (
     <>
       {props.isOpen && (
@@ -44,12 +63,12 @@ export default function MypageUI(props) {
           </S.ProfileImageWrapper>
           <S.ProfileRightWrapper>
             <S.Grade>
-              {}님은 {}등급이시네요!
+              {data?.fetchLoginUser.name}님은 {}등급이시네요!
             </S.Grade>
             <S.TooltipWrapper>
               <S.Tooltip>
-                <S.TooltipText>지금까지 {}젤리를 후원하고</S.TooltipText>
-                <S.TooltipText>{}시간 봉사를 한 당신은 최고!</S.TooltipText>
+                <S.TooltipText>지금까지 {data?.fetchLoginUser.donationAmount}젤리를 후원하고</S.TooltipText>
+                <S.TooltipText>{data?.fetchLoginUser.serviceTime}시간 봉사를 한 당신은 최고!</S.TooltipText>
               </S.Tooltip>
             </S.TooltipWrapper>
           </S.ProfileRightWrapper>
