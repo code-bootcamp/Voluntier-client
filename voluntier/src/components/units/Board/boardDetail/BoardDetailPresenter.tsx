@@ -1,8 +1,14 @@
 import KakaoMap from "../../../commons/kakaomap";
+import dynamic from 'next/dynamic'
 import VolunteerList from "../../../commons/volunteerList";
 import * as S from "./BoardDetailStyles";
 
-export default function BoardDetailUI() {
+const ToastUIViewer = dynamic(()=>import('../../../commons/texteditor/viewer'),{ssr:false})
+
+
+
+export default function BoardDetailUI(props) {
+
   return (
     <S.Wrapper>
       <S.TitleWrapper>
@@ -70,6 +76,7 @@ export default function BoardDetailUI() {
               <S.InfoDetailWrapper>
                 <S.LabelImage src="/images/boardWrite/activity.png" />
                 <S.Label>활동 내용</S.Label>
+                <ToastUIViewer data={props.data}/>
               </S.InfoDetailWrapper>
               <S.Detail></S.Detail>
             </S.ContentsWrapper>

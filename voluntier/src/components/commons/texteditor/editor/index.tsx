@@ -24,9 +24,6 @@ const UPLOAD_IMAGE = gql`
 export default function EditorUI(props:any){
 
     const [uploadImage] = useMutation(UPLOAD_IMAGE)
-
-
-
  return (
      <Wrapper>
 
@@ -35,8 +32,6 @@ export default function EditorUI(props:any){
         placeholder='봉사 센터의 특이사항등을 상세히 설명해주시고, 센터 사진을 끌어다 놓아보세요!'
         ref={props.editorRef}
         hooks={{addImageBlobHook: async(file : Blob | File, callback)=>{
-               
-                // console.log(file)
             try{
                 
                 const result = await uploadImage({
@@ -52,7 +47,6 @@ export default function EditorUI(props:any){
         }}}
         
         />
-        
      </Wrapper>
  )   
 }

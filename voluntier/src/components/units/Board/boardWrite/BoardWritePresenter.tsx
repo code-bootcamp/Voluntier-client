@@ -20,6 +20,7 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
 
 
   return (
+    <>
     <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
 
     <S.Wrapper>
@@ -40,7 +41,6 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
           </S.LabelWrapper>
           <S.SmallInputWrapper>
             <S.SmallInput type="text" placeholder="대표자 이름 입력" {...props.register("centerOwnerName")} />
-            <S.SmallInput type="text" placeholder="대표자 전화번호 입력"/>
           </S.SmallInputWrapper>
           <S.LabelWrapper>
             <S.LabelImage src="/images/boardWrite/center.png" />
@@ -79,7 +79,7 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
             <S.Label>상세주소</S.Label>
             <S.SearchButton onClick={props.showModal} type= "button">지역 선택</S.SearchButton>
             </S.LabelWrapper>
-            <S.Address readOnly value={props.address} {...props.register("address")}/>
+            <S.Address readOnly value={props.address} onChange={props.setValue("address",props.address)}/>
           <S.AddressDetail {...props.register("addressDetail")}/>
           
         </S.InputWrapperRight>
@@ -89,9 +89,10 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
         <S.LabelImage src="/images/boardWrite/activity.png" />
         <S.Label>활동 내용</S.Label>
       </S.LabelWrapper>
-      <EditorUI editorRef={props.editorRef}/>
+      <EditorUI editorRef={props.editorRef} 
+      />
       
-      <S.SubmitButton onClick={props.onClickSubmit}>등록하기</S.SubmitButton>
+      <S.SubmitButton>등록하기</S.SubmitButton>
       {props.isModalVisible && (
         <Modal 
         visible={true}
@@ -103,5 +104,6 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
         )}
     </S.Wrapper>
         </form>
+        </>
   );
 }
