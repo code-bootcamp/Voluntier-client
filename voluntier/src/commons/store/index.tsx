@@ -8,7 +8,9 @@ export const accessTokenState = atom({
 
 export const calendarDateState = atom({
     key:"calendarState",
-  
+    default:""
+})
+
 export const userInfoState = atom({
     key: "userInfoState",
     default:""
