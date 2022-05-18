@@ -10,7 +10,7 @@ export const CREATE_BOARD = gql`
             centerOwnerName
             centerPhone
             address
-            AddressDetail
+            addressDetail
             location1
             location2
             

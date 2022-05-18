@@ -9,15 +9,15 @@ interface IPropsKakaoMap {
 }
 
 export default function KakaoMap(props:IPropsKakaoMap) {
-  const [windowSize,setWindowSize] = useState(false)
+  // const [windowSize,setWindowSize] = useState(false)
  
-  const handleResize = () => {
-    if(window.innerWidth <= 767){
-        setWindowSize(true)
-    }else{
-        setWindowSize(false)
-    }
-    }
+  // const handleResize = () => {
+  //   if(window.innerWidth <= 767){
+  //       setWindowSize(true)
+  //   }else{
+  //       setWindowSize(false)
+  //   }
+  //   }
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -50,14 +50,16 @@ export default function KakaoMap(props:IPropsKakaoMap) {
       });  
       });
     }
-    if(window.innerWidth<=767){
-        setWindowSize(true)
-    }
-    window.addEventListener('resize', handleResize)
-    return () => {
-        window.removeEventListener('resize', handleResize)
-    }
-  }, [windowSize|| props.address]);
+    // if(window.innerWidth<=767){
+    //     setWindowSize(true)
+    // }
+    // window.addEventListener('resize', handleResize)
+    // return () => {
+    //     window.removeEventListener('resize', handleResize)
+    // }
+  }, [
+    // windowSize|| 
+    props.address]);
  
 
   return (

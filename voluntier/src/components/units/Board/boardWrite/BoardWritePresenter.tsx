@@ -4,6 +4,7 @@ import { Modal } from 'antd';
 import DaumPostcode from 'react-daum-postcode';
 import dynamic from 'next/dynamic'
 import { IPropsBoardWriteUI } from "./BoardWriteTypes";
+import Mycalendar from "../../../commons/calendar";
 
 
 const EditorUI = dynamic(()=>import('../../../commons/texteditor/editor'),{ssr:false})
@@ -19,12 +20,12 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
 
 
   return (
-    <form>
+    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
 
     <S.Wrapper>
       <S.TitleWrapper>
         <S.Title>Title</S.Title>
-        <S.TitleInput placeholder="제목 입력" />
+        <S.TitleInput placeholder="제목 입력" {...props.register("title")}/>
       </S.TitleWrapper>
       <S.InputWrapper>
         <S.InputWrapperLeft>
@@ -38,16 +39,16 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
             <S.Label>센터 대표</S.Label>
           </S.LabelWrapper>
           <S.SmallInputWrapper>
-            <S.SmallInput type="text" placeholder="대표자 이름 입력" />
-            <S.SmallInput type="text" placeholder="대표자 전화번호 입력" />
+            <S.SmallInput type="text" placeholder="대표자 이름 입력" {...props.register("centerOwnerName")} />
+            <S.SmallInput type="text" placeholder="대표자 전화번호 입력"/>
           </S.SmallInputWrapper>
           <S.LabelWrapper>
             <S.LabelImage src="/images/boardWrite/center.png" />
             <S.Label>센터명</S.Label>
           </S.LabelWrapper>
           <S.SmallInputWrapper>
-            <S.SmallInput placeholder="센터명 입력" />
-            <S.SmallInput placeholder="센터 전화번호 입력" />
+            <S.SmallInput placeholder="센터명 입력" {...props.register("centerName")}/>
+            <S.SmallInput placeholder="센터 전화번호 입력" {...props.register("centerPhone")}/>
           </S.SmallInputWrapper>
           <S.HalfWrapper>
             <S.Volun>
@@ -55,7 +56,7 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
                 <S.LabelImage src="/images/boardWrite/time.png" />
                 <S.Label>봉사 소요 시간</S.Label>
               </S.LabelWrapper>
-              <S.SmallInput type="number" />
+              <S.SmallInput type="number" {...props.register("serviceTime")}/>
               시간
             </S.Volun>
             <S.Volun>
@@ -63,7 +64,7 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
                 <S.LabelImage src="/images/boardWrite/volunteer.png" />
                 <S.Label>봉사 인원</S.Label>
               </S.LabelWrapper>
-              <S.SmallInput type="number" />명
+              <S.SmallInput type="number"{...props.register("recruitCount")} />명
             </S.Volun>
           </S.HalfWrapper>
           <S.LabelWrapper>
@@ -71,15 +72,15 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
             <S.Label>봉사 날짜</S.Label>
           </S.LabelWrapper>
           <S.LabelWrapper>
-          <div>캘린더 혹은 캘린더 모달 버튼 자리</div>
+          <Mycalendar/>
           </S.LabelWrapper>
             <S.LabelWrapper>
             <S.LabelImage src="/images/boardWrite/location.png"/>
             <S.Label>상세주소</S.Label>
-            <S.SearchButton onClick={props.showModal}>지역 선택</S.SearchButton>
+            <S.SearchButton onClick={props.showModal} type= "button">지역 선택</S.SearchButton>
             </S.LabelWrapper>
-            <S.Address readOnly value={props.address}/>
-          <S.AddressDetail />
+            <S.Address readOnly value={props.address} {...props.register("address")}/>
+          <S.AddressDetail {...props.register("addressDetail")}/>
           
         </S.InputWrapperRight>
       </S.InputWrapper>
