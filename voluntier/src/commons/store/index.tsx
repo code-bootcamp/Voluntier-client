@@ -15,3 +15,8 @@ export const userInfoState = atom({
     key: "userInfoState",
     default:""
 })
+
+export const setAmountDonation = atom({
+    key : "setAmountDonation",
+    default: 100
+})

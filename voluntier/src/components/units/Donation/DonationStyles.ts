@@ -221,6 +221,68 @@ export const Price = styled.div`
   }
 `;
 
+export const Price2 = styled.div`
+  width: 200px;
+  height: 200px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  text-align: center;
+  cursor: pointer;
+  :hover {
+    height: 500px;
+    transform: translate(0px, -100px);
+    transition-duration: 1.5s;
+  }
+
+  @media ${breakPoints.tablet} {
+    width: 150px;
+    height: 300px;
+    padding-top: 17%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100px;
+    height: 200px;
+    padding-top: 17%;
+    cursor: pointer;
+  }
+`;
+
+export const Price3 = styled.div`
+  width: 200px;
+  height: 200px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  text-align: center;
+  cursor: pointer;
+  :hover {
+    height: 500px;
+    transform: translate(0px, -100px);
+    transition-duration: 1.5s;
+  }
+
+  @media ${breakPoints.tablet} {
+    width: 150px;
+    height: 300px;
+    padding-top: 17%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100px;
+    height: 200px;
+    padding-top: 17%;
+    cursor: pointer;
+  }
+`;
+
 export const PriceDetail = styled.div`
   font-family: "GmarketSans";
   font-size: 15px;
