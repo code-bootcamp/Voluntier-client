@@ -1,24 +1,25 @@
+import KakaomapForBoardList from "../../../commons/kakaomapForBoardList";
 import * as S from "./BoardListStyles";
 
 export default function BoardListUI() {
   return (
     <S.Wrapper>
       <S.DogBiscuit>Apply</S.DogBiscuit>
-      <S.UrgentList>
-        <S.Urgent>
-          <S.DeadLine>D-{}</S.DeadLine>
-          <S.Detail>모집인원: {}</S.Detail>
-          <S.Detail>{}</S.Detail>
-        </S.Urgent>
-      </S.UrgentList>
+      <S.MapWrapper>
+        <KakaomapForBoardList />
+      </S.MapWrapper>
       <S.SearchWrapper>
         <S.Dropdown>
-          <option>서울</option>
-          <option>경기</option>
-          <option>인천</option>
+          <option disabled={true}>전국</option>
+          <option></option>
+          <option></option>
+          <option></option>
         </S.Dropdown>
         <S.Dropdown>
-          <option>서울일때 서울의 구</option>
+          <option disabled={true}>상세</option>
+          <option></option>
+          <option></option>
+          <option></option>
         </S.Dropdown>
         <div>서치바 컴포넌트 자리</div>
         <S.SearchButton>
