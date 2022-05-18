@@ -10,4 +10,7 @@ export interface IPropsBoardWriteUI{
     handleSubmit : any
     register : any
 
+    setValue: any
+    getValues: any
+
 }
