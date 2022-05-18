@@ -1,39 +1,26 @@
 import * as S from "../Donation/DonationStyles";
-import Head from "next/head";
+import PaymentPage from "../../commons/payment";
+import { useRef } from "react";
+import { useRecoilState } from 'recoil';
+import { setAmountDonation } from "../../../commons/store";
+
 
 export default function DonationUI() {
-  const requestPay = () => {
-    const IMP = window.IMP; // 생략 가능
-    IMP.init("imp49910675"); // Example: imp00000000
-    // IMP.request_pay(param, callback) 결제창 호출
-    IMP.request_pay(
-      {
-        // param
-        pg: "html5_inicis",
-        pay_method: "card",
-        // 카드로 할거야라는뜻
-        // merchant_uid: "ORD20180131-0000011",
-        // 상품 아이디를 중복하지 않게 설정하고, 없으면 임의로 중복안되게 발생하게 하면 됨
-        name: "김아름",
-        amount: "10000",
-        buyer_email: "kimareum11@naver.com",
-        buyer_name: "김아름",
-        buyer_tel: "010-7720-7516",
-        buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181",
-        m_redirect_url: "http://localhost:3000/",
-      },
-      async (rsp: any) => {
-        if (rsp.success) {
-          // 결제 성공시로직
-          // console.log(rsp)
-        } else {
-          alert("결제에 실패했습니다. 다시 시도해주세요!");
-        }
-      }
-    );
-  };
-
+  const PayRef = useRef<HTMLButtonElement>(null);
+  const [amount,setAmount] = useRecoilState(setAmountDonation)
+  
+  // const onChangeAmount = (event) => {
+  //   setAmount(Number((event.target as HTMLDivElement).id))
+  // }
+  const delay =(ms) => {
+    return new Promise(resolve => setTimeout(resolve,ms))
+  }
+  const onClickPayment = async (event) =>{
+   setAmount(Number((event.target as HTMLDivElement).id))
+   await delay(1000) 
+   return PayRef.current?.click()
+  }
+  console.log(amount)
   const settings = {
     dots: false,
     infinite: true,
@@ -47,16 +34,6 @@ export default function DonationUI() {
 
   return (
     <>
-      <Head>
-        <script
-          type="text/javascript"
-          src="https://code.jquery.com/jquery-1.12.4.min.js"
-        ></script>
-        <script
-          type="text/javascript"
-          src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
-        ></script>
-      </Head>
       <S.Body>
         <S.Top>
           <S.TopTitle>
@@ -85,26 +62,33 @@ export default function DonationUI() {
         </S.Middle>
         <S.Bottom>
           <S.Price
+            id={String(10000)}
+            onClick={onClickPayment}
             style={{
               backgroundImage: `url("../../../../images/donation/고양이발(치즈).png")`,
             }}
           >
-            <S.PriceDetail onClick={requestPay}>1만 젤리 후원</S.PriceDetail>
+            <S.PriceDetail id={String(10000)}>1만 젤리 후원</S.PriceDetail>
           </S.Price>
-          <S.Price
+          <S.Price2
+            id={String(20000)}
+            onClick={onClickPayment}
             style={{
               backgroundImage: `url("../../../../images/donation/고양이발(호랭이).png")`,
             }}
           >
-            <S.PriceDetail>2만 젤리 후원</S.PriceDetail>
-          </S.Price>
-          <S.Price
+            <S.PriceDetail id={String(20000)}>2만 젤리 후원</S.PriceDetail>
+          </S.Price2>
+          <S.Price3
+            id={String(30000)}
+            onClick={onClickPayment}
             style={{
               backgroundImage: `url("../../../../images/donation/고양이발(회색).png")`,
             }}
           >
-            <S.PriceDetail>3만 젤리 후원</S.PriceDetail>
-          </S.Price>
+            <S.PriceDetail id={String(30000)}>3만 젤리 후원</S.PriceDetail>
+          </S.Price3>
+          <PaymentPage PayRef={PayRef}/>
         </S.Bottom>
       </S.Body>
     </>
