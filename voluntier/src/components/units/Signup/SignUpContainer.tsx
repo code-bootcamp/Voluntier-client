@@ -74,6 +74,7 @@ export default function SignUp(){
             Modal.error({content : error.message})
         }
     }
+      
     return(
         <SignUpUI 
         register={register} 

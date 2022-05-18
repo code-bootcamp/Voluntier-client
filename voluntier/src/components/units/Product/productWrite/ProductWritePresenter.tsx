@@ -37,7 +37,6 @@ export default function ProductWriteUI(props:IPropsIProductWriteUI) {
           <UploadFile data={props.data} myImage={props.myImage} setMyImage={props.setMyImage}/>
           <S.ButtonWrapper>
             <S.Button type="submit">{props.isEdit? "수정하기":"등록하기"}</S.Button>
-            {/* <S.Button type="button">제발</S.Button> */}
           </S.ButtonWrapper>
         </S.Form>
       </S.InnerWrapper>

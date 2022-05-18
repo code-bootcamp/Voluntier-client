@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from 'react';
 import BoardWriteUI from "./boardWritePresenter";
 import {useForm} from "react-hook-form"
 import { Editor } from "@toast-ui/react-editor";
@@ -8,6 +8,8 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { useRecoilState } from "recoil";
 import { calendarDateState } from "../../../../commons/store";
+import useAuth from '../../../commons/hooks/useAuth';
+
 
 
 interface IFormValues {
@@ -42,6 +44,7 @@ const schema = yup.object({
 
 
 export default function BoardWrite() {
+useAuth()
 const [isModalVisible, setIsModalVisible] = useState(false);
 const [calendardate] = useRecoilState(calendarDateState)
 const [address,setAddress] = useState("")
@@ -73,6 +76,7 @@ const handleComplete = (data: any) => {
     console.log(data)
     try{
 
+
       const result = await createBoard({
         variables:{
           createBoardInput:{
@@ -98,6 +102,7 @@ const handleComplete = (data: any) => {
       alert("무언가가 잘못되었다")
     }
   }
+
 
   return <BoardWriteUI
         address={address}

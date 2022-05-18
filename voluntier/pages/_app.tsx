@@ -7,28 +7,20 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 import { AppProps } from "next/app";
 import { RecoilRoot } from 'recoil';
 import LayOut from '../src/commons/layout';
-import {ApolloClient,ApolloProvider,InMemoryCache,ApolloLink} from '@apollo/client'
-import { createUploadLink } from 'apollo-upload-client';
+import ApolloSetting from '../src/commons/apollo';
 
 
 function MyApp({ Component, pageProps }:AppProps) {
 
-  const uploadLink = createUploadLink({
-		uri : "https://backendapi.voluntier.site/graphql",
-	})
-  const client = new ApolloClient({
-		link : ApolloLink.from([uploadLink as unknown as ApolloLink]),
-		cache : new InMemoryCache(),
-	})
 
   return (
   <RecoilRoot>
-    <ApolloProvider client={client}>
+    <ApolloSetting>
       <Global styles={globalStyles}/>
       <LayOut>
         <Component {...pageProps} />
       </LayOut>
-    </ApolloProvider>
+    </ApolloSetting>
   </RecoilRoot>
   )
 }

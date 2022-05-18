@@ -38,7 +38,7 @@ export default function KakaoMap(props:IPropsKakaoMap) {
            if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
               const marker = new window.kakao.maps.Marker({
-                  map: map,
+                  map,
                   position: coords
               });
               const infowindow = new window.kakao.maps.InfoWindow({
