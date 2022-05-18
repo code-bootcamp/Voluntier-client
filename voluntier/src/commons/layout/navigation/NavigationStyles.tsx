@@ -50,6 +50,36 @@ export const ProfileImg = styled.img`
     height: 50px;
   }
 `;
+export const UserLoginWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`
+export const Font = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: 'GmarketSans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 5%;
+`
+export const UserInfoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:90%;
+`
+export const MyPageLogout = styled.div`
+  display: flex;
+  font-size: 18px;
+  color: #0085cb;
+`
 
 export const LoginInfoWrapper = styled.div`
   width: 50%;
@@ -72,7 +102,7 @@ export const LoginJoin = styled.div`
 
 export const Mark = styled.div`
   height: 70%;
-  margin: 0% 15% 0% 15%;
+  margin: 10% ;
   border-left: 3px solid #0085cb;
   border-radius: 100px;
 `;

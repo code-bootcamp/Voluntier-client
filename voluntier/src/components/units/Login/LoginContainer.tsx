@@ -4,9 +4,9 @@ import LoginUI from "./LoginPresenter";
 import * as yup from 'yup';
 import { gql, useMutation } from "@apollo/client";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/store";
-import { Modal } from "antd";
+import { accessTokenState} from "../../../commons/store";
 import { useRouter } from "next/router";
+
 
 
 const schema = yup.object({
@@ -25,6 +25,7 @@ const LOGIN = gql`
     mutation login($email:String!,$password:String!){
         login(email:$email,password:$password)
     }
+    
 `
 
 export default function Login(){
@@ -35,18 +36,15 @@ export default function Login(){
         resolver : yupResolver(schema),
         mode:"onChange",
     })
+
     const onClickLogin = async (data:IFormValuesLogin) => {
-        try{
             const result = await login({
-                variables:{...data}
+                variables:{...data},
             })
-            const accessToken = result.data.login
+            console.log(result)
+            const accessToken = result.data.login;
             setAccessToken(accessToken)
-            Modal.success({content:"로그인에 성공하였습니다."})
             router.push('/boards')
-        }catch(error){
-            Modal.error({content:"로그인에 실패하였습니다."})
-        }
     }
 
     return (

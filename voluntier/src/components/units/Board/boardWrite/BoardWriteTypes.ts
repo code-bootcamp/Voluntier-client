@@ -6,6 +6,8 @@ export interface IPropsBoardWriteUI{
     handleComplete : any
     address: string
     editorRef : any
-    // onClickSubmit : ()=> void
+    onClickSubmit : any
+    handleSubmit : any
+    register : any
 
 }
