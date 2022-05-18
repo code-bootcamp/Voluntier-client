@@ -3,9 +3,22 @@ import * as S from "./ProductDetailStyles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IPropsProductDetailUI } from "./ProductDetailTypes";
+import { gql, useQuery } from "@apollo/client";
 
+const FETCH_USER_LOGIN = gql`
+    query fetchLoginUser{
+        fetchLoginUser{
+            id
+            name
+            email
+            phone
+            isAdmin
+        }
+    }
+`
 
 export default function ProductDetailUI(props:IPropsProductDetailUI) {
+  const {data} = useQuery(FETCH_USER_LOGIN)
   const settings = {
     dots: true,
     infinite: false,
@@ -67,11 +80,15 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
             <S.InfoDetail>{props.data?.fetchProduct.details}</S.InfoDetail>
           </S.InnerWrapperRight>
         </S.InnerWrapper>
+        {data?.fetchLoginUser.isAdmin?
         <S.ButtonWrapper>
-          <S.BuyButton onClick={props.onToggleModal}>젤리 사용하기</S.BuyButton>
-          <S.BuyButton onClick={props.ProductEdit}>수정하기</S.BuyButton>
-          <S.BuyButton onClick={props.ProductDelete}>삭제하기</S.BuyButton>
+        <S.BuyButton onClick={props.ProductEdit}>수정하기</S.BuyButton>
+        <S.BuyButton onClick={props.ProductDelete}>삭제하기</S.BuyButton>
         </S.ButtonWrapper>
+        :
+        <S.ButtonWrapper>
+        <S.BuyButton onClick={props.onToggleModal}>젤리 사용하기</S.BuyButton>
+        </S.ButtonWrapper>}
       </S.Wrapper>
     </>
   );
