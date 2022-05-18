@@ -1,16 +1,39 @@
+import { gql, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { myLocationState } from "../../../commons/store";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 interface IPropsKakaoMap {
   address: string;
+  data: any;
 }
 
-export default function KakaomapForBoardList(props: IPropsKakaoMap) {
+const FETCH_BOARDS_ALL = gql`
+  query fetchBoardsAll {
+    fetchBoardsAll {
+      id
+      centerName
+      address
+    }
+  }
+`;
+
+export default function KakaomapGeolocation(props: IPropsKakaoMap) {
   const [windowSize, setWindowSize] = useState(false);
-  const [myLatitude, setMyLatitude] = useState(0);
-  const [myLongitude, setMyLongitude] = useState(0);
+  const [location, setLocation] = useRecoilState(myLocationState);
+
+  const { data } = useQuery(FETCH_BOARDS_ALL);
+
+  const handleResize = () => {
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    } else {
+      setWindowSize(false);
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -27,17 +50,16 @@ export default function KakaomapForBoardList(props: IPropsKakaoMap) {
           // GPS를 지원하면
           window.navigator.geolocation.getCurrentPosition(
             function (position) {
-              // alert(
-              //   position.coords.latitude + ", " + position.coords.longitude
-              // );
-              setMyLatitude(position.coords.latitude);
-              setMyLongitude(position.coords.longitude);
+              setLocation([
+                position.coords.latitude,
+                position.coords.longitude,
+              ]);
             },
             function (error) {
               console.error(error);
             },
             {
-              enableHighAccuracy: false,
+              enableHighAccuracy: true,
               maximumAge: 0,
               timeout: Infinity,
             }
@@ -49,14 +71,6 @@ export default function KakaomapForBoardList(props: IPropsKakaoMap) {
       getLocation();
     }
 
-    const handleResize = () => {
-      if (window.innerWidth <= 767) {
-        setWindowSize(true);
-      } else {
-        setWindowSize(false);
-      }
-    };
-
     const script = document.createElement("script");
     script.src =
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=6fd48e92f18946d0fc326142df70d236&libraries=services&autoload=false";
@@ -66,11 +80,10 @@ export default function KakaomapForBoardList(props: IPropsKakaoMap) {
       window.kakao.maps.load(function () {
         const container = document.getElementById("map");
         const options = {
-          center: new window.kakao.maps.LatLng(myLatitude, myLongitude),
+          center: new window.kakao.maps.LatLng(location[0], location[1]),
           level: 3,
         };
         const map = new window.kakao.maps.Map(container, options);
-        // const geocoder = new window.kakao.maps.services.Geocoder();
 
         // 지도를 클릭한 위치에 표출할 마커입니다
         const marker = new window.kakao.maps.Marker({
@@ -85,28 +98,42 @@ export default function KakaomapForBoardList(props: IPropsKakaoMap) {
         });
         infowindow.open(map, marker);
 
-        // geocoder.addressSearch(
-        //   props.address || "제주 제주시 첨단로 242",
-        //   function (result: any, status: any) {
-        //     if (status === window.kakao.maps.services.Status.OK) {
-        //       const coords = new window.kakao.maps.LatLng(
-        //         result[0].y,
-        //         result[0].x
-        //       );
-        //       const marker = new window.kakao.maps.Marker({
-        //         map: map,
-        //         position: coords,
-        //       });
-        //       const infowindow = new window.kakao.maps.InfoWindow({
-        //         content: `<div style="width:150px;text-align:center;padding:6px 0;">${
-        //           props.address ? props.address : "센터위치 주소를 검색해주세요"
-        //         }</div>`,
-        //       });
-        //       infowindow.open(map, marker);
-        //       map.setCenter(coords);
-        //     }
-        //   }
-        // );
+        // 주소-좌표 변환 객체를 생성합니다
+        const geocoder = new window.kakao.maps.services.Geocoder();
+
+        const addresses: string[] | undefined = [];
+
+        data?.fetchBoardsAll?.map((el) => {
+          addresses.push(String(el.address));
+        });
+
+        const imageSrc =
+          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+        addresses.map((el, i) => {
+          geocoder.addressSearch(el, function (result, status) {
+            if (status === window.kakao.maps.services.Status.OK) {
+              const coords = new window.kakao.maps.LatLng(
+                result[0].y,
+                result[0].x
+              );
+
+              const imageSize = new window.kakao.maps.Size(24, 35);
+
+              const markerImage = new window.kakao.maps.MarkerImage(
+                imageSrc,
+                imageSize
+              );
+
+              const marker = new window.kakao.maps.Marker({
+                map: map,
+                position: coords,
+                title: i,
+                image: markerImage,
+              });
+            }
+          });
+        });
       });
     };
 
@@ -119,7 +146,7 @@ export default function KakaomapForBoardList(props: IPropsKakaoMap) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [windowSize]);
+  }, [windowSize, location]);
 
   return (
     <div
