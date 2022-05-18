@@ -10,12 +10,12 @@ export const calendarDateState = atom({
   default: "",
 });
 
-export const userInfoState = atom({
-  key: "userInfoState",
-  default: "",
-});
-
 export const myLocationState = atom({
   key: "myLocationState",
   default: [33.450701, 126.570667],
 });
+
+export const setAmountDonation = atom({
+    key : "setAmountDonation",
+    default: 100
+})
