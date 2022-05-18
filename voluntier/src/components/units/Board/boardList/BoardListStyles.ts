@@ -40,7 +40,7 @@ export const DogBiscuit = styled.div`
 
 export const MapWrapper = styled.div`
   width: 100%;
-  height: 300px;
+  height: 400px;
   border: 1px solid red;
   border-radius: 20px;
   margin-bottom: 20px;

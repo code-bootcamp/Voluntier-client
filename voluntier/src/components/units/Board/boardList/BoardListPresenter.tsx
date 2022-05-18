@@ -1,4 +1,4 @@
-import KakaomapForBoardList from "../../../commons/kakaomapForBoardList";
+import KakaomapGeolocation from "../../../commons/kakaomapGeolocation";
 import * as S from "./BoardListStyles";
 
 export default function BoardListUI() {
@@ -6,7 +6,7 @@ export default function BoardListUI() {
     <S.Wrapper>
       <S.DogBiscuit>Apply</S.DogBiscuit>
       <S.MapWrapper>
-        <KakaomapForBoardList />
+        <KakaomapGeolocation />
       </S.MapWrapper>
       <S.SearchWrapper>
         <S.Dropdown>
