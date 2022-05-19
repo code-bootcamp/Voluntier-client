@@ -28,6 +28,7 @@ const { TabPane } = Tabs;
 
 export default function MypageUI(props) {
   const {data} = useQuery(FETCH_USER_LOGIN)
+  console.log(data)
   return (
     <>
       {props.isOpen && (
