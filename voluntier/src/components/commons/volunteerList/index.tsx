@@ -38,8 +38,7 @@ const Column = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 2.5px;
-  padding-right: 2.5px;
+  
 
   @media ${breakPoints.tablet} {
     font-size: 8px;
@@ -83,8 +82,7 @@ const CompleteButton = styled.button`
     font-size: 10px;
   }
 `;
-
-export default function VolunteerList() {
+export default function VolunteerList(props) {
   return (
     <Wrapper>
       <Row>
@@ -92,16 +90,28 @@ export default function VolunteerList() {
       </Row>
       <ListWrapper>
         <InfiniteScroll>
-          <Row>
-            <Column style={{ width: "50%" }}></Column>
-            <Column style={{ width: "15%", color: "#FF3800" }}></Column>
-            <Column style={{ width: "10%" }}>
-              <DeleteIcon src="/images/boardWrite/delete.png" />
-            </Column>
-            <Column style={{ width: "25%" }}>
-              <CompleteButton>봉사완료</CompleteButton>
-            </Column>
+          {props.enrolldata?.fetchEnrollsByBoardId.map((el: any)=>(
+
+
+            <Row key={el}>
+            <Column style={{ width: "30%" }}>{el.user.name}</Column>
+            <Column style={{ width: "30%" }}>{el.user.phone}</Column>
+            <Column style={{ width: "20%", color: "#FF3800" }}>신청중</Column>
+            {props.boarddata?.user.id === props.Userdata?.fetchLoginUser.id
+              ?
+                <>
+                <Column style={{ width: "5%" }}>
+                <DeleteIcon src="/images/boardWrite/delete.png" />
+                </Column>
+                <Column style={{ width: "25%" }}>
+                <CompleteButton>봉사완료</CompleteButton>
+                </Column>
+                </>
+            :
+            <></>
+            }
           </Row>
+          ))}
         </InfiniteScroll>
       </ListWrapper>
     </Wrapper>

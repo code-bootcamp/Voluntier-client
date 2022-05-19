@@ -13,7 +13,7 @@ interface IPropsNavigationUI {
   // onClickMutation: () => void;
 }
 
-const FETCH_USER_LOGIN = gql`
+export const FETCH_USER_LOGIN = gql`
     query fetchLoginUser{
         fetchLoginUser{
             id

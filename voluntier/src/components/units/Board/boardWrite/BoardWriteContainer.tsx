@@ -3,7 +3,7 @@ import BoardWriteUI from "./boardWritePresenter";
 import {useForm} from "react-hook-form"
 import { Editor } from "@toast-ui/react-editor";
 import { useMutation } from "@apollo/client";
-import { CREATE_BOARD } from "./BoardWriteQueries";
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWriteQueries";
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { useRecoilState } from "recoil";
@@ -11,6 +11,7 @@ import { calendarDateState } from "../../../../commons/store";
 import useAuth from '../../../commons/hooks/useAuth';
 import {Modal} from 'antd';
 import { useRouter } from 'next/router';
+import { ImyupdateBoardInput, IMyVariables } from './BoardWriteTypes';
 
 
 
@@ -19,7 +20,7 @@ interface IFormValues {
   title: string,
   centerName: string,
   centerOwnerName: string,
-  centerPhone: number,
+  centerPhone: string,
   recruitCount: number,
   serviceDate: string,
   serviceTime: number,
@@ -45,8 +46,18 @@ const schema = yup.object({
   addressDetail: yup.string().required("봉사센터 상세주소를 작성해주세요 "),
 })
 
+const nonschema = yup.object({
+  title:yup.string(),
+  centerName: yup.string(),
+  centerOwnerName: yup.string(),
+  centerPhone: yup.string(),
 
-export default function BoardWrite() {
+  address: yup.string(),
+  addressDetail: yup.string(),
+})
+
+
+export default function BoardWrite(props) {
 useAuth()
 const router = useRouter()
 const [isModalVisible, setIsModalVisible] = useState(false);
@@ -54,9 +65,10 @@ const [calendardate] = useRecoilState(calendarDateState)
 const [address,setAddress] = useState("")
 const editorRef = useRef<Editor>(null);
 const [createBoard] = useMutation(CREATE_BOARD)
+const [updateBoard] = useMutation(UPDATE_BOARD)
 
 const {register, handleSubmit, setValue, getValues} = useForm({
-  resolver: yupResolver(schema),
+  resolver: yupResolver(props.isEdit ? nonschema : schema),
   mode:"onChange",
 
 })  
@@ -77,16 +89,26 @@ const handleComplete = (data: any) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-// 봉사 등록 함수 
+
+  const myupdateBoardInput : ImyupdateBoardInput= {};
+
+  const myVariables: IMyVariables = {
+    updateBoardInput: myupdateBoardInput,
+    boardId: String(router.query.boardId)
+  };
+
+
+// 봉사 등록/수정 함수 
+console.log(props.isEdit)
   const onClickSubmit = async(data: IFormValues)=>{
 
     const contentsvalue = editorRef.current?.getInstance().getMarkdown()
-
+    
     data.contents = contentsvalue
     data.serviceDate = calendardate
     
     try{
-     const result = await createBoard({
+      const result = await createBoard({
         variables:{
           createBoardInput:{
             ...data,
@@ -102,12 +124,45 @@ const handleComplete = (data: any) => {
     }catch(error){
       alert("무언가가 잘못되었다")
     }
-  }
+    
+  
+}
+const onClickEdit =async(data)=>{
+   console.log("야야")
+      console.log(data)
+      if (data.title) myupdateBoardInput.title =data.title
+      if (data.contents) {myupdateBoardInput.contents = data.contents}
+      if (data.centerName) {myupdateBoardInput.centerName = data.centerName}
+      if (data.centerOwnerName) {myupdateBoardInput.centerOwnerName = data.centerOwnerName}
+      if (data.centerPhone) {myupdateBoardInput.centerPhone = data.centerPhone}
+      if (data.recruitCount) {myupdateBoardInput.recruitCount = data.recruitCount}
+      if (data.serviceTime) {myupdateBoardInput.serviceTime = data.serviceTime}
+      if (data.serviceDate) {myupdateBoardInput.serviceDate = data.serviceDate}
+      if (data.address) {myupdateBoardInput.address = data.address}
+      if (data.addressDetail) {myupdateBoardInput.addressDetail = data.addressDetail}
+      if (data.location1) {myupdateBoardInput.location1 = data.location1}
+      if (data.location2) {myupdateBoardInput.location2 = data.location2}
 
+      try{
+        const result = await updateBoard({
+            variables: myVariables,
+        })
+        console.log(result)
+        Modal.success({content: "봉사 모집글 수정완료! 상품 상세조회 페이지로 이동합니다"})
+        router.push(`/boards/${router.query.boardId}`)
+        
+    } catch (error){
+        
+      
+        Modal.error({content: " 게시글 수정 오류가 발생했습니다"})
+    }
+}
 
-  return <BoardWriteUI
-        address={address}
-        handleComplete={handleComplete} 
+    return <BoardWriteUI
+    isEdit={props.isEdit}
+    address={address}
+    onClickEdit={onClickEdit}
+    handleComplete={handleComplete} 
         showModal={showModal} 
         handleOk={handleOk}
         handleCancel={handleCancel}
@@ -118,6 +173,7 @@ const handleComplete = (data: any) => {
         handleSubmit={handleSubmit}
         setValue={setValue}
         getValues={getValues}
+        defaultData={props.defaultData}
 
   />;
 }

@@ -20,7 +20,7 @@ const Calendar = styled(DatePicker)`
 
 `
 
-export default function Mycalendar() {
+export default function Mycalendar(props) {
     const [value, setValue] = useState(new Date());
     const [,setRealdate] = useRecoilState(calendarDateState)
 
@@ -32,10 +32,9 @@ export default function Mycalendar() {
       {/* <Stack spacing={3}> */}
 
         <Calendar
-        views={['day', 'month', 'year']}
         label="봉사날짜를 선택해주세요"
         value={value}
-        onChange={(v: any) => {
+        onChange={(v: any,) => {
             setValue(v);
             setRealdate(mydate)
 
