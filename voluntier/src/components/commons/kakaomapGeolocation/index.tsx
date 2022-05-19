@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { myLocationState } from "../../../commons/store";
+import { useMoveToPage } from "../hooks/useMoveToPage";
 
 declare const window: typeof globalThis & {
   kakao: any;
@@ -26,6 +27,8 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
   const [location, setLocation] = useRecoilState(myLocationState);
 
   const { data } = useQuery(FETCH_BOARDS_ALL);
+
+  const { moveToPage } = useMoveToPage();
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -85,11 +88,20 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
         };
         const map = new window.kakao.maps.Map(container, options);
 
+        const imageSrc = "/images/marker-center.png";
+        const imageSize = new window.kakao.maps.Size(47.5, 40);
+        const markerImage = new window.kakao.maps.MarkerImage(
+          imageSrc,
+          imageSize
+        );
+
         // 지도를 클릭한 위치에 표출할 마커입니다
         const marker = new window.kakao.maps.Marker({
           // 지도 중심좌표에 마커를 생성합니다
           position: map.getCenter(),
+          image: markerImage,
         });
+
         // 지도에 마커를 표시합니다
         marker.setMap(map);
 
@@ -101,36 +113,68 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
         // 주소-좌표 변환 객체를 생성합니다
         const geocoder = new window.kakao.maps.services.Geocoder();
 
-        const addresses: string[] | undefined = [];
-
         data?.fetchBoardsAll?.map((el) => {
-          addresses.push(String(el.address));
-        });
-
-        const imageSrc =
-          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-        addresses.map((el, i) => {
-          geocoder.addressSearch(el, function (result, status) {
+          geocoder.addressSearch(el.address, function (result, status) {
             if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(
                 result[0].y,
                 result[0].x
               );
 
-              const imageSize = new window.kakao.maps.Size(24, 35);
-
+              const imageSrc = "/images/marker.png";
+              const imageSize = new window.kakao.maps.Size(43.5, 35);
               const markerImage = new window.kakao.maps.MarkerImage(
                 imageSrc,
                 imageSize
               );
 
               const marker = new window.kakao.maps.Marker({
-                map: map,
+                map,
                 position: coords,
-                title: i,
+                title: el.centerName,
                 image: markerImage,
               });
+
+              const infowindow = new window.kakao.maps.InfoWindow({
+                content: `<div style="width:150px;text-align:center;padding:3px;font-size:12px;color:#0085CB">
+                    ${el.centerName}
+                  </div>`, // 인포윈도우에 표시할 내용
+              });
+
+              // 마커에 클릭이벤트를 등록합니다
+              window.kakao.maps.event.addListener(
+                marker,
+                "click",
+                moveToPage(`/boards/${el.id}`)
+              );
+
+              // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+              // 이벤트 리스너로는 클로저를 만들어 등록합니다
+              // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+              window.kakao.maps.event.addListener(
+                marker,
+                "mouseover",
+                makeOverListener(map, marker, infowindow)
+              );
+              window.kakao.maps.event.addListener(
+                marker,
+                "mouseout",
+                makeOutListener(infowindow)
+              );
+
+              // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+              function makeOverListener(map, marker, infowindow) {
+                return function () {
+                  infowindow.open(map, marker);
+                };
+              }
+
+              // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+              function makeOutListener(infowindow) {
+                return function () {
+                  infowindow.close();
+                };
+              }
             }
           });
         });
@@ -146,7 +190,7 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [windowSize, location]);
+  }, [windowSize, location, moveToPage]);
 
   return (
     <div
