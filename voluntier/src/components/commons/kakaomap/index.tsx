@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 
 
 declare const window: typeof globalThis & {
@@ -34,7 +34,7 @@ export default function KakaoMap(props:IPropsKakaoMap) {
         const map = new window.kakao.maps.Map(container, options);
         const geocoder = new window.kakao.maps.services.Geocoder();
  
-        geocoder.addressSearch(props.address || "제주 제주시 첨단로 242", function(result:any, status:any) {
+        geocoder.addressSearch(props.address || props.data?.fetchBoard?.address || "제주 제주시 첨단로 242", function(result:any, status:any) {
            if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
               const marker = new window.kakao.maps.Marker({
@@ -42,7 +42,7 @@ export default function KakaoMap(props:IPropsKakaoMap) {
                   position: coords
               });
               const infowindow = new window.kakao.maps.InfoWindow({
-                  content: `<div style="width:150px;text-align:center;padding:6px 0;">${props.address? props.address : "센터위치 주소를 검색해주세요"}</div>`
+                  content: `<div style="width:150px;text-align:center;padding:6px 0;">${props.address? props.address : "센터위치 주소를 검색해주세요" || props.data?.fetchBoard?.address ? props.data?.fetchBoard?.address : "센터위치 없을리가 없는데"}</div>`
               });
               infowindow.open(map, marker);
               map.setCenter(coords);
@@ -59,7 +59,7 @@ export default function KakaoMap(props:IPropsKakaoMap) {
     // }
   }, [
     // windowSize|| 
-    props.address]);
+    props.address || props.data?.fetchBoard.address]);
  
 
   return (
