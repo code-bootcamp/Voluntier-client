@@ -94,7 +94,7 @@ export const Row = styled.div`
 export const ColumnHeaderBasic = styled.div`
   width: 20%;
   font-size: 18px;
-
+  color: black;
   @media ${breakPoints.mobile} {
     font-size: 14px;
   }
