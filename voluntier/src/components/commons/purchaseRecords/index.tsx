@@ -37,16 +37,24 @@ const Column = styled.div`
   }
 `;
 
-export default function PurchaseRecords() {
+export default function PurchaseRecords(props) {
   return (
     <Wrapper>
-      <InfiniteScroll>
-        <Row>
+      <Row>
           <Column style={{ width: "7%" }}>no.</Column>
-          <Column style={{ width: "33%" }}>상품명 자리</Column>
-          <Column style={{ width: "30%" }}>날짜 자리</Column>
-          <Column style={{ width: "30%" }}>배송상태 자리</Column>
+          <Column style={{ width: "33%" }}>상품명</Column>
+          <Column style={{ width: "30%" }}>구매 날짜</Column>
+          <Column style={{ width: "30%" }}>결제취소</Column>
         </Row>
+      <InfiniteScroll>
+        {props.PurchasesData?.fetchPurchases.map((el,index)=>(
+        <Row key={index}>
+          <Column style={{ width: "7%" }}>{index+1}</Column>
+          <Column style={{ width: "33%" }}>{el.title}</Column>
+          <Column style={{ width: "30%" }}>{el.createdAt}</Column>
+          <Column style={{ width: "30%" }}>결제취소</Column>
+        </Row>
+        ))} 
       </InfiniteScroll>
     </Wrapper>
   );

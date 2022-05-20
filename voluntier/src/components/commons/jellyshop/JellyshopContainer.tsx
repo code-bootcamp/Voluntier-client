@@ -1,7 +1,7 @@
 import { useState } from "react";
 import JellyshopModalUI from "./JellyshopPresenter";
 
-export default function JellyshopModal() {
+export default function JellyshopModal(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
@@ -13,12 +13,14 @@ export default function JellyshopModal() {
   const onCompleteAddressSearch = (data) => {
     setIsOpen((prev) => !prev);
     setZipcode(data.zonecode);
-    setAddress(data.autoJibunAddress);
-    console.log(data.autoJibunAddress);
+    setAddress(data.address);
+    console.log(data);
   };
 
   return (
     <JellyshopModalUI
+      UserData={props.UserData}
+      data={props.data}
       isOpen={isOpen}
       zipcode={zipcode}
       address={address}

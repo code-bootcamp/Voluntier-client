@@ -37,15 +37,22 @@ const Column = styled.div`
   }
 `;
 
-export default function BoardRecords() {
+export default function BoardRecords(props) {
   return (
     <Wrapper>
-      <InfiniteScroll>
-        <Row>
+      <Row>
           <Column style={{ width: "7%" }}>no.</Column>
-          <Column style={{ width: "68%" }}>내용 자리</Column>
-          <Column style={{ width: "25%" }}>날짜 자리</Column>
+          <Column style={{ width: "68%" }}>제목</Column>
+          <Column style={{ width: "25%" }}>작성 날짜</Column>
         </Row>
+      <InfiniteScroll>
+        {props.BoardUserData?.fetchBoardsOfUser.map((el,index)=>(
+        <Row key={index}>
+          <Column style={{ width: "7%" }}>{index+1}</Column>
+          <Column style={{ width: "68%" }}>{el.title}</Column>
+          <Column style={{ width: "25%" }}>{el.createdAt.slice(0,10)}</Column>
+        </Row>
+        ))}
       </InfiniteScroll>
     </Wrapper>
   );

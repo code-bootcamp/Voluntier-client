@@ -18,7 +18,7 @@ const FETCH_USER_LOGIN = gql`
 `
 
 export default function ProductDetailUI(props:IPropsProductDetailUI) {
-  const {data} = useQuery(FETCH_USER_LOGIN)
+  const {data:UserData} = useQuery(FETCH_USER_LOGIN)
   const settings = {
     dots: true,
     infinite: false,
@@ -43,7 +43,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
           footer={null}
           centered={true}
         >
-          <JellyshopModal />
+          <JellyshopModal UserData={UserData} data={props.data}/>
         </S.MyModal>
       )}
       <S.Wrapper>
@@ -80,7 +80,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
             <S.InfoDetail>{props.data?.fetchProduct.details}</S.InfoDetail>
           </S.InnerWrapperRight>
         </S.InnerWrapper>
-        {data?.fetchLoginUser.isAdmin?
+        {UserData?.fetchLoginUser.isAdmin?
         <S.ButtonWrapper>
         <S.BuyButton onClick={props.ProductEdit}>수정하기</S.BuyButton>
         <S.BuyButton onClick={props.ProductDelete}>삭제하기</S.BuyButton>

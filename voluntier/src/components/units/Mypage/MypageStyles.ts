@@ -8,35 +8,6 @@ export const MyModal = styled(Modal)`
   }
 `;
 
-export const buttonWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-export const EditButton = styled.button`
-  width: 100px;
-  height: 51px;
-  color: #ffffff;
-  background-color: #000000;
-  font-size: 18px;
-  border: none;
-  border-radius: 20px;
-  margin-top: 30px;
-  cursor: pointer;
-
-  @media ${breakPoints.tablet} {
-    width: 90px;
-    height: 40px;
-    font-size: 15px;
-  }
-
-  @media ${breakPoints.mobile} {
-    width: 70px;
-    height: 30px;
-    font-size: 13px;
-  }
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,6 +76,7 @@ export const ProfileImageWrapper = styled.div`
 export const ProfileImage = styled.img`
   width: 200px;
   height: 200px;
+  border-radius: 50%;
 
   @media ${breakPoints.tablet} {
     width: 150px;

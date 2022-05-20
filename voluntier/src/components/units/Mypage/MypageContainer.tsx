@@ -29,8 +29,19 @@ const FETCH_ENROLLS = gql`
   query fetchEnrollsByUserId{
     fetchEnrollsByUserId{
       board{
-        title
+        centerName
       }
+      createdAt
+      status
+    }
+  }
+`
+
+const FETCH_BOARDS_USER = gql`
+  query fetchBoardsOfUser{
+    fetchBoardsOfUser{
+      id
+      title
       createdAt
     }
   }
@@ -38,18 +49,24 @@ const FETCH_ENROLLS = gql`
 
 
 
+  
 export default function Mypage() {
   useAuth()
   const [isOpen, setIsOpen] = useState(false);
   const {data:PurchasesData} = useQuery(FETCH_PURCHASES)
   const {data:DonationData} = useQuery(FETCH_DONATIONS)
   const {data:EnrollsData} = useQuery(FETCH_ENROLLS)
-  console.log(PurchasesData)
-  console.log(DonationData)
-  console.log(EnrollsData)
+  const {data:BoardUserData} = useQuery(FETCH_BOARDS_USER)
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
 
-  return <MypageUI isOpen={isOpen} onToggleModal={onToggleModal} />;
+  return <MypageUI 
+  isOpen={isOpen} 
+  onToggleModal={onToggleModal} 
+  PurchasesData={PurchasesData}
+  DonationData={DonationData}
+  EnrollsData={EnrollsData}
+  BoardUserData={BoardUserData}
+  />;
 }

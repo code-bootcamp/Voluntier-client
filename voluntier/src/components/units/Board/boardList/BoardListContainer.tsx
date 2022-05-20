@@ -36,16 +36,7 @@ export default function BoardList(props) {
   const onChangeSmall = (event) =>{
     setSmall(event.target.value) 
   }
-  console.log(big)
-  console.log(small)
- 
   
-
-  // const onChange = (current) => {
-  //   setCurrent(current)
-  //   console.log("di")
-  //   props.refetch({page:current})
-  // }
   const onClickSearch = () => {
     props.refetch({ page: 1, location1:big ,location2:small });
   };
