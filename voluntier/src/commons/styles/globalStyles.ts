@@ -26,12 +26,11 @@ export const globalStyles = css`
   @font-face {
     font-family: "NotoSans";
     font-style: normal;
-    /* font-weight: 600; */
-    src: url("/fonts/NotoSansKR-Medium.otf");
+    src: url("/fonts/NotoSansKR-Regular.otf");
   }
 
-    /* Sniglet-Regular */
-    @font-face {
+  /* Sniglet-Regular */
+  @font-face {
     font-family: "Sniglet";
     font-style: normal;
     font-weight: 800;
@@ -44,5 +43,4 @@ export const globalStyles = css`
     font-weight: 800;
     src: url("/fonts/Sniglet-Regular.ttf");
   }
-
 `;
