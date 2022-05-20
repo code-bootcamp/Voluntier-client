@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 import Navigation from "./navigation/NavigationContainer";
 import { breakPoints } from "../styles/Media";
 import { useRouter } from "next/router";
+import Footer from "./footer/FooterContainer";
 
 const Wrapper = styled.div`
-  height: 110vh;
+  /* height: 110vh; */
+  height: 100%;
   display: flex;
   flex-direction: row;
 
@@ -13,10 +15,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
-  `
+`;
 
 const Body = styled.div`
-width: 100%;
+  width: 100%;
 `;
 
 const MobileWrapper = styled.div`
@@ -57,22 +59,27 @@ export default function LayOut(props: LayOutPageProps) {
   }, [windowSize]);
 
   return (
-    <Wrapper>
+    <div>
       {/* 웹, 태블릿 */}
       {!windowSize && (
         <>
-          {!isHidden && <Navigation />}
-          <Body>{props.children}</Body>
+          <Wrapper>
+            {!isHidden && <Navigation />}
+            <Body>{props.children}</Body>
+          </Wrapper>
+          <Footer />
         </>
       )}
 
       {/* 모바일 */}
       {windowSize && (
-        <MobileWrapper>
-          <Body>{props.children}</Body>
-          <Navigation />
-        </MobileWrapper>
+        <Wrapper>
+          <MobileWrapper>
+            <Body>{props.children}</Body>
+            <Navigation />
+          </MobileWrapper>
+        </Wrapper>
       )}
-    </Wrapper>
+    </div>
   );
 }

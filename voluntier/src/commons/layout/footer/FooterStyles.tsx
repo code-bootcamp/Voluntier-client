@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: 160px;
   background-color: #d6d6d6;
   padding: 32px 103px;
   display: flex;
@@ -14,10 +15,6 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
-
-export const NumberWrapper = styled.div`
-  display: flex;
 `;
 
 export const InfoInnerWrapper = styled.div`
