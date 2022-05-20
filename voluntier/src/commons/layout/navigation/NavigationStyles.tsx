@@ -37,6 +37,7 @@ export const ProfileImg = styled.img`
   margin-top: 10%;
   width: 200px;
   height: 200px;
+  border-radius: 50%;
   cursor: pointer;
 
   @media ${breakPoints.tablet} {

@@ -24,11 +24,12 @@ const FETCH_USER_LOGIN = gql`
     }
 `
 
+
 const { TabPane } = Tabs;
 
 export default function MypageUI(props) {
   const {data} = useQuery(FETCH_USER_LOGIN)
-  console.log(data)
+  // onChangeName={onChangeName} onChangePassword={onChangePassword} onChangeCheckPassword={onChangeCheckPassword} passwordError={passwordError} passwordCheckError={passwordCheckError}
   return (
     <>
       {props.isOpen && (
@@ -48,16 +49,13 @@ export default function MypageUI(props) {
           centered={true}
         >
           <ProfileEdit />
-          <S.buttonWrapper>
-            <S.EditButton onClick={props.onToggleModal}>수정완료</S.EditButton>
-          </S.buttonWrapper>
         </S.MyModal>
       )}
       <S.Wrapper>
         <S.DogBiscuit>My Page</S.DogBiscuit>
         <S.ProfileWrapper>
           <S.ProfileImageWrapper>
-            <S.ProfileImage />
+            <S.ProfileImage src={`https://storage.googleapis.com/${data?.fetchLoginUser.profileImageUrl}`}/>
             <S.ProfileEdit onClick={props.onToggleModal}>
               프로필 수정하기
             </S.ProfileEdit>
@@ -78,24 +76,24 @@ export default function MypageUI(props) {
           <S.MyTabs defaultActiveKey="1">
             <TabPane tab="봉사내역" key="1">
               <S.Records>
-                <VolunteerRecords />
+                <VolunteerRecords EnrollsData={props.EnrollsData}/>
               </S.Records>
             </TabPane>
             <TabPane tab="후원내역" key="2">
               <S.Records>
-                <DonationRecords />
+                <DonationRecords DonationData={props.DonationData}/>
               </S.Records>
             </TabPane>
             <TabPane tab="작성내역" key="3">
               <S.Records>
-                <BoardRecords />
+                <BoardRecords BoardUserData={props.BoardUserData}/>
               </S.Records>
             </TabPane>
           </S.MyTabs>
         </S.TabsWrapper>
         <S.Label>젤리 사용내역</S.Label>
         <S.Records>
-          <PurchaseRecords />
+          <PurchaseRecords PurchasesData={props.PurchasesData}/>
         </S.Records>
       </S.Wrapper>
     </>

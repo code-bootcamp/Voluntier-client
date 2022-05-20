@@ -37,15 +37,22 @@ const Column = styled.div`
   }
 `;
 
-export default function DonationRecords() {
+export default function DonationRecords(props) {
   return (
     <Wrapper>
-      <InfiniteScroll>
-        <Row>
+      <Row>
           <Column style={{ width: "7%" }}>no.</Column>
-          <Column style={{ width: "68%" }}>내용 자리</Column>
-          <Column style={{ width: "25%" }}>날짜 자리</Column>
+          <Column style={{ width: "68%" }}>후원 금액</Column>
+          <Column style={{ width: "25%" }}>후원 날짜</Column>
         </Row>
+      <InfiniteScroll>
+        {props.DonationData?.fetchDonations.map((el,index) =>(
+        <Row key={index}>
+          <Column style={{ width: "7%" }}>{index+1}</Column>
+          <Column style={{ width: "68%" }}>{el.amount} 젤리</Column>
+          <Column style={{ width: "25%" }}>{el.createdAt.slice(0,10)}</Column>
+        </Row>
+        ))}
       </InfiniteScroll>
     </Wrapper>
   );

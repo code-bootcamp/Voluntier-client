@@ -58,10 +58,22 @@ export const BigImageWrapper = styled.div`
     height: 100px;
   }
 `;
+export const BigImage = styled.img`
+width: 100%;
+  height: 100%;
+  @media ${breakPoints.mobile}{
+    width: 100%;
+    height: 100%;
+  }
+`
 
 export const SmallImageWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
   height: 80px;
   @media ${breakPoints.mobile}{
+    display: flex;
+    flex-direction: row;
     height: 40px;
   }
 `;

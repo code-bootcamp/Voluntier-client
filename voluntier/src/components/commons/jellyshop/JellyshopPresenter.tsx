@@ -2,9 +2,46 @@ import { Modal } from "antd";
 import * as S from "./JellyshopStyles";
 import DaumPostcode from "react-daum-postcode";
 import useAuth from "../hooks/useAuth";
+import { gql, useMutation } from "@apollo/client";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from 'yup';
+import { v4 as uuidv4 } from 'uuid';
+
+const CREATE_PURCHASE = gql`
+  mutation createPurchase($createPurchaseInput: CreatePurchaseInput!){
+    createPurchase(createPurchaseInput: $createPurchaseInput){
+      id
+    }
+  }
+`
+
+const schema = yup.object({
+  recieverName: yup.string().required("수령인 입력은 필수입니다."),
+  recieverPhone: yup.string().required("핸드폰 번호는 필수입니다."),
+  address: yup.string().required("주소입력은 필수입니다."),
+  addressDetail : yup.string().required("상세주소는 필수입니다."),
+})
 
 export default function JellyshopModalUI(props) {
   useAuth()
+  const [createPurchase] = useMutation(CREATE_PURCHASE)
+
+  const {register , handleSubmit, setValue} = useForm({
+    resolver : yupResolver(schema),
+    mode:"onChange",
+})
+
+  const CreatePurchase = async(data) => {
+    data.userId = props.UserData?.fetchLoginUser.id
+    data.productId = props.data?.fetchProduct.id
+    data.itemCount = 1
+    const result = await createPurchase({
+      variables:{createPurchaseInput:{...data}}
+    })
+    console.log(result)
+  }
+  
   return (
     <>
       {props.isOpen && (
@@ -12,6 +49,7 @@ export default function JellyshopModalUI(props) {
           <DaumPostcode onComplete={props.onCompleteAddressSearch} />
         </Modal>
       )}
+      <form onSubmit={handleSubmit(CreatePurchase)}>
       <S.Wrapper>
         <S.UpperWrapper>
           <S.UpperLeftWrapper>
@@ -19,21 +57,27 @@ export default function JellyshopModalUI(props) {
               <S.Label>상품명</S.Label>
               <S.ProductName></S.ProductName>
             </S.TitleWrapper>
-            <S.BigImageWrapper>큰 이미지 자리</S.BigImageWrapper>
+            <S.BigImageWrapper>
+              <S.BigImage src={`https://storage.googleapis.com/${props.data?.fetchProduct.productImage[0].imageUrl}`}/>
+            </S.BigImageWrapper>
             <S.SmallImageWrapper>
-              <S.SmallImage />
+            {props.data?.fetchProduct.productImage.map((el,index)=>(
+            <div key={uuidv4()}>
+              <S.SmallImage src={`https://storage.googleapis.com/${el.imageUrl}`}/>
+            </div>
+            ))}
             </S.SmallImageWrapper>
           </S.UpperLeftWrapper>
           <S.UpperRightWrapper>
             <S.Label style={{ marginBottom: "30px" }}>배송지 정보</S.Label>
             <S.SmallLabel>수령인</S.SmallLabel>
-            <S.Input />
+            <S.Input {...register("recieverName")}/>
             <S.SmallLabel>연락처</S.SmallLabel>
-            <S.Input />
+            <S.Input {...register("recieverPhone")}/>
             <S.SmallLabel>배송지 주소</S.SmallLabel>
             <S.ZipcodeWrapper>
               <S.Zipcode value={props.zipcode} readOnly={true} />
-              <S.SearchButton onClick={props.onClickModal}>
+              <S.SearchButton type="button" onClick={props.onClickModal}>
                 우편번호
               </S.SearchButton>
             </S.ZipcodeWrapper>
@@ -42,18 +86,20 @@ export default function JellyshopModalUI(props) {
                 marginBottom: "8px",
                 paddingLeft: "10px",
               }}
+              onChange={setValue("address",props.address || "")}
               value={props.address}
               readOnly={true}
             />
-            <S.Input style={{ marginBottom: "30px" }} />
+            <S.Input {...register("addressDetail")} style={{ marginBottom: "30px" }} />
             <S.PriceWrapper>
               <S.Label>필요한 젤리</S.Label>
-              <S.Price>{} 개</S.Price>
+              <S.Price>{props.data?.fetchProduct.price} 개</S.Price>
             </S.PriceWrapper>
           </S.UpperRightWrapper>
         </S.UpperWrapper>
         <S.BuyButton>젤리 사용하기</S.BuyButton>
       </S.Wrapper>
+      </form>
     </>
   );
 }

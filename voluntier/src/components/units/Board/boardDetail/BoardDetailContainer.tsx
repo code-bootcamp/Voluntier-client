@@ -8,8 +8,6 @@ import {Modal} from 'antd'
 
 
 
-
-
 export default function BoardDetail() {
   
   const [isEdit,setIsEdit] = useState(false)

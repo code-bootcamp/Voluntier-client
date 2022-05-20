@@ -21,6 +21,7 @@ export const FETCH_USER_LOGIN = gql`
             email
             phone
             isAdmin
+            profileImageUrl
         }
     }
 `
@@ -59,7 +60,7 @@ export default function NavigationUI(props: IPropsNavigationUI) {
             onClick={props.moveToPage("/")}
           />
           <S.ProfileImg
-            src="/images/Group 8.png"
+            src={data?.fetchLoginUser.profileImageUrl? `https://storage.googleapis.com/${data?.fetchLoginUser.profileImageUrl}`:"/images/Group 8.png"}
             onClick={props.moveToPage("/mypage")}
           />
           

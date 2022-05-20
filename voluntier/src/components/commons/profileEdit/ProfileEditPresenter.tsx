@@ -1,105 +1,136 @@
-import styled from "@emotion/styled";
-import { breakPoints } from "../../../commons/styles/Media";
+import { gql, useMutation} from '@apollo/client'
+import { Modal } from 'antd';
+import { ChangeEvent, useRef, useState } from 'react'
+import * as S from './ProfileEditStyles'
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+const UPDATE_USER = gql`
+  mutation updateUser($updateUserInput: UpdateUserInput!){
+    updateUser(updateUserInput: $updateUserInput){
+      id
+      name
+    }
+  }
+`
+
+const UPLOAD_IMAGE = gql`
+mutation uploadImage($file: Upload!) {
+  uploadImage(file: $file)
+}
 `;
+const UPDATE_USER_IMAGE = gql`
+  mutation updateUserImage($profileImageUrl:String!){
+    updateUserImage(profileImageUrl:$profileImageUrl){
+      id
+    }
+  }
+`
+export default function ProfileEditUI(props) {
+  const [updateUserImage] = useMutation(UPDATE_USER_IMAGE)
+  const [upadateUser] = useMutation(UPDATE_USER)
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [uploadImage] = useMutation(UPLOAD_IMAGE);
+  const [Img,setImg] = useState("")
+  const [name,setName] = useState("")
+  const [password,setPassword] = useState("")
+  const [passwordCheck,setPasswordCheck] = useState("")
+  const [passwordError,setPasswordError] = useState("영문,숫자,특수문자를 포함한 8~16 사이입니다.")
+  const [passwordCheckError,setPasswordCheckError] = useState("")
 
-const WrapperLeft = styled.div`
-  width: 48%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ProfileImageWrapper = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 1px solid red;
-  margin-bottom: 20px;
-
-  @media ${breakPoints.tablet} {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+  const onChangeName = (event) => {
+    setName(event.target.value)
+  }
+  console.log(name)
+  const onChangePassword = (event) =>{
+    setPassword(event.target.value)
+    const regex = /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/
+    if (regex.test(event.target.value)) {
+      setPasswordError("");
+    }
+  }
+  const onChangeCheckPassword = (event) =>{
+    setPasswordCheck(event.target.value)
+    if (event.target.value === password) {
+      setPasswordCheckError("");
+    }
+  }
+ 
+  const onClickUpdateUser = async() =>{
+    if(password !== passwordCheck){
+      setPasswordCheckError("비밀번호가 다릅니다.")
+    }
+    if(password === passwordCheck){
+    try{
+    const result = await upadateUser({
+      variables:{updateUserInput: {name, password}}
+    })
+    console.log(result)
+    alert("이름 및 비밀번호 변경에 성공하였습니다.")
+  }catch(error){
+    alert(error.message)
+  }
+}
   }
 
-  @media ${breakPoints.mobile} {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+  
+
+  const addImage = async(event:ChangeEvent<HTMLInputElement>) =>{
+    const file:null|any = event.target.files?.[0]
+    try{
+        const result = await uploadImage({
+          variables:{file}
+        })
+        setImg(result.data.uploadImage)
+      }catch(error){
+        if(error instanceof Error) Modal.error({content:error.message})
+      }
+    }
+
+  const UpdateUserImage = async() => {
+    await updateUserImage({
+      variables:{profileImageUrl:Img}
+    })
   }
-`;
+  
+  const onClickImg = () =>{
+    fileRef.current?.click()
 
-const ProfileImageEditButton = styled.button`
-  width: 90px;
-  height: 40px;
-  color: #ffffff;
-  background-color: #0085cb;
-  font-size: 15px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-
-  @media ${breakPoints.tablet} {
-    width: 75px;
-    height: 30px;
-    font-size: 12px;
   }
+  // const deleteImage = (event:MouseEvent<HTMLImageElement>) => {
+  //   props.myImage.splice(Number((event.target as HTMLImageElement).id), 1)
+  //   props.setMyImage([...props.myImage])
+  // }
 
-  @media ${breakPoints.mobile} {
-    width: 60px;
-    height: 25px;
-    font-size: 10px;
-  }
-`;
+  
+  
 
-const WrapperRight = styled.div`
-  width: 48%;
-  display: flex;
-  flex-direction: column;
-
-  @media ${breakPoints.tablet} {
-    padding-top: 25px;
-  }
-
-  @media ${breakPoints.mobile} {
-    padding: 0px;
-  }
-`;
-
-const Input = styled.input`
-  height: 50px;
-  margin-bottom: 20px;
-  background-color: transparent;
-  border: 1px solid #b5b5b5;
-
-  @media ${breakPoints.tablet} {
-    height: 40px;
-    font-size: 15px;
-    margin-bottom: 15px;
-  }
-
-  @media ${breakPoints.mobile} {
-    height: 30px;
-    margin-bottom: 15px;
-  }
-`;
-
-export default function ProfileEditUI() {
+  // useEffect(() => {
+  //   if(props.data?.fetchProduct.productImage?.length){
+  //     const imageArr = props.data?.fetchProduct.productImage.map((el) => {
+  //       return  el.imageUrl
+  //     })
+  //     props.setMyImage(imageArr)
+  //   }
+  // },[props.data])
+  
   return (
-    <Wrapper>
-      <WrapperLeft>
-        <ProfileImageWrapper></ProfileImageWrapper>
-        <ProfileImageEditButton>사진 변경</ProfileImageEditButton>
-      </WrapperLeft>
-      <WrapperRight>
-        <Input placeholder="이름"></Input>
-        <Input placeholder="새로운 비밀번호"></Input>
-        <Input placeholder="비밀번호 확인"></Input>
-      </WrapperRight>
-    </Wrapper>
+    <S.Wrapper>
+      <S.WrapperLeft>
+        <S.ProfileImageWrapper>
+          <S.ProfileImage src={`https://storage.googleapis.com/${Img}`} onClick={onClickImg}/>
+        </S.ProfileImageWrapper>
+        <input type="file" ref={fileRef} style={{display:"none"}} onChange={addImage}/>
+        <S.ProfileImageEditButton onClick={UpdateUserImage}>사진 변경</S.ProfileImageEditButton>
+      </S.WrapperLeft>
+      <S.WrapperRight>
+        <S.Input onChange={onChangeName} placeholder="이름"></S.Input>
+        <S.Input type="password"  onChange={onChangePassword} placeholder="새로운 비밀번호"></S.Input>
+        <S.Error>{passwordError}</S.Error>
+        <S.Input type="password" onChange={onChangeCheckPassword} placeholder="비밀번호 확인"></S.Input>
+        <S.Error>{passwordCheckError}</S.Error>
+        <S.buttonWrapper>
+            <S.EditButton onClick={onClickUpdateUser}>수정완료</S.EditButton>
+          </S.buttonWrapper>
+      </S.WrapperRight>
+    </S.Wrapper>
   );
 }
