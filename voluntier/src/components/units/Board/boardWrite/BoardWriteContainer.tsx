@@ -51,7 +51,6 @@ const nonschema = yup.object({
   centerName: yup.string(),
   centerOwnerName: yup.string(),
   centerPhone: yup.string(),
-
   address: yup.string(),
   addressDetail: yup.string(),
 })
@@ -61,11 +60,13 @@ export default function BoardWrite(props) {
 useAuth()
 const router = useRouter()
 const [isModalVisible, setIsModalVisible] = useState(false);
-const [calendardate] = useRecoilState(calendarDateState)
+const [calendardate,] = useRecoilState(calendarDateState)
 const [address,setAddress] = useState("")
 const editorRef = useRef<Editor>(null);
 const [createBoard] = useMutation(CREATE_BOARD)
 const [updateBoard] = useMutation(UPDATE_BOARD)
+
+
 
 const {register, handleSubmit, setValue, getValues} = useForm({
   resolver: yupResolver(props.isEdit ? nonschema : schema),
@@ -98,8 +99,11 @@ const handleComplete = (data: any) => {
   };
 
 
-// 봉사 등록/수정 함수 
-console.log(props.isEdit)
+// 봉사 등록 함수 
+
+
+
+
   const onClickSubmit = async(data: IFormValues)=>{
 
     const contentsvalue = editorRef.current?.getInstance().getMarkdown()
@@ -127,7 +131,15 @@ console.log(props.isEdit)
     
   
 }
+// 봉사 수정함수 
 const onClickEdit =async(data)=>{
+
+  const contentsvalue = editorRef.current?.getInstance().getMarkdown()
+    
+  data.contents = contentsvalue
+  data.serviceDate = calendardate
+
+
    console.log("야야")
       console.log(data)
       if (data.title) myupdateBoardInput.title =data.title

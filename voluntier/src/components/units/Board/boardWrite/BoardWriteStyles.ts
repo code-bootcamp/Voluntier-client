@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   padding: 104px 70px;
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end; */
   @media ${breakPoints.mobile}{
     padding: 10px;
   }
@@ -34,12 +33,21 @@ export const Title = styled.div`
 export const TitleInput = styled.input`
   width: 100%;
   border: 1px solid #b5b5b5;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  ::placeholder{
+    font-size: 15px;
+  }
+ :focus{
+    outline: 1px solid skyblue;
+  }
 `;
 
 export const InputWrapper = styled.div`
   width: 100%;
   border: 1px solid #b5b5b5;
-  border-radius: 20px;
+  border-radius: 15px;
   display: flex;
   padding: 49px 20px 49px 20px;
   margin-bottom: 20px;
@@ -77,6 +85,7 @@ export const SearchButton = styled.button`
   height: 30px;
   border: none;
   margin: 0px 0px 0px 10px;
+  border-radius: 20px;
 `;
 
 export const Address = styled.input`
@@ -84,13 +93,30 @@ export const Address = styled.input`
   height: 30px;
   border: 1px solid #676767;
   margin-bottom: 8px;
-  /* font-size: 10px; */
+  padding-left: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  ::placeholder{
+    font-size: 15px;
+  }
+ :focus{
+    outline: 1px solid skyblue;
+  }
 `;
 
 export const AddressDetail = styled.input`
   width: 55%;
   height: 30px;
   border: 1px solid #676767;
+  padding-left: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  ::placeholder{
+    font-size: 15px;
+  }
+ :focus{
+    outline: 1px solid skyblue;
+  }
 `;
 
 export const InputWrapperRight = styled.div`
@@ -136,6 +162,15 @@ export const SmallInput = styled.input`
   height: 30px;
   margin-right: 5px;
   border: 1px solid #676767;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  ::placeholder{
+    font-size: 12px;
+  }
+ :focus{
+    outline: 1px solid skyblue;
+  }
 `;
 
 export const HalfWrapper = styled.div`
@@ -150,6 +185,7 @@ export const HalfWrapper = styled.div`
 `;
 export const Volun = styled.div`
   width: 25%;
+  margin-right: 5%;
   @media (min-width: 768px) and (max-width: 1382px){
   width: 50%;
   }

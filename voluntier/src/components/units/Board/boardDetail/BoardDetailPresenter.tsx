@@ -1,6 +1,6 @@
 import KakaoMap from "../../../commons/kakaomap";
 import dynamic from 'next/dynamic'
-import VolunteerList from "../../../commons/volunteerList";
+import VolunteerList from "../../../commons/volunteerList/volunteerListpresenter";
 import * as S from "./BoardDetailStyles";
 
 const ToastUIViewer = dynamic(()=>import('../../../commons/texteditor/viewer'),{ssr:false})
