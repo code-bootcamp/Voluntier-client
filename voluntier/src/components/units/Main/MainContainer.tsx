@@ -4,8 +4,11 @@ import MainUI from "./MainPresenter";
 export default function Main() {
   const settings = {
     dots: false,
+    fade: true,
+    speed: 3000,
     infinite: true,
-    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     responsive: [{ breakpoint: 1024 }],

@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   z-index: 1; */
   justify-content: space-between;
   align-items: center;
+  border: 1px solid red;
   padding: 0px 80px;
   margin-top: 70px;
 
@@ -25,9 +26,14 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Logo = styled.img`
-  width: 300px;
+export const Logo = styled.div`
+  width: 273px;
+  height: 80px;
   cursor: pointer;
+  background-image: url("../../../../images/main/main_logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid;
 
   @media ${breakPoints.mobile} {
     width: 150px;
@@ -44,7 +50,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 46%;
+  width: 43%;
   height: 51px;
   background-color: #ffffff;
   border-radius: 30px;
