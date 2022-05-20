@@ -17,7 +17,8 @@ export default function BoardDetail() {
   const [deleteBoard] = useMutation(DELETE_BOARD)
   const {data} = useQuery(FETCH_BOARD,
     {variables:{boardId: String(router.query.boardId)}})
-    const {data : enrolldata} = useQuery(FETCH_ENROLL,{
+    
+    const {data : enrolldata, refetch} = useQuery(FETCH_ENROLL,{
       variables: {boardId: String(router.query.boardId)}
     })
 
@@ -70,5 +71,6 @@ export default function BoardDetail() {
   DeleteBoard={DeleteBoard}
   onClickEdit={onClickEdit}
   isEdit={isEdit}
+  refetch={refetch}
   />;
 }
