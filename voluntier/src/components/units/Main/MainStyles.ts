@@ -17,6 +17,7 @@ export const MySlider = styled(Slider)`
   @media ${breakPoints.tablet} {
     width: 100%;
     height: 650px;
+    margin-bottom: 15px;
   }
 
   @media ${breakPoints.mobile} {
@@ -128,6 +129,7 @@ export const SliderBean = styled.div`
   @media ${breakPoints.tablet} {
     width: 220px;
     height: 360px;
+
     @keyframes motion {
       0% {
         margin-top: -20px;
@@ -142,6 +144,7 @@ export const SliderBean = styled.div`
     width: 160px;
     height: 270px;
     margin-left: -5%;
+
     @keyframes motion {
       0% {
         margin-top: 10px;
@@ -155,6 +158,7 @@ export const SliderBean = styled.div`
   @media (max-width: 470px) {
     width: 120px;
     height: 200px;
+
     @keyframes motion {
       0% {
         margin-top: 10px;
@@ -171,20 +175,19 @@ export const SliderItem = styled.div`
   height: 1200px;
   background: url("../../../../images/main/main_illust.png") no-repeat center;
   background-size: cover;
-  /* transform: translateY(80px);
-  opacity: 1;
-  transition: all 1.0s ease; */
 
   @media ${breakPoints.tablet} {
     width: 100%;
     height: 600px;
     background-size: cover;
   }
+
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 600px;
     background-size: cover;
   }
+
   @media (max-width: 470px) {
     height: 330px;
   }
@@ -203,6 +206,7 @@ export const Text = styled.div`
     font-size: 20px;
     width: 290px;
   }
+
   @media ${breakPoints.mobile} {
     font-size: 14px;
     width: 160px;
@@ -212,60 +216,6 @@ export const Text = styled.div`
     width: 120px;
   }
 `;
-
-// export const DogBiscuit = styled.div`
-//   width: 410px;
-//   height: 130px;
-//   background-image: url("../../../../../images/UnionBiscuit.png");
-//   font-family: "Sniglet2";
-//   margin-right: 1150px;
-//   margin-bottom: 40px;
-//   background-repeat: no-repeat;
-//   font-size: 32px;
-//   color: white;
-//   letter-spacing: 1px;
-//   padding: 20px 20px 20px 40px;
-
-//   @media ${breakPoints.tablet} {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     background-size: contain;
-//     font-size: 16px;
-//     width: 120px;
-//     height: 50px;
-//     margin-right: 650px;
-//     margin-top: 20px;
-//     padding: 20px 20px 20px 26px;
-//   }
-
-//   @media ${breakPoints.mobile} {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     background-size: contain;
-//     font-size: 14px;
-//     width: 100px;
-//     height: 40px;
-//     margin-right: 460px;
-//     margin-bottom: 40px;
-//     margin-top: 29px;
-//     margin-left: 50px;
-//     padding: 20px 20px 20px 20px;
-//   }
-
-//   @media (max-width: 470px) {
-//     color: white;
-//     font-size: 10px;
-//     width: 80px;
-//     height: 30px;
-//     padding: 0px;
-//     margin-right: 250px;
-//     margin-bottom: 40px;
-//   }
-// `;
 
 export const CategoryWrapper = styled.div`
   padding: 0% 5%;
@@ -279,6 +229,7 @@ export const CategoryWrapper = styled.div`
   @media ${breakPoints.tablet} {
     padding: 0% 5%;
     width: 100%;
+    margin-bottom: 10px;
   }
 
   @media ${breakPoints.mobile} {
@@ -306,17 +257,19 @@ export const Category = styled.div`
   cursor: pointer;
 
   @media ${breakPoints.tablet} {
-    width: 200px;
+    width: 184px;
     height: 200px;
     background-size: contain;
     background-repeat: no-repeat;
     text-align: center;
     line-height: inherit;
+    margin-bottom: 0px;
   }
 
   @media ${breakPoints.mobile} {
-    width: 100px;
+    width: 101px;
     height: 110px;
+    margin-bottom: 0px;
   }
 
   @media (max-width: 470px) {

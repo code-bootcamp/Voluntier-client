@@ -5,41 +5,40 @@ export const Wrapper = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  /* position: relative;
-  z-index: 1; */
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
   padding: 0px 80px;
   margin-top: 70px;
+  /* border: 1px solid red; */
 
   @media ${breakPoints.tablet} {
-    margin-top: 10px;
+    margin-top: 25px;
   }
+
   @media ${breakPoints.mobile} {
     margin-top: 15px;
-    padding: 0px 50px;
-  }
-  @media (max-width: 400px) {
-    margin-top: 10px;
-    padding: 0px 50px 0px 30px;
+    padding: 0px 10px;
   }
 `;
 
 export const Logo = styled.div`
   width: 273px;
   height: 80px;
-  cursor: pointer;
   background-image: url("../../../../images/main/main_logo.png");
   background-size: contain;
   background-repeat: no-repeat;
-  border: 1px solid;
+  background-position: center;
+  cursor: pointer;
+
+  @media ${breakPoints.tablet} {
+    width: 136.5px;
+    height: 40px;
+  }
 
   @media ${breakPoints.mobile} {
-    width: 150px;
-  }
-  @media (max-width: 400px) {
-    width: 100px;
+    width: 41px;
+    height: 30px;
+    background-image: url("../../../../images/main/logo_mobile.png");
   }
 `;
 
@@ -47,6 +46,16 @@ export const ButtonWrapper = styled.div`
   width: 15%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+
+  @media ${breakPoints.tablet} {
+    width: 25%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 25%;
+  }
 `;
 
 export const Button = styled.button`
@@ -58,26 +67,15 @@ export const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
 
-  @media ${breakPoints.pc} {
-    height: 40px;
-    font-size: 14px;
-  }
   @media ${breakPoints.tablet} {
-    height: 30px;
-    font-size: 12px;
-  }
-  @media ${breakPoints.mobile} {
-    width: auto;
-    height: 25px;
-    transform: translate(-20%, -20%) scale(0.8);
-    display: inline-block;
-  }
-  @media (max-width: 400px) {
-    width: 100%;
     height: 20px;
-    transform: translate(-15%, -20%) scale(0.8);
-    display: inline-block;
-    font-size: 1px;
-    line-height: 0.3px;
+    font-size: 10px;
+  }
+
+  @media ${breakPoints.mobile} {
+    height: 20px;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 12px;
   }
 `;

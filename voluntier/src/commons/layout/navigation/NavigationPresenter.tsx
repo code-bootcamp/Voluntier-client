@@ -6,31 +6,27 @@ import { accessTokenState } from "../../store";
 
 interface IPropsNavigationUI {
   moveToPage(arg0: string): import("react").MouseEventHandler<HTMLImageElement>;
-  onClickLogout : () => void
-  // hide: () => void;
-  // handleVisibleChange: () => void;
-  // visible: boolean;
-  // onClickMutation: () => void;
+  onClickLogout: () => void;
 }
 
 export const FETCH_USER_LOGIN = gql`
-    query fetchLoginUser{
-        fetchLoginUser{
-            id
-            name
-            email
-            phone
-            isAdmin
-            profileImageUrl
-        }
+  query fetchLoginUser {
+    fetchLoginUser {
+      id
+      name
+      email
+      phone
+      isAdmin
+      profileImageUrl
     }
-`
+  }
+`;
 
 export default function NavigationUI(props: IPropsNavigationUI) {
   const [windowSize, setWindowSize] = useState(false);
-  const {data} = useQuery(FETCH_USER_LOGIN)
-  const [accessToken,] = useRecoilState(accessTokenState);
-  console.log(data)
+  const { data } = useQuery(FETCH_USER_LOGIN);
+  const [accessToken] = useRecoilState(accessTokenState);
+  console.log(data);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -60,27 +56,39 @@ export default function NavigationUI(props: IPropsNavigationUI) {
             onClick={props.moveToPage("/")}
           />
           <S.ProfileImg
-            src={data?.fetchLoginUser.profileImageUrl? `https://storage.googleapis.com/${data?.fetchLoginUser.profileImageUrl}`:"/images/Group 8.png"}
+            src={
+              data?.fetchLoginUser.profileImageUrl
+                ? `https://storage.googleapis.com/${data?.fetchLoginUser.profileImageUrl}`
+                : "/images/Group 8.png"
+            }
             onClick={props.moveToPage("/mypage")}
           />
-          
-            {accessToken?
+
+          {accessToken ? (
             <S.UserLoginWrapper>
-                <S.Font>😙 {data?.fetchLoginUser.name}님 환영합니다!</S.Font>
+              <S.Font>😙 {data?.fetchLoginUser.name}님 환영합니다!</S.Font>
               <S.UserInfoWrapper>
-                <S.MyPageLogout onClick={props.moveToPage("/mypage")}>My Page</S.MyPageLogout>
+                <S.MyPageLogout onClick={props.moveToPage("/mypage")}>
+                  My Page
+                </S.MyPageLogout>
                 <S.Mark></S.Mark>
-                <S.MyPageLogout onClick={props.onClickLogout}>Logout</S.MyPageLogout>
+                <S.MyPageLogout onClick={props.onClickLogout}>
+                  Logout
+                </S.MyPageLogout>
               </S.UserInfoWrapper>
             </S.UserLoginWrapper>
-            :
+          ) : (
             <S.LoginInfoWrapper>
-              <S.LoginJoin onClick={props.moveToPage("/login")}>Login</S.LoginJoin>
-            <S.Mark></S.Mark>
-              <S.LoginJoin onClick={props.moveToPage("/signup")}>Join</S.LoginJoin>
+              <S.LoginJoin onClick={props.moveToPage("/login")}>
+                Login
+              </S.LoginJoin>
+              <S.Mark></S.Mark>
+              <S.LoginJoin onClick={props.moveToPage("/signup")}>
+                Join
+              </S.LoginJoin>
             </S.LoginInfoWrapper>
-            }
-          
+          )}
+
           <S.ContentsWrapper>
             <S.Category onClick={props.moveToPage("/boards")}>
               봉사조회 및 신청
@@ -91,7 +99,6 @@ export default function NavigationUI(props: IPropsNavigationUI) {
             <S.Category onClick={props.moveToPage("/donation")}>
               젤리 후원하기
             </S.Category>
-            {/* <S.Category onClick={props.onClickMutation}>젤리샵</S.Category> */}
             <S.Category onClick={props.moveToPage("/products")}>
               젤리샵
             </S.Category>
@@ -132,11 +139,9 @@ export default function NavigationUI(props: IPropsNavigationUI) {
           <S.MobileCategory>
             <S.CategoryIcon
               src="/images/navigation/mypage.png"
-              // style={{ color: "#8E8E93" }}
               style={{ filter: "opacity(.47) drop-shadow(0 0 0 #8E8E93)" }}
               onClick={props.moveToPage("/mypage")}
             />
-            {/* <S.MyUserOutlined /> */}
             <S.CategoryText onClick={props.moveToPage("/mypage")}>
               Mypage
             </S.CategoryText>
