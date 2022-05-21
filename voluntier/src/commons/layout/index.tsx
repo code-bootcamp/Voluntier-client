@@ -5,6 +5,13 @@ import { breakPoints } from "../styles/Media";
 import { useRouter } from "next/router";
 import Footer from "./footer/FooterContainer";
 
+const OuterWrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 const Wrapper = styled.div`
   /* height: 110vh; */
   height: 100%;
@@ -62,13 +69,13 @@ export default function LayOut(props: LayOutPageProps) {
     <div>
       {/* 웹, 태블릿 */}
       {!windowSize && (
-        <>
+        <OuterWrapper>
           <Wrapper>
             {!isHidden && <Navigation />}
             <Body>{props.children}</Body>
           </Wrapper>
           <Footer />
-        </>
+        </OuterWrapper>
       )}
 
       {/* 모바일 */}

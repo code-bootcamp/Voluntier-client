@@ -14,7 +14,7 @@ export default function FooterUI() {
         </S.InfoInnerWrapper>
         <S.InfoInnerWrapper>
           <S.Label>사업자명</S.Label>
-          <S.Detail>Voluntier</S.Detail>
+          <S.Detail>VolunTier</S.Detail>
         </S.InfoInnerWrapper>
         <S.InfoInnerWrapper>
           <S.Label>사업자주소</S.Label>
