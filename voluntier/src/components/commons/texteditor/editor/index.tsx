@@ -6,6 +6,7 @@ import {gql, useMutation} from '@apollo/client'
 
 
 
+
 const Editor = styled(OurEditor)``
 
 export const Wrapper =styled.div`
@@ -22,11 +23,12 @@ const UPLOAD_IMAGE = gql`
 
 
 export default function EditorUI(props:any){
+    
 
     const [uploadImage] = useMutation(UPLOAD_IMAGE)
  return (
      <Wrapper>
-
+         {props.defaultData?
         <Editor 
         previewStyle='vertical'
         placeholder='봉사 센터의 특이사항등을 상세히 설명해주시고, 센터 사진을 끌어다 놓아보세요!'
@@ -48,6 +50,7 @@ export default function EditorUI(props:any){
         }}}
         
         />
+    :<></>}
      </Wrapper>
  )   
 }

@@ -1,4 +1,4 @@
-import { useRef, useState} from 'react';
+import { useEffect, useRef, useState} from 'react';
 import BoardWriteUI from "./boardWritePresenter";
 import {useForm} from "react-hook-form"
 import { Editor } from "@toast-ui/react-editor";
@@ -57,7 +57,8 @@ const nonschema = yup.object({
 
 
 export default function BoardWrite(props) {
-useAuth()
+  useAuth()
+
 const router = useRouter()
 const [isModalVisible, setIsModalVisible] = useState(false);
 const [calendardate,] = useRecoilState(calendarDateState)
@@ -139,9 +140,6 @@ const onClickEdit =async(data)=>{
   data.contents = contentsvalue
   data.serviceDate = calendardate
 
-
-   console.log("야야")
-      console.log(data)
       if (data.title) myupdateBoardInput.title =data.title
       if (data.contents) {myupdateBoardInput.contents = data.contents}
       if (data.centerName) {myupdateBoardInput.centerName = data.centerName}
