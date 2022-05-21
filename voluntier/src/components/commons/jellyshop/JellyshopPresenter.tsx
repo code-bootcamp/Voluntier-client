@@ -17,8 +17,8 @@ const CREATE_PURCHASE = gql`
 `
 
 const schema = yup.object({
-  recieverName: yup.string().required("수령인 입력은 필수입니다."),
-  recieverPhone: yup.string().required("핸드폰 번호는 필수입니다."),
+  receiverName: yup.string().required("수령인 입력은 필수입니다."),
+  receiverPhone: yup.string().required("핸드폰 번호는 필수입니다."),
   address: yup.string().required("주소입력은 필수입니다."),
   addressDetail : yup.string().required("상세주소는 필수입니다."),
 })
@@ -71,9 +71,9 @@ export default function JellyshopModalUI(props) {
           <S.UpperRightWrapper>
             <S.Label style={{ marginBottom: "30px" }}>배송지 정보</S.Label>
             <S.SmallLabel>수령인</S.SmallLabel>
-            <S.Input {...register("recieverName")}/>
+            <S.Input {...register("receiverName")}/>
             <S.SmallLabel>연락처</S.SmallLabel>
-            <S.Input {...register("recieverPhone")}/>
+            <S.Input {...register("receiverPhone")}/>
             <S.SmallLabel>배송지 주소</S.SmallLabel>
             <S.ZipcodeWrapper>
               <S.Zipcode value={props.zipcode} readOnly={true} />
