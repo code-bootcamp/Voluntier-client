@@ -19,6 +19,7 @@ export const Top = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin-bottom: 10px;
 
   @media ${breakPoints.tablet} {
@@ -35,6 +36,7 @@ export const Top = styled.div`
 export const TopTitle = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -58,6 +60,7 @@ export const Title = styled.div`
 
 export const TopContents = styled.div`
   height: 50%;
+  width: 1400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
