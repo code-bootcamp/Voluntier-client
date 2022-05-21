@@ -23,7 +23,7 @@ export default function BoardDetailUI(props) {
                 <S.InfoWrapper>
                 <S.InfoLeftWrapper>
                   <S.Map>
-                    <KakaoMap data= {props.data}/>
+                    <KakaoMap data = {props.data}/>
                   </S.Map>
                   <S.LocationWrapper>
                     <S.LabelImage src="/images/boardWrite/location.png" />
@@ -80,7 +80,8 @@ export default function BoardDetailUI(props) {
                     <S.LabelImage src="/images/boardWrite/activity.png" />
                     <S.Label>활동 내용</S.Label>
                   </S.DetailDisplay>
-                  <ToastUIViewer data={props.data}/>
+                  {props.data?
+                  <ToastUIViewer data={props.data}/>: <></>}
                 </S.ContentsDetailWrapper>
               </S.ContentsWrapper>
             </S.InnerWrapperLeftUpper>
@@ -108,7 +109,6 @@ export default function BoardDetailUI(props) {
           enrolldata={props.enrolldata}
           boarddata={props.data?.fetchBoard}
           Userdata={props.Userdata}
-          
           />
         </S.InnerWrapperRight>
         
