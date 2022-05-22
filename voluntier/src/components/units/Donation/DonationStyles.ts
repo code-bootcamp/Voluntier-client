@@ -195,7 +195,7 @@ export const Bottom = styled.div`
 
 export const Price = styled.div`
   width: 200px;
-  height: 200px;
+  height: 500px;
   background-size: 100%;
   background-repeat: no-repeat;
   display: flex;
@@ -223,6 +223,11 @@ export const Price = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Pricediv = styled.div`
+    
+
+`
 
 export const Price2 = styled.div`
   width: 200px;

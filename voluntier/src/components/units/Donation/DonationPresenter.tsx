@@ -68,6 +68,7 @@ export default function DonationUI() {
               backgroundImage: `url("../../../../images/donation/고양이발(치즈).png")`,
             }}
           >
+            <S.Pricediv/>
             <S.PriceDetail id={String(10000)}>1만 젤리 후원</S.PriceDetail>
           </S.Price>
           <S.Price2
