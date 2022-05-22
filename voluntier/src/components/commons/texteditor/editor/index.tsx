@@ -50,7 +50,26 @@ export default function EditorUI(props:any){
         }}}
         
         />
-    :<></>}
+    :<Editor 
+    previewStyle='vertical'
+    placeholder='봉사 센터의 특이사항등을 상세히 설명해주시고, 센터 사진을 끌어다 놓아보세요!'
+    ref={props.editorRef}
+    hooks={{addImageBlobHook: async(file : Blob | File, callback)=>{
+        try{
+            
+            const result = await uploadImage({
+                variables: {file}
+            })
+            console.log(result)
+            const result1 = result?.data.uploadImage.replaceAll(' ','%20')
+            const url = `https://storage.googleapis.com/${String(result1)}`
+            callback(url)
+        }catch(error){
+            alert("사진 올린게 좀 이상한것 같은데")
+        }
+    }}}
+    
+    />}
      </Wrapper>
  )   
 }
