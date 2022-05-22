@@ -83,7 +83,7 @@ export default function LayOut(props: LayOutPageProps) {
         <Wrapper>
           <MobileWrapper>
             <Body>{props.children}</Body>
-            <Navigation />
+            {!isHidden && <Navigation />}
           </MobileWrapper>
         </Wrapper>
       )}
