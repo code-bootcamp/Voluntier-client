@@ -8,7 +8,6 @@ const ToastUIViewer = dynamic(()=>import('../../../commons/texteditor/viewer'),{
 
 export default function BoardDetailUI(props) {
   console.log(props.data)
-
   return (
    <div>
 
@@ -109,6 +108,7 @@ export default function BoardDetailUI(props) {
           enrolldata={props.enrolldata}
           boarddata={props.data?.fetchBoard}
           Userdata={props.Userdata}
+
           />
         </S.InnerWrapperRight>
         

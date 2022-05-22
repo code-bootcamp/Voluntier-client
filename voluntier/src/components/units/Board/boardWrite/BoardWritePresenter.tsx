@@ -67,7 +67,7 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
             <S.Label>봉사 날짜</S.Label>
           </S.LabelWrapper>
           <S.LabelWrapper>
-          <Mycalendar defaultData ={props.defaultData}
+          <Mycalendar isEdit={props.isEdit} defaultData ={props.defaultData}
           />
           </S.LabelWrapper>
             <S.LabelWrapper>
@@ -85,12 +85,11 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
         <S.LabelImage src="/images/boardWrite/activity.png" />
         <S.Label>활동 내용</S.Label>
       </S.LabelWrapper>
-
-      <EditorUI 
+      
+      <EditorUI
       editorRef={props.editorRef} 
       defaultData={props.defaultData}/>
-      
-      
+
       <S.SubmitButton>{props.isEdit? "수정하기":"등록하기"}</S.SubmitButton>
       {props.isModalVisible && (
         <Modal 

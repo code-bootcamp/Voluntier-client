@@ -29,7 +29,7 @@ const { TabPane } = Tabs;
 
 export default function MypageUI(props) {
   const {data} = useQuery(FETCH_USER_LOGIN)
-  // onChangeName={onChangeName} onChangePassword={onChangePassword} onChangeCheckPassword={onChangeCheckPassword} passwordError={passwordError} passwordCheckError={passwordCheckError}
+
   return (
     <>
       {props.isOpen && (
