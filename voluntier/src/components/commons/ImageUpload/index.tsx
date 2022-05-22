@@ -42,6 +42,9 @@ export default function UploadFile(props:IUploadFile) {
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
 
   const addImage = (event:ChangeEvent<HTMLInputElement>) =>{
+    if(props.myImage.length>3){
+      return alert("상품 이미지는 최대 4장까지 올릴 수 있습니다.")
+    }
     const file:null|any = event.target.files
     const ImageURLList = [...file]
     ImageURLList.map(async (el:any) =>{

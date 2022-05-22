@@ -64,8 +64,8 @@ export const ProductName = styled.div`
 `;
 
 export const MySlider = styled(Slider)`
-  width: 100%;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   margin-bottom: 24px;
   align-self: center;
 `

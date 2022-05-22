@@ -55,9 +55,9 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
             </S.TitleWrapper>
           
              <S.MySlider {...settings}>
-             {props.data?.fetchProduct.productImage.map((el,index)=>(
+             {props.data?.fetchProduct.productImage.map((el:any,index:number)=>(
               <div key={index}>
-              <S.Wow src={`https://storage.googleapis.com/${el.imageUrl}`}/>
+              <S.Wow id={index+1} src={`https://storage.googleapis.com/${el.imageUrl}`}/>
               </div>
               ))}
               </S.MySlider>
@@ -72,7 +72,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
             <S.ImageWrapper>
             {props.data?.fetchProduct.productImage.map((el,index)=>(
               <div key={index}>
-              <S.Image src={`https://storage.googleapis.com/${el.imageUrl}`}/>
+              <S.Image id={index+1} src={`https://storage.googleapis.com/${el.imageUrl}`}/>
               </div>
               ))}
             </S.ImageWrapper>

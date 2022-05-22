@@ -42,7 +42,7 @@ export default function ProductWrite(props:IPropsProductWrite) {
             }}
           })
           console.log(result)
-          Modal.success({content:"게시물 등록에 성공했습니다."})
+          Modal.success({content:"상품 등록에 성공했습니다."})
           router.push(`/products/${result.data?.createProduct.id}`)
         }catch(error){
           Modal.error({content:error.message})
