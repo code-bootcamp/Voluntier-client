@@ -26,7 +26,6 @@ export default function NavigationUI(props: IPropsNavigationUI) {
   const [windowSize, setWindowSize] = useState(false);
   const { data } = useQuery(FETCH_USER_LOGIN);
   const [accessToken] = useRecoilState(accessTokenState);
-  console.log(data);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
