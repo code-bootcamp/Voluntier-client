@@ -33,7 +33,6 @@ export default function ProductEditorUI(props:any){
         previewStyle='vertical'
         placeholder='봉사 센터의 특이사항등을 상세히 설명해주시고, 센터 사진을 끌어다 놓아보세요!'
         ref={props.editorRef}
-        {...props.register("details")}
         initialValue={props.data?.fetchProduct.details || ""}
         hooks={{addImageBlobHook: async(file : Blob | File, callback)=>{
             try{

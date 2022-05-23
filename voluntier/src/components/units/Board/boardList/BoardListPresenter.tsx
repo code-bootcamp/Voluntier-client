@@ -43,19 +43,12 @@ export default function BoardListUI(props) {
             fontFamily: "GmarketSans",
           }}
         >
-          <S.ColumnHeaderBasic
-            style={{
-              fontWeight: "bold",
-            }}
-          >
-            글번호
-          </S.ColumnHeaderBasic>
           <S.ColumnHeaderTitle
             style={{
               fontWeight: "bold",
             }}
           >
-            모집제목/주소
+          모집 내용 및 주소
           </S.ColumnHeaderTitle>
           <S.ColumnHeaderBasic
             style={{
@@ -74,7 +67,6 @@ export default function BoardListUI(props) {
         </S.TitleRow>
         {props.data?.fetchBoards.map((el, index) => (
           <S.Row key={index}>
-            <S.ColumnHeaderBasic>{index + 1}</S.ColumnHeaderBasic>
             <S.ColumnHeaderTitle onClick={moveToPage(`/boards/${el.id}`)}>
               <S.TitleBox>
                 <S.TitleImage src={`${el.contents.includes("https") ? el.contents?.slice(el.contents.indexOf("https"),el.contents.indexOf(")")) : "../../../../images/Group 8.png" }`}/>
@@ -85,8 +77,8 @@ export default function BoardListUI(props) {
               </S.TitleBox>
             </S.ColumnHeaderTitle>
             <S.ColumnHeaderBasic>{el.centerName}</S.ColumnHeaderBasic>
-            <S.ColumnHeaderBasic>
-              {el.createdAt.slice(0, 10)}
+            <S.ColumnHeaderBasic style={{ fontSize: "10px"}}>
+              {el.createdAt.slice(2, 10)}
             </S.ColumnHeaderBasic>
             <S.ColumnHeaderBasic style={{ display: "none" }}>
               {el.location1}
