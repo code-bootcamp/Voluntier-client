@@ -1,6 +1,7 @@
 import PaginationUI from "./PaginationPresenter";
 import { useState, MouseEvent } from "react";
 
+
 interface PaginationProps {
   data?: any;
   refetch?: any;
@@ -33,7 +34,7 @@ export default function Pagination(props: PaginationProps) {
     setStartPage((prev) => prev - 10);
     props.refetch({ page: startPage - 10 });
   };
-
+console.log(index)
   return (
     <PaginationUI
       onClickPage={onClickPage}

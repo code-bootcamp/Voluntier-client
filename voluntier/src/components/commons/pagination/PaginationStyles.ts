@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 45px;
 `;
 
 export const InnerWrapper = styled.div`

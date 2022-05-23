@@ -11,6 +11,7 @@ import {Modal} from 'antd'
 export default function BoardDetail() {
   
   const [isEdit,setIsEdit] = useState(false)
+  const [isChat,setIsChat] = useState(false)
   const router = useRouter()
   const {data : Userdata} = useQuery(FETCH_USER_LOGIN)
   const [createenroll] = useMutation(CREATE_ENROLL)
@@ -61,6 +62,10 @@ export default function BoardDetail() {
     router.push(`/boards/${router.query.boardId}/edit`)
   }
 
+  const onClickChat =()=>{
+    setIsChat((prev)=>(!prev))
+
+  }
 
   
   return <BoardDetailUI 
@@ -71,6 +76,8 @@ export default function BoardDetail() {
   DeleteBoard={DeleteBoard}
   onClickEdit={onClickEdit}
   isEdit={isEdit}
+  isChat={isChat}
+  onClickChat={onClickChat}
   refetch={refetch}
   />;
 }

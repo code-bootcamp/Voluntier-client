@@ -40,7 +40,6 @@ const schema = yup.object({
   centerName: yup.string().required("봉사센터 이름을 작성해주세요 "),
   centerOwnerName: yup.string().required("봉사센터 대표이름을 작성해주세요 "),
   centerPhone: yup.string().required("봉사센터의 대표전화번호를 작성해주세요 "),
-  recruitCount: yup.number().typeError("숫자로 입력해주세요.").required("봉사모집 인원을 작성해주세요 "),
   serviceTime: yup.number().typeError("숫자로 입력해주세요.").required("봉사소요시간을 작성해주세요 "),
   address: yup.string().required("봉사센터주소를 작성해주세요 "),
   addressDetail: yup.string().required("봉사센터 상세주소를 작성해주세요 "),
@@ -108,7 +107,7 @@ const handleComplete = (data: any) => {
   const onClickSubmit = async(data: IFormValues)=>{
 
     const contentsvalue = editorRef.current?.getInstance().getMarkdown()
-    
+    data.recruitCount = 10
     data.contents = contentsvalue
     data.serviceDate = calendardate
     
@@ -136,16 +135,14 @@ const handleComplete = (data: any) => {
 const onClickEdit =async(data)=>{
 
   const contentsvalue = editorRef.current?.getInstance().getMarkdown()
-    
   data.contents = contentsvalue
   data.serviceDate = calendardate
 
-      if (data.title) myupdateBoardInput.title =data.title
+      if (data.title) myupdateBoardInput.title = data.title
       if (data.contents) {myupdateBoardInput.contents = data.contents}
       if (data.centerName) {myupdateBoardInput.centerName = data.centerName}
       if (data.centerOwnerName) {myupdateBoardInput.centerOwnerName = data.centerOwnerName}
       if (data.centerPhone) {myupdateBoardInput.centerPhone = data.centerPhone}
-      if (data.recruitCount) {myupdateBoardInput.recruitCount = data.recruitCount}
       if (data.serviceTime) {myupdateBoardInput.serviceTime = data.serviceTime}
       if (data.serviceDate) {myupdateBoardInput.serviceDate = data.serviceDate}
       if (data.address) {myupdateBoardInput.address = data.address}

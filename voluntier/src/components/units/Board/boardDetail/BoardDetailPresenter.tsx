@@ -2,16 +2,48 @@ import KakaoMap from "../../../commons/kakaomap";
 import dynamic from 'next/dynamic'
 import VolunteerList from "../../../commons/volunteerList/volunteerListpresenter";
 import * as S from "./BoardDetailStyles";
+import { useEffect, useState } from "react";
 
 const ToastUIViewer = dynamic(()=>import('../../../commons/texteditor/viewer'),{ssr:false})
 
 
 export default function BoardDetailUI(props) {
-  console.log(props.data)
+  const [windowSize, setWindowSize] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    } else {
+      setWindowSize(false);
+    }
+  };
+
+  useEffect(() => {
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+    window.removeEventListener("resize", handleResize);
+    };
+  }, [windowSize]);
+
   return (
    <div>
 
-    <S.Wrapper>
+    <S.Wrapper isChat={props.isChat}>
+
+      {props.isChat &&
+      <S.ChatWrapper>
+            <S.TalkWrapper>
+            <S.TalkHeader/>
+            <S.TalkContents/>
+            <S.TalkWrite placeholder="센터의 궁금한 점을 물어보세요! 실시간으로 답변해드립니다!"></S.TalkWrite>
+          </S.TalkWrapper>
+
+      </S.ChatWrapper>
+    }
+
         <S.TitleWrapper>
           <S.TitleLabel>Title</S.TitleLabel>
           <S.Title>{props.data?.fetchBoard?.title}</S.Title>
@@ -24,10 +56,6 @@ export default function BoardDetailUI(props) {
                   <S.Map>
                     <KakaoMap data = {props.data}/>
                   </S.Map>
-                  <S.LocationWrapper>
-                    <S.LabelImage src="/images/boardWrite/location.png" />
-                    <S.Location>{props.data?.fetchBoard?.address} , {props.data?.fetchBoard?.addressDetail}</S.Location>
-                  </S.LocationWrapper>
                 </S.InfoLeftWrapper>
               <S.InfoRightWrapper>
                 <S.InfoDetailWrapper>
@@ -50,6 +78,17 @@ export default function BoardDetailUI(props) {
                   <S.Label>봉사 날짜</S.Label>
                   <S.Detail>{props.data?.fetchBoard?.serviceDate.slice(0,10)}</S.Detail>
                 </S.InfoDetailWrapper>
+                  <S.LocationWrapper>
+                    <S.LocationDisplay>
+
+                    <S.LabelImage src="/images/boardWrite/location.png" />
+                    <S.Label>센터 위치</S.Label>
+                    </S.LocationDisplay>
+                    
+
+                    <S.Detail>{props.data?.fetchBoard?.address} , {props.data?.fetchBoard?.addressDetail}</S.Detail>
+                    
+                  </S.LocationWrapper>
                 <div style={{ marginBottom: "20px" }}>
                 <S.InfoDetailWrapper>
                   <S.QuestionIcon/>
@@ -98,7 +137,9 @@ export default function BoardDetailUI(props) {
               }
             </S.ButtonWrapper>
         </S.InnerWrapperLeft>
-        <S.InnerWrapperRight>
+        {!windowSize &&
+        (
+          <S.InnerWrapperRight>
           <S.TalkWrapper>
             <S.TalkHeader/>
             <S.TalkContents/>
@@ -107,13 +148,26 @@ export default function BoardDetailUI(props) {
           <VolunteerList 
           enrolldata={props.enrolldata}
           boarddata={props.data?.fetchBoard}
-          Userdata={props.Userdata}
-
+          Userdata={props.Userdata}          
           />
         </S.InnerWrapperRight>
+          )}
+        {windowSize &&
+        (
+          <>
+          <VolunteerList 
+          enrolldata={props.enrolldata}
+          boarddata={props.data?.fetchBoard}
+          Userdata={props.Userdata}          
+          />
+          <S.ChatIcon onClick={props.onClickChat}></S.ChatIcon>
+          </>
+          )
+        } 
         
       </S.InnerWrapper>
-      
+
+
     </S.Wrapper>
           </div>
   );

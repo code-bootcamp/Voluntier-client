@@ -1,7 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
+import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { myLocationState } from "../../../commons/store";
+import { breakPoints } from "../../../commons/styles/Media";
 import { useMoveToPage } from "../hooks/useMoveToPage";
 
 declare const window: typeof globalThis & {
@@ -21,6 +23,21 @@ const FETCH_BOARDS_ALL = gql`
     }
   }
 `;
+
+const Mymap = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  @media ${breakPoints.tablet}{
+    width: 100%;
+
+  }
+  @media ${breakPoints.mobile}{
+    width: 100%;
+    height: 200px;
+
+  }
+`
 
 export default function KakaomapGeolocation(props: IPropsKakaoMap) {
   const [windowSize, setWindowSize] = useState(false);
@@ -193,9 +210,8 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
   }, [windowSize, location, moveToPage]);
 
   return (
-    <div
+    <Mymap
       id="map"
-      style={{ width: "100%", height: "100%", borderRadius: "20px" }}
-    ></div>
+    ></Mymap>
   );
 }

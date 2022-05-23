@@ -19,3 +19,4 @@ export const setAmountDonation = atom({
     key : "setAmountDonation",
     default: 100
 })
+

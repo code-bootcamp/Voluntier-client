@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const Body = styled.div`
-  width: 100%;
+  width: 100vw;
 `;
 
 const MobileWrapper = styled.div`
@@ -61,7 +61,7 @@ export default function LayOut(props: LayOutPageProps) {
     }
     window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+    window.removeEventListener("resize", handleResize);
     };
   }, [windowSize]);
 

@@ -54,13 +54,7 @@ export default function BoardWriteUI(props:IPropsBoardWriteUI) {
               <S.SmallInput {...props.register("serviceTime")} defaultValue={props.defaultData?.fetchBoard.serviceTime}/>
               시간
             </S.Volun>
-            <S.Volun>
-              <S.LabelWrapper>
-                <S.LabelImage src="/images/boardWrite/volunteer.png" />
-                <S.Label>봉사 인원</S.Label>
-              </S.LabelWrapper>
-              <S.SmallInput {...props.register("recruitCount")} defaultValue={props.defaultData?.fetchBoard.recruitCount}/>명
-            </S.Volun>
+
           </S.HalfWrapper>
           <S.LabelWrapper>
             <S.LabelImage src="/images/boardWrite/calendar.png" />
