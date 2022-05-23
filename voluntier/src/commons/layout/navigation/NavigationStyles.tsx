@@ -51,6 +51,7 @@ export const ProfileImg = styled.img`
     height: 50px;
   }
 `;
+
 export const UserLoginWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -59,28 +60,45 @@ export const UserLoginWrapper = styled.div`
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
-`
+`;
+
 export const Font = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  font-family: 'GmarketSans';
+  font-family: "GmarketSans";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   margin-bottom: 5%;
-`
+`;
+
 export const UserInfoWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width:90%;
-`
+  width: 55%;
+`;
+
 export const MyPageLogout = styled.div`
   display: flex;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 15px;
   color: #0085cb;
-`
+  cursor: pointer;
+
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+  }
+
+  @media ${breakPoints.mobile} {
+  }
+`;
+
+export const Division = styled.div`
+  font-size: 15px;
+  color: #0085cb;
+`;
 
 export const LoginInfoWrapper = styled.div`
   width: 50%;
@@ -92,33 +110,28 @@ export const LoginInfoWrapper = styled.div`
 `;
 
 export const LoginJoin = styled.div`
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 15px;
   color: #0085cb;
   cursor: pointer;
 
   @media ${breakPoints.tablet} {
-    font-size: 15px;
+    font-size: 12px;
   }
 `;
 
-export const Mark = styled.div`
-  height: 70%;
-  margin: 10% ;
-  border-left: 3px solid #0085cb;
-  border-radius: 100px;
-`;
-
-export const ContentsWrapper = styled.div`
+export const CategoryWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 100px;
+  padding-left: 55px;
 `;
 
 export const Category = styled.div`
   margin-bottom: 10px;
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: 18px;
   cursor: pointer;
   :hover {
     color: #0085cb;
