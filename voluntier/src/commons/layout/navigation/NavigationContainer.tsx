@@ -50,6 +50,9 @@ export default function Navigation() {
   let isProducts;
   asPath.slice(-8) === "products" ? (isProducts = true) : (isProducts = false);
 
+  let isMagazine;
+  asPath.slice(-8) === "magazine" ? (isMagazine = true) : (isMagazine = false);
+
   return (
     <NavigationUI
       hide={hide}
@@ -61,6 +64,7 @@ export default function Navigation() {
       isBoardsNew={isBoardsNew}
       isDonation={isDonation}
       isProducts={isProducts}
+      isMagazine={isMagazine}
     />
   );
 }

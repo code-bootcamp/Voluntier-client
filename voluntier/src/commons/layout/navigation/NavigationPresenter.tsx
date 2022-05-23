@@ -11,6 +11,7 @@ interface IPropsNavigationUI {
   isBoardsNew: boolean;
   isDonation: boolean;
   isProducts: boolean;
+  isMagazine: boolean;
 }
 
 export const FETCH_USER_LOGIN = gql`
@@ -159,6 +160,23 @@ export default function NavigationUI(props: IPropsNavigationUI) {
             {!props.isProducts && (
               <S.Category onClick={props.moveToPage("/products")}>
                 젤리샵
+              </S.Category>
+            )}
+            {props.isMagazine && (
+              <S.Category
+                onClick={props.moveToPage("/magazine")}
+                style={{
+                  color: "#0085cb",
+                  fontWeight: "700",
+                  borderBottom: "2px solid",
+                }}
+              >
+                월간젤리
+              </S.Category>
+            )}
+            {!props.isMagazine && (
+              <S.Category onClick={props.moveToPage("/magazine")}>
+                월간젤리
               </S.Category>
             )}
           </S.CategoryWrapper>
