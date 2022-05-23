@@ -42,8 +42,8 @@ export default function UploadFile(props:IUploadFile) {
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
 
   const addImage = (event:ChangeEvent<HTMLInputElement>) =>{
-    if(props.myImage.length>3){
-      return alert("상품 이미지는 최대 4장까지 올릴 수 있습니다.")
+    if(props.myImage.length>0){
+      return alert("대표 이미지는 1장만 올릴 수 있습니다.")
     }
     const file:null|any = event.target.files
     const ImageURLList = [...file]
@@ -83,7 +83,7 @@ export default function UploadFile(props:IUploadFile) {
 
   return (
     <Wrapper>
-        <Button type="button" onClick={onClickImg}>이미지등록</Button>
+        <Button type="button" onClick={onClickImg}>대표이미지등록</Button>
         <InputImage ref={fileRef} style={{display:"none"}} type="file" multiple onChange={addImage} accept=".jpg,.jpeg,.png"/>
      {props.myImage.map((el:any ,index:number)=>(
          <Img key={uuidv4()} id={String(index)} onClick={deleteImage} src={`https://storage.googleapis.com/${el}`}/>

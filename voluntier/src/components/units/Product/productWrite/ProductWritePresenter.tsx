@@ -1,5 +1,8 @@
 import * as S from "./ProductWriteStyles";
 import UploadFile from '../../../commons/ImageUpload/index';
+import dynamic from 'next/dynamic'
+
+const ProductEditorUI = dynamic(()=>import('../../../commons/texteditor/editor/productEditor'),{ssr:false})
 
 interface IPropsIProductWriteUI{
   register : any
@@ -11,6 +14,7 @@ interface IPropsIProductWriteUI{
   UpdateProduct : (data:any) => void
   isEdit : boolean
   data : any
+  editorRef : any
 }
 
 export default function ProductWriteUI(props:IPropsIProductWriteUI) {
@@ -29,7 +33,7 @@ export default function ProductWriteUI(props:IPropsIProductWriteUI) {
           </S.InputWrapper>
           <S.InputWrapper>
             <S.Label>상품정보</S.Label>
-            <S.Input defaultValue={props.data?.fetchProduct.details} {...props.register("details")}/>
+            <ProductEditorUI editorRef={props.editorRef} data={props.data}/>
           </S.InputWrapper>
           <S.InputWrapper>
             <S.Label>상품 이미지 등록</S.Label>

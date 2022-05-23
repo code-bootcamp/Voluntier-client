@@ -19,7 +19,7 @@ export default function ApolloSetting(props:IApolloSetting){
         setAccessToken(newAccessToken);
       });
       }, []);
-
+      
       const errorLink = onError(({ graphQLErrors, operation, forward }) => {
         if (graphQLErrors) {
           for (const err of graphQLErrors) {
