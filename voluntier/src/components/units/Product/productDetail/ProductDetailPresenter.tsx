@@ -41,39 +41,49 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
       )}
       <S.Wrapper>
         <S.InnerWrapper>
+          <S.InnerDog>
+            <S.DogMention>골랐냐멍<br/>
+            담아라멍
+            </S.DogMention>
+          </S.InnerDog>
           <S.InnerWrapperHead>
-            <S.Wow src={`https://storage.googleapis.com/${props.data?.fetchProduct.productImage[0].imageUrl}`}/>
-            <S.Mark></S.Mark>
+            <S.ProductImg src={`https://storage.googleapis.com/${props.data?.fetchProduct.productImage[0].imageUrl}`}/>
             <S.TitlePriceWrapper>
                 <S.TitleWrapper>
-                  <img style={{width:"35px",height:"35px",marginRight:"15px"}} src="/nameJelly.png"/>
-                  <S.Label style={{marginBottom:"10px"}}>{props.data?.fetchProduct.name}</S.Label>
+                  <img style={{width:"35px",height:"35px",marginRight:"10px"}} src="/nameJelly.png"/>
+                  <S.Label style={{marginBottom:"10px", fontSize:"28px"}}>{props.data?.fetchProduct.name}</S.Label>
                 </S.TitleWrapper>
                 <S.NameMark></S.NameMark>
-                <S.Label style={{marginLeft:"50px"}}>젤리님들을 위한 Voluntier 오픈 할인</S.Label>
                 <S.PriceWrapper>
-                  <S.Price style={{color:"#FF6A9E"}}>10% {(props.data?.fetchProduct.price)/10}젤리 특가</S.Price>
+                <S.Label>젤리 원가</S.Label>
+                <S.Price style={{textDecoration:"line-through"}}>{props.data?.fetchProduct.price} 젤리</S.Price>
+                  <S.Price style={{color:"#FF6A9E", fontSize:"10px", lineHeight:"25px"}}>{(props.data?.fetchProduct.price)/10}젤리할인</S.Price>
+                </S.PriceWrapper>
+                <S.PriceWrapper>
+                <S.Label>바로 구매</S.Label>
+                <S.Price style={{color:"#FF6A9E"}}>{props.data?.fetchProduct.price/10*9 } 젤리</S.Price>
+                  {/* <S.Price style={{color:"#FF6A9E"}}>10% {(props.data?.fetchProduct.price)/10}젤리 특가</S.Price> */}
                 </S.PriceWrapper>
                 <S.PriceWrapper>
                   <S.Label>선물포장</S.Label>
-                  <S.Price style={{color:"#FF6A9E"}}>예쁜젤리포장</S.Price>
+                  <S.Icon src="../../../../images/jellyshop/present-box.png"/>
+                  <S.Price style={{color:"#FF6A9E"}}>포장가능</S.Price>
+                  <S.Detail>포장 디자인 보기 > </S.Detail>
                 </S.PriceWrapper>
                 <S.PriceWrapper>
                   <S.Label>배송구분</S.Label>
-                  <S.Price>젤리배송</S.Price>
-                </S.PriceWrapper>
-                <S.PriceWrapper>
-                  <S.Label>차감 젤리</S.Label>
-                  <S.Price>{props.data?.fetchProduct.price} 젤리</S.Price>
+                  <S.Rocket src="../../../../images/jellyshop/rocket.png"/>
+                  <S.Price>젤리로켓! </S.Price>
+                  <S.RocketDetail> 황금젤리 바로출발! </S.RocketDetail>
                 </S.PriceWrapper>
                 <S.PickWrapper>
                   <S.PickButton>
-                    <img style={{width:"70px",height:"80px",marginRight:"15px"}} src="/catImg.png"/>
+                    <img style={{width:"30px",height:"35px",marginRight:"15px"}} src="/catImg.png"/>
                     찜하기
                   </S.PickButton>
                   <S.ButtonWrapper>
                     <S.BuyButton onClick={props.onToggleModal}>
-                    <img style={{width:"90px",height:"80px",marginRight:"15px"}} src="/DogImg.png"/>
+                    <img style={{width:"50px",height:"35px",marginRight:"15px"}}src="/DogImg.png"/>
                       젤리사용
                     </S.BuyButton>
                   </S.ButtonWrapper>
@@ -81,7 +91,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
             </S.TitlePriceWrapper>
           </S.InnerWrapperHead>
           <S.InnerWrapperRight>
-            <S.Label>상품 정보</S.Label>
+            <S.Label style={{fontSize:"30px"}}>상품 정보</S.Label>
             {props.data?
             <ProductDetailViewer data={props.data}/>
             :

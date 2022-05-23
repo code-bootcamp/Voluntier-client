@@ -100,12 +100,12 @@ export const Contents = styled.div`
 padding: 3%;
 display: flex;
 flex-direction: row;
-/* justify-content: space-around; */
+justify-content: space-around;
 flex-wrap: wrap;
 `;
 export const ProductWrapper = styled.div`
-    width: 220px;
-    height: 220px;
+    width: 230px;
+    height: 230px;
     margin: 3%;
  @media ${breakPoints.mobile}{
     width: 125px;

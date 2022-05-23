@@ -14,7 +14,7 @@ export const MyModal = styled(Modal)`
 `;
 
 export const Wrapper = styled.div`
-  padding: 80px 60px;
+  padding: 5%;
   @media ${breakPoints.mobile}{
     padding: 3%;
     width: 100%;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid #FF6A9E;
+  width: 100%;
   border-radius: 20px;
   margin-bottom: 24px;
   @media ${breakPoints.mobile}{
@@ -33,11 +33,36 @@ export const InnerWrapper = styled.div`
   }
 `;
 
+export const InnerDog = styled.div`
+  background-image: url('../../../../images/jellyshop/Group 28.png');
+  width: 500px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: -60px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  `
+export const DogMention = styled.div`
+font-family: GmarketSans;
+padding-top: 5%;
+font-size: 20px;
+line-height: 20px;
+
+`
 export const InnerWrapperHead = styled.div`
-  width: 100%;
-  height: 100%;
+
+  width: 90%;
+  height: 500px;
   display: flex;
   align-items: center;
+  border: 3px solid #FFCF00;
+  border-radius: 20px;
+  margin-left: 8%;
   @media ${breakPoints.mobile}{
     width: 100%;
   }
@@ -45,19 +70,22 @@ export const InnerWrapperHead = styled.div`
 export const TitlePriceWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  margin-left: 6%;
+  
 `
 
 export const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 90px 0px 10px 52px;
+
+  
 `;
 
 export const Label = styled.div`
-  font-size: 24px;
+  font-size: 14px;
   font-weight: 700;
   margin-right: 8px;
+  font-family: GmarketSans;
 `;
 
 export const ProductName = styled.div`
@@ -67,11 +95,12 @@ export const ProductName = styled.div`
   margin-bottom: 5%;
 `;
 
-export const Wow = styled.img`
-  width: 50%;
-  height: 460px;
-  margin: 4% 0% 0% 4%;
+export const ProductImg = styled.img`
+  width: 30%;
+  height: 300px;
+  margin: 4%;
   border-radius: 10%;
+  
  @media ${breakPoints.mobile}{
     width: 100%;
   }
@@ -79,20 +108,37 @@ export const Wow = styled.img`
 
 export const PriceWrapper = styled.div`
   display: flex;
-  margin: 0px 0px 24px 52px;
+  align-items: center;
+  margin: 0px 0px 12px 40px;
   @media ${breakPoints.mobile}{
     display: flex;
     justify-content: center;
     margin: 0px;
   }
 `;
+export const Icon = styled.img`
+  width: 25px;
+  height: 25px;
 
+`
+export const Detail = styled.span`
+  margin-left: 10px;
+`
+export const RocketDetail = styled.span`
+  margin-left: 10px;
+  font-style: oblique;
+  color: gold;
+`
+export const Rocket = styled.img`
+  width: 25px;
+  height: 25px;
+`
 export const PickButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 100px;
+  width: 130px;
+  height: 50px;
   background: #FF6A9E;
   border: none;
   border-radius: 15px;
@@ -104,7 +150,7 @@ export const PickButton = styled.button`
 
 export const Price = styled.div`
   color: #0085cb;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 1000;
   margin-left: 3%;
   @media ${breakPoints.mobile}{
@@ -121,7 +167,6 @@ export const PickWrapper = styled.div`
 export const InnerWrapperRight = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   height: 100%;
   padding: 61px 52px;
@@ -163,15 +208,15 @@ export const InfoDetail = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
 `;
 
 export const BuyButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 100px;
+  width: 178px;
+  height: 51px;
   background: #0085CB;
   border: none;
   border-radius: 15px;
@@ -181,15 +226,14 @@ export const BuyButton = styled.button`
   cursor: pointer;
 `;
 
-export const Mark = styled.div`
-  height: 490px;
-  border-left: 1px solid #FF6A9E;
-  margin: 40px 0px 0px 44px;
-`
+// export const Mark = styled.div`
+//   height: 100vh;
+//   border-left: 1px solid #FF6A9E;
+//   margin: 40px 0px 0px 44px;
+// `
 
 export const NameMark = styled.div`
   width: 380px;
   margin: 0px 0px 40px 50px;
-  height: 1px;
-  border-bottom: 1px solid #FF6A9E;
+  border-bottom: 2px solid #FF6A9E;
 `
