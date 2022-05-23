@@ -103,7 +103,7 @@ export const Division = styled.div`
 export const LoginInfoWrapper = styled.div`
   width: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
