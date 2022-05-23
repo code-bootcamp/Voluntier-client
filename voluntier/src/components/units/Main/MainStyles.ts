@@ -200,7 +200,7 @@ export const SliderText = styled.div`
 
 export const Text = styled.div`
   font-size: 38px;
-  width: 490px;
+  width: 510px;
 
   @media ${breakPoints.tablet} {
     font-size: 20px;
@@ -212,8 +212,8 @@ export const Text = styled.div`
     width: 160px;
   }
   @media (max-width: 470px) {
-    font-size: 10px;
-    width: 120px;
+    font-size: 10.9px;
+    width: 135px;
   }
 `;
 

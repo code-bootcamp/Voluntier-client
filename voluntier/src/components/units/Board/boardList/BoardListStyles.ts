@@ -17,44 +17,23 @@ export const SearchTitle = styled.div`
   font-size: 30px;
   font-weight: 400;
   color: #0085cb;
-  /* color: #ff602a; */
-  /* color: #00b05c; */
+  @media ${breakPoints.tablet} {
+    font-size: 22px;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 15px;
+  }
+
 `;
-
-// export const DogBiscuit = styled.div`
-//   background-image: url("../../../../../images/UnionBiscuit.png");
-//   font-family: "Sniglet";
-//   background-size: cover;
-//   width: 230px;
-//   height: 82px;
-//   margin-bottom: 30px;
-//   font-size: 30px;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-
-//   @media ${breakPoints.tablet} {
-//     width: 169px;
-//     height: 60px;
-//     margin-bottom: 20px;
-//     background-size: contain;
-//   }
-
-//   @media ${breakPoints.mobile} {
-//     width: 120px;
-//     height: 43px;
-//     margin-bottom: 30px;
-//     font-size: 18px;
-//     background-size: contain;
-//   }
-// `;
 
 export const MapWrapper = styled.div`
   width: 100%;
   height: 400px;
   border-radius: 20px;
   margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    height: 180px;
+  }
 `;
 
 export const SearchWrapper = styled.div`
@@ -69,16 +48,28 @@ export const Dropdown = styled.select`
   margin-right: 10px;
   padding: 5px;
   font-size: 14px;
+    @media ${breakPoints.tablet} {
+    font-size: 12px;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 0.5em;
+    padding: 2px;
+    margin-right: 3px;
+
+  }
 `;
 
 export const SearchButton = styled.div`
-  /* width: 6%; */
+
   width: 40px;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    justify-content: flex-start;
+  }
 `;
 
 export const SearchButtonImage = styled.img`
@@ -93,7 +84,7 @@ export const TableWrapper = styled.div`
   margin-bottom: 0px;
 `;
 
-export const Row = styled.div`
+export const TitleRow = styled.div`
   height: 40px;
   display: flex;
   flex-direction: row;
@@ -106,20 +97,97 @@ export const Row = styled.div`
   }
 `;
 
+export const Row = styled.div`
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #e3e3e3;
+  /* text-align: center; */
+  line-height: 38px;
+  cursor: pointer;
+  :hover {
+    color: #0085cb;
+  }
+`;
+
 export const ColumnHeaderBasic = styled.div`
-  width: 20%;
+  width: 170px;
   font-size: 18px;
   color: black;
+  overflow: hidden;
+  text-align: center;
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+  }
   @media ${breakPoints.mobile} {
     font-size: 14px;
   }
 `;
 
 export const ColumnHeaderTitle = styled.div`
-  width: 70%;
+  width: 80%;
   font-size: 18px;
 
+  
+  @media ${breakPoints.tablet} {
+    font-size: 13px;
+  }
   @media ${breakPoints.mobile} {
     font-size: 14px;
   }
 `;
+export const TitleBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+`
+export const TitleImage = styled.img`
+    width: 10%;
+    height: 80px;
+    margin-right: 8%;
+    
+
+`
+export const TitleContents = styled.div`
+    width: 88%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @media ${breakPoints.tablet} {
+   
+  }
+  @media ${breakPoints.mobile} {
+
+  }
+
+`
+
+export const CenterTitle = styled.div`
+
+font-size: 22px;
+font-weight: bold;
+overflow: hidden;
+color: gray;
+
+@media ${breakPoints.tablet} {
+  font-size: 18px;
+    height: 40px;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 15px;
+    height: 30px;
+  }
+`
+export const CenterAddress = styled.div`
+    font-size: 17px;
+    overflow: hidden;
+    @media ${breakPoints.tablet} {
+  font-size: 11px;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 10px;
+  }
+`

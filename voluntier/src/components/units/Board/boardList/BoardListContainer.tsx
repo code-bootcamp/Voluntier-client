@@ -44,7 +44,10 @@ export default function BoardList(props) {
   console.log(props.data?.fetchBoards)
   return <BoardListUI 
   onClickSearch={onClickSearch} 
-  onChangeSmall={onChangeSmall} onChangeKey={onChangeKey} Big={Big} S={S} data={props.data}
+  onChangeSmall={onChangeSmall} 
+  onChangeKey={onChangeKey} 
+  Big={Big} S={S} 
+  data={props.data}
   refetch={props.refetch}
   BoardsCountData={props.BoardsCountData}/>;
 }

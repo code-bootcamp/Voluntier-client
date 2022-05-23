@@ -2,8 +2,18 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/Media";
 import {QuestionCircleOutlined} from '@ant-design/icons'
 
+export const ChatWrapper = styled.div`
+
+top: 10%;
+left: 11.5%;
+position: fixed;
+z-index: 10;
+
+`
 
 export const Wrapper = styled.div`
+
+  background: ${(props)=>(props.isChat ? "rgba(0,0,0,0.1)" : "none")};
   padding: 104px 70px;
   
   @media ${breakPoints.tablet} {
@@ -71,6 +81,8 @@ export const InnerWrapper = styled.div`
   
   @media ${breakPoints.tablet} {
     flex-direction: column;
+    align-items: center;
+
   }
   
   @media ${breakPoints.mobile} {
@@ -159,16 +171,15 @@ export const Map = styled.div`
 
 export const LocationWrapper = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  margin-bottom: 6px;
   
-  @media ${breakPoints.tablet} {
-    margin-bottom: 8px;
-  }
-  
-  @media ${breakPoints.mobile} {
-    margin-bottom: 8px;
-  }
   `;
+  export const LocationDisplay = styled.div`
+  display  :flex ;
+  flex-direction: row;
+  margin-bottom: 6px;
+`
 
 export const LabelImage = styled.img`
   width: 20px;
@@ -194,6 +205,12 @@ export const QuestionIcon = styled(QuestionCircleOutlined)`
     width: 20px;
     height: 20px;
     margin-right: 10px;
+    
+    @media ${breakPoints.tablet || breakPoints.mobile} {
+    width: 13px;
+    height: 15px;
+    margin-right: 10px;
+  }
   }
   
   `
@@ -203,6 +220,10 @@ export const Location = styled.div`
 `;
 
 export const InfoRightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 3%;
   width: 44%;
 
   @media ${breakPoints.tablet} {
@@ -222,6 +243,7 @@ export const InfoDetailWrapper = styled.div`
 export const ContentsDetailWrapper = styled.div`
 display: flex;
 flex-direction: column;
+padding-left: 3%;
 `
 export const DetailDisplay = styled.div`
 display: flex;
@@ -281,6 +303,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-bottom: 50px;
 `;
 
 export const ApplyButton = styled.button`
@@ -325,12 +348,9 @@ export const InnerWrapperRight = styled.div`
   flex-direction: column;
 
   @media ${breakPoints.tablet} {
-    width: 100%;
+    width: 50%;
   }
 
-  @media ${breakPoints.mobile} {
-    width: 100%;
-  }
 `;
 
 export const TalkWrapper = styled.div`
@@ -350,7 +370,7 @@ export const TalkContents = styled.div`
 
   width: 96.9%;
   height: 450px;
-  background-color: #EDEDED;
+  background-color: white;
   border-left: 2.2px solid #0085CB;
   border-right: 2.2px solid #0085CB;
 
@@ -360,9 +380,19 @@ width: 96.9%;
 height: 50px;
 border-radius: 0px 0px 20px 20px;
 border: 2.2px solid #0085CB;
-border-top: none;
+border-top: 2.2px solid #0085CB;
 ::placeholder{
   font-size: 11px;
 }
+
+`
+export const ChatIcon = styled.div`
+width: 60px;
+height: 60px;
+background-size: contain;
+position: fixed;
+bottom: 60px;
+background-image: url('../../../../images/boardDetail/mobileChat.png');
+background-repeat: no-repeat;
 
 `

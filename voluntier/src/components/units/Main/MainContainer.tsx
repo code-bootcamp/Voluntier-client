@@ -7,7 +7,7 @@ export default function Main() {
     fade: true,
     speed: 3000,
     infinite: true,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,

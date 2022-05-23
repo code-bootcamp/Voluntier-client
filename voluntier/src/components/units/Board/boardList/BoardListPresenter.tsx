@@ -1,3 +1,4 @@
+
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import KakaomapGeolocation from "../../../commons/kakaomapGeolocation";
 import Pagination from "../../../commons/pagination/PaginationContainer";
@@ -8,7 +9,6 @@ export default function BoardListUI(props) {
 
   return (
     <S.Wrapper>
-      {/* <S.DogBiscuit>Apply</S.DogBiscuit> */}
       <S.SearchTitle>🔎 가장 가까운 봉사를 찾아보세요</S.SearchTitle>
       <S.MapWrapper>
         <KakaomapGeolocation address={""} data={undefined} />
@@ -37,7 +37,7 @@ export default function BoardListUI(props) {
         </S.SearchButton>
       </S.SearchWrapper>
       <S.TableWrapper>
-        <S.Row
+        <S.TitleRow
           style={{
             backgroundColor: "#E3E3E3",
             fontFamily: "GmarketSans",
@@ -48,21 +48,21 @@ export default function BoardListUI(props) {
               fontWeight: "bold",
             }}
           >
-            번호
+            글번호
           </S.ColumnHeaderBasic>
           <S.ColumnHeaderTitle
             style={{
               fontWeight: "bold",
             }}
           >
-            제목
+            모집제목/주소
           </S.ColumnHeaderTitle>
           <S.ColumnHeaderBasic
             style={{
               fontWeight: "bold",
             }}
           >
-            작성자
+            센터명
           </S.ColumnHeaderBasic>
           <S.ColumnHeaderBasic
             style={{
@@ -71,12 +71,18 @@ export default function BoardListUI(props) {
           >
             작성일
           </S.ColumnHeaderBasic>
-        </S.Row>
+        </S.TitleRow>
         {props.data?.fetchBoards.map((el, index) => (
           <S.Row key={index}>
             <S.ColumnHeaderBasic>{index + 1}</S.ColumnHeaderBasic>
             <S.ColumnHeaderTitle onClick={moveToPage(`/boards/${el.id}`)}>
-              {el.title}
+              <S.TitleBox>
+                <S.TitleImage src={`${el.contents.includes("https") ? el.contents?.slice(el.contents.indexOf("https"),el.contents.indexOf(")")) : "../../../../images/Group 8.png" }`}/>
+                <S.TitleContents>
+                  <S.CenterTitle>{el.title}</S.CenterTitle>
+                  <S.CenterAddress>{el.address}</S.CenterAddress>
+                </S.TitleContents>
+              </S.TitleBox>
             </S.ColumnHeaderTitle>
             <S.ColumnHeaderBasic>{el.centerName}</S.ColumnHeaderBasic>
             <S.ColumnHeaderBasic>

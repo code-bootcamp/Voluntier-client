@@ -22,13 +22,13 @@ export default function MainUI(props) {
           <Header />
           <S.SliderDisplay>
             <S.SliderText>
-              <S.Text style={{ paddingTop: "10%", marginLeft: "15%" }}>
+              <S.Text style={{ paddingTop: "10%", marginLeft: "12%" }}>
                 여러분의 소중한 후원 젤리는{" "}
               </S.Text>
-              <S.Text style={{ marginLeft: "15%" }}>
+              <S.Text style={{ marginLeft: "12%" }}>
                 보호소 동물친구들을 위한{" "}
               </S.Text>
-              <S.Text style={{ marginLeft: "15%" }}>활동에 사용됩니다</S.Text>
+              <S.Text style={{ marginLeft: "12%" }}>활동에 사용됩니다</S.Text>
             </S.SliderText>
             <S.SliderBean></S.SliderBean>
           </S.SliderDisplay>
@@ -43,11 +43,11 @@ export default function MainUI(props) {
         >
           <Header />
           <S.SliderText>
-            <S.Text style={{ paddingTop: "10%", marginLeft: "40%" }}>
+            <S.Text style={{ paddingTop: "10%", marginLeft: "32%" }}>
               {" "}
-              후원하고 받은 적립금으로{" "}
+              후원하고 받은 젤리로{" "}
             </S.Text>
-            <S.Text style={{ marginLeft: "40%" }}>
+            <S.Text style={{ marginLeft: "32%" }}>
               {" "}
               귀여운 굿즈를 받아가세요!
             </S.Text>

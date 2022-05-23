@@ -15,11 +15,13 @@ const FETCH_BOARDS = gql`
       location2: $location2
     ) {
       title
+      contents
       centerName
       createdAt
       location1
       location2
       id
+      address
     }
   }
 `;
