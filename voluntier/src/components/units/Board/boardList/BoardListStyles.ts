@@ -89,11 +89,14 @@ export const TitleRow = styled.div`
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #e3e3e3;
-  text-align: center;
+  text-align: flex-start;
   line-height: 38px;
   cursor: pointer;
   :hover {
     color: #0085cb;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
 
@@ -103,17 +106,22 @@ export const Row = styled.div`
   flex-direction: row;
   align-items: center;
   border-bottom: 1px solid #e3e3e3;
-  /* text-align: center; */
+  margin: 5px 0px;
   line-height: 38px;
   cursor: pointer;
   :hover {
     color: #0085cb;
   }
+  @media ${breakPoints.mobile} {
+    border-top: 1px solid #e3e3e3;
+    height: 80px;
+  }
 `;
 
 export const ColumnHeaderBasic = styled.div`
-  width: 170px;
-  font-size: 18px;
+  width: 15%;
+  height: 40px;
+  font-size: 17px;
   color: black;
   overflow: hidden;
   text-align: center;
@@ -121,20 +129,22 @@ export const ColumnHeaderBasic = styled.div`
     font-size: 12px;
   }
   @media ${breakPoints.mobile} {
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 
 export const ColumnHeaderTitle = styled.div`
-  width: 80%;
+  width: 70%;
   font-size: 18px;
+  padding-left: 3%;
+  text-align: center;
 
   
   @media ${breakPoints.tablet} {
     font-size: 13px;
   }
   @media ${breakPoints.mobile} {
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 export const TitleBox = styled.div`
@@ -143,9 +153,15 @@ export const TitleBox = styled.div`
     justify-content: flex-start;
 `
 export const TitleImage = styled.img`
-    width: 10%;
+    width: 15%;
     height: 80px;
-    margin-right: 8%;
+    margin-right: 3%;
+    @media ${breakPoints.tablet} {
+      width: 20%;
+  }
+    @media ${breakPoints.mobile} {
+      width: 40%;
+  }
     
 
 `
@@ -160,13 +176,15 @@ export const TitleContents = styled.div`
    
   }
   @media ${breakPoints.mobile} {
+    width: 50%;
+    justify-content: center;
 
   }
 
 `
 
 export const CenterTitle = styled.div`
-
+height: 40px;
 font-size: 22px;
 font-weight: bold;
 overflow: hidden;
@@ -174,20 +192,21 @@ color: gray;
 
 @media ${breakPoints.tablet} {
   font-size: 18px;
-    height: 40px;
   }
   @media ${breakPoints.mobile} {
-    font-size: 15px;
+    font-size: 12px;
     height: 30px;
   }
 `
 export const CenterAddress = styled.div`
     font-size: 17px;
+    
     overflow: hidden;
     @media ${breakPoints.tablet} {
   font-size: 11px;
   }
   @media ${breakPoints.mobile} {
     font-size: 10px;
+    height: 30px;
   }
 `

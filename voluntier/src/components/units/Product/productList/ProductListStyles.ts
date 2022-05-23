@@ -5,24 +5,70 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 2%;
 `;
+
+export const Banner = styled.div`
+
+width: 1440px;
+height: 280px;
+background-image: url('../../../../images/jellyshop/jellybanner.png');
+background-repeat: no-repeat;
+background-size: contatin;
+background-position: 100%;
+border-radius: 20px;
+
+@media ${breakPoints.tablet}{
+width: 550px;
+height: 200px;
+background-position: 10%;
+margin-left: 5%;
+
+}
+@media ${breakPoints.mobile}{
+width: 100%;
+height: 150px;
+background-position: 15%;
+margin: 0%;
+}
+
+
+`
 export const Title = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 3% 0%;
 
 `;
-export const Image = styled.div`
- background-image: url('../../../../../images/UnionBiscuit.png');
- font-family: "Sniglet";
- width: 200px;
- height: 100px;
- background-size: contain;
- background-repeat: no-repeat;
- text-align: center;
- font-size: 20px;
- color: white;
- letter-spacing: 1px;
- line-height: 375%;
+export const Title1 = styled.div`
+font-size: 25px;
+font-family: GmarketSans;
+color: #FF6A9E;
+@media ${breakPoints.tablet}{
+  font-size: 20px;
+}
+@media ${breakPoints.mobile}{
+  font-size: 15px;
+}
+`
+export const Title2 = styled.div`
+font-size: 30px;
+font-family: GmarketSans;
+font-weight: bolder;
+background: linear-gradient(90deg, #eaeaa7 , #ffcdf3aa, #c1b0e6) 
+border-box; 
+background-size: contain; 
+border: 4px solid transparent;
+@media ${breakPoints.tablet}{
+  font-size: 20px;
+}
+@media ${breakPoints.mobile}{
+  font-size: 15px;
+}
 
+`
 
-`;
 export const Search = styled.div`
     display: flex;
     flex-direction: row;
@@ -58,9 +104,8 @@ flex-direction: row;
 flex-wrap: wrap;
 `;
 export const ProductWrapper = styled.div`
-    width: 200px;
-    height: 200px;
-    background-color: lightblue;
+    width: 220px;
+    height: 220px;
     margin: 3%;
  @media ${breakPoints.mobile}{
     width: 125px;
@@ -70,24 +115,27 @@ export const ProductWrapper = styled.div`
 `;
 export const ProductImage = styled.img`
     height: 75%;
-    width: 100%;
-    background-color: blue;
+    width: 95%;
+    box-shadow:1px 2px 2px #999;
     
 `;
 export const ProductName = styled.div`
-    height: 10%;
+    height: 13%;
     padding: 2%;
-    font-size: 16px;
-    font-weight: 800;
+    font-size: 18px;
+    overflow: hidden;
+    font-family: GmarketSans;
     @media ${breakPoints.mobile}{
     font-size: 11px;
   }
 `;
 export const ProductPrice = styled.div`
+    margin-top: 3px;
     height: 10%;
     padding: 2%;
-    font-size: 13px;
-    font-weight: lighter;
+    font-size: 15px;
+    font-family: GmarketSans;
+    font-weight: bolder;
     @media ${breakPoints.mobile}{
     font-size: 11px;
   }
