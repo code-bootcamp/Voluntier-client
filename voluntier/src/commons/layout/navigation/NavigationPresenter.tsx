@@ -7,6 +7,10 @@ import { accessTokenState } from "../../store";
 interface IPropsNavigationUI {
   moveToPage(arg0: string): import("react").MouseEventHandler<HTMLImageElement>;
   onClickLogout: () => void;
+  isBoards: boolean;
+  isBoardsNew: boolean;
+  isDonation: boolean;
+  isProducts: boolean;
 }
 
 export const FETCH_USER_LOGIN = gql`
@@ -65,12 +69,12 @@ export default function NavigationUI(props: IPropsNavigationUI) {
 
           {accessToken ? (
             <S.UserLoginWrapper>
-              <S.Font>😙 {data?.fetchLoginUser.name}님 환영합니다!</S.Font>
+              <S.Font>{data?.fetchLoginUser.name}님 환영합니다!</S.Font>
               <S.UserInfoWrapper>
                 <S.MyPageLogout onClick={props.moveToPage("/mypage")}>
                   My Page
                 </S.MyPageLogout>
-                <S.Mark></S.Mark>
+                <S.Division>|</S.Division>
                 <S.MyPageLogout onClick={props.onClickLogout}>
                   Logout
                 </S.MyPageLogout>
@@ -81,27 +85,83 @@ export default function NavigationUI(props: IPropsNavigationUI) {
               <S.LoginJoin onClick={props.moveToPage("/login")}>
                 Login
               </S.LoginJoin>
-              <S.Mark></S.Mark>
+              <S.Division>|</S.Division>
               <S.LoginJoin onClick={props.moveToPage("/signup")}>
                 Join
               </S.LoginJoin>
             </S.LoginInfoWrapper>
           )}
 
-          <S.ContentsWrapper>
-            <S.Category onClick={props.moveToPage("/boards")}>
-              봉사조회 및 신청
-            </S.Category>
-            <S.Category onClick={props.moveToPage("/boards/new")}>
-              봉사 모집하기
-            </S.Category>
-            <S.Category onClick={props.moveToPage("/donation")}>
-              젤리 후원하기
-            </S.Category>
-            <S.Category onClick={props.moveToPage("/products")}>
-              젤리샵
-            </S.Category>
-          </S.ContentsWrapper>
+          <S.CategoryWrapper>
+            {props.isBoards && (
+              <S.Category
+                onClick={props.moveToPage("/boards")}
+                style={{
+                  color: "#0085cb",
+                  fontWeight: "700",
+                  borderBottom: "2px solid",
+                }}
+              >
+                봉사조회 및 신청
+              </S.Category>
+            )}
+            {!props.isBoards && (
+              <S.Category onClick={props.moveToPage("/boards")}>
+                봉사조회 및 신청
+              </S.Category>
+            )}
+            {props.isBoardsNew && (
+              <S.Category
+                onClick={props.moveToPage("/boards/new")}
+                style={{
+                  color: "#0085cb",
+                  fontWeight: "700",
+                  borderBottom: "2px solid",
+                }}
+              >
+                봉사 모집하기
+              </S.Category>
+            )}
+            {!props.isBoardsNew && (
+              <S.Category onClick={props.moveToPage("/boards/new")}>
+                봉사 모집하기
+              </S.Category>
+            )}
+            {props.isDonation && (
+              <S.Category
+                onClick={props.moveToPage("/donation")}
+                style={{
+                  color: "#0085cb",
+                  fontWeight: "700",
+                  borderBottom: "2px solid",
+                }}
+              >
+                젤리 후원하기
+              </S.Category>
+            )}
+            {!props.isDonation && (
+              <S.Category onClick={props.moveToPage("/donation")}>
+                젤리 후원하기
+              </S.Category>
+            )}
+            {props.isProducts && (
+              <S.Category
+                onClick={props.moveToPage("/products")}
+                style={{
+                  color: "#0085cb",
+                  fontWeight: "700",
+                  borderBottom: "2px solid",
+                }}
+              >
+                젤리샵
+              </S.Category>
+            )}
+            {!props.isProducts && (
+              <S.Category onClick={props.moveToPage("/products")}>
+                젤리샵
+              </S.Category>
+            )}
+          </S.CategoryWrapper>
         </>
       )}
 
