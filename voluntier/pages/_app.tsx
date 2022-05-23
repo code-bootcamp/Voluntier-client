@@ -12,7 +12,6 @@ import ApolloSetting from '../src/commons/apollo';
 
 function MyApp({ Component, pageProps }:AppProps) {
 
-
   return (
   <RecoilRoot>
     <ApolloSetting>

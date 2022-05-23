@@ -14,7 +14,6 @@ export default function ProductDetail() {
   const {data} = useQuery(FETCH_PRODUCT,{
     variables:{productId:router.query.productId}
   })
-console.log(data)
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };

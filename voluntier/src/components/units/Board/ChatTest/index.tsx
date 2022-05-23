@@ -1,6 +1,8 @@
 import styled from "@emotion/styled"
 import socketIOClient from "socket.io-client"
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const TalkWrapper = styled.div`
   width: 320px;
@@ -49,15 +51,21 @@ border-top: none;
 
 `
 
+
 export default function ChatTest(){
     const [nickname,setNickName] = useState("")
     const [room,setRoom] = useState("")
     const [message,setContents] = useState("")
     const [resMsg,setMsg] = useState([])
     const [come,setCome] = useState([])
-    const socket = socketIOClient('34.64.234.26:8080/chat');
-
-
+    const socket = socketIOClient('backendapi.voluntier.site/chat')
+    
+    useEffect(()=>{
+      socket.on('connect',()=>{
+        console.log(socket)
+      })
+    },[])
+    
 
 
     const onChangeContents = (event) => {
@@ -77,42 +85,40 @@ export default function ChatTest(){
     }
 
       
-      const Submit = () => {
-        socket.emit('send',room,nickname,message)
-        console.log(socket)
-      }
-      
- 
-  useEffect(()=>{
-  
-      socket.on('comeOn'+room,(comeOn)=>{
-        setCome(comeOn)
-      })
-      socket.on(room,(data)=>{
-        setMsg((prev)=>[...prev,data])
-      })
+    const Submit = () => {
 
-  },[onClickJoin,Submit])
-      console.log(socket)
-      console.log(resMsg)    
-      console.log(come)
+    socket.emit('send',room,nickname,message)
+    console.log(socket)
+    }
+
+    socket.on('comeOn'+room,(comeOn)=>{
+      setCome(comeOn)
+    })
+ 
+
+
+    socket.on(room,(data)=>{
+      setMsg((prev)=>[...prev,data])
+    })
+
 
     
       
     return(
+
         <TalkWrapper>
             닉네임: <input placeholder="이름을 입력해주세요" onChange={onChangeName}/>
             방이름: <input placeholder="방 이름을 입력해주세요" onChange={onChangeRoom}/>
             <ABC >
             <div>{come}</div>
-            {resMsg.map((el,index)=>(
+            {resMsg.map((el)=>(
             <>
             {el[0]===nickname?
-            <Right>
+            <Right key={uuidv4()}>
             <div>{el}</div>
             </Right>
             :
-            <div key={index}>
+            <div key={uuidv4()}>
               <div>{el}</div>
             </div>
             }
@@ -125,5 +131,6 @@ export default function ChatTest(){
             {/* <button onClick={onClickNameRoom}>이름 방이름 제출</button> */}
             <button onClick={onClickJoin}>채팅방입장하기</button>
           </TalkWrapper>
+
     )
 }

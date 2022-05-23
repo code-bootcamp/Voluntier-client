@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 import BoardWriteUI from "./boardWritePresenter";
 import {useForm} from "react-hook-form"
 import { Editor } from "@toast-ui/react-editor";
