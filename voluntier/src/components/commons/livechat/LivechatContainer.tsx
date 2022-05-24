@@ -3,18 +3,32 @@ import LivechatUI from "./LivechatPresenter";
 import io, { Socket } from "socket.io-client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { useQuery } from "@apollo/client";
+import { FETCH_CHAT_HISTORY } from "./LivechatQueries";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
 
 const url = "backendapi.voluntier.site/chat";
+
 export default function Livechat(props) {
+  const [accessToken] = useRecoilState(accessTokenState);
   const router = useRouter();
   const [nickname, setNickName] = useState("");
   const [room, setRoom] = useState("");
   const [userId, setUserId] = useState("");
   const [resultMsg, setResultMsg] = useState([]);
+  const { data } = useQuery(FETCH_CHAT_HISTORY, {
+    variables: { boardId: String(router.query.boardId) },
+  });
 
   const socket: Socket = io(url, { transports: ["websocket"] });
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, resetField } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      contents: "",
+    },
+  });
 
   useEffect(() => {
     socket.on(room, (data) => {
@@ -22,7 +36,7 @@ export default function Livechat(props) {
       console.log("받는 거", socket);
     });
   }, [room]);
-  console.log(resultMsg);
+
 
   useEffect(() => {
     setUserId(props.data?.fetchLoginUser?.id);
@@ -31,30 +45,29 @@ export default function Livechat(props) {
   }, [props.data]);
 
 
-
   const onClickSubmit = async (data) => {
-    const message = await data.contents
+    const message = await data.contents;
     socket.emit("send", room, nickname, message, userId);
-    console.log(socket)
+    resetField("contents");
+
   };
 
   const onKeyDown = (event) => (data) => {
     if (event.key === "Enter") {
-      // console.log("들어오냐?", data);
       onClickSubmit(data);
     }
   };
 
-
-
   return (
     <LivechatUI
       resultMsg={resultMsg}
-      nickname={nickname}
+      userId={userId}
       register={register}
       handleSubmit={handleSubmit}
       onClickSubmit={onClickSubmit}
       onKeyDown={onKeyDown}
+      data={data?.fetchChatHistory}
+      accessToken={accessToken}
     />
   );
 }
