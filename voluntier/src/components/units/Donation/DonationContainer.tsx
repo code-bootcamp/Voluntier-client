@@ -1,18 +1,22 @@
+
 import { gql, useQuery } from "@apollo/client";
 import DonationUI from "./DonationPresenter";
 
-const FETCH_DONATIONS = gql`
-    query fetchDonationAmount{
-        fetchDonationAmount
+
+// eslint-disable-next-line camelcase
+const FETCH_All_DONATIONS = gql`
+    query fetchAllUsersDonationsAmount{
+        fetchAllUsersDonationsAmount
     }
 
 `
-
 export default function Donation(){
-    const {data} = useQuery(FETCH_DONATIONS)
-
-    console.log(data)
+    const {data : allAmount} = useQuery(FETCH_All_DONATIONS)
+    
+    
     return(
-    <DonationUI/>
+    <DonationUI
+    allAmount={allAmount}
+    />
     )
 }

@@ -3,12 +3,12 @@ import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 2%;
+
 `;
 
 export const Banner = styled.div`
 
-width: 1440px;
+width: 1400px;
 height: 280px;
 background-image: url('../../../../images/jellyshop/jellybanner.png');
 background-repeat: no-repeat;
@@ -20,7 +20,7 @@ border-radius: 20px;
 width: 550px;
 height: 200px;
 background-position: 10%;
-margin-left: 5%;
+
 
 }
 @media ${breakPoints.mobile}{
@@ -129,13 +129,28 @@ export const ProductName = styled.div`
     font-size: 11px;
   }
 `;
-export const ProductPrice = styled.div`
+export const ProductPrice = styled.span`
     margin-top: 3px;
     height: 10%;
     padding: 2%;
     font-size: 15px;
     font-family: GmarketSans;
     font-weight: bolder;
+    font-style: oblique;
+    text-decoration: line-through;
+
+    @media ${breakPoints.mobile}{
+    font-size: 11px;
+  }
+`;
+export const ProductRealPrice = styled.span`
+    margin-top: 3px;
+    height: 10%;
+    padding: 2%;
+    font-size: 15px;
+    font-family: GmarketSans;
+    font-weight: bolder;
+    color: #FF6A9E;
     @media ${breakPoints.mobile}{
     font-size: 11px;
   }
