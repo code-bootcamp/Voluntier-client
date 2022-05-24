@@ -1,10 +1,17 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import ProductDetailUI from "./ProductDetailPresenter";
 import { useRouter } from 'next/router';
 import { Modal } from "antd";
 import { DELETE_PRODUCT, FETCH_PRODUCT } from "./ProductDetailQueries";
 
+const CREATE_DIBS = gql`
+  mutation createDibs($productId: String!){
+    createDibs(productId:$productId){
+      id
+    }
+  }
+`
 
 export default function ProductDetail() {
   const router = useRouter()
@@ -14,9 +21,21 @@ export default function ProductDetail() {
   const {data} = useQuery(FETCH_PRODUCT,{
     variables:{productId:router.query.productId}
   })
+  const [createDibs] = useMutation(CREATE_DIBS)
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
+
+  const CreateDibs = async (event) => {
+    try{
+    const result = await createDibs({
+      variables:{productId:event.target.id}
+    })
+    console.log(result)
+  }catch(error){
+    Modal.error({content:error.message})
+  }
+  }
 
   const ProductEdit = () => {
     setIsEdit(true)
@@ -35,5 +54,5 @@ export default function ProductDetail() {
       Modal.error({content:error.message})
     }
   }
-  return <ProductDetailUI data={data} isOpen={isOpen} onToggleModal={onToggleModal} ProductEdit={ProductEdit} ProductDelete={ProductDelete}/>;
+  return <ProductDetailUI data={data} isOpen={isOpen} onToggleModal={onToggleModal} ProductEdit={ProductEdit} ProductDelete={ProductDelete} CreateDibs={CreateDibs}/>;
 }

@@ -6,6 +6,7 @@ import DonationRecords from "../../commons/donationRecords";
 import BoardRecords from "../../commons/boardRecords";
 import PurchaseRecords from "../../commons/purchaseRecords";
 import { gql, useQuery } from "@apollo/client";
+import DibsList from "../../commons/Dibs/DibsList";
 
 const FETCH_USER_LOGIN = gql`
     query fetchLoginUser{
@@ -48,11 +49,10 @@ export default function MypageUI(props) {
           footer={null}
           centered={true}
         >
-          <ProfileEdit />
+          <ProfileEdit setIsOpen={props.setIsOpen}/>
         </S.MyModal>
       )}
       <S.Wrapper>
-        <S.DogBiscuit>My Page</S.DogBiscuit>
         <S.ProfileWrapper>
           <S.ProfileImageWrapper>
             <S.ProfileImage src={`https://storage.googleapis.com/${data?.fetchLoginUser.profileImageUrl}`}/>
@@ -91,10 +91,20 @@ export default function MypageUI(props) {
             </TabPane>
           </S.MyTabs>
         </S.TabsWrapper>
-        <S.Label>젤리 사용내역</S.Label>
+        <S.TabsWrapper>
+        <S.MyTabs defaultActiveKey="1">
+          <TabPane tab="젤리 사용내역" key="1">
         <S.Records>
           <PurchaseRecords PurchasesData={props.PurchasesData}/>
         </S.Records>
+        </TabPane>
+        <TabPane tab="찜목록" key="2">
+        <S.Records>
+          <DibsList DibsData={props.DibsData}/>
+        </S.Records>
+        </TabPane>
+        </S.MyTabs>
+        </S.TabsWrapper>
       </S.Wrapper>
     </>
   );

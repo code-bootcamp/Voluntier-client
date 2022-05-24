@@ -37,16 +37,19 @@ export default function Livechat(props) {
     });
   }, [room]);
 
+
   useEffect(() => {
     setUserId(props.data?.fetchLoginUser?.id);
     setRoom(String(router.query.boardId));
     setNickName(props.data?.fetchLoginUser?.name);
   }, [props.data]);
 
+
   const onClickSubmit = async (data) => {
     const message = await data.contents;
     socket.emit("send", room, nickname, message, userId);
     resetField("contents");
+
   };
 
   const onKeyDown = (event) => (data) => {
