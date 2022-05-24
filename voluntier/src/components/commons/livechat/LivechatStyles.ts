@@ -19,14 +19,41 @@ export const TalkContents = styled.div`
   width: 100%;
   height: 450px;
   background-color: #ededed;
+  overflow-y: scroll;
+`;
+
+export const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const Text = styled.div`
+  max-width: 80%;
+  word-break: break-all;
+  background-color: #ffcf00;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const TalkWrite = styled.input`
   width: 100%;
   height: 50px;
+  font-size: 13px;
   border-radius: 0px 0px 20px 20px;
   border: 2.2px solid #0085cb;
   border-top: 2.2px solid #0085cb;
+  padding: 10px;
   ::placeholder {
     font-size: 11px;
   }

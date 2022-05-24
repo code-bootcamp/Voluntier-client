@@ -3,27 +3,39 @@ import LivechatUI from "./LivechatPresenter";
 import io, { Socket } from "socket.io-client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { useQuery } from "@apollo/client";
+import { FETCH_CHAT_HISTORY } from "./LivechatQueries";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
 
 const url = "backendapi.voluntier.site/chat";
+
 export default function Livechat(props) {
+  const [accessToken] = useRecoilState(accessTokenState);
   const router = useRouter();
   const [nickname, setNickName] = useState("");
   const [room, setRoom] = useState("");
-  const [message, setContents] = useState("");
   const [userId, setUserId] = useState("");
   const [resultMsg, setResultMsg] = useState([]);
+  const { data } = useQuery(FETCH_CHAT_HISTORY, {
+    variables: { boardId: String(router.query.boardId) },
+  });
 
   const socket: Socket = io(url, { transports: ["websocket"] });
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, resetField } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      contents: "",
+    },
+  });
 
   useEffect(() => {
     socket.on(room, (data) => {
       setResultMsg((prev) => [...prev, data]);
       console.log("받는 거", socket);
     });
-  }, [resultMsg]);
-  console.log(resultMsg);
+  }, [room]);
 
   useEffect(() => {
     setUserId(props.data?.fetchLoginUser?.id);
@@ -31,45 +43,28 @@ export default function Livechat(props) {
     setNickName(props.data?.fetchLoginUser?.name);
   }, [props.data]);
 
-  console.log(userId);
-  console.log(room);
-  console.log(nickname);
-
-  const submit = () => {
-    socket.emit("send", room, nickname, message, userId);
-    console.log("보내는 거", socket);
-  };
-
   const onClickSubmit = async (data) => {
-    setContents(data.contents);
-    console.log(message);
-    submit();
+    const message = await data.contents;
+    socket.emit("send", room, nickname, message, userId);
+    resetField("contents");
   };
 
   const onKeyDown = (event) => (data) => {
     if (event.key === "Enter") {
-      // console.log("들어오냐?", data);
       onClickSubmit(data);
     }
   };
 
-  // const onKeyDown = (event, data) => {
-  //   if (event.key === "Enter") {
-  //     console.log(data.contents);
-  //     setMsg(data.contents);
-  //     setContents(data.contents);
-  //     submit();
-  //   }
-  // };
-
   return (
     <LivechatUI
       resultMsg={resultMsg}
-      nickname={nickname}
+      userId={userId}
       register={register}
       handleSubmit={handleSubmit}
       onClickSubmit={onClickSubmit}
       onKeyDown={onKeyDown}
+      data={data?.fetchChatHistory}
+      accessToken={accessToken}
     />
   );
 }
