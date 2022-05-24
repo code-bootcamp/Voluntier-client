@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const TalkWrapper = styled.div`
+export const TalkWrapper = styled.form`
   width: 320px;
   height: 580px;
   display: flex;
