@@ -34,7 +34,10 @@ export default function ProductListUI(props:IPropsProductListUI){
                 <S.ProductWrapper key={el.id}>
                 <S.ProductImage  onClick={props.MoveProduct} id={el.id} src={`https://storage.googleapis.com/${el.productImage[0]?.imageUrl}`}/>
                 <S.ProductName>{el.name}</S.ProductName>
+                <>
                 <S.ProductPrice>{el.price}젤리</S.ProductPrice>
+                <S.ProductRealPrice>{el.price /10*9}젤리</S.ProductRealPrice>
+                </>
             </S.ProductWrapper>
                 ))}
         </S.Contents>

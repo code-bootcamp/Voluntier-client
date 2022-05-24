@@ -1,26 +1,30 @@
 import * as S from "../Donation/DonationStyles";
 import PaymentPage from "../../commons/payment";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from "../../../commons/store";
+import {useSpring} from 'react-spring'
 
 
-export default function DonationUI() {
+export default function DonationUI(props) {
+  const [isTrue,setIsTrue] = useState(false)
   const PayRef = useRef<HTMLButtonElement>(null);
-  const [amount,setAmount] = useRecoilState(setAmountDonation)
+  const [,setAmount] = useRecoilState(setAmountDonation)
   
-  // const onChangeAmount = (event) => {
-  //   setAmount(Number((event.target as HTMLDivElement).id))
-  // }
   const delay =(ms) => {
     return new Promise(resolve => setTimeout(resolve,ms))
   }
   const onClickPayment = async (event) =>{
-   setAmount(Number((event.target as HTMLDivElement).id))
-   await delay(1000) 
-   return PayRef.current?.click()
+    setAmount(Number((event.target as HTMLDivElement).id))
+    await delay(1000) 
+    return PayRef.current?.click()
   }
-
+  
+  useEffect(()=>{
+    setIsTrue(true)
+  },[])
+  console.log(isTrue)
+  
   const settings = {
     dots: false,
     infinite: true,
@@ -28,26 +32,72 @@ export default function DonationUI() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    fade:true,
     autoplaySpeed: 4000,
     cssEase: "linear",
   };
+  
+interface ISpringprops {
+  val? : any
+}
+    const Springprops : ISpringprops = useSpring({ 
+      to: async (next,cancel) => {
+       await next ({val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount))})
+       await next ({from: { val: 0 }})
+       await next ({to: { val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount)) }})
+       await next ({config:{duration: 3000}})
+      },
+    })
 
-  return (
-    <>
+    const Springprops2 : ISpringprops = useSpring({ 
+      to: async (next,cancel) => {
+       await next ({val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount/7))})
+       await next ({from: { val: 0 }})
+       await next ({to: { val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount/7)) }})
+       await next ({config:{duration: 3000}})
+      },
+    })
+
+
+
+  
+
+
+  
+    return (
+      <>
       <S.Body>
         <S.Top>
           <S.TopTitle>
             <S.Title>여러분의 젤리로</S.Title>
-            <S.Title>멍냥이를 구해주세요!</S.Title>
+            <S.Title>유기동물들을 구해주세요!</S.Title>
           </S.TopTitle>
           <S.TopContents>
             <S.Contents>
-              <S.ContentPink>12,345,678</S.ContentPink>
+              <S.ContentPink>
+                {isTrue &&(
+                  <S.Animated>
+                  {Springprops.val.interpolate(val => Math.floor(val))}
+                </S.Animated>)}
+                {/* {props.allAmount?.fetchAllUsersDonationsAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}  */}
+                <S.ContentsJelly>젤리</S.ContentsJelly>
+              </S.ContentPink>
               <S.ContentDetail>기부된 젤리</S.ContentDetail>
             </S.Contents>
             <S.Contents>
-              <S.ContentBlue>12,345</S.ContentBlue>
-              <S.ContentDetail>구한 멍냥이</S.ContentDetail>
+           <S.ContentBlue>
+           {isTrue &&(
+             <S.Animated>
+               
+                {Springprops2.val.interpolate(val => Math.floor(val))}
+                
+              </S.Animated>)}
+            
+            <S.ContentsMary>마리</S.ContentsMary>
+           </S.ContentBlue>
+                
+                            
+              <S.ContentDetail>행복해진 동물들</S.ContentDetail>
             </S.Contents>
           </S.TopContents>
         </S.Top>

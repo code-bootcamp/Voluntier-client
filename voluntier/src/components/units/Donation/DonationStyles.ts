@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import Slider from "react-slick";
 import { breakPoints } from "../../../commons/styles/Media";
 import 'animate.css';
+import {animated} from 'react-spring'
 
 export const Body = styled.div`
   display: flex;
@@ -61,7 +62,7 @@ export const Title = styled.div`
 
 export const TopContents = styled.div`
   height: 50%;
-  width: 1100px;
+  width: 1200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -94,6 +95,9 @@ export const ContentPink = styled.div`
   font-size: 40px;
   font-weight: bolder;
   color: #ff6a9e;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 
   @media ${breakPoints.tablet} {
     font-size: 30px;
@@ -108,6 +112,9 @@ export const ContentBlue = styled.div`
   font-size: 40px;
   font-weight: bolder;
   color: #0085cb;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 
   @media ${breakPoints.tablet} {
     font-size: 30px;
@@ -118,6 +125,27 @@ export const ContentBlue = styled.div`
   }
 `;
 
+
+export const Animated = styled(animated.div)`
+  font-size: 40px;
+  @media ${breakPoints.tablet} {
+    font-size: 30px;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 15px;
+  }
+
+`
+export const ContentsMary= styled.span`
+ margin-bottom: 10%;
+ margin-left: 10px;
+ `
+
+export const ContentsJelly= styled.span`
+margin-bottom: 10%;
+margin-left: 10px;
+`
 export const ContentDetail = styled.div`
   font-size: 20px;
 
@@ -174,13 +202,16 @@ export const MySlider = styled(Slider)`
   }
 `;
 export const SliderContent= styled.div`
-  width: 700px;
+  width: 800px;
   height: 330px;
   border-radius: 20px;
   background-image:url('../../../../images/donation/Donation1.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
+  @media ${breakPoints.mobile} {
+ background-position: 80%;
+  }
 `;
 
 export const SliderText = styled.div`
@@ -190,14 +221,14 @@ export const SliderText = styled.div`
   margin: 9% 0% 0% 5%;
   display: inline-block;
   animation: fadeInDown; 
-  animation-duration: 2.5s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
   @media ${breakPoints.tablet} {
     font-size: 18px;
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 13px;
+    font-size: 11.5px;
   }
 
 `

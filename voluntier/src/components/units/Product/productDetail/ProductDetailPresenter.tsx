@@ -21,7 +21,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
   const {data:UserData} = useQuery(FETCH_USER_LOGIN)
 
   return (
-    <>
+    <S.Body>
       {props.isOpen && (
         <S.MyModal
           visible={true}
@@ -42,7 +42,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
       <S.Wrapper>
         <S.InnerWrapper>
           <S.InnerDog>
-            <S.DogMention>골랐냐멍<br/>
+            <S.DogMention>골랐냥<br/>
             담아라멍
             </S.DogMention>
           </S.InnerDog>
@@ -50,8 +50,8 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
             <S.ProductImg src={`https://storage.googleapis.com/${props.data?.fetchProduct.productImage[0].imageUrl}`}/>
             <S.TitlePriceWrapper>
                 <S.TitleWrapper>
-                  <img style={{width:"35px",height:"35px",marginRight:"10px"}} src="/nameJelly.png"/>
-                  <S.Label style={{marginBottom:"10px", fontSize:"28px"}}>{props.data?.fetchProduct.name}</S.Label>
+                  <S.DogFootImg src="/nameJelly.png"/>
+                  <S.TitleLabel>{props.data?.fetchProduct.name}</S.TitleLabel>
                 </S.TitleWrapper>
                 <S.NameMark></S.NameMark>
                 <S.PriceWrapper>
@@ -62,13 +62,12 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
                 <S.PriceWrapper>
                 <S.Label>바로 구매</S.Label>
                 <S.Price style={{color:"#FF6A9E"}}>{props.data?.fetchProduct.price/10*9 } 젤리</S.Price>
-                  {/* <S.Price style={{color:"#FF6A9E"}}>10% {(props.data?.fetchProduct.price)/10}젤리 특가</S.Price> */}
                 </S.PriceWrapper>
                 <S.PriceWrapper>
                   <S.Label>선물포장</S.Label>
                   <S.Icon src="../../../../images/jellyshop/present-box.png"/>
                   <S.Price style={{color:"#FF6A9E"}}>포장가능</S.Price>
-                  <S.Detail>포장 디자인 보기 > </S.Detail>
+                  <S.Detail>포장 종류 보기 > </S.Detail>
                 </S.PriceWrapper>
                 <S.PriceWrapper>
                   <S.Label>배송구분</S.Label>
@@ -81,17 +80,17 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
                     <img style={{width:"30px",height:"35px",marginRight:"15px"}} src="/catImg.png"/>
                     찜하기
                   </S.PickButton>
-                  <S.ButtonWrapper>
+
                     <S.BuyButton onClick={props.onToggleModal}>
-                    <img style={{width:"50px",height:"35px",marginRight:"15px"}}src="/DogImg.png"/>
+                    <S.DogImg src="/DogImg.png"/>
                       젤리사용
                     </S.BuyButton>
-                  </S.ButtonWrapper>
+
                 </S.PickWrapper>
             </S.TitlePriceWrapper>
           </S.InnerWrapperHead>
           <S.InnerWrapperRight>
-            <S.Label style={{fontSize:"30px"}}>상품 정보</S.Label>
+            <S.Label style={{fontSize:"25px"}}>상품 정보</S.Label>
             {props.data?
             <ProductDetailViewer data={props.data}/>
             :
@@ -100,12 +99,13 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
           </S.InnerWrapperRight>
         </S.InnerWrapper>
         {UserData?.fetchLoginUser.isAdmin &&(
-        <S.ButtonWrapper>
+          <>
         <S.BuyButton onClick={props.ProductEdit}>수정하기</S.BuyButton>
         <S.BuyButton onClick={props.ProductDelete}>삭제하기</S.BuyButton>
-        </S.ButtonWrapper>
+          </>
+
         )}
       </S.Wrapper>
-    </>
+    </S.Body>
   );
 }
