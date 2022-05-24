@@ -77,7 +77,7 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
                   <S.RocketDetail> 황금젤리 바로출발! </S.RocketDetail>
                 </S.PriceWrapper>
                 <S.PickWrapper>
-                  <S.PickButton>
+                  <S.PickButton id={props.data?.fetchProduct.id} onClick={props.CreateDibs}>
                     <img style={{width:"30px",height:"35px",marginRight:"15px"}} src="/catImg.png"/>
                     찜하기
                   </S.PickButton>

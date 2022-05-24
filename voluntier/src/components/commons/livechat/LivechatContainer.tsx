@@ -9,7 +9,6 @@ export default function Livechat(props) {
   const router = useRouter();
   const [nickname, setNickName] = useState("");
   const [room, setRoom] = useState("");
-  const [message, setContents] = useState("");
   const [userId, setUserId] = useState("");
   const [resultMsg, setResultMsg] = useState([]);
 
@@ -22,7 +21,7 @@ export default function Livechat(props) {
       setResultMsg((prev) => [...prev, data]);
       console.log("받는 거", socket);
     });
-  }, [resultMsg]);
+  }, [room]);
   console.log(resultMsg);
 
   useEffect(() => {
@@ -31,19 +30,12 @@ export default function Livechat(props) {
     setNickName(props.data?.fetchLoginUser?.name);
   }, [props.data]);
 
-  console.log(userId);
-  console.log(room);
-  console.log(nickname);
 
-  const submit = () => {
-    socket.emit("send", room, nickname, message, userId);
-    console.log("보내는 거", socket);
-  };
 
   const onClickSubmit = async (data) => {
-    setContents(data.contents);
-    console.log(message);
-    submit();
+    const message = await data.contents
+    socket.emit("send", room, nickname, message, userId);
+    console.log(socket)
   };
 
   const onKeyDown = (event) => (data) => {
@@ -53,14 +45,7 @@ export default function Livechat(props) {
     }
   };
 
-  // const onKeyDown = (event, data) => {
-  //   if (event.key === "Enter") {
-  //     console.log(data.contents);
-  //     setMsg(data.contents);
-  //     setContents(data.contents);
-  //     submit();
-  //   }
-  // };
+
 
   return (
     <LivechatUI
