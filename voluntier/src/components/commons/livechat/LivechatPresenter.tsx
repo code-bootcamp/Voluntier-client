@@ -10,11 +10,13 @@ export default function LivechatUI(props) {
           <div key={uuidv4()}>
             {el.user.id === props.userId ? (
               <S.Right>
-                <S.Text>{el.message}</S.Text>
+                <S.Text ref={props.messagesEndRef}>{el.message}</S.Text>
               </S.Right>
             ) : (
               <S.Left>
-                <S.Text>{`${el.user.name}: ${el.message}`}</S.Text>
+                <S.Text
+                  ref={props.messagesEndRef}
+                >{`${el.user.name}: ${el.message}`}</S.Text>
               </S.Left>
             )}
           </div>
@@ -23,27 +25,28 @@ export default function LivechatUI(props) {
           <div key={uuidv4()}>
             {el[2] === props.userId ? (
               <S.Right>
-                <S.Text>{el[1]}</S.Text>
+                <S.Text ref={props.messagesEndRef}>{el[1]}</S.Text>
               </S.Right>
             ) : (
               <S.Left>
-                <S.Text>{`${el[0]}: ${el[1]}`}</S.Text>
+                <S.Text
+                  ref={props.messagesEndRef}
+                >{`${el[0]}: ${el[1]}`}</S.Text>
               </S.Left>
             )}
           </div>
         ))}
       </S.TalkContents>
-      {props.accessToken && (
+      {props.accessToken ? (
         <S.TalkWrite
-          placeholder="   궁금한 점을 물어보세요! 실시간으로 답변해드립니다!"
+          placeholder="궁금한 점을 물어보세요! 실시간으로 답변해드립니다!"
           onKeyDown={props.onKeyDown}
           type="text"
           {...props.register("contents", { required: true })}
         />
-      )}
-      {!props.accessToken && (
+      ) : (
         <S.TalkWrite
-          placeholder="   로그인 후 채팅이 가능합니다!"
+          placeholder="로그인 후 채팅이 가능합니다!"
           disabled={true}
         />
       )}

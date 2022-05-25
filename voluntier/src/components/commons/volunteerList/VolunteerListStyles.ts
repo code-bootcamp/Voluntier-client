@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
 
@@ -37,7 +37,6 @@ export const Column = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
 
   @media ${breakPoints.tablet} {
     font-size: 8px;

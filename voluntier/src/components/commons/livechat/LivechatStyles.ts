@@ -20,6 +20,10 @@ export const TalkContents = styled.div`
   height: 450px;
   background-color: #ededed;
   overflow-y: scroll;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px;
 `;
 
 export const Right = styled.div`
@@ -34,9 +38,7 @@ export const Text = styled.div`
   background-color: #ffcf00;
   border-radius: 10px;
   padding: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-bottom: 10px;
   font-size: 11px;
 `;
 
@@ -56,5 +58,7 @@ export const TalkWrite = styled.input`
   padding: 10px;
   ::placeholder {
     font-size: 11px;
+    display: flex;
+    justify-content: center;
   }
 `;

@@ -11,35 +11,17 @@ export const ChatWrapper = styled.div`
 
 export const Wrapper = styled.div`
   background: ${(props) => (props.isChat ? "rgba(0,0,0,0.1)" : "none")};
-  padding: 104px 70px;
-
-  @media ${breakPoints.tablet} {
-    padding: 50px 30px;
-  }
-
-  @media ${breakPoints.mobile} {
-    padding: 30px 30px;
-  }
+  padding: 20px;
 `;
 
 export const TitleWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 52px;
-
-  @media ${breakPoints.tablet} {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
 
   @media ${breakPoints.mobile} {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
 `;
 
@@ -49,27 +31,33 @@ export const TitleLabel = styled.div`
   font-size: 24px;
   font-weight: 700;
   margin-right: 8px;
+  display: flex;
+  align-items: center;
 
   @media ${breakPoints.tablet} {
     font-size: 20px;
   }
 
   @media ${breakPoints.mobile} {
+    width: 36px;
     font-size: 15px;
+    margin-right: 5px;
   }
 `;
 
 export const Title = styled.div`
   width: 100%;
   height: 33px;
-  font-size: 24px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
 
   @media ${breakPoints.tablet} {
     font-size: 15px;
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 13px;
   }
 `;
 
@@ -89,6 +77,7 @@ export const InnerWrapper = styled.div`
 export const InnerWrapperLeft = styled.div`
   width: 70%;
   margin-right: 20px;
+
   @media ${breakPoints.tablet} {
     width: 100%;
   }
@@ -100,11 +89,11 @@ export const InnerWrapperLeft = styled.div`
 
 export const InnerWrapperLeftUpper = styled.div`
   width: 100%;
-  margin-right: 20px;
   border: 1px solid #b5b5b5;
   border-radius: 20px;
+  margin-right: 20px;
   margin-bottom: 20px;
-  padding: 49px 12px;
+  padding: 20px;
 
   @media ${breakPoints.tablet} {
     padding: 15px 15px;
@@ -118,6 +107,7 @@ export const InnerWrapperLeftUpper = styled.div`
 export const InfoWrapper = styled.div`
   display: flex;
   margin-bottom: 20px;
+  align-items: flex-start;
 
   @media ${breakPoints.tablet} {
     flex-direction: column;
@@ -130,7 +120,6 @@ export const InfoWrapper = styled.div`
 
 export const InfoLeftWrapper = styled.div`
   width: 53%;
-  margin-right: 15px;
 
   @media ${breakPoints.tablet} {
     width: 100%;
@@ -171,13 +160,11 @@ export const LocationWrapper = styled.div`
 export const LocationDisplay = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 6px;
 `;
 
 export const LabelImage = styled.img`
-  width: 20px;
-  height: 21px;
-
+  width: 15px;
+  height: 16px;
   margin-right: 10px;
 
   @media ${breakPoints.tablet} {
@@ -187,23 +174,33 @@ export const LabelImage = styled.img`
   }
 
   @media ${breakPoints.mobile} {
-    width: 13px;
-    height: 15px;
-    margin-right: 10px;
+    width: 11px;
+    height: 12px;
+    margin-right: 5px;
   }
+`;
+
+export const InquiryWrapper = styled.div`
+  margin-bottom: 20px;
 `;
 
 export const QuestionIcon = styled(QuestionCircleOutlined)`
   color: #0085cb;
   svg {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 16px;
     margin-right: 10px;
 
-    @media ${breakPoints.tablet || breakPoints.mobile} {
+    @media ${breakPoints.tablet} {
       width: 13px;
       height: 15px;
       margin-right: 10px;
+    }
+
+    @media ${breakPoints.mobile} {
+      width: 11px;
+      height: 12px;
+      margin-right: 5px;
     }
   }
 `;
@@ -216,6 +213,7 @@ export const InfoRightWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 10px;
   padding-left: 3%;
   width: 44%;
 
@@ -231,44 +229,43 @@ export const InfoRightWrapper = styled.div`
 export const InfoDetailWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+
+  @media ${breakPoints.mobile} {
+    margin-bottom: 5px;
+  }
 `;
 
 export const ContentsDetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 3%;
 `;
 
 export const DetailDisplay = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
+  align-items: center;
 `;
 
 export const Label = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   margin-right: 10px;
   color: #0085cb;
 
   @media ${breakPoints.tablet} {
     font-size: 15px;
-    margin-right: 10px;
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 15px;
-    margin-right: 10px;
+    font-size: 12px;
   }
 `;
 
 export const Detail = styled.div`
   font-size: 15px;
   font-weight: 400;
-
-  @media ${breakPoints.tablet} {
-  }
+  overflow-wrap: break-word;
 
   @media ${breakPoints.mobile} {
     font-size: 12px;
@@ -298,56 +295,39 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-bottom: 50px;
 `;
 
-export const ApplyButton = styled.button`
-  width: 99px;
-  height: 51px;
+export const Button = styled.button`
+  width: 88px;
+  height: 35px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   background-color: #000000;
-  border-radius: 30px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   margin-right: 10px;
-`;
 
-export const EditButton = styled.button`
-  width: 99px;
-  height: 51px;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  background-color: #000000;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
-`;
+  @media ${breakPoints.tablet} {
+    margin-bottom: 20px;
+  }
 
-export const DeleteButton = styled.button`
-  width: 99px;
-  height: 51px;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  background-color: #000000;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 66px;
+    height: 30px;
+    font-size: 12px;
+  }
 `;
 
 export const InnerWrapperRight = styled.div`
-  width: 29%;
+  width: 320px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media ${breakPoints.tablet} {
-    width: 50%;
-  }
+  position: sticky;
+  top: 10px;
 `;
 
 export const ChatIcon = styled.div`
