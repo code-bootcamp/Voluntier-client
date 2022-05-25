@@ -47,6 +47,9 @@ export default function LoginUI(props: IPropsLoginUI) {
         <S.Question onClick={props.moveToPage("/signup")}>
           계정이 없으신가요? 회원가입하기
         </S.Question>
+        <S.Question style={{fontSize:"14px"}} onClick={props.moveToPage("/signup")}>
+          비밀번호를 잊으셨나요? 비밀번호찾기
+        </S.Question>
       </S.Login>
       <S.IconBox>
         <S.Dog src="/images/frame_left.png"></S.Dog>
