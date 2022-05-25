@@ -23,6 +23,7 @@
     "@mui/material": "^5.8.0",
     "@mui/styled-engine-sc": "^5.8.0",
     "@mui/x-date-pickers": "^5.0.0-alpha.3",
+    "@toast-ui/editor-plugin-color-syntax": "^3.0.3",
     "@toast-ui/react-editor": "^3.1.6",
     "@types/socket.io-client": "^3.4.0",
     "animate.css": "^4.1.1",

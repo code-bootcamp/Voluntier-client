@@ -5,9 +5,12 @@ import 'animate.css';
 import {animated} from 'react-spring'
 
 export const Body = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding-top: 5px;
+  padding-right: 10%;
+
 `;
 
 export const Top = styled.div`
@@ -138,16 +141,27 @@ export const Animated = styled(animated.div)`
 
 `
 export const ContentsMary= styled.span`
- margin-bottom: 10%;
- margin-left: 10px;
+font-size: 20px;
+margin-left: 10px;
+margin-bottom: 10px;
+font-family: GmarketSans;
+@media ${breakPoints.tablet}{
+  font-size:15px;
+}
  `
 
 export const ContentsJelly= styled.span`
-margin-bottom: 10%;
+font-size: 20px;
 margin-left: 10px;
+margin-bottom: 10px;
+font-family: GmarketSans;
+@media ${breakPoints.tablet}{
+  font-size:15px;
+}
 `
 export const ContentDetail = styled.div`
   font-size: 20px;
+  font-family: GmarketSans;
 
   @media ${breakPoints.tablet} {
     font-size: 14px;
@@ -189,7 +203,7 @@ export const MiddleTitle = styled.div`
 `;
 
 export const MySlider = styled(Slider)`
-  width: 950px;
+  width: 900px;
   height: auto;
   
 
@@ -287,6 +301,11 @@ export const Bottom = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 10px;
+  margin-left: 5%;
+  @media ${breakPoints.tablet}{
+    margin-left: 0%;
+
+  }
 `;
 
 export const Price = styled.div`
@@ -338,6 +357,7 @@ export const PriceDetail = styled.div`
 
 
   @media ${breakPoints.tablet} {
+    font-size: 17px;
   }
 
   @media ${breakPoints.mobile} {
