@@ -79,7 +79,6 @@ interface ISpringprops {
                   <S.Animated>
                   {Springprops.val.interpolate(val => Math.floor(val))}
                 </S.Animated>)}
-                {/* {props.allAmount?.fetchAllUsersDonationsAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}  */}
                 <S.ContentsJelly>젤리</S.ContentsJelly>
               </S.ContentPink>
               <S.ContentDetail>기부된 젤리</S.ContentDetail>

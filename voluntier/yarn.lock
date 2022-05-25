@@ -689,6 +689,13 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
+"@toast-ui/editor-plugin-color-syntax@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@toast-ui/editor-plugin-color-syntax/-/editor-plugin-color-syntax-3.0.3.tgz#190acf64e710e105b3b2a8b8af53a83e80607d2d"
+  integrity sha512-5R7OOjN3voMjeKC09wSxLqnK/GYaCNLiWVxscMPqideYzWK+asEcNEyHH2HBPheVC/1YKqIEle1AxWFHTwDpnw==
+  dependencies:
+    tui-color-picker "^2.2.6"
+
 "@toast-ui/editor@^3.1.6":
   version "3.1.6"
   resolved "https://registry.npmjs.org/@toast-ui/editor/-/editor-3.1.6.tgz"
@@ -3363,6 +3370,11 @@ tsutils@^3.21.0:
   integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
   dependencies:
     tslib "^1.8.1"
+
+tui-color-picker@^2.2.6:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/tui-color-picker/-/tui-color-picker-2.2.7.tgz#233cd501b17568ae6d604e06898b0c8553851186"
+  integrity sha512-y7gUe6PdVBq8ruZbiOkeaN7N/DX+ogVyLkK53OM4qW5Vrc4pDWYEKlnOBCsPODb4/RSzS9iTd6fXYirXxeakJA==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"

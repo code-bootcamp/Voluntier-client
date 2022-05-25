@@ -10,7 +10,6 @@ export const globalStyles = css`
   * {
     margin: 0;
     box-sizing: border-box;
-    font-size: 10px;
     ::-webkit-scrollbar {
     width: 9px;
     height: 8px;
