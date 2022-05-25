@@ -37,6 +37,7 @@ export default function BoardDetail() {
       });
       console.log(result);
       alert("신청이 완료되었습니다! 마이페이지에서 확인하세요!");
+      window.location.reload();
     } catch (error) {
       alert("이미 신청이 완료되었거나, 지금은 신청할 수 없습니다 ");
     }
