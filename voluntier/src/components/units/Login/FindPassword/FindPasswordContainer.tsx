@@ -17,13 +17,18 @@ export const CHECK_PHONE_AUTH = gql`
         checkPhoneAuthToken(phone:$phone, token:$token)
     }
 `
+export const RESET_PASSWORD = gql`
+  mutation resetPassword($phone:String! $email:String! $password:String!){
+    resetPassword(phone:$phone email:$email password:$password)
+  }
+`
 
 const schema = yup.object({
   email: yup
     .string()
     .email("이메일의 형식이 올바르지 않습니다.")
     .required("이메일은 필수 입력사항 입니다."),
-    password: yup
+  password: yup
     .string()
     .matches(
       /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/,
@@ -39,6 +44,7 @@ const schema = yup.object({
 export default function FindPassword() {
   const [sendPhoneAuthToken] = useMutation(SEND_PHONE_AUTH);
   const [checkPhoneAuthToken] = useMutation(CHECK_PHONE_AUTH);
+  const [resetPassword] = useMutation(RESET_PASSWORD)
   const [phoneAuth, setPhoneAuth] = useState(false);
   const router = useRouter()
   const { register, handleSubmit, formState, watch } = useForm({
@@ -51,7 +57,6 @@ export default function FindPassword() {
   const phone = "010" + watch("phone");
   const token = watch("phoneNumberCheck");
   
- 
 
 let time = 180 
 useEffect(()=>{
@@ -71,7 +76,6 @@ useEffect(()=>{
 },[button])
 
   const onClickSendPhone = async () => {
-    
     try {
       await sendPhoneAuthToken({
         variables: { phone },
@@ -93,22 +97,40 @@ useEffect(()=>{
       Modal.error({ content: error.message });
     }
   };
-  const MoveToPasswordChange = () => {
-    if(phoneAuth===false){
-      alert("핸드폰 인증을 먼저해주세요")
-      return
+  // const MoveToPasswordChange = () => {
+  //   if(phoneAuth===false){
+  //     alert("핸드폰 인증을 먼저해주세요")
+  //     return
+  //   }
+  //   router.push('/')
+  // }
+
+  const ResetPassword = async(data) => {
+    console.log(data)
+    if (phoneAuth === false) {
+      return Modal.info({ content: "휴대폰 인증을 먼저 받아주세요." });
     }
-    router.push('/')
+    data.phone = `010${data.phone}`;
+    const { passwordCheck, phoneNumberCheck, ...rest } = data;
+    try{
+    const result = await resetPassword({
+      variables:{...rest}
+    })
+    router.back()
+    console.log(result)
+  }catch(error){
+    Modal.error({content:error.message})
+  }
   }
 
-
   return (
-    <S.Form>
+    <S.Form onSubmit={handleSubmit(ResetPassword)}>
       <S.Login>        
         <S.Logo></S.Logo>
         <S.Contents>
           <S.Label>E-mail</S.Label>
           <S.Input
+            {...register("email")}
             type="text"
             placeholder="이메일을 입력하세요."
           />
@@ -165,7 +187,7 @@ useEffect(()=>{
             {formState.errors.passwordCheck?.message}
           </S.ErrorMsg>
         </S.Contents>
-        <S.LoginButton onClick={MoveToPasswordChange}>비밀번호 재설정</S.LoginButton>
+        <S.LoginButton>비밀번호 재설정</S.LoginButton>
       </S.Login>
       <S.IconBox>
         <S.Dog src="/images/frame_left.png"></S.Dog>
