@@ -28,16 +28,14 @@ const Mymap = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  @media ${breakPoints.tablet}{
+  @media ${breakPoints.tablet} {
     width: 100%;
-
   }
-  @media ${breakPoints.mobile}{
+  @media ${breakPoints.mobile} {
     width: 100%;
     height: 200px;
-
   }
-`
+`;
 
 export default function KakaomapGeolocation(props: IPropsKakaoMap) {
   const [windowSize, setWindowSize] = useState(false);
@@ -57,17 +55,8 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // if ("geolocation" in window.navigator) {
-      //   // Geolocation API가 있는 브라우저라면,
-      //   alert("사용가넝");
-      // } else {
-      //   // 없는 브라우저라면,
-      //   alert("사용불가넝");
-      // }
-
       function getLocation() {
         if (window.navigator.geolocation) {
-          // GPS를 지원하면
           window.navigator.geolocation.getCurrentPosition(
             function (position) {
               setLocation([
@@ -209,9 +198,5 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
     };
   }, [windowSize, location, moveToPage]);
 
-  return (
-    <Mymap
-      id="map"
-    ></Mymap>
-  );
+  return <Mymap id="map"></Mymap>;
 }

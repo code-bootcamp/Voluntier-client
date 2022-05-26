@@ -4,6 +4,7 @@ import { IPropsProductDetailUI } from "./ProductDetailTypes";
 import { gql, useQuery } from "@apollo/client";
 import dynamic from 'next/dynamic'
 
+
 const ProductDetailViewer = dynamic(()=>import('../../../commons/texteditor/viewer/productViewer'),{ssr:false})
 const FETCH_USER_LOGIN = gql`
     query fetchLoginUser{
@@ -67,7 +68,9 @@ export default function ProductDetailUI(props:IPropsProductDetailUI) {
                   <S.Label>선물포장</S.Label>
                   <S.Icon src="../../../../images/jellyshop/present-box.png"/>
                   <S.Price style={{color:"#FF6A9E"}}>포장가능</S.Price>
+                  <S.MyTooltip placement="right" title="상자 포장, 필름 포장">
                   <S.Detail>포장 종류 보기 > </S.Detail>
+                  </S.MyTooltip>
                 </S.PriceWrapper>
                 <S.PriceWrapper>
                   <S.Label>배송구분</S.Label>

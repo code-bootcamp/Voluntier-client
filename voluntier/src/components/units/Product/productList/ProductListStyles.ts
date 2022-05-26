@@ -7,11 +7,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Banner = styled.div`
-  height: 280px;
+  /* height: 280px; */
+  height: 150px;
   background-image: url("../../../../images/jellyshop/jellybanner.png");
   background-repeat: no-repeat;
   background-size: contatin;
   background-position: 100%;
+  margin-bottom: 24px;
 
   @media ${breakPoints.tablet} {
     width: 550px;
@@ -27,53 +29,19 @@ export const Banner = styled.div`
   }
 `;
 
-// export const Title = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 3% 0%;
-// `;
+export const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
-// export const Title1 = styled.div`
-//   font-size: 25px;
-//   font-family: GmarketSans;
-//   color: #ff6a9e;
-
-//   @media ${breakPoints.tablet} {
-//     font-size: 20px;
-//   }
-
-//   @media ${breakPoints.mobile} {
-//     font-size: 15px;
-//   }
-// `;
-
-// export const Title2 = styled.div`
-//   font-size: 30px;
-//   font-family: GmarketSans;
-//   font-weight: bolder;
-//   background: linear-gradient(90deg, #eaeaa7, #ffcdf3aa, #c1b0e6) border-box;
-//   background-size: contain;
-//   border: 4px solid transparent;
-
-//   @media ${breakPoints.tablet} {
-//     font-size: 20px;
-//   }
-
-//   @media ${breakPoints.mobile} {
-//     font-size: 15px;
-//   }
-// `;
-
-// export const Search = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   border: 1px solid lightgray;
-//   border-radius: 30px;
-//   align-items: center;
-// `;
+export const Title = styled.div`
+  width: 130px;
+  height: 80px;
+  background-image: url("../../../../../images/jellyshop/title_goods.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+`;
 
 export const SearchImage = styled.img`
   width: 30px;
@@ -95,7 +63,7 @@ export const SearchContents = styled.input`
 `;
 
 export const Contents = styled.div`
-  padding: 3%;
+  padding: 0 3% 3% 3% 3%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -117,6 +85,7 @@ export const ProductWrapper = styled.div`
 export const ProductImage = styled.img`
   height: 75%;
   width: 95%;
+  cursor: pointer;
 `;
 
 export const ProductName = styled.div`
@@ -124,7 +93,7 @@ export const ProductName = styled.div`
   padding: 2%;
   font-size: 18px;
   overflow: hidden;
-  font-family: GmarketSans;
+  font-family: "GmarketSans";
 
   @media ${breakPoints.mobile} {
     font-size: 11px;
@@ -136,7 +105,7 @@ export const ProductPrice = styled.span`
   height: 10%;
   padding: 2%;
   font-size: 15px;
-  font-family: GmarketSans;
+  font-family: "GmarketSans";
   font-weight: bolder;
   font-style: oblique;
   text-decoration: line-through;
@@ -151,7 +120,7 @@ export const ProductRealPrice = styled.span`
   height: 10%;
   padding: 2%;
   font-size: 15px;
-  font-family: GmarketSans;
+  font-family: "GmarketSans";
   font-weight: bolder;
   color: #ff6a9e;
 
