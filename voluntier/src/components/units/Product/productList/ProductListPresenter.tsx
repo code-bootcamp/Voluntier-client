@@ -25,10 +25,9 @@ export default function ProductListUI(props: IPropsProductListUI) {
     <>
       <S.Wrapper>
         <S.Banner />
-        {/* <S.Title>
-          <S.Title1>Jelly Shop</S.Title1>
-          <S.Title2>GOODS</S.Title2>
-        </S.Title> */}
+        <S.TitleWrapper>
+          <S.Title></S.Title>
+        </S.TitleWrapper>
         <S.Contents>
           {props.data?.fetchProducts.map((el) => (
             <S.ProductWrapper key={el.id}>

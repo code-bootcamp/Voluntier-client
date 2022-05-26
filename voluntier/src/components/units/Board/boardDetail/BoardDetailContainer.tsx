@@ -36,10 +36,14 @@ export default function BoardDetail() {
         },
       });
       console.log(result);
-      alert("신청이 완료되었습니다! 마이페이지에서 확인하세요!");
+      Modal.success({
+        content: "신청이 완료되었습니다! 마이페이지에서 확인하세요!",
+      });
       window.location.reload();
     } catch (error) {
-      alert("이미 신청이 완료되었거나, 지금은 신청할 수 없습니다 ");
+      Modal.error({
+        content: "이미 신청이 완료되었거나, 지금은 신청할 수 없습니다.",
+      });
     }
   };
 
@@ -50,10 +54,12 @@ export default function BoardDetail() {
           boardId: String(router.query.boardId),
         },
       });
-      Modal.success({ content: "삭제완료! 목록페이지로 넘어갑니다" });
+      Modal.success({ content: "삭제완료! 목록페이지로 넘어갑니다." });
       router.push("/boards");
     } catch (error) {
-      alert("글을 삭제할 수 없습니다!");
+      Modal.error({
+        content: "글을 삭제할 수 없습니다!",
+      });
     }
   };
 
