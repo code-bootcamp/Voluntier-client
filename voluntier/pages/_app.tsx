@@ -8,6 +8,9 @@ import { AppProps } from "next/app";
 import { RecoilRoot } from 'recoil';
 import LayOut from '../src/commons/layout';
 import ApolloSetting from '../src/commons/apollo';
+import { ToastProvider } from "react-toast-notifications";
+
+
 
 
 function MyApp({ Component, pageProps }:AppProps) {
@@ -15,10 +18,12 @@ function MyApp({ Component, pageProps }:AppProps) {
   return (
   <RecoilRoot>
     <ApolloSetting>
-      <Global styles={globalStyles}/>
-      <LayOut>
-        <Component {...pageProps} />
-      </LayOut>
+    <ToastProvider>
+        <Global styles={globalStyles}/>
+        <LayOut>
+          <Component {...pageProps} />
+        </LayOut>
+      </ToastProvider>
     </ApolloSetting>
   </RecoilRoot>
   )

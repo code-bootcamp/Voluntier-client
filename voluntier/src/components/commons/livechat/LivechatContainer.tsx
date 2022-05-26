@@ -10,6 +10,7 @@ import { accessTokenState } from "../../../commons/store";
 
 const url = "backendapi.voluntier.site/chat";
 
+
 export default function Livechat(props) {
   const messagesEndRef = useRef<HTMLDivElement>();
   const [accessToken] = useRecoilState(accessTokenState);
@@ -21,6 +22,7 @@ export default function Livechat(props) {
   const { data } = useQuery(FETCH_CHAT_HISTORY, {
     variables: { boardId: String(router.query.boardId) },
   });
+
 
   const socket: Socket = io(url, { transports: ["websocket"] });
 
@@ -34,13 +36,12 @@ export default function Livechat(props) {
       contents: "",
     },
   });
-
+  
   useEffect(() => {
     socket.on(room, (data) => {
-      setResultMsg((prev) => [...prev, data]);
-      return alert("카톡왔숑");
-    });
-  }, [room]);
+    setResultMsg((prev) => [...prev, data]);
+  })
+}, [room]);
 
   useEffect(() => {
     setUserId(props.data?.fetchLoginUser?.id);
@@ -50,7 +51,7 @@ export default function Livechat(props) {
 
   const onClickSubmit = async (data) => {
     const message = await data.contents;
-    socket.emit("send", room, nickname, message, userId);
+    socket.emit("send", room, nickname, message, userId ,);
     resetField("contents");
     await delay(100);
     return messagesEndRef.current.scrollIntoView({

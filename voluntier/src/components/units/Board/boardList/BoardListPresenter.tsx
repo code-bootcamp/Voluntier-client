@@ -89,29 +89,6 @@ export default function BoardListUI(props) {
             </S.ColumnHeaderBasic>
           </S.Row>
         ))}
-        {/* {props.data2?.fetchBoards.map((el, index) => (
-          <S.Row key={index}>
-            <S.ColumnHeaderTitle onClick={moveToPage(`/boards/${el.id}`)}>
-              <S.TitleBox>
-                <S.TitleImage src={`${el.contents.includes("https") ? el.contents?.slice(el.contents.indexOf("https"),el.contents.indexOf(")")) : "../../../../images/Group 8.png" }`}/>
-                <S.TitleContents>
-                  <S.CenterTitle>{el.title}</S.CenterTitle>
-                  <S.CenterAddress>{el.address}</S.CenterAddress>
-                </S.TitleContents>
-              </S.TitleBox>
-            </S.ColumnHeaderTitle>
-            <S.ColumnHeaderBasic>{el.centerName}</S.ColumnHeaderBasic>
-            <S.ColumnHeaderBasic style={{ fontSize: "10px"}}>
-              {el.createdAt.slice(2, 10)}
-            </S.ColumnHeaderBasic>
-            <S.ColumnHeaderBasic style={{ display: "none" }}>
-              {el.location1}
-            </S.ColumnHeaderBasic>
-            <S.ColumnHeaderBasic style={{ display: "none" }}>
-              {el.location2}
-            </S.ColumnHeaderBasic>
-          </S.Row>
-        ))} */}
       </S.TableWrapper>
       <Pagination
         data={props.data}
