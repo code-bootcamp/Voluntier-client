@@ -2,32 +2,10 @@
 import _ from "lodash";
 import { useState, useEffect, ChangeEvent } from 'react';
 import BoardListUI from "./BoardListPresenter";
-import { gql, useQuery } from '@apollo/client';
 
-// const FETCH_BOARDS = gql`
-//   query fetchBoards(
-//     $page: Int
-//     $search: String
-//   ) {
-//     fetchBoards(
-//       page: $page
-//       search: $search
-//     ) {
-//       title
-//       contents
-//       centerName
-//       createdAt
-//       location1
-//       location2
-//       id
-//       address
-//     }
-//   }
-// `;
 
 export default function BoardList(props) {
-  // const { data:data2, refetch } = useQuery(FETCH_BOARDS);
-  const [keyword, setKeyword] = useState("");
+  const [, setKeyword] = useState("");
   const [key,setKey] = useState("전체")
   const [big,setBig] = useState("전체")
   const [small,setSmall] = useState("전체")
@@ -74,10 +52,9 @@ export default function BoardList(props) {
   };
 
   const getDebounce = _.debounce((data) => {
-    console.log(keyword)
-    props.refetch({ search: data, page: 1 });
+    props.refetch({page:1,search:data});
     setKeyword(data);
-  }, 200);
+  }, 1000);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getDebounce(event.target.value);
@@ -86,7 +63,6 @@ export default function BoardList(props) {
 
   console.log(props.data?.fetchBoards)
   return <BoardListUI 
-  // data2={data2}
   onChangeSearch={onChangeSearch}
   onClickSearch={onClickSearch} 
   onChangeSmall={onChangeSmall} 
