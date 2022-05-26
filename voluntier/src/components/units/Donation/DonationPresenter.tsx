@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from "../../../commons/store";
 import {useSpring} from 'react-spring'
-
-
 export default function DonationUI(props) {
   const [isTrue,setIsTrue] = useState(false)
   const PayRef = useRef<HTMLButtonElement>(null);
@@ -66,6 +64,7 @@ interface ISpringprops {
   
     return (
       <>
+
       <S.Body>
         <S.Top>
           <S.TopTitle>

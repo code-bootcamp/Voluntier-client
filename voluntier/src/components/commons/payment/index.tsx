@@ -3,7 +3,7 @@ import Head from "next/head";
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from '../../../commons/store';
-
+import {useRouter }from 'next/router'
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -33,6 +33,7 @@ export default function PaymentPage(props) {
   const [amount,] = useRecoilState(setAmountDonation)
   const {data} = useQuery(FETCH_USER_LOGIN)
   const [createDonation] = useMutation(CREATE_DONATION)
+  const router = useRouter()
  
 
   const requestPay = async() => {
@@ -43,7 +44,7 @@ export default function PaymentPage(props) {
         pg: "html5_inicis",
         pay_method: "card",
         name: "Voluntier후원",
-        amount: amount,
+        amount,
         buyer_email: data?.fetchLoginUser.email,
         buyer_name: data?.fetchLoginUser.name,
       },
@@ -56,6 +57,7 @@ export default function PaymentPage(props) {
               }]
             })
             alert("충전에 성공하였습니다.")
+            router.push('/donation')
         } else {
           alert("결제에 실패하였습니다. 다시 시도해주세요.");
         }
