@@ -95,7 +95,7 @@ export const Input = styled.input`
   letter-spacing: 0.5px;
   margin-bottom: 24px;
   color: #ffffff;
-    font-size: 16px;
+  font-size: 16px;
   ::placeholder {
     color: #ffffff;
     font-size: 16px;

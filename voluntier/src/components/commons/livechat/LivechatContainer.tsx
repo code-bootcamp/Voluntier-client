@@ -38,6 +38,7 @@ export default function Livechat(props) {
   useEffect(() => {
     socket.on(room, (data) => {
       setResultMsg((prev) => [...prev, data]);
+      return alert("카톡왔숑")
     });
   }, [room]);
 
