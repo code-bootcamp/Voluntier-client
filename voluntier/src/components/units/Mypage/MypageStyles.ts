@@ -14,36 +14,13 @@ export const Wrapper = styled.div`
   padding: 50px 24px;
 
   @media ${breakPoints.tablet} {
-    padding: 0px 20px 20px 20px;
+    padding: 50px 0px 20px 20px;
+    width: 550px;
   }
 
   @media ${breakPoints.mobile} {
-    padding: 0px 20px 20px 20px;
-  }
-`;
-
-export const DogBiscuit = styled.div`
-  width: 230px;
-  height: 82px;
-  background: url("../../../../images/UnionBiscuit.png");
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 33px;
-
-  @media ${breakPoints.tablet} {
-    width: 0px;
-    height: 0px;
-    color: transparent;
-  }
-
-  @media ${breakPoints.mobile} {
-    width: 0px;
-    height: 0px;
-    color: transparent;
+    padding: 20px;
+    width: 170%;
   }
 `;
 
@@ -59,18 +36,29 @@ export const ProfileWrapper = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    height: 120px;
+    height: 170px;
     margin-bottom: 10px;
+    padding: 5%;
   }
 `;
 
 export const ProfileImageWrapper = styled.div`
-  width: 200px;
+  width: 10%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
+  /* margin-right: 20px; */
+  @media ${breakPoints.tablet} {
+   padding-top: 10%;
+
+  }
+  @media ${breakPoints.mobile} {
+
+  padding-top: 10%;
+
+  }
+
 `;
 
 export const ProfileImage = styled.img`
@@ -81,11 +69,12 @@ export const ProfileImage = styled.img`
   @media ${breakPoints.tablet} {
     width: 150px;
     height: 150px;
+
   }
 
   @media ${breakPoints.mobile} {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
 `;
 
@@ -105,27 +94,57 @@ export const ProfileEdit = styled.div`
 `;
 
 export const ProfileRightWrapper = styled.div`
-  width: 100%;
+  width: 75%;
   display: flex;
-  flex-direction: column;
-`;
+  flex-direction: row;
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+  }
 
-export const Grade = styled.div`
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
+
+`;
+export const GradeDisplay = styled.div`
+display: flex;
+flex-direction: column;
+width: 40%;
+@media ${breakPoints.tablet}{
+  margin-left: 10%;
+  width: 80%;
+    
+  }
+`
+export const GradeContents = styled.div`
+  width:400px;
   font-family: "GmarketSans";
-  font-size: 48px;
+  font-size: 30px;
+  overflow: hidden;
 
   @media ${breakPoints.tablet} {
     font-size: 20px;
   }
 
   @media ${breakPoints.mobile} {
+    
     font-size: 15px;
+  }
+`;
+export const GradePicture = styled.div`
+width: auto;
+
+  @media ${breakPoints.tablet} {
+    
+  }
+
+  @media ${breakPoints.mobile} {
+    
   }
 `;
 
 export const TooltipWrapper = styled.div`
-  /* width: 539px; */
-  width: 40%;
+  width: 100%;
   height: 106px;
 
   @media ${breakPoints.tablet} {
@@ -178,7 +197,24 @@ export const Label = styled.div`
 `;
 
 export const TabsWrapper = styled.div`
+
   margin-bottom: 34px;
+  @media ${breakPoints.tablet}{
+    margin-top: 30%;
+
+    
+  }  @media ${breakPoints.mobile}{
+    margin-top: 30%;
+
+    
+  }
+`;
+export const TabsWrapper2 = styled.div`
+  margin-bottom: 34px;
+  @media ${breakPoints.tablet}{
+
+    
+  }
 `;
 
 export const MyTabs = styled(Tabs)`
