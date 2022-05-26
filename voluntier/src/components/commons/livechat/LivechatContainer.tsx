@@ -39,11 +39,9 @@ export default function Livechat(props) {
   
   useEffect(() => {
     socket.on(room, (data) => {
-      console.log(data)
     setResultMsg((prev) => [...prev, data]);
   })
 }, [room]);
-
 
   useEffect(() => {
     setUserId(props.data?.fetchLoginUser?.id);
@@ -58,8 +56,7 @@ export default function Livechat(props) {
     await delay(100);
     return messagesEndRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "end",
-      inline: "start",
+      block: "nearest",
     });
   };
 
