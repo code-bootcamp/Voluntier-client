@@ -8,10 +8,10 @@ export const Wrapper = styled.div`
 
 export const Banner = styled.div`
   /* height: 280px; */
-  height: 150px;
+  height: 165px;
   background-image: url("../../../../images/jellyshop/jellybanner.png");
   background-repeat: no-repeat;
-  background-size: contatin;
+  background-size: contain;
   background-position: 100%;
   margin-bottom: 24px;
 

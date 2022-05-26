@@ -38,7 +38,7 @@ export default function Livechat(props) {
   useEffect(() => {
     socket.on(room, (data) => {
       setResultMsg((prev) => [...prev, data]);
-      return alert("카톡왔숑")
+      return alert("카톡왔숑");
     });
   }, [room]);
 
@@ -55,8 +55,7 @@ export default function Livechat(props) {
     await delay(100);
     return messagesEndRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "end",
-      inline: "start",
+      block: "nearest",
     });
   };
 

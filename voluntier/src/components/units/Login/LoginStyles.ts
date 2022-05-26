@@ -215,7 +215,7 @@ export const Question = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 16px;
+    font-size: 14px;
     color: #000000;
     width: 100%;
     height: 60px;
