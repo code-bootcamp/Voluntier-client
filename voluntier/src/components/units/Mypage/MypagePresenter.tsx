@@ -7,7 +7,7 @@ import BoardRecords from "../../commons/boardRecords";
 import PurchaseRecords from "../../commons/purchaseRecords";
 import { gql, useQuery } from "@apollo/client";
 import DibsList from "../../commons/Dibs/DibsList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MiniJelly1, MiniJelly2, MiniJelly3, MiniJelly4 } from "../../commons/myJelly";
 
 const FETCH_USER_LOGIN = gql`
@@ -35,16 +35,22 @@ export default function MypageUI(props) {
   const [myjelly,setMyjelly] =useState(1)
 console.log(data)
 
-if(data?.fetchLoginUser.point > 3000 && data?.fetchLoginUser.point <=4000){
- setMyjelly(2)
-}else if (data?.fetchLoginUser.point > 4000 && data?.fetchLoginUser.point <=5000){
-  setMyjelly(3)
-}else if (data?.fetchLoginUser.point > 5000 && data?.fetchLoginUser.point <=6000){
-  setMyjelly(4)
-}
+useEffect(()=>{
 
-
-
+  
+  if(data?.fetchLoginUser.point > 3000 && data?.fetchLoginUser.point <=4000){
+    setMyjelly(2)
+  }
+  if (data?.fetchLoginUser.point > 4000 && data?.fetchLoginUser.point <=5000){
+    setMyjelly(3)
+  }
+  if (data?.fetchLoginUser.point > 5000 && data?.fetchLoginUser.point <=10000000){
+    setMyjelly(4)
+  }
+  
+})
+console.log(data?.fetchLoginUser.point)
+console.log(myjelly)
 
 
 
@@ -79,15 +85,18 @@ if(data?.fetchLoginUser.point > 3000 && data?.fetchLoginUser.point <=4000){
           </S.ProfileImageWrapper>
           <S.ProfileRightWrapper>
             <S.GradeDisplay>
+              
+                {data?.fetchLoginUser.point && (
                 <S.GradeContents>
                   {data?.fetchLoginUser.name}님은 <br/>
-                  {myjelly === 1 && "미니블루젤리"}
-                  {myjelly === 2 && "푸릇그린젤리"}
-                  {myjelly === 3 && "열정레드젤리"}
-                  {myjelly === 4 && "킹왕짱골드젤리"}
+                    {myjelly === 1 && "미니블루젤리"}
+                    {myjelly === 2 && "푸릇그린젤리"}
+                    {myjelly === 3 && "열정레드젤리"}
+                    {myjelly === 4 && "킹왕짱골드젤리"}
                   &nbsp;
                   등급이시네요!
                 </S.GradeContents>
+                    )}
                 <S.TooltipWrapper>
                   <S.Tooltip>
                     <S.TooltipText>지금까지 {data?.fetchLoginUser.donationAmount}젤리를 후원하고</S.TooltipText>
