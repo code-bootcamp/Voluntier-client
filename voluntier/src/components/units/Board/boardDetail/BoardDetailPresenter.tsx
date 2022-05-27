@@ -13,19 +13,22 @@ const ToastUIViewer = dynamic(
 export default function BoardDetailUI(props) {
   const [windowSize, setWindowSize] = useState(false);
   const [whois,setWhois] = useState(1)
-  useEffect(()=>{
 
-    
-    if(props.data?.fetchBoard?.user.id ===
-      props.Userdata?.fetchLoginUser.id ){
-        setWhois(2)
-      }
+
+useEffect(()=>{
+
+  if(props.data?.fetchBoard?.user.id !== props.Userdata?.fetchLoginUser.id){
+setWhois(1)
+  }
+  if(props.data?.fetchBoard?.user.id === 
+    props.Userdata?.fetchLoginUser.id){
+      setWhois(2)
+    }
     if(props.Userdata?.fetchLoginUser?.isAdmin){
-        setWhois(3)
-      }
+      setWhois(3)
+    }
+  },[props.data, props.Userdata])
     console.log(whois)
-    })
-    
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {

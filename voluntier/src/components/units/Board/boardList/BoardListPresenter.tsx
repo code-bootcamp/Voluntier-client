@@ -19,7 +19,7 @@ export default function BoardListUI(props:IPropsBoardListUI) {
       <S.SearchTitle>🔎 원하는 지역의 봉사를 찾아보세요</S.SearchTitle>
         <S.Dropdown onChange={props.onChangeKey}>
           {props.Big.map((el, index) => (
-            <S.Option id={el} key={index} value={el}>
+            <S.Option id={el} key={index} value={el} style={{backgroundColor: "white"}}>
               {el}
             </S.Option>
           ))}
@@ -87,7 +87,7 @@ export default function BoardListUI(props:IPropsBoardListUI) {
                           el.contents.indexOf("https"),
                           el.contents.indexOf(")")
                         )
-                      : "../../../../images/Group 8.png"
+                      : "../../../../images/boardList/defaultimg.png"
                   }`}
                 />
                 <S.TitleContents>
