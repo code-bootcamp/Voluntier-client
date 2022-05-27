@@ -106,12 +106,18 @@ export const Dropdown = styled.select`
   border-radius: 10px;
   -webkit-appearance: none;
   -moz-appearance: none;
+
   appearance: none;
   cursor: pointer;
   select::-ms-expand {
     display: none;
   }
 
+  :focus {
+    border: 1px solid skyblue;
+    outline: none;
+    color: #2c3131;
+  }
   @media ${breakPoints.tablet} {
     font-size: 12px;
   }
@@ -123,7 +129,8 @@ export const Dropdown = styled.select`
   }
 `;
 
-export const Option = styled.option``;
+export const Option = styled.option`
+`;
 
 export const SearchButton = styled.div`
   width: 40px;
@@ -214,6 +221,7 @@ export const Row = styled.div`
     color: #0085cb;
   }
   @media ${breakPoints.mobile} {
+    margin: 0px;
     display: flex;
     justify-content: space-around;
     border-top: 1px solid #e3e3e3;
@@ -273,15 +281,20 @@ export const TitleBox = styled.div`
 
 export const TitleImage = styled.img`
   width: 20%;
-  height: 110px;
+  height: 80px;
   margin-right: 3%;
+  
 
   @media ${breakPoints.tablet} {
-    width: 20%;
+    width: 30%;
+    height: 70px;
   }
 
   @media ${breakPoints.mobile} {
-    width: 30%;
+    padding-top: 15px;
+    width: 80px;
+    height: 63px;
+    margin-right: 5%;
   }
 `;
 

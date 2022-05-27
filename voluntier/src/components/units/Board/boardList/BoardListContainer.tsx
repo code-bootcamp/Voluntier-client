@@ -1,16 +1,19 @@
 import _ from "lodash";
 import { useState, useEffect, ChangeEvent } from 'react';
 import BoardListUI from "./BoardListPresenter";
+import { IPropsBoardList } from "./BoardListTypes";
 
 
-export default function BoardList(props) {
+
+export default function BoardList(props:IPropsBoardList) {
   const [, setKeyword] = useState("");
   const [key,setKey] = useState("전체")
   const [big,setBig] = useState("전체")
   const [small,setSmall] = useState("전체")
   const Big = ["전체","서울","경기","인천","대전","대구","광주","울산","부산","세종특별자치시","강원","충북","충남","전북","전남","경북","경남","제주특별자치도"]
 
-  const Small = { "전체":["전체"],
+  const Small = 
+                  { "전체":["전체"],
                   "서울":["종로구","중구","용산구","성동구","광진구","동대문구","중랑구","성북구","강북구","도봉구","노원구","은평구","서대문구","마포구","양천구","강서구","구로구","금천구","영등포구","동작구","관악구","서초구","강남구","송파구","강동구"],
                   "경기":["수원시","성남시","의정부시","안양시","부천시","광명시","평택시","동두천시","안산시","고양시","과천시","구리시","남양주시","오산시","시흥시","군포시","의왕시","하남시","용인시","파주시","이천시","안성시","김포시","화성시","광주시","양주시","포천시","여주시","연천군","가평군","양평군"],
                   "인천":["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"],
@@ -29,22 +32,21 @@ export default function BoardList(props) {
                   "경남":["창원시","진주시","통영시","사천시","김해시","밀양시","거제시","양산시","의령군","함안군","창녕군","고성군","남해군","하동군","산청군","함양군","거창군","합천군"],
                   "제주특별자치도":["제주시","서귀포시"]
                 }
-  const S = Small[key]
+  const S = String(Small)[Number(key)]
 
   useEffect(()=>{
-    setSmall(Small[key][0])
-    if(Small[key][0]==="전체"){
+    setSmall(String(Small)[Number(key)][0])
+    if(String(Small)[Number(key)][0]==="전체"){
       setBig("")
       setSmall("") 
     }
   },[key])
-  console.log(big)
-  console.log(small)
-  const onChangeKey = (event) => {
+
+  const onChangeKey = (event:ChangeEvent<HTMLSelectElement>) => {
     setKey(event.target.value)
     setBig(event.target.value)
   }
-  const onChangeSmall = (event) =>{
+  const onChangeSmall = (event:ChangeEvent<HTMLSelectElement>) =>{
     setSmall(event.target.value) 
   }
   
@@ -62,14 +64,15 @@ export default function BoardList(props) {
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getDebounce(event.target.value);
   };
- console.log(props.BoardsCountData)
+
 
   return <BoardListUI 
   onChangeSearch={onChangeSearch}
   onClickSearch={onClickSearch} 
   onChangeSmall={onChangeSmall} 
   onChangeKey={onChangeKey} 
-  Big={Big} S={S} 
+  Big={Big} 
+  S={S} 
   data={props.data}
   refetch={props.refetch}
   BoardsCountData={props.BoardsCountData}/>;

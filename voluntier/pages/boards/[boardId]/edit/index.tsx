@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { IQuery } from "../../../../src/commons/types/generated/types";
 import { FETCH_BOARD } from "../../../../src/components/units/Board/boardDetail/BoardDetailQueries";
 import BoardWrite from "../../../../src/components/units/Board/boardWrite/BoardWriteContainer";
 
@@ -7,7 +8,7 @@ import BoardWrite from "../../../../src/components/units/Board/boardWrite/BoardW
 
 export default function BoardEditPage() {
   const router = useRouter()
-  const {data : defaultData} = useQuery(FETCH_BOARD,
+  const {data : defaultData} = useQuery<Pick<IQuery,"fetchBoard">>(FETCH_BOARD,
     {variables:{boardId: String(router.query.boardId)}})
   console.log(defaultData)
   
