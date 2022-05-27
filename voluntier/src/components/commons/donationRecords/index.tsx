@@ -40,18 +40,20 @@ const Column = styled.div`
 export default function DonationRecords(props) {
   return (
     <Wrapper>
-      <Row>
-          <Column style={{ width: "7%" }}>no.</Column>
-          <Column style={{ width: "68%" }}>후원 금액</Column>
-          <Column style={{ width: "25%" }}>후원 날짜</Column>
-        </Row>
+      <Row style={{ fontWeight: "800", borderBottom: "1px solid #000000" }}>
+        <Column style={{ width: "7%" }}>no.</Column>
+        <Column style={{ width: "68%" }}>후원 금액</Column>
+        <Column style={{ width: "25%" }}>후원 날짜</Column>
+      </Row>
       <InfiniteScroll>
-        {props.DonationData?.fetchDonations.map((el,index) =>(
-        <Row key={index}>
-          <Column style={{ width: "7%" }}>{index+1}</Column>
-          <Column style={{ width: "68%" }}>{el.amount} 젤리</Column>
-          <Column style={{ width: "25%" }}>{el.createdAt.slice(0,10)}</Column>
-        </Row>
+        {props.DonationData?.fetchDonations.map((el, index) => (
+          <Row key={index}>
+            <Column style={{ width: "7%" }}>{index + 1}</Column>
+            <Column style={{ width: "68%" }}>{el.amount} 젤리</Column>
+            <Column style={{ width: "25%" }}>
+              {el.createdAt.slice(0, 10)}
+            </Column>
+          </Row>
         ))}
       </InfiniteScroll>
     </Wrapper>

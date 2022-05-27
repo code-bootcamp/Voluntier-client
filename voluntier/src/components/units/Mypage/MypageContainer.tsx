@@ -4,13 +4,13 @@ import useAuth from "../../commons/hooks/useAuth";
 import MypageUI from "./MypagePresenter";
 
 const FETCH_PURCHASES = gql`
-  query fetchPurchases{
-    fetchPurchases{
+  query fetchPurchases {
+    fetchPurchases {
       id
-      user{
+      user {
         name
       }
-      product{
+      product {
         id
         name
       }
@@ -19,71 +19,75 @@ const FETCH_PURCHASES = gql`
       cancelledAt
     }
   }
-`
+`;
+
 const FETCH_DONATIONS = gql`
-  query fetchDonations{
-    fetchDonations{
+  query fetchDonations {
+    fetchDonations {
       amount
       createdAt
     }
   }
-`
+`;
+
 const FETCH_ENROLLS = gql`
-  query fetchEnrollsByUserId{
-    fetchEnrollsByUserId{
-      board{
+  query fetchEnrollsByUserId {
+    fetchEnrollsByUserId {
+      board {
         centerName
+        id
       }
       createdAt
       status
     }
   }
-`
+`;
 
 const FETCH_BOARDS_USER = gql`
-  query fetchBoardsOfUser{
-    fetchBoardsOfUser{
+  query fetchBoardsOfUser {
+    fetchBoardsOfUser {
       id
       title
       createdAt
     }
   }
-`
+`;
+
 const FETCH_USER_DIBS = gql`
-    query fetchLogInUserDibs{
-      fetchLogInUserDibs{
+  query fetchLogInUserDibs {
+    fetchLogInUserDibs {
+      id
+      product {
         id
-        product{
-          id
-          name
-          price
-        }
+        name
+        price
       }
     }
-`
+  }
+`;
 
-
-  
 export default function Mypage() {
-  useAuth()
+  useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const {data:PurchasesData} = useQuery(FETCH_PURCHASES)
-  const {data:DonationData} = useQuery(FETCH_DONATIONS)
-  const {data:EnrollsData} = useQuery(FETCH_ENROLLS)
-  const {data:BoardUserData} = useQuery(FETCH_BOARDS_USER)
-  const {data:DibsData} = useQuery(FETCH_USER_DIBS)
+  const { data: PurchasesData } = useQuery(FETCH_PURCHASES);
+  const { data: DonationData } = useQuery(FETCH_DONATIONS);
+  const { data: EnrollsData } = useQuery(FETCH_ENROLLS);
+  const { data: BoardUserData } = useQuery(FETCH_BOARDS_USER);
+  const { data: DibsData } = useQuery(FETCH_USER_DIBS);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
 
-  return <MypageUI
-  setIsOpen={setIsOpen}
-  isOpen={isOpen} 
-  onToggleModal={onToggleModal} 
-  PurchasesData={PurchasesData}
-  DonationData={DonationData}
-  EnrollsData={EnrollsData}
-  BoardUserData={BoardUserData}
-  DibsData={DibsData}
-  />;
+  return (
+    <MypageUI
+      setIsOpen={setIsOpen}
+      isOpen={isOpen}
+      onToggleModal={onToggleModal}
+      PurchasesData={PurchasesData}
+      DonationData={DonationData}
+      EnrollsData={EnrollsData}
+      BoardUserData={BoardUserData}
+      DibsData={DibsData}
+    />
+  );
 }

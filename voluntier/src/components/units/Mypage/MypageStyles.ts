@@ -21,9 +21,8 @@ export const Wrapper = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-   width: 100%;
-   padding: 0px;
-   
+    width: 100%;
+    padding: 0px;
   }
 `;
 
@@ -48,19 +47,20 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const ProfileImageWrapper = styled.div`
-  width: 10%;
+  width: 15%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-right: 20px; */
+  border: 1px solid pink;
+
   @media ${breakPoints.tablet} {
-   padding-top: 10%;
-
+    padding-top: 10%;
   }
-  @media ${breakPoints.mobile} {
-    width: 40%;}
 
+  @media ${breakPoints.mobile} {
+    width: 40%;
+  }
 `;
 
 export const ProfileImage = styled.img`
@@ -71,7 +71,6 @@ export const ProfileImage = styled.img`
   @media ${breakPoints.tablet} {
     width: 150px;
     height: 150px;
-
   }
 
   @media ${breakPoints.mobile} {
@@ -87,6 +86,7 @@ export const ProfileEdit = styled.div`
   text-decoration: underline;
   cursor: pointer;
   text-align: center;
+  margin-top: 10px;
 
   @media ${breakPoints.tablet} {
     font-size: 12px;
@@ -102,6 +102,8 @@ export const ProfileRightWrapper = styled.div`
   width: 75%;
   display: flex;
   flex-direction: row;
+  border: 1px solid orange;
+
   @media ${breakPoints.tablet} {
     flex-direction: column;
   }
@@ -110,43 +112,46 @@ export const ProfileRightWrapper = styled.div`
     flex-direction: column;
     margin-left: 2%;
   }
-
 `;
+
 export const GradeDisplay = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 1px solid red;
 
-width: 40%;
-@media ${breakPoints.tablet}{
-  margin-left: 10%;
-  width: 80%;
-    
-  }
-  @media ${breakPoints.mobile}{
-  margin-left: 10%;
-  width: 100%;
-  margin-top: 14%;
-    
+  @media ${breakPoints.tablet} {
+    margin-left: 10%;
+    width: 80%;
   }
 
-`
+  @media ${breakPoints.mobile} {
+    margin-left: 10%;
+    width: 100%;
+    margin-top: 14%;
+  }
+`;
+
 export const GradeContents = styled.div`
-  width:400px;
+  width: 400px;
   font-family: "GmarketSans";
   font-size: 30px;
+  border: 1px solid blue;
+
   @media ${breakPoints.tablet} {
     font-size: 20px;
   }
+
   @media ${breakPoints.mobile} {
     width: 100%;
     font-size: 16px;
   }
 `;
+
 export const GradePicture = styled.div`
-width: auto;
+  border: 1px solid green;
 
   @media ${breakPoints.tablet} {
-    
   }
 
   @media ${breakPoints.mobile} {
@@ -204,37 +209,32 @@ export const Label = styled.div`
 
   @media ${breakPoints.mobile} {
     font-size: 12px;
-    
   }
 `;
 
 export const TabsWrapper = styled.div`
   margin-bottom: 34px;
-  @media ${breakPoints.tablet}{
-    margin-top: 30%;
-    
 
-    
-  }  @media ${breakPoints.mobile}{
+  @media ${breakPoints.tablet} {
+    margin-top: 30%;
+  }
+  @media ${breakPoints.mobile} {
     margin-top: 0%;
     margin-left: 3.5%;
     width: 350px;
-
-    
   }
 `;
+
 export const TabsWrapper2 = styled.div`
   margin-bottom: 34px;
-  @media ${breakPoints.tablet}{
- 
 
-    
-  }  @media ${breakPoints.mobile}{
+  @media ${breakPoints.tablet} {
+  }
+
+  @media ${breakPoints.mobile} {
     margin-top: 0%;
     margin-left: 3.5%;
     width: 350px;
-
-    
   }
 `;
 
