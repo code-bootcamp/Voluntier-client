@@ -2,9 +2,10 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   html,
-  body {
+  body{
     font-size: 10px;
     font-family: "NotoSans";
+    background-color: white;
   }
 
   * {

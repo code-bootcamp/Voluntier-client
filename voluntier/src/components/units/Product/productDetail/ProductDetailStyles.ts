@@ -84,7 +84,7 @@ export const InnerWrapperHead = styled.div`
   height: 400px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border: 3px solid #ffcf00;
   border-radius: 20px;
   padding: 6% 5% 4% 5%;
@@ -262,6 +262,7 @@ export const PickButton = styled.button`
   font-size: 21px;
   color: white;
   cursor: pointer;
+  margin-right: 10px;
 
   @media ${breakPoints.tablet} {
     width: 120px;
@@ -340,12 +341,12 @@ export const Price = styled.div`
 
 export const ButtonWrapper = styled.div`
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const PickWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  
 
   @media ${breakPoints.mobile} {
     margin: 5% 5% 0% 0%;

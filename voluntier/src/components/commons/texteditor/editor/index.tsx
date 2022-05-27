@@ -73,7 +73,7 @@ export default function EditorUI(props:any){
     
     <Editor 
     previewStyle='vertical'
-    placeholder='봉사 센터의 특이사항등을 상세히 설명해주시고,             센터 사진을 끌어다 놓아보세요!'
+    placeholder='세부사항, 특이사항등을 상세히 설명해주시고, 사진을 끌어다 놓아보세요!'
     ref={props.editorRef}
     plugins={[colorSyntax]}
     hooks={{addImageBlobHook: async(file : Blob | File, callback)=>{

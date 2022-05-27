@@ -11,10 +11,8 @@ import ApolloSetting from '../src/commons/apollo';
 import { ToastProvider } from "react-toast-notifications";
 
 
-
-
 function MyApp({ Component, pageProps }:AppProps) {
-
+  
   return (
   <RecoilRoot>
     <ApolloSetting>
