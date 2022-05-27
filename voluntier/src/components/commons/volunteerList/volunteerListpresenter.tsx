@@ -38,7 +38,6 @@ export default function VolunteerList(props) {
         ],
       });
       console.log("완료");
-      console.log(result);
     } catch (error) {
       Modal.error({ content: error.message });
     }
@@ -75,7 +74,11 @@ export default function VolunteerList(props) {
             <S.Row key={el.id}>
               <S.Column style={{ width: "30%" }}>{el.user.name}</S.Column>
               <S.Column style={{ width: "50%" }}>
-                {el.user.phone.slice(7, 12)}
+              {props.boarddata?.user.id ===
+              props.Userdata?.fetchLoginUser.id ? (
+                <>{el.user.phone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')}</> ) : (
+                  <>{el.user.phone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-****-$3')}</>
+                )}
               </S.Column>
               <S.Column style={{ width: "30%", color: "#FF3800" }}>
                 {el.status === "COMPLETE" ? "봉사완료" : "신청중"}

@@ -204,11 +204,11 @@ export const SocialButton = styled.img`
 
 export const Question = styled.div`
   font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 13px;
   color: #ffffff;
   margin-top: 10px;
   text-align: center;
+  /* text-decoration: underline; */
   cursor: pointer;
   :hover {
     border-bottom: 1px solid #ffffff;

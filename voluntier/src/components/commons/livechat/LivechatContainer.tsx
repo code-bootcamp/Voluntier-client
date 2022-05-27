@@ -54,7 +54,7 @@ export default function Livechat(props) {
     socket.emit("send", room, nickname, message, userId ,);
     resetField("contents");
     await delay(100);
-    return messagesEndRef.current.scrollIntoView({
+    return messagesEndRef?.current?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
     });

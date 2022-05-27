@@ -49,9 +49,9 @@ interface ISpringprops {
 
     const Springprops2 : ISpringprops = useSpring({ 
       to: async (next,cancel) => {
-       await next ({val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount/7))})
+       await next ({val:Number(props.allAmount?.fetchAllUsersDonationsAmount/700)})
        await next ({from: { val: 0 }})
-       await next ({to: { val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount/7)) }})
+       await next ({to: { val: Number(props.allAmount?.fetchAllUsersDonationsAmount/700) }})
        await next ({config:{duration: 3000}})
       },
     })
