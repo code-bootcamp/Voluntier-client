@@ -102,12 +102,14 @@ export const Input = styled.input`
   }
 
   @media ${breakPoints.tablet} {
+    color: black;
   }
 
   @media ${breakPoints.mobile} {
     height: 50px;
     border: 1px solid #c4c4c4;
     padding-left: 12px;
+    color: black;
     ::placeholder {
       color: #c4c4c4;
       font-size: 12px;
@@ -204,6 +206,7 @@ export const PhoneNumberInput = styled.input`
 
   @media ${breakPoints.mobile} {
     border-bottom: 1px solid #c4c4c4;
+    color: black;
     ::placeholder {
       color: #c4c4c4;
       font-size: 12px;
@@ -258,6 +261,7 @@ export const CertificationInput = styled.input`
 
   @media ${breakPoints.mobile} {
     border-bottom: 1px solid #c4c4c4;
+    color: black;
     ::placeholder {
       font-size: 12px;
       color: #c4c4c4;

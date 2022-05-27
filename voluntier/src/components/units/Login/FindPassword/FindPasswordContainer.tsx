@@ -1,5 +1,5 @@
 import * as S from './FindPasswordStyles'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { gql, useMutation } from '@apollo/client';
@@ -51,29 +51,29 @@ export default function FindPassword() {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
-  const [button,setButton] = useState(false)
-  const [min,setMin] = useState("03")
-  const [sec,setSec] = useState("00")
+  // const [button,setButton] = useState(false)
+  // const [min,setMin] = useState("03")
+  // const [sec,setSec] = useState("00")
   const phone = "010" + watch("phone");
   const token = watch("phoneNumberCheck");
   
 
-let time = 180 
-useEffect(()=>{
-  const timer = setInterval(()=>{
-   if(button === true){
-    setMin(String(Math.floor(time/60)).padStart(2,"0"))
-    setSec(String(time % 60).padStart(2,"0"))
-    time=time-1
-  }
-    if(time===0){
-      setButton(false)
-      clearInterval(timer)
-      setMin("03")
-      setSec("00")
-    }
-  },1000)
-},[button])
+// let time = 180 
+// useEffect(()=>{
+//   const timer = setInterval(()=>{
+//    if(button === true){
+//     setMin(String(Math.floor(time/60)).padStart(2,"0"))
+//     setSec(String(time % 60).padStart(2,"0"))
+//     time=time-1
+//   }
+//     if(time===0){
+//       setButton(false)
+//       clearInterval(timer)
+//       setMin("03")
+//       setSec("00")
+//     }
+//   },1000)
+// },[button])
 
   const onClickSendPhone = async () => {
     try {
@@ -81,9 +81,9 @@ useEffect(()=>{
         variables: { phone },
       });
       Modal.success({ content: "인증번호를 전송하였습니다." });
-      setButton(true)
+      // setButton(true) 
     } catch (error) {
-      Modal.error({ content: error.message });
+      if(error instanceof Error) Modal.error({content:error.message})
     }
 }
   const onClickCheckPhoneAuthToken = async () => { 
@@ -94,7 +94,7 @@ useEffect(()=>{
       Modal.success({ content: "번호인증이 완료되었습니다." });
       setPhoneAuth(true);
     } catch (error) {
-      Modal.error({ content: error.message });
+      if(error instanceof Error) Modal.error({content:error.message})
     }
   };
   // const MoveToPasswordChange = () => {
@@ -105,8 +105,7 @@ useEffect(()=>{
   //   router.push('/')
   // }
 
-  const ResetPassword = async(data) => {
-    console.log(data)
+  const ResetPassword = async(data:any) => {
     if (phoneAuth === false) {
       return Modal.info({ content: "휴대폰 인증을 먼저 받아주세요." });
     }
@@ -116,10 +115,11 @@ useEffect(()=>{
     const result = await resetPassword({
       variables:{...rest}
     })
+    Modal.success({content:"비밀번호 변경에 성공하였습니다."})
     router.back()
     console.log(result)
   }catch(error){
-    Modal.error({content:error.message})
+   if(error instanceof Error) Modal.error({content:error.message})
   }
   }
 
@@ -134,7 +134,7 @@ useEffect(()=>{
             type="text"
             placeholder="이메일을 입력하세요."
           />
-          <S.ErrorMsg></S.ErrorMsg>
+            <S.ErrorMsg>{formState.errors.email?.message}</S.ErrorMsg>
           <S.InputWrapper>
           <S.Label>Phone Number</S.Label>
           <S.PhoneNumberInputWrapper>
@@ -147,10 +147,10 @@ useEffect(()=>{
               onClick={onClickSendPhone}
               type="button"
             >
-              {button?  "인증번호재전송": "인증받기"}
+              인증받기
             </S.CertificationButton>
           </S.PhoneNumberInputWrapper>
-          <S.ErrorMsg></S.ErrorMsg>
+          <S.ErrorMsg>{formState.errors.phoneNumber?.message}</S.ErrorMsg>
         </S.InputWrapper>
         <S.InputWrapper>
           <S.PhoneNumberInputWrapper>
@@ -164,10 +164,10 @@ useEffect(()=>{
             >
               인증
             </S.CertificationButton>
-            <S.Label style={{marginLeft:"20px",lineHeight:"50px",fontSize:"30px"}}>{min}:{sec}</S.Label>
+            {/* <S.Label style={{marginLeft:"20px",lineHeight:"50px",fontSize:"30px"}}>{min}:{sec}</S.Label> */}
           </S.PhoneNumberInputWrapper>
           <S.ErrorMsg>
-            {/* {props.formState.errors.phoneNumberCheck?.message} */}
+            {formState.errors.phoneNumberCheck?.message}
           </S.ErrorMsg>
         </S.InputWrapper>
           <S.Label>Password</S.Label>

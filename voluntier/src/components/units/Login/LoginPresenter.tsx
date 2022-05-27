@@ -48,7 +48,7 @@ export default function LoginUI(props: IPropsLoginUI) {
           계정이 없으신가요? 회원가입하기
         </S.Question>
         <S.Question onClick={props.moveToPage("/login/findpassword")}>
-          비밀번호를 잊으셨나요? 비밀번호찾기
+          비밀번호를 잊으셨나요? 비밀번호재설정
         </S.Question>
       </S.Login>
       <S.IconBox>
