@@ -4,29 +4,55 @@ import { breakPoints } from "../../../../commons/styles/Media";
 export const Wrapper = styled.div`
   padding: 30px 24px;
 
+  @media ${breakPoints.tablet} {
+    padding: 10px;
+  }
+
   @media ${breakPoints.mobile} {
-    padding: 10px 24px;
+    padding: 10px;
+  }
+`;
+
+export const Title = styled.div`
+  width: 477px;
+  font-family: "GmarketSans";
+  font-size: 23px;
+  margin-bottom: 20px;
+  color: #0085cb;
+  border-bottom: 2px solid #0085cb;
+
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    border-bottom: none;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    border-bottom: none;
   }
 `;
 
 export const SearchTitle = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 100px;
-  margin-bottom: 10px;
   font-family: "GmarketSans";
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 400;
-  color: #0085cb;
+
   @media ${breakPoints.tablet} {
-    width: 80%;
-    margin: 10px 0px 10px 0px;
-    font-size: 22px;
+    margin-bottom: 10px;
+    font-size: 16px;
   }
+
   @media ${breakPoints.mobile} {
     width: 80%;
-    margin: 10px 0px 10px 0px;
-    font-size: 10px;
+    font-size: 12px;
   }
 `;
 
@@ -35,6 +61,11 @@ export const MapWrapper = styled.div`
   height: 400px;
   border-radius: 20px;
   margin-bottom: 30px;
+
+  @media ${breakPoints.tablet} {
+    margin-top: -10px;
+  }
+
   @media ${breakPoints.mobile} {
     height: 180px;
   }
@@ -43,18 +74,31 @@ export const MapWrapper = styled.div`
 export const SearchWrapper = styled.div`
   width: 100%;
   display: flex;
-  margin-bottom: 20px;
-  @media ${breakPoints.mobile}{
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  @media ${breakPoints.tablet} {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  @media ${breakPoints.mobile} {
     align-items: center;
     margin-bottom: 15px;
   }
 `;
 
+export const Jellybean = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+`;
+
 export const Dropdown = styled.select`
-  width: 20%;
-  height: 40px;
+  width: 250px;
+  height: 30px;
   padding-left: 10px;
-  margin-top: 7px;
   margin-right: 10px;
   font-size: 14px;
   color: #b5b5b5;
@@ -80,10 +124,8 @@ export const Dropdown = styled.select`
 
   @media ${breakPoints.mobile} {
     height: 25px;
-    width: 30%;
+    width: 45%;
     font-size: 0.5em;
-    padding: 2px;
-    margin: 0px;
   }
 `;
 
@@ -114,18 +156,19 @@ export const SearchButtonImage = styled.img`
 `;
 
 export const Searchbar = styled.input`
-  width: 44%;
-  height: 38px;
-  margin-left: 38px;
+  width: 510px;
+  height: 30px;
+  margin-right: 50px;
   font-size: 15px;
   border: none;
-  border-bottom: 1.5px solid #b5b5b5;
+  border-bottom: 1px solid #b5b5b5;
   :focus {
     outline: none;
   }
   ::placeholder {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
+    color: #b5b5b5;
   }
 
   @media ${breakPoints.tablet} {
@@ -133,7 +176,7 @@ export const Searchbar = styled.input`
   }
 
   @media ${breakPoints.mobile} {
-    width: 65%;
+    width: 50%;
     margin: 0px;
     ::placeholder {
       font-size: 10px;

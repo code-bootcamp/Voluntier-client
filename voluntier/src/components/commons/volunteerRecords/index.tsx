@@ -21,6 +21,7 @@ const RowHead = styled.div`
 
   @media ${breakPoints.mobile} {
     height: 30px;
+    font-size: 10px;
   }
 `;
 
@@ -35,7 +36,7 @@ const ColumnHead = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -49,6 +50,7 @@ const Row = styled.div`
   }
 
   @media ${breakPoints.mobile} {
+    font-size: 10px;
     height: 30px;
   }
 `;
@@ -64,7 +66,7 @@ const Column = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -83,7 +85,7 @@ const ColumnHover = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 

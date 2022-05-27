@@ -12,37 +12,35 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 50px 24px;
   margin-bottom: 40px;
+  padding: 20px;
 
   @media ${breakPoints.tablet} {
-    padding: 50px 0px 20px 20px;
-    width: 550px;
+    padding: 20px;
   }
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    padding: 0px;
+    padding: 10px;
   }
 `;
 
 export const ProfileWrapper = styled.div`
-  width: 100%;
   height: 230px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 30px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
 
   @media ${breakPoints.tablet} {
-    height: 170px;
+    height: 150px;
     margin-bottom: 10px;
   }
 
   @media ${breakPoints.mobile} {
-    height: 200px;
+    width: 70%;
+    height: 100px;
     margin-bottom: 10px;
-    padding: 5%;
   }
 `;
 
@@ -52,10 +50,9 @@ export const ProfileImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid pink;
+  margin-right: 20px;
 
   @media ${breakPoints.tablet} {
-    padding-top: 10%;
   }
 
   @media ${breakPoints.mobile} {
@@ -64,18 +61,18 @@ export const ProfileImageWrapper = styled.div`
 `;
 
 export const ProfileImage = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 165px;
+  height: 165px;
   border-radius: 50%;
 
   @media ${breakPoints.tablet} {
-    width: 150px;
-    height: 150px;
+    width: 70px;
+    height: 70px;
   }
 
   @media ${breakPoints.mobile} {
-    width: 120px;
-    height: 120px;
+    width: 70px;
+    height: 70px;
   }
 `;
 
@@ -89,8 +86,7 @@ export const ProfileEdit = styled.div`
   margin-top: 10px;
 
   @media ${breakPoints.tablet} {
-    font-size: 12px;
-    width: 200%;
+    font-size: 10px;
   }
 
   @media ${breakPoints.mobile} {
@@ -99,59 +95,52 @@ export const ProfileEdit = styled.div`
 `;
 
 export const ProfileRightWrapper = styled.div`
-  width: 75%;
   display: flex;
-  flex-direction: row;
-  border: 1px solid orange;
+  justify-content: space-between;
 
   @media ${breakPoints.tablet} {
-    flex-direction: column;
+    width: 80%;
   }
 
   @media ${breakPoints.mobile} {
-    flex-direction: column;
-    margin-left: 2%;
+    width: 70%;
   }
 `;
 
 export const GradeDisplay = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
-  border: 1px solid red;
 
   @media ${breakPoints.tablet} {
     margin-left: 10%;
-    width: 80%;
   }
 
   @media ${breakPoints.mobile} {
-    margin-left: 10%;
-    width: 100%;
-    margin-top: 14%;
   }
 `;
 
 export const GradeContents = styled.div`
   width: 400px;
   font-family: "GmarketSans";
-  font-size: 30px;
-  border: 1px solid blue;
+  font-size: 27px;
 
   @media ${breakPoints.tablet} {
+    width: 300px;
     font-size: 20px;
   }
 
   @media ${breakPoints.mobile} {
-    width: 100%;
-    font-size: 16px;
+    width: 160px;
+    font-size: 13px;
   }
 `;
 
 export const GradePicture = styled.div`
-  border: 1px solid green;
+  width: 100%;
+  padding: 30px;
 
   @media ${breakPoints.tablet} {
+    display: none;
   }
 
   @media ${breakPoints.mobile} {
@@ -216,25 +205,11 @@ export const TabsWrapper = styled.div`
   margin-bottom: 34px;
 
   @media ${breakPoints.tablet} {
-    margin-top: 30%;
-  }
-  @media ${breakPoints.mobile} {
-    margin-top: 0%;
-    margin-left: 3.5%;
-    width: 350px;
-  }
-`;
-
-export const TabsWrapper2 = styled.div`
-  margin-bottom: 34px;
-
-  @media ${breakPoints.tablet} {
+    margin-bottom: 20px;
   }
 
   @media ${breakPoints.mobile} {
-    margin-top: 0%;
-    margin-left: 3.5%;
-    width: 350px;
+    margin-bottom: 10px;
   }
 `;
 
