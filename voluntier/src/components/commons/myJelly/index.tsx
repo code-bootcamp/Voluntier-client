@@ -8,8 +8,8 @@ const Myjelly1 = styled.img`
 
 
   @media ${breakPoints.mobile} {
-    /* width: 100%;
-    height: 50px; */
+    width: 250px;
+    height: 150px;
   }
 
 `
