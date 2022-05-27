@@ -75,7 +75,6 @@ export default function Mypage() {
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
-  console.log(DibsData)
 
   return <MypageUI
   setIsOpen={setIsOpen}
