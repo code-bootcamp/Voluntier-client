@@ -4,28 +4,46 @@ import { breakPoints } from "../../../../commons/styles/Media";
 export const Wrapper = styled.div`
   width: 100%;
   padding-bottom: 20px;
+
+  @media ${breakPoints.tablet} {
+    padding-top: 20px;
+  }
+
+  @media ${breakPoints.mobile} {
+    padding: 20px;
+  }
 `;
+
+// export const Banner = styled.img`
+//   width: 100%;
+//   height: 150px;
+//   margin-bottom: 24px;
+
+//   @media ${breakPoints.tablet} {
+//     display: none;
+//   }
+
+//   @media ${breakPoints.mobile} {
+//     display: none;
+//   }
+// `;
 
 export const Banner = styled.div`
   /* height: 280px; */
-  height: 165px;
+  width: 100%;
+  height: 150px;
   background-image: url("../../../../images/jellyshop/jellybanner.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: 100%;
   margin-bottom: 24px;
 
   @media ${breakPoints.tablet} {
-    width: 550px;
-    height: 200px;
-    background-position: 10%;
+    display: none;
   }
 
   @media ${breakPoints.mobile} {
-    width: 100%;
-    height: 150px;
-    background-position: 15%;
-    margin: 0%;
+    display: none;
   }
 `;
 

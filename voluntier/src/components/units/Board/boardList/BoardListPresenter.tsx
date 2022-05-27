@@ -1,4 +1,3 @@
-
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import KakaomapGeolocation from "../../../commons/kakaomapGeolocation";
 import Pagination from "../../../commons/pagination/PaginationContainer";
@@ -14,20 +13,20 @@ export default function BoardListUI(props) {
         <KakaomapGeolocation address={""} data={undefined} />
       </S.MapWrapper>
       <S.SearchTitle>🔎 원하는 지역의 봉사를 찾아보세요</S.SearchTitle>
-      <input type="text" onChange={props.onChangeSearch}/>
+
       <S.SearchWrapper>
         <S.Dropdown onChange={props.onChangeKey}>
           {props.Big.map((el, index) => (
-            <option id={el} key={index} value={el}>
+            <S.Option id={el} key={index} value={el}>
               {el}
-            </option>
+            </S.Option>
           ))}
         </S.Dropdown>
         <S.Dropdown onChange={props.onChangeSmall}>
           {props.S?.map((el) => (
-            <option id={el} key={el} value={el}>
+            <S.Option id={el} key={el} value={el}>
               {el}
-            </option>
+            </S.Option>
           ))}
         </S.Dropdown>
         <S.SearchButton>
@@ -36,20 +35,26 @@ export default function BoardListUI(props) {
             src="/images/boardList/search_button.png"
           />
         </S.SearchButton>
+        <S.Searchbar
+          type="text"
+          onChange={props.onChangeSearch}
+          placeholder="궁금한 내용을 입력해보세요"
+        />
       </S.SearchWrapper>
       <S.TableWrapper>
         <S.TitleRow
           style={{
-            backgroundColor: "#E3E3E3",
             fontFamily: "GmarketSans",
+            borderBottom: "2px solid #b5b5b5",
           }}
         >
           <S.ColumnHeaderTitle
             style={{
+              textAlign: "center",
               fontWeight: "bold",
             }}
           >
-          모집 내용 및 주소
+            모집 내용 및 주소
           </S.ColumnHeaderTitle>
           <S.ColumnHeaderBasic
             style={{
@@ -70,7 +75,16 @@ export default function BoardListUI(props) {
           <S.Row key={index}>
             <S.ColumnHeaderTitle onClick={moveToPage(`/boards/${el.id}`)}>
               <S.TitleBox>
-                <S.TitleImage src={`${el.contents.includes("https") ? el.contents?.slice(el.contents.indexOf("https"),el.contents.indexOf(")")) : "../../../../images/Group 8.png" }`}/>
+                <S.TitleImage
+                  src={`${
+                    el.contents.includes("https")
+                      ? el.contents?.slice(
+                          el.contents.indexOf("https"),
+                          el.contents.indexOf(")")
+                        )
+                      : "../../../../images/Group 8.png"
+                  }`}
+                />
                 <S.TitleContents>
                   <S.CenterTitle>{el.title}</S.CenterTitle>
                   <S.CenterAddress>{el.address}</S.CenterAddress>
@@ -78,7 +92,7 @@ export default function BoardListUI(props) {
               </S.TitleBox>
             </S.ColumnHeaderTitle>
             <S.ColumnHeaderBasic>{el.centerName}</S.ColumnHeaderBasic>
-            <S.ColumnHeaderBasic style={{ fontSize: "10px"}}>
+            <S.ColumnHeaderBasic>
               {el.createdAt.slice(2, 10)}
             </S.ColumnHeaderBasic>
             <S.ColumnHeaderBasic style={{ display: "none" }}>

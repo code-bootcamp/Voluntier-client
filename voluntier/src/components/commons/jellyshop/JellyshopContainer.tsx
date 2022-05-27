@@ -17,6 +17,10 @@ export default function JellyshopModal(props) {
     console.log(data);
   };
 
+  const onTogglePostModal = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <JellyshopModalUI
       UserData={props.UserData}
@@ -26,6 +30,9 @@ export default function JellyshopModal(props) {
       address={address}
       onClickModal={onClickModal}
       onCompleteAddressSearch={onCompleteAddressSearch}
+      onTogglePostModal={onTogglePostModal}
+      setIsOpen={setIsOpen}
+      setIsClosed={props.setIsClosed}
     />
   );
 }

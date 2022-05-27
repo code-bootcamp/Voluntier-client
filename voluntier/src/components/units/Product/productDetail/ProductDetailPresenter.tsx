@@ -26,12 +26,12 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
 
   return (
     <S.Body>
-      {props.isOpen && (
+      {!props.isClosed && (
         <S.MyModal
           visible={true}
+          closable={false}
           onOk={props.onToggleModal}
           onCancel={props.onToggleModal}
-          closable={false}
           bodyStyle={{
             border: "3px solid #696969",
             borderRadius: "30px",
@@ -40,7 +40,11 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
           footer={null}
           centered={true}
         >
-          <JellyshopModal UserData={UserData} data={props.data} />
+          <JellyshopModal
+            UserData={UserData}
+            data={props.data}
+            setIsClosed={props.setIsClosed}
+          />
         </S.MyModal>
       )}
       <S.Wrapper>
@@ -93,19 +97,21 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
                 <S.Price>젤리로켓! </S.Price>
                 <S.RocketDetail> 황금젤리 바로출발! </S.RocketDetail>
               </S.PriceWrapper>
-              <S.PickWrapper>
-                <S.PickButton
-                  id={props.data?.fetchProduct.id}
-                  onClick={props.CreateDibs}
-                >
-                  <S.ButtonImage src="/catImg.png" />
-                  찜하기
-                </S.PickButton>
-                <S.BuyButton onClick={props.onToggleModal}>
-                  <S.ButtonImage src="/DogImg.png" />
-                  젤리사용
-                </S.BuyButton>
-              </S.PickWrapper>
+              <S.ButtonWrapper>
+                <S.PickWrapper>
+                  <S.PickButton
+                    id={props.data?.fetchProduct.id}
+                    onClick={props.CreateDibs}
+                  >
+                    <S.ButtonImage src="/catImg.png" />
+                    찜하기
+                  </S.PickButton>
+                  <S.BuyButton onClick={props.onToggleModal}>
+                    <S.ButtonImage src="/DogImg.png" />
+                    젤리사용
+                  </S.BuyButton>
+                </S.PickWrapper>
+              </S.ButtonWrapper>
             </S.TitlePriceWrapper>
           </S.InnerWrapperHead>
           <S.InnerWrapperRight>

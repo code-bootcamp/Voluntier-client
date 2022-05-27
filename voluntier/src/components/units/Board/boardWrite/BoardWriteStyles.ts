@@ -70,6 +70,7 @@ export const InputWrapper = styled.div`
   padding: 20px;
   margin-bottom: 20px;
   justify-content: space-between;
+
   @media ${breakPoints.mobile} {
     display: flex;
     flex-direction: column;
