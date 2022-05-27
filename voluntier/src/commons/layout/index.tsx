@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import Navigation from "./navigation/NavigationContainer";
 import { breakPoints } from "../styles/Media";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import Footer from "./footer/FooterContainer";
 import io, { Socket } from "socket.io-client";
 import { useToasts } from "react-toast-notifications";
@@ -54,7 +54,7 @@ const FETCH_LOGIN_USER = gql`
 `;
 
 
-const HIDDEN = ["/login", "/signup", "/"];
+const HIDDEN = ["/login", "/signup", "/","/login/findpassword"];
 const url = "backendapi.voluntier.site/chat";
 const socket: Socket = io(url, { transports: ["websocket"] });
 

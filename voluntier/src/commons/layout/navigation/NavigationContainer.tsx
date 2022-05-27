@@ -30,7 +30,7 @@ export default function Navigation() {
     try {
       logout();
       Modal.success({ content: "로그아웃되었습니다." });
-      window.location.reload();
+      router.push(`/login`)
     } catch (error) {
       Modal.error({ content: error.message });
     }
