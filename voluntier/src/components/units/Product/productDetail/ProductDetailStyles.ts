@@ -253,7 +253,7 @@ export const PickButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
+  width: 140px;
   height: 50px;
   background: #ff6a9e;
   border: none;
@@ -277,7 +277,7 @@ export const PickButton = styled.button`
 `;
 
 export const ButtonImage = styled.img`
-  width: 45px;
+  width: 38px;
   height: 30px;
   margin-right: 15px;
 
@@ -298,7 +298,7 @@ export const BuyButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  width: 160px;
   height: 51px;
   background: #0085cb;
   border: none;
@@ -307,7 +307,6 @@ export const BuyButton = styled.button`
   font-size: 21px;
   color: white;
   cursor: pointer;
-  margin-left: 5%;
 
   @media ${breakPoints.tablet} {
     width: 120px;
@@ -339,10 +338,14 @@ export const Price = styled.div`
   }
 `;
 
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  justify-content: space-between;
+`;
+
 export const PickWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 5% 5% 0% 10%;
 
   @media ${breakPoints.mobile} {
     margin: 5% 5% 0% 0%;

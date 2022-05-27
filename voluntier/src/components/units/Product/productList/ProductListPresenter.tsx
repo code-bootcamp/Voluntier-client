@@ -24,7 +24,7 @@ export default function ProductListUI(props: IPropsProductListUI) {
   return (
     <>
       <S.Wrapper>
-        <S.Banner />
+        <S.Banner></S.Banner>
         <S.TitleWrapper>
           <S.Title></S.Title>
         </S.TitleWrapper>
