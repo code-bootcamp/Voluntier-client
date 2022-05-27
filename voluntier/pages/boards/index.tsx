@@ -26,19 +26,20 @@ const FETCH_BOARDS = gql`
   }
 `;
 const FETCH_BOARDS_COUNT = gql`
-  query fetchBoardsCount {
-    fetchBoardsCount
+  query fetchBoardsCount($search:String $location1:String $location2:String) {
+    fetchBoardsCount(search:$search location1:$location1 location2:$location2)
   }
 `;
 export default function BoardListPage() {
   const { data, refetch } = useQuery(FETCH_BOARDS);
-  const { data: BoardsCountData } = useQuery(FETCH_BOARDS_COUNT);
-  console.log(BoardsCountData);
+  const { data: BoardsCountData ,refetch:CountRefetch } = useQuery(FETCH_BOARDS_COUNT);
+
   return (
     <>
       <BoardList
         data={data}
         refetch={refetch}
+        CountRefetch={CountRefetch}
         BoardsCountData={BoardsCountData}
       />
     </>

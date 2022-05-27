@@ -12,16 +12,21 @@ export const Wrapper = styled.div`
 export const SearchTitle = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 100px;
   margin-bottom: 10px;
   font-family: "GmarketSans";
   font-size: 30px;
   font-weight: 400;
   color: #0085cb;
   @media ${breakPoints.tablet} {
+    width: 80%;
+    margin: 10px 0px 10px 0px;
     font-size: 22px;
   }
   @media ${breakPoints.mobile} {
-    font-size: 15px;
+    width: 80%;
+    margin: 10px 0px 10px 0px;
+    font-size: 10px;
   }
 `;
 
@@ -39,11 +44,17 @@ export const SearchWrapper = styled.div`
   width: 100%;
   display: flex;
   margin-bottom: 20px;
+  @media ${breakPoints.mobile}{
+    align-items: center;
+    margin-bottom: 15px;
+  }
 `;
 
 export const Dropdown = styled.select`
   width: 20%;
+  height: 40px;
   padding-left: 10px;
+  margin-top: 7px;
   margin-right: 10px;
   font-size: 14px;
   color: #b5b5b5;
@@ -62,9 +73,11 @@ export const Dropdown = styled.select`
   }
 
   @media ${breakPoints.mobile} {
+    height: 25px;
+    width: 30%;
     font-size: 0.5em;
     padding: 2px;
-    margin-right: 5px;
+    margin: 0px;
   }
 `;
 
@@ -94,9 +107,9 @@ export const SearchButtonImage = styled.img`
 `;
 
 export const Searchbar = styled.input`
-  width: 54%;
-  height: 30px;
-  margin-left: 10px;
+  width: 44%;
+  height: 38px;
+  margin-left: 38px;
   font-size: 15px;
   border: none;
   border-bottom: 1.5px solid #b5b5b5;
@@ -104,7 +117,7 @@ export const Searchbar = styled.input`
     outline: none;
   }
   ::placeholder {
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 700;
   }
 
@@ -113,6 +126,8 @@ export const Searchbar = styled.input`
   }
 
   @media ${breakPoints.mobile} {
+    width: 65%;
+    margin: 0px;
     ::placeholder {
       font-size: 10px;
     }
@@ -156,6 +171,8 @@ export const Row = styled.div`
     color: #0085cb;
   }
   @media ${breakPoints.mobile} {
+    display: flex;
+    justify-content: space-around;
     border-top: 1px solid #e3e3e3;
     height: 80px;
   }
@@ -172,6 +189,22 @@ export const ColumnHeaderBasic = styled.div`
     font-size: 12px;
   }
   @media ${breakPoints.mobile} {
+    font-size: 12px;
+  }
+`;
+
+export const ColumnHeaderDate = styled.div`
+  width: 15%;
+  height: 40px;
+  font-size: 17px;
+  color: black;
+  overflow: hidden;
+  text-align: center;
+  @media ${breakPoints.tablet} {
+    font-size: 12px;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
     font-size: 12px;
   }
 `;
@@ -196,8 +229,8 @@ export const TitleBox = styled.div`
 `;
 
 export const TitleImage = styled.img`
-  width: 15%;
-  height: 80px;
+  width: 20%;
+  height: 110px;
   margin-right: 3%;
 
   @media ${breakPoints.tablet} {
@@ -205,7 +238,7 @@ export const TitleImage = styled.img`
   }
 
   @media ${breakPoints.mobile} {
-    width: 40%;
+    width: 30%;
   }
 `;
 

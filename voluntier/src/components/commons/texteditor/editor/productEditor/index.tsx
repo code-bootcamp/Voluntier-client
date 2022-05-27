@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor as OurEditor } from '@toast-ui/react-editor';
 import {gql, useMutation} from '@apollo/client'
+import { Modal } from 'antd';
 
 
 
@@ -45,7 +46,7 @@ export default function ProductEditorUI(props:any){
                 const url = `https://storage.googleapis.com/${String(result1)}`
                 callback(url)
             }catch(error){
-                alert("사진 올린게 좀 이상한것 같은데")
+                if(error instanceof Error) Modal.error({content:error.message})
             }
         }}}
         
@@ -65,7 +66,7 @@ export default function ProductEditorUI(props:any){
             const url = `https://storage.googleapis.com/${String(result1)}`
             callback(url)
         }catch(error){
-            alert("사진 올린게 좀 이상한것 같은데")
+            if(error instanceof Error) Modal.error({content:error.message})
         }
     }}}
     
