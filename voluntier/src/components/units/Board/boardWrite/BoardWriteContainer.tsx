@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import BoardWriteUI from "./boardWritePresenter";
 import { useForm } from "react-hook-form";
 import { Editor } from "@toast-ui/react-editor";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWriteQueries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -12,6 +12,7 @@ import useAuth from "../../../commons/hooks/useAuth";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { ImyupdateBoardInput, IMyVariables } from "./BoardWriteTypes";
+import { FETCH_LOGIN_USER } from "../boardDetail/BoardDetailQueries";
 
 interface IFormValues {
   title: string;
@@ -61,11 +62,16 @@ export default function BoardWrite(props) {
   const editorRef = useRef<Editor>(null);
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
-
+  const {data: Userdata} = useQuery(FETCH_LOGIN_USER)
   const { register, handleSubmit, setValue, getValues } = useForm({
     resolver: yupResolver(props.isEdit ? nonschema : schema),
     mode: "onChange",
   });
+
+  if(Userdata?.fetchLoginUser?.isAdmin){
+    Modal.error({content:"관리자는 게시글 작성이 불가합니다.일반유저로 로그인해주세요", width: 320})
+    router.push('/boards')
+  }
 
   const handleComplete = (data: any) => {
     setIsModalVisible((prev) => !prev);

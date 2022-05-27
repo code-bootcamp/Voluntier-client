@@ -12,6 +12,20 @@ const ToastUIViewer = dynamic(
 
 export default function BoardDetailUI(props) {
   const [windowSize, setWindowSize] = useState(false);
+  const [whois,setWhois] = useState(1)
+  useEffect(()=>{
+
+    
+    if(props.data?.fetchBoard?.user.id ===
+      props.Userdata?.fetchLoginUser.id ){
+        setWhois(2)
+      }
+    if(props.Userdata?.fetchLoginUser?.isAdmin){
+        setWhois(3)
+      }
+    console.log(whois)
+    })
+    
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -30,7 +44,7 @@ export default function BoardDetailUI(props) {
       window.removeEventListener("resize", handleResize);
     };
   }, [windowSize]);
-
+  console.log(whois)
   return (
     <div>
       <S.Wrapper isChat={props.isChat}>
@@ -124,7 +138,7 @@ export default function BoardDetailUI(props) {
               </S.ContentsWrapper>
             </S.InnerWrapperLeftUpper>
             <S.ButtonWrapper>
-              {props.data?.fetchBoard?.user.id ===
+              {/* {props.data?.fetchBoard?.user.id ===
               props.Userdata?.fetchLoginUser.id ? (
                 <>
                   <S.Button onClick={props.onClickEdit}>수정하기</S.Button>
@@ -134,7 +148,16 @@ export default function BoardDetailUI(props) {
                 <>
                   <S.Button onClick={props.CreateEnroll}>신청하기</S.Button>
                 </>
+              )
+              
+              } */}
+              {whois === 1 && <S.Button onClick={props.CreateEnroll}>신청하기</S.Button> }
+              {whois === 2 && (<>
+                  <S.Button onClick={props.onClickEdit}>수정하기</S.Button>
+                  <S.Button onClick={props.DeleteBoard}>삭제하기</S.Button>
+                </>
               )}
+              {whois ===3 &&<S.Button onClick={props.DeleteBoard}>삭제하기</S.Button> }
             </S.ButtonWrapper>
           </S.InnerWrapperLeft>
           {!windowSize && (

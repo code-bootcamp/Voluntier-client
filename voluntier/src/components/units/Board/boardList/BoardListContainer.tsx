@@ -31,8 +31,6 @@ export default function BoardList(props) {
                   "제주특별자치도":["제주시","서귀포시"]
                 }
   const S = Small[key]
-  console.log(big)
-  console.log(small)
   useEffect(()=>{
     setSmall(Small[key][0])
   },[key])
