@@ -23,6 +23,7 @@ const RowHead = styled.div`
 
   @media ${breakPoints.mobile} {
     height: 30px;
+    font-size: 10px;
   }
 `;
 
@@ -31,13 +32,16 @@ const ColumnHead = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media ${breakPoints.tablet} {
     font-size: 13px;
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -52,6 +56,7 @@ const Row = styled.div`
 
   @media ${breakPoints.mobile} {
     height: 30px;
+    font-size: 10px;
   }
 `;
 
@@ -66,7 +71,7 @@ const Column = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -75,6 +80,9 @@ const ColumnHover = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   :hover {
     color: #0085cb;
     cursor: pointer;
@@ -85,7 +93,7 @@ const ColumnHover = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 

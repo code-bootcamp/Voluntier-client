@@ -8,41 +8,58 @@ export default function BoardListUI(props) {
 
   return (
     <S.Wrapper>
-      <S.SearchTitle>🔎 가장 가까운 봉사를 찾아보세요</S.SearchTitle>
+      <S.Title>보호소 동물 친구들을 만나기 위한 방법 세 가지!</S.Title>
+
+      <S.SearchWrapper>
+        <S.SearchTitle>
+          <S.Jellybean src="/images/boardList/jellybean_red.png" />
+          가장 가까운 봉사를 찾아보세요
+        </S.SearchTitle>
+      </S.SearchWrapper>
       <S.MapWrapper>
         <KakaomapGeolocation address={""} data={undefined} />
       </S.MapWrapper>
       <S.SearchWrapper>
-      <S.SearchTitle>🔎 원하는 지역의 봉사를 찾아보세요</S.SearchTitle>
-        <S.Dropdown onChange={props.onChangeKey}>
-          {props.Big.map((el, index) => (
-            <S.Option id={el} key={index} value={el}>
-              {el}
-            </S.Option>
-          ))}
-        </S.Dropdown>
-        <S.Dropdown onChange={props.onChangeSmall}>
-          {props.S?.map((el) => (
-            <S.Option id={el} key={el} value={el}>
-              {el}
-            </S.Option>
-          ))}
-        </S.Dropdown>
-        <S.SearchButton>
-          <S.SearchButtonImage
-            onClick={props.onClickSearch}
-            src="/images/boardList/search_button.png"
-          />
-        </S.SearchButton>
+        <S.SearchTitle>
+          {" "}
+          <S.Jellybean src="/images/boardList/jellybean_yellow.png" />
+          원하는 지역의 봉사를 찾아보세요
+        </S.SearchTitle>
+        <div style={{ display: "flex" }}>
+          <S.Dropdown onChange={props.onChangeKey}>
+            {props.Big.map((el, index) => (
+              <S.Option id={el} key={index} value={el}>
+                {el}
+              </S.Option>
+            ))}
+          </S.Dropdown>
+          <S.Dropdown onChange={props.onChangeSmall}>
+            {props.S?.map((el) => (
+              <option id={el} key={el} value={el}>
+                {el}
+              </option>
+            ))}
+          </S.Dropdown>
+          <S.SearchButton>
+            <S.SearchButtonImage
+              onClick={props.onClickSearch}
+              src="/images/boardList/search_button.png"
+            />
+          </S.SearchButton>
+        </div>
       </S.SearchWrapper>
       <S.SearchWrapper>
-      <S.SearchTitle>🔎 원하는 키워드를 검색해보세요</S.SearchTitle>
-      <S.Searchbar
+        <S.SearchTitle>
+          {" "}
+          <S.Jellybean src="/images/boardList/jellybean_pink.png" />
+          궁금한 키워드를 검색해보세요
+        </S.SearchTitle>
+        <S.Searchbar
           type="text"
           onChange={props.onChangeSearch}
           placeholder="키워드를 입력해 주세요"
         />
-        </S.SearchWrapper>
+      </S.SearchWrapper>
       <S.TableWrapper>
         <S.TitleRow
           style={{
@@ -94,9 +111,7 @@ export default function BoardListUI(props) {
               </S.TitleBox>
             </S.ColumnHeaderTitle>
             <S.ColumnHeaderBasic>{el.centerName}</S.ColumnHeaderBasic>
-            <S.ColumnHeaderDate>
-              {el.createdAt.slice(2, 10)}
-            </S.ColumnHeaderDate>
+            <S.ColumnHeaderDate>{el.createdAt.slice(2, 10)}</S.ColumnHeaderDate>
             <S.ColumnHeaderBasic style={{ display: "none" }}>
               {el.location1}
             </S.ColumnHeaderBasic>

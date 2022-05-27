@@ -37,7 +37,6 @@ const { TabPane } = Tabs;
 export default function MypageUI(props) {
   const { data } = useQuery(FETCH_USER_LOGIN);
   const [myjelly, setMyjelly] = useState(1);
-  console.log(data);
 
   useEffect(() => {
     if (
@@ -99,16 +98,14 @@ export default function MypageUI(props) {
           </S.ProfileImageWrapper>
           <S.ProfileRightWrapper>
             <S.GradeDisplay>
-              {data?.fetchLoginUser.point && (
-                <S.GradeContents>
-                  {data?.fetchLoginUser.name}님은 <br />
-                  {myjelly === 1 && "미니블루젤리"}
-                  {myjelly === 2 && "푸릇그린젤리"}
-                  {myjelly === 3 && "열정레드젤리"}
-                  {myjelly === 4 && "킹왕짱골드젤리"}
-                  &nbsp;등급이시네요!
-                </S.GradeContents>
-              )}
+              <S.GradeContents>
+                {data?.fetchLoginUser.name}님은 <br />
+                {myjelly === 1 && "미니블루젤리"}
+                {myjelly === 2 && "푸릇그린젤리"}
+                {myjelly === 3 && "열정레드젤리"}
+                {myjelly === 4 && "킹갓골드젤리"}
+                &nbsp;등급이시네요!
+              </S.GradeContents>
               <S.TooltipWrapper>
                 <S.Tooltip>
                   <S.TooltipText>
@@ -149,7 +146,7 @@ export default function MypageUI(props) {
             </TabPane>
           </S.MyTabs>
         </S.TabsWrapper>
-        <S.TabsWrapper2>
+        <S.TabsWrapper>
           <S.MyTabs defaultActiveKey="1">
             <TabPane tab="젤리 사용내역" key="1">
               <S.Records>
@@ -162,7 +159,7 @@ export default function MypageUI(props) {
               </S.Records>
             </TabPane>
           </S.MyTabs>
-        </S.TabsWrapper2>
+        </S.TabsWrapper>
       </S.Wrapper>
     </>
   );
