@@ -196,7 +196,7 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [windowSize, location, moveToPage]);
+  }, [windowSize, moveToPage]);
 
   return <Mymap id="map"></Mymap>;
 }
