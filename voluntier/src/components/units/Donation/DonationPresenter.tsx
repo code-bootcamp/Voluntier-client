@@ -1,18 +1,25 @@
 import * as S from "../Donation/DonationStyles";
 import PaymentPage from "../../commons/payment";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, MouseEvent } from 'react';
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from "../../../commons/store";
-import {useSpring} from 'react-spring'
-export default function DonationUI(props) {
+import {SpringValue, useSpring} from 'react-spring'
+import { IQuery } from '../../../commons/types/generated/types';
+
+
+interface IDonationUIProps{
+  allAmount?: Pick<IQuery,"fetchAllUsersDonationsAmount">
+}
+
+export default function DonationUI(props:IDonationUIProps) {
   const [isTrue,setIsTrue] = useState(false)
   const PayRef = useRef<HTMLButtonElement>(null);
   const [,setAmount] = useRecoilState(setAmountDonation)
   
-  const delay =(ms) => {
+  const delay =(ms:number) => {
     return new Promise(resolve => setTimeout(resolve,ms))
   }
-  const onClickPayment = async (event) =>{
+  const onClickPayment = async (event:MouseEvent<HTMLDivElement>) =>{
     setAmount(Number((event.target as HTMLDivElement).id))
     await delay(1000) 
     return PayRef.current?.click()
@@ -36,7 +43,7 @@ export default function DonationUI(props) {
   };
   
 interface ISpringprops {
-  val? : any
+  val? : SpringValue
 }
     const Springprops : ISpringprops = useSpring({ 
       to: async (next,cancel) => {
@@ -49,9 +56,9 @@ interface ISpringprops {
 
     const Springprops2 : ISpringprops = useSpring({ 
       to: async (next,cancel) => {
-       await next ({val:Number(props.allAmount?.fetchAllUsersDonationsAmount/700)})
+       await next ({val:Number(props.allAmount?.fetchAllUsersDonationsAmount)/700})
        await next ({from: { val: 0 }})
-       await next ({to: { val: Number(props.allAmount?.fetchAllUsersDonationsAmount/700) }})
+       await next ({to: { val: Number(props.allAmount?.fetchAllUsersDonationsAmount)/700 }})
        await next ({config:{duration: 3000}})
       },
     })
@@ -76,7 +83,7 @@ interface ISpringprops {
               <S.ContentPink>
                 {isTrue &&(
                   <S.Animated>
-                  {Springprops.val.interpolate(val => Math.floor(val))}
+                  {Springprops.val?.interpolate(val => Math.floor(val))}
                 </S.Animated>)}
                 <S.ContentsJelly>젤리</S.ContentsJelly>
               </S.ContentPink>
@@ -87,7 +94,7 @@ interface ISpringprops {
            {isTrue &&(
              <S.Animated>
                
-                {Springprops2.val.interpolate(val => Math.floor(val))}
+                {Springprops2.val?.interpolate(val => Math.floor(val))}
                 
               </S.Animated>)}
             

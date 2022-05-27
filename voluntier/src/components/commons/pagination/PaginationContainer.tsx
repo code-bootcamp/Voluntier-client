@@ -1,14 +1,9 @@
 import PaginationUI from "./PaginationPresenter";
 import { useState, MouseEvent } from "react";
+import { IPropsPagination } from "./PaginationTypes";
 
 
-interface PaginationProps {
-  data?: any;
-  refetch?: any;
-  BoardsCountData?: any;
-}
-
-export default function Pagination(props: PaginationProps) {
+export default function Pagination(props: IPropsPagination) {
   const [startPage, setStartPage] = useState(1);
   const lastPage = Math.ceil(props.BoardsCountData?.fetchBoardsCount / 10);
   const [active, setActive] = useState("");
