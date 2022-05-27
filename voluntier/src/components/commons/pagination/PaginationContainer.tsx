@@ -30,11 +30,10 @@ export default function Pagination(props: PaginationProps) {
     if (startPage === 1) {
       return;
     }
-
     setStartPage((prev) => prev - 10);
     props.refetch({ page: startPage - 10 });
   };
-console.log(index)
+
   return (
     <PaginationUI
       onClickPage={onClickPage}

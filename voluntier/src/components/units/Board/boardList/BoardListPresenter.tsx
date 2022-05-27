@@ -12,9 +12,8 @@ export default function BoardListUI(props) {
       <S.MapWrapper>
         <KakaomapGeolocation address={""} data={undefined} />
       </S.MapWrapper>
-      <S.SearchTitle>🔎 원하는 지역의 봉사를 찾아보세요</S.SearchTitle>
-
       <S.SearchWrapper>
+      <S.SearchTitle>🔎 원하는 지역의 봉사를 찾아보세요</S.SearchTitle>
         <S.Dropdown onChange={props.onChangeKey}>
           {props.Big.map((el, index) => (
             <S.Option id={el} key={index} value={el}>
@@ -35,12 +34,15 @@ export default function BoardListUI(props) {
             src="/images/boardList/search_button.png"
           />
         </S.SearchButton>
-        <S.Searchbar
+      </S.SearchWrapper>
+      <S.SearchWrapper>
+      <S.SearchTitle>🔎 원하는 키워드를 검색해보세요</S.SearchTitle>
+      <S.Searchbar
           type="text"
           onChange={props.onChangeSearch}
-          placeholder="궁금한 내용을 입력해보세요"
+          placeholder="키워드를 입력해 주세요"
         />
-      </S.SearchWrapper>
+        </S.SearchWrapper>
       <S.TableWrapper>
         <S.TitleRow
           style={{
@@ -92,9 +94,9 @@ export default function BoardListUI(props) {
               </S.TitleBox>
             </S.ColumnHeaderTitle>
             <S.ColumnHeaderBasic>{el.centerName}</S.ColumnHeaderBasic>
-            <S.ColumnHeaderBasic>
+            <S.ColumnHeaderDate>
               {el.createdAt.slice(2, 10)}
-            </S.ColumnHeaderBasic>
+            </S.ColumnHeaderDate>
             <S.ColumnHeaderBasic style={{ display: "none" }}>
               {el.location1}
             </S.ColumnHeaderBasic>

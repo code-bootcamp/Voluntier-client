@@ -84,7 +84,7 @@ export const Contents = styled.div`
   padding: 0 3% 3% 3% 3%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
 `;
 

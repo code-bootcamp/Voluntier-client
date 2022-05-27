@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
+import { Modal } from "antd";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { myLocationState } from "../../../commons/store";
@@ -74,7 +75,7 @@ export default function KakaomapGeolocation(props: IPropsKakaoMap) {
             }
           );
         } else {
-          alert("GPS를 지원하지 않습니다");
+          Modal.error({content:"GPS를 지원하지 않습니다"});
         }
       }
       getLocation();

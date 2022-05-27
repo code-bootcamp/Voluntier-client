@@ -43,7 +43,7 @@ export default function UploadFile(props:IUploadFile) {
 
   const addImage = (event:ChangeEvent<HTMLInputElement>) =>{
     if(props.myImage.length>0){
-      return alert("대표 이미지는 1장만 올릴 수 있습니다.")
+      return Modal.error({content:"대표 이미지는 1장만 올릴 수 있습니다."})
     }
     const file:null|any = event.target.files
     const ImageURLList = [...file]
