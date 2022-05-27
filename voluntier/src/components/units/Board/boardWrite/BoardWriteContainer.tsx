@@ -121,7 +121,7 @@ export default function BoardWrite(props) {
       });
       router.push("/boards");
     } catch (error) {
-      alert("무언가가 잘못되었다");
+      if(error instanceof Error) Modal.error({content:error.message})
     }
   };
   // 봉사 수정함수

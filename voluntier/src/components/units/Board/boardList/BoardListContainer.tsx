@@ -1,4 +1,3 @@
-
 import _ from "lodash";
 import { useState, useEffect, ChangeEvent } from 'react';
 import BoardListUI from "./BoardListPresenter";
@@ -31,9 +30,16 @@ export default function BoardList(props) {
                   "제주특별자치도":["제주시","서귀포시"]
                 }
   const S = Small[key]
+
   useEffect(()=>{
     setSmall(Small[key][0])
+    if(Small[key][0]==="전체"){
+      setBig("")
+      setSmall("") 
+    }
   },[key])
+  console.log(big)
+  console.log(small)
   const onChangeKey = (event) => {
     setKey(event.target.value)
     setBig(event.target.value)
@@ -43,23 +49,21 @@ export default function BoardList(props) {
   }
   
   const onClickSearch = () => {
-    if(big==="전체"){
-      return location.reload()
-    }
     props.refetch({ page: 1, location1:big, location2:small});
+    props.CountRefetch({location1:big,location2:small})
   };
 
   const getDebounce = _.debounce((data) => {
     props.refetch({page:1,search:data});
+    props.CountRefetch({search:data})
     setKeyword(data);
   }, 1000);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getDebounce(event.target.value);
   };
+ console.log(props.BoardsCountData)
 
-
-  console.log(props.data?.fetchBoards)
   return <BoardListUI 
   onChangeSearch={onChangeSearch}
   onClickSearch={onClickSearch} 

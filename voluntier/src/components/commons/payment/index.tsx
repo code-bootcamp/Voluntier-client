@@ -4,6 +4,7 @@ import { gql, useMutation, useQuery } from '@apollo/client';
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from '../../../commons/store';
 import {useRouter }from 'next/router'
+import { Modal } from "antd";
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -56,10 +57,10 @@ export default function PaymentPage(props) {
                 query: FETCH_USER_LOGIN,
               }]
             })
-            alert("충전에 성공하였습니다.")
+            Modal.success({content:"충전에 성공하였습니다."})
             router.push('/donation')
         } else {
-          alert("결제에 실패하였습니다. 다시 시도해주세요.");
+          Modal.error({content:"결제에 실패하였습니다. 다시 시도해주세요."});
         }
       }
     );

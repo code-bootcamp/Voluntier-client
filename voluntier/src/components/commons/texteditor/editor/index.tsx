@@ -5,6 +5,7 @@ import {gql, useMutation} from '@apollo/client'
 import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
+import { Modal } from 'antd';
 
 
 const EditorBox = styled.div`
@@ -60,7 +61,7 @@ export default function EditorUI(props:any){
                 const url = `https://storage.googleapis.com/${String(result1)}`
                 callback(url)
             }catch(error){
-                alert("사진 올린게 좀 이상한것 같은데")
+             if(error instanceof Error) Modal.error({content:error.message})
             }
         }}}
         
@@ -86,7 +87,7 @@ export default function EditorUI(props:any){
             const url = `https://storage.googleapis.com/${String(result1)}`
             callback(url)
         }catch(error){
-            alert("사진 올린게 좀 이상한것 같은데")
+         if(error instanceof Error) Modal.error({content:error.message})
         }
     }}}
     

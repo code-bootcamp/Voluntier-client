@@ -108,8 +108,7 @@ export default function JellyPaperPage(){
             variables: {file}
           })
           setFile(result.data.uploadImage)
-          // setImageUrl(result.data.uploadImage)
-          alert("사진불러왔어요! 데이터전송버튼 눌러주세요 관리자님!")
+          Modal.success({content:"사진불러왔어요! 데이터전송버튼 눌러주세요 관리자님!"})
         }catch(error){
           if(error instanceof Error) Modal.error({content:error.message})
         }
@@ -136,9 +135,9 @@ export default function JellyPaperPage(){
             imageUrl: myfile
           }
         })
-        alert("월간젤리호 파일을 전송완료했습니다!")
+        Modal.success({content:"월간젤리호 파일을 전송완료했습니다!"})
       } catch(error){
-        alert("월간젤리 등록에 실패했습니다 관리자님ㅠㅠ개발팀에 문의주세요")
+        Modal.error({content:"월간젤리 등록에 실패했습니다 관리자님ㅠㅠ개발팀에 문의주세요"})
       }
 
     }
