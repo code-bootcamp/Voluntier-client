@@ -1,5 +1,6 @@
 import BoardList from "../../src/components/units/Board/boardList/BoardListContainer";
 import { gql, useQuery } from "@apollo/client";
+import { IQuery } from '../../src/commons/types/generated/types';
 
 const FETCH_BOARDS = gql`
   query fetchBoards(
@@ -31,8 +32,8 @@ const FETCH_BOARDS_COUNT = gql`
   }
 `;
 export default function BoardListPage() {
-  const { data, refetch } = useQuery(FETCH_BOARDS);
-  const { data: BoardsCountData ,refetch:CountRefetch } = useQuery(FETCH_BOARDS_COUNT);
+  const { data, refetch } = useQuery<Pick<IQuery,"fetchBoards">>(FETCH_BOARDS);
+  const { data: BoardsCountData ,refetch:CountRefetch } = useQuery<Pick<IQuery,"fetchBoardsCount">>(FETCH_BOARDS_COUNT);
 
   return (
     <>

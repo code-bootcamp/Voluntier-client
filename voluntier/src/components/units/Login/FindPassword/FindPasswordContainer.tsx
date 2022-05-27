@@ -1,27 +1,14 @@
-import * as S from './FindPasswordStyles'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { Modal } from 'antd';
 import * as yup from 'yup';
 import { useRouter } from 'next/router';
+import { SEND_PHONE_AUTH,CHECK_PHONE_AUTH,RESET_PASSWORD } from './FindPasswordQueries';
+import FindPasswordUI from './FindPasswordPresenter';
+import { IFormResetPassword } from './FindPasswordTypes';
 
-export const SEND_PHONE_AUTH = gql`
-    mutation sendPhoneAuthToken($phone:String!){
-        sendPhoneAuthToken(phone:$phone)
-    }
-`
-export const CHECK_PHONE_AUTH = gql`
-    mutation checkPhoneAuthToken($phone:String! $token:String!){
-        checkPhoneAuthToken(phone:$phone, token:$token)
-    }
-`
-export const RESET_PASSWORD = gql`
-  mutation resetPassword($phone:String! $email:String! $password:String!){
-    resetPassword(phone:$phone email:$email password:$password)
-  }
-`
 
 const schema = yup.object({
   email: yup
@@ -40,6 +27,8 @@ const schema = yup.object({
   phone: yup.string().required("핸드폰 번호는 필수 입력사항 입니다."),
   phoneNumberCheck: yup.string().required("핸드폰 번호 인증은 필수입니다."),
 });
+
+
 
 export default function FindPassword() {
   const [sendPhoneAuthToken] = useMutation(SEND_PHONE_AUTH);
@@ -105,7 +94,7 @@ export default function FindPassword() {
   //   router.push('/')
   // }
 
-  const ResetPassword = async(data:any) => {
+  const ResetPassword = async(data:IFormResetPassword) => {
     if (phoneAuth === false) {
       return Modal.info({ content: "휴대폰 인증을 먼저 받아주세요." });
     }
@@ -124,75 +113,13 @@ export default function FindPassword() {
   }
 
   return (
-    <S.Form onSubmit={handleSubmit(ResetPassword)}>
-      <S.Login>        
-        <S.Logo></S.Logo>
-        <S.Contents>
-          <S.Label>E-mail</S.Label>
-          <S.Input
-            {...register("email")}
-            type="text"
-            placeholder="이메일을 입력하세요."
-          />
-            <S.ErrorMsg>{formState.errors.email?.message}</S.ErrorMsg>
-          <S.InputWrapper>
-          <S.Label>Phone Number</S.Label>
-          <S.PhoneNumberInputWrapper>
-            <S.FrontNumber>010</S.FrontNumber>
-            <S.PhoneNumberInput
-              {...register("phone")}
-              placeholder="핸드폰 번호를 입력해주세요"
-            />
-            <S.CertificationButton
-              onClick={onClickSendPhone}
-              type="button"
-            >
-              인증받기
-            </S.CertificationButton>
-          </S.PhoneNumberInputWrapper>
-          <S.ErrorMsg>{formState.errors.phoneNumber?.message}</S.ErrorMsg>
-        </S.InputWrapper>
-        <S.InputWrapper>
-          <S.PhoneNumberInputWrapper>
-            <S.CertificationInput
-              {...register("phoneNumberCheck")}
-              placeholder="인증번호를 입력해주세요"
-            />
-            <S.CertificationButton
-              onClick={onClickCheckPhoneAuthToken}
-              type="button"
-            >
-              인증
-            </S.CertificationButton>
-            {/* <S.Label style={{marginLeft:"20px",lineHeight:"50px",fontSize:"30px"}}>{min}:{sec}</S.Label> */}
-          </S.PhoneNumberInputWrapper>
-          <S.ErrorMsg>
-            {formState.errors.phoneNumberCheck?.message}
-          </S.ErrorMsg>
-        </S.InputWrapper>
-          <S.Label>Password</S.Label>
-          <S.Input
-            type="password"
-            {...register("password")}
-            placeholder="비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자리여야 합니다"
-          />
-          <S.ErrorMsg>{formState.errors.password?.message}</S.ErrorMsg>
-          <S.Label>Confirm Password</S.Label>
-          <S.Input
-            type="password"
-            {...register("passwordCheck")}
-            placeholder="비밀번호를 확인해주세요"
-          />
-          <S.ErrorMsg>
-            {formState.errors.passwordCheck?.message}
-          </S.ErrorMsg>
-        </S.Contents>
-        <S.LoginButton>비밀번호 재설정</S.LoginButton>
-      </S.Login>
-      <S.IconBox>
-        <S.Dog src="/images/frame_left.png"></S.Dog>
-        <S.Dog src="/images/frame_right.png"></S.Dog>
-      </S.IconBox>
-    </S.Form>
+   <FindPasswordUI
+   handleSubmit={handleSubmit}
+   ResetPassword={ResetPassword}
+   onClickCheckPhoneAuthToken={onClickCheckPhoneAuthToken}
+   register={register}
+   formState={formState}
+   onClickSendPhone={onClickSendPhone}
+   />
   );
 }

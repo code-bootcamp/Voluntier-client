@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import BoardWriteUI from "./boardWritePresenter";
 import { useForm } from "react-hook-form";
 import { Editor } from "@toast-ui/react-editor";
 import { useMutation, useQuery } from "@apollo/client";
@@ -11,24 +10,10 @@ import { calendarDateState } from "../../../../commons/store";
 import useAuth from "../../../commons/hooks/useAuth";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { ImyupdateBoardInput, IMyVariables } from "./BoardWriteTypes";
+import { IBoardSubmitFormValues, IBoardWrite, ImyupdateBoardInput, IMyVariables } from "./BoardWriteTypes";
 import { FETCH_LOGIN_USER } from "../boardDetail/BoardDetailQueries";
+import BoardWriteUI from "./BoardWritePresenter";
 
-interface IFormValues {
-  title: string;
-  centerName: string;
-  centerOwnerName: string;
-  centerPhone: string;
-  recruitCount: number;
-  serviceDate: string;
-  serviceTime: number;
-  address: string;
-  addressDetail: string;
-  location1: string;
-  location2: string;
-  contents: string;
-  urls: [];
-}
 
 const schema = yup.object({
   title: yup.string().required("봉사모집 제목을 작성해주세요 "),
@@ -52,7 +37,8 @@ const nonschema = yup.object({
   addressDetail: yup.string(),
 });
 
-export default function BoardWrite(props) {
+
+export default function BoardWrite(props:IBoardWrite) {
   useAuth();
 
   const router = useRouter();
@@ -73,7 +59,7 @@ export default function BoardWrite(props) {
     router.push('/boards')
   }
 
-  const handleComplete = (data: any) => {
+  const handleComplete = (data:any) => {
     setIsModalVisible((prev) => !prev);
     setAddress(data.address);
   };
@@ -90,28 +76,22 @@ export default function BoardWrite(props) {
     setIsModalVisible(false);
   };
 
-  const myupdateBoardInput: ImyupdateBoardInput = {};
-
-  const myVariables: IMyVariables = {
-    updateBoardInput: myupdateBoardInput,
-    boardId: String(router.query.boardId),
-  };
+  
 
   // 봉사 등록 함수
 
-  const onClickSubmit = async (data: IFormValues) => {
+  const onClickSubmit = async (data: IBoardSubmitFormValues) => {
     const contentsvalue = editorRef.current?.getInstance().getMarkdown();
     data.recruitCount = 10;
     data.contents = contentsvalue;
     data.serviceDate = calendardate;
-
+    data.location1 = data.address?.split(" ")[0]
+    data.location2 = data.address?.split(" ")[1]
     try {
       const result = await createBoard({
         variables: {
           createBoardInput: {
             ...data,
-            location1: data.address.split(" ")[0],
-            location2: data.address.split(" ")[1],
           },
         },
       });
@@ -125,42 +105,29 @@ export default function BoardWrite(props) {
     }
   };
   // 봉사 수정함수
-  const onClickEdit = async (data) => {
+  const onClickEdit = async (data:IBoardSubmitFormValues) => {
     const contentsvalue = editorRef.current?.getInstance().getMarkdown();
     data.contents = contentsvalue;
     data.serviceDate = calendardate;
 
+    const myupdateBoardInput: ImyupdateBoardInput = {};
+
+    const myVariables: IMyVariables = {
+      updateBoardInput: myupdateBoardInput,
+      boardId: String(router.query.boardId),
+    };
     if (data.title) myupdateBoardInput.title = data.title;
-    if (data.contents) {
-      myupdateBoardInput.contents = data.contents;
-    }
-    if (data.centerName) {
-      myupdateBoardInput.centerName = data.centerName;
-    }
-    if (data.centerOwnerName) {
-      myupdateBoardInput.centerOwnerName = data.centerOwnerName;
-    }
-    if (data.centerPhone) {
-      myupdateBoardInput.centerPhone = data.centerPhone;
-    }
-    if (data.serviceTime) {
-      myupdateBoardInput.serviceTime = data.serviceTime;
-    }
-    if (data.serviceDate) {
-      myupdateBoardInput.serviceDate = data.serviceDate;
-    }
-    if (data.address) {
-      myupdateBoardInput.address = data.address;
-    }
-    if (data.addressDetail) {
-      myupdateBoardInput.addressDetail = data.addressDetail;
-    }
-    if (data.location1) {
-      myupdateBoardInput.location1 = data.location1;
-    }
-    if (data.location2) {
-      myupdateBoardInput.location2 = data.location2;
-    }
+    if (data.contents) myupdateBoardInput.contents = data.contents;
+    if (data.centerName) myupdateBoardInput.centerName = data.centerName;
+    if (data.centerOwnerName) myupdateBoardInput.centerOwnerName = data.centerOwnerName;
+    if (data.centerPhone) myupdateBoardInput.centerPhone = data.centerPhone;
+    if (data.serviceTime) myupdateBoardInput.serviceTime = data.serviceTime;
+    if (data.serviceDate) myupdateBoardInput.serviceDate = data.serviceDate;
+    if (data.address) myupdateBoardInput.address = data.address;
+    if (data.addressDetail) myupdateBoardInput.addressDetail = data.addressDetail;
+    if (data.location1) myupdateBoardInput.location1 = data.location1;
+    if (data.location2) myupdateBoardInput.location2 = data.location2;
+
 
     try {
       const result = await updateBoard({

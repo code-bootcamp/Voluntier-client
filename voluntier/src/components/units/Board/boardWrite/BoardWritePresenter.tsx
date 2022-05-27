@@ -3,12 +3,14 @@ import * as S from "./BoardWriteStyles";
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
 import dynamic from "next/dynamic";
-import { IPropsBoardWriteUI } from "./BoardWriteTypes";
 import Mycalendar from "../../../../components/commons/calendar";
+import { IPropsBoardWriteUI } from "./BoardWriteTypes";
+
 
 const EditorUI = dynamic(() => import("../../../commons/texteditor/editor"), {
   ssr: false,
 });
+
 
 export default function BoardWriteUI(props: IPropsBoardWriteUI) {
   return (
@@ -32,7 +34,7 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
               <S.Map>
                 <KakaoMap
                   address={
-                    props.address || props.defaultData?.fetchBoard.address
+                    props.address || props.defaultData?.fetchBoard.address || ""
                   }
                 />
               </S.Map>

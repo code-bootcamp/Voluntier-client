@@ -1,17 +1,9 @@
 import * as S from "./PaginationStyles";
-import { MouseEvent } from "react";
+import { IPropsPaginationUI } from "./PaginationTypes";
 
-interface PaginationProps {
-  startPage: number;
-  onClickPrevPage: () => void;
-  onClickPage: (event: MouseEvent<HTMLSpanElement>) => void;
-  onClickNextPage: () => void;
-  active: string;
-  lastPage: number;
-  index: number;
-}
 
-export default function PaginationUI(props: PaginationProps) {
+
+export default function PaginationUI(props: IPropsPaginationUI) {
   return (
     <S.Wrapper>
       <S.InnerWrapper>

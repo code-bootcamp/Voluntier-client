@@ -2,8 +2,11 @@ import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import KakaomapGeolocation from "../../../commons/kakaomapGeolocation";
 import Pagination from "../../../commons/pagination/PaginationContainer";
 import * as S from "./BoardListStyles";
+import { IPropsBoardListUI } from "./BoardListTypes";
 
-export default function BoardListUI(props) {
+
+
+export default function BoardListUI(props:IPropsBoardListUI) {
   const { moveToPage } = useMoveToPage();
 
   return (
@@ -22,7 +25,7 @@ export default function BoardListUI(props) {
           ))}
         </S.Dropdown>
         <S.Dropdown onChange={props.onChangeSmall}>
-          {props.S?.map((el) => (
+          {props.S?.map((el:string) => (
             <S.Option id={el} key={el} value={el}>
               {el}
             </S.Option>

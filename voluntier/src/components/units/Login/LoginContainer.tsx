@@ -2,11 +2,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import LoginUI from "./LoginPresenter";
 import * as yup from "yup";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
 import { useRouter } from "next/router";
 import { useMoveToPage } from "../../../components/commons/hooks/useMoveToPage";
+import { IFormValuesLogin } from "./LoginTypes";
+import { LOGIN } from "./LoginQueries";
 
 const schema = yup.object({
   email: yup
@@ -21,16 +23,6 @@ const schema = yup.object({
     ),
 });
 
-interface IFormValuesLogin {
-  email: string;
-  password: string;
-}
-
-const LOGIN = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password)
-  }
-`;
 
 export default function Login() {
   const { moveToPage } = useMoveToPage();

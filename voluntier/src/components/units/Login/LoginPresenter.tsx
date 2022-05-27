@@ -1,12 +1,7 @@
 import * as S from "./LoginStyles";
+import { IPropsLoginUI } from "./LoginTypes";
 
-interface IPropsLoginUI {
-  register: any;
-  handleSubmit: any;
-  formState: any;
-  onClickLogin: (data: any) => void;
-  moveToPage: (page: any) => () => void;
-}
+
 
 export default function LoginUI(props: IPropsLoginUI) {
   return (
