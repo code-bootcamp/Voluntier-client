@@ -11,7 +11,9 @@ export const MyModal = styled(Modal)`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 50px 24px;
+  margin-bottom: 40px;
 
   @media ${breakPoints.tablet} {
     padding: 50px 0px 20px 20px;
@@ -19,8 +21,9 @@ export const Wrapper = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    padding: 20px;
-    width: 170%;
+   width: 100%;
+   padding: 0px;
+   
   }
 `;
 
@@ -28,6 +31,8 @@ export const ProfileWrapper = styled.div`
   width: 100%;
   height: 230px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   margin-bottom: 30px;
 
   @media ${breakPoints.tablet} {
@@ -36,7 +41,7 @@ export const ProfileWrapper = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    height: 170px;
+    height: 200px;
     margin-bottom: 10px;
     padding: 5%;
   }
@@ -54,10 +59,7 @@ export const ProfileImageWrapper = styled.div`
 
   }
   @media ${breakPoints.mobile} {
-
-  padding-top: 10%;
-
-  }
+    width: 40%;}
 
 `;
 
@@ -73,8 +75,8 @@ export const ProfileImage = styled.img`
   }
 
   @media ${breakPoints.mobile} {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
   }
 `;
 
@@ -84,8 +86,11 @@ export const ProfileEdit = styled.div`
   font-weight: 500;
   text-decoration: underline;
   cursor: pointer;
+  text-align: center;
 
   @media ${breakPoints.tablet} {
+    font-size: 12px;
+    width: 200%;
   }
 
   @media ${breakPoints.mobile} {
@@ -103,32 +108,38 @@ export const ProfileRightWrapper = styled.div`
 
   @media ${breakPoints.mobile} {
     flex-direction: column;
+    margin-left: 2%;
   }
 
 `;
 export const GradeDisplay = styled.div`
 display: flex;
 flex-direction: column;
+
 width: 40%;
 @media ${breakPoints.tablet}{
   margin-left: 10%;
   width: 80%;
     
   }
+  @media ${breakPoints.mobile}{
+  margin-left: 10%;
+  width: 100%;
+  margin-top: 14%;
+    
+  }
+
 `
 export const GradeContents = styled.div`
   width:400px;
   font-family: "GmarketSans";
   font-size: 30px;
-  overflow: hidden;
-
   @media ${breakPoints.tablet} {
     font-size: 20px;
   }
-
   @media ${breakPoints.mobile} {
-    
-    font-size: 15px;
+    width: 100%;
+    font-size: 16px;
   }
 `;
 export const GradePicture = styled.div`
@@ -139,7 +150,7 @@ width: auto;
   }
 
   @media ${breakPoints.mobile} {
-    
+    display: none;
   }
 `;
 
@@ -193,18 +204,21 @@ export const Label = styled.div`
 
   @media ${breakPoints.mobile} {
     font-size: 12px;
+    
   }
 `;
 
 export const TabsWrapper = styled.div`
-
   margin-bottom: 34px;
   @media ${breakPoints.tablet}{
     margin-top: 30%;
+    
 
     
   }  @media ${breakPoints.mobile}{
-    margin-top: 30%;
+    margin-top: 0%;
+    margin-left: 3.5%;
+    width: 350px;
 
     
   }
@@ -212,6 +226,13 @@ export const TabsWrapper = styled.div`
 export const TabsWrapper2 = styled.div`
   margin-bottom: 34px;
   @media ${breakPoints.tablet}{
+ 
+
+    
+  }  @media ${breakPoints.mobile}{
+    margin-top: 0%;
+    margin-left: 3.5%;
+    width: 350px;
 
     
   }
