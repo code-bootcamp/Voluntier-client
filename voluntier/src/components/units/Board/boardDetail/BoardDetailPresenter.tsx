@@ -1,34 +1,27 @@
 import KakaoMap from "../../../commons/kakaomap";
 import dynamic from "next/dynamic";
-import VolunteerList from "../../../commons/volunteerList/VolunteerListPresenter";
 import * as S from "./BoardDetailStyles";
 import { useEffect, useState } from "react";
 import Livechat from "../../../commons/livechat/LivechatContainer";
+import { IPropsBoardDetailUI } from "./BoardDetailTypes";
+import VolunteerList from "../../../commons/volunteerList/volunteerListpresenter";
 
 const ToastUIViewer = dynamic(
   () => import("../../../commons/texteditor/viewer"),
   { ssr: false }
 );
 
-export default function BoardDetailUI(props) {
+
+export default function BoardDetailUI(props:IPropsBoardDetailUI) {
   const [windowSize, setWindowSize] = useState(false);
   const [whois,setWhois] = useState(1)
 
 
-useEffect(()=>{
-
-  if(props.data?.fetchBoard?.user.id !== props.Userdata?.fetchLoginUser.id){
-setWhois(1)
-  }
-  if(props.data?.fetchBoard?.user.id === 
-    props.Userdata?.fetchLoginUser.id){
-      setWhois(2)
-    }
-    if(props.Userdata?.fetchLoginUser?.isAdmin){
-      setWhois(3)
-    }
-  },[props.data, props.Userdata])
-    console.log(whois)
+  useEffect(()=>{
+  if(props.data?.fetchBoard?.user.id !== props.userData?.fetchLoginUser.id) setWhois(1)
+  if(props.data?.fetchBoard?.user.id === props.userData?.fetchLoginUser.id) setWhois(2)
+  if(props.userData?.fetchLoginUser?.isAdmin) setWhois(3)
+  },[props.data, props.userData])
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -47,13 +40,13 @@ setWhois(1)
       window.removeEventListener("resize", handleResize);
     };
   }, [windowSize]);
-  console.log(whois)
+
   return (
     <div>
       <S.Wrapper isChat={props.isChat}>
         {props.isChat && (
           <S.ChatWrapper>
-            <Livechat data={props.Userdata} />
+            <Livechat data={props.userData} />
           </S.ChatWrapper>
         )}
 
@@ -142,7 +135,7 @@ setWhois(1)
             </S.InnerWrapperLeftUpper>
             <S.ButtonWrapper>
               {/* {props.data?.fetchBoard?.user.id ===
-              props.Userdata?.fetchLoginUser.id ? (
+              props.userData?.fetchLoginUser.id ? (
                 <>
                   <S.Button onClick={props.onClickEdit}>수정하기</S.Button>
                   <S.Button onClick={props.DeleteBoard}>삭제하기</S.Button>
@@ -165,20 +158,20 @@ setWhois(1)
           </S.InnerWrapperLeft>
           {!windowSize && (
             <S.InnerWrapperRight>
-              <Livechat data={props.Userdata} />
+              <Livechat data={props.userData} />
               <VolunteerList
-                enrolldata={props.enrolldata}
-                boarddata={props.data?.fetchBoard}
-                Userdata={props.Userdata}
+                enrollData={props.enrollData}
+                data={props.data}
+                userData={props.userData}
               />
             </S.InnerWrapperRight>
           )}
           {windowSize && (
             <>
               <VolunteerList
-                enrolldata={props.enrolldata}
-                boarddata={props.data?.fetchBoard}
-                Userdata={props.Userdata}
+                enrollData={props.enrollData}
+                data={props.data}
+                userData={props.userData}
               />
               <S.ChatIcon onClick={props.onClickChat}></S.ChatIcon>
             </>

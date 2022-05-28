@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import InfiniteScroll from "react-infinite-scroller";
 import { breakPoints } from "../../../commons/styles/Media";
+import { IQuery } from "../../../commons/types/generated/types";
 import { useMoveToPage } from "../hooks/useMoveToPage/index";
 
 const Wrapper = styled.div`
@@ -89,7 +89,11 @@ const ColumnHover = styled.div`
   }
 `;
 
-export default function VolunteerRecords(props) {
+interface IPropsVolunteerRecords {
+  EnrollsData? : Pick<IQuery,"fetchEnrollsByUserId">
+}
+
+export default function VolunteerRecords(props:IPropsVolunteerRecords) {
   const { moveToPage } = useMoveToPage();
 
   return (
@@ -100,7 +104,6 @@ export default function VolunteerRecords(props) {
         <ColumnHead style={{ width: "25%" }}>봉사날짜</ColumnHead>
         <ColumnHead style={{ width: "25%" }}>봉사상태</ColumnHead>
       </RowHead>
-      <InfiniteScroll>
         {props.EnrollsData?.fetchEnrollsByUserId.map((el, index) => (
           <Row key={index}>
             <Column style={{ width: "7%" }}>{index + 1}</Column>
@@ -118,7 +121,6 @@ export default function VolunteerRecords(props) {
             </Column>
           </Row>
         ))}
-      </InfiniteScroll>
     </Wrapper>
   );
 }

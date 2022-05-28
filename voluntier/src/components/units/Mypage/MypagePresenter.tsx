@@ -14,6 +14,7 @@ import {
   MiniJelly3,
   MiniJelly4,
 } from "../../commons/myJelly";
+import { IPropsMyPageUI } from "./MypageTypes";
 
 const FETCH_USER_LOGIN = gql`
   query fetchLoginUser {
@@ -34,7 +35,9 @@ const FETCH_USER_LOGIN = gql`
 
 const { TabPane } = Tabs;
 
-export default function MypageUI(props) {
+
+
+export default function MypageUI(props:IPropsMyPageUI) {
   const { data } = useQuery(FETCH_USER_LOGIN);
   const [myjelly, setMyjelly] = useState(1);
 

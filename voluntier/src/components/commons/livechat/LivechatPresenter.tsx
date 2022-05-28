@@ -1,12 +1,13 @@
 import * as S from "./LivechatStyles";
 import { v4 as uuidv4 } from "uuid";
+import { IPropsLiveChatUI } from "./LivechatTypes";
 
-export default function LivechatUI(props) {
+export default function LivechatUI(props:IPropsLiveChatUI) {
   return (
     <S.TalkWrapper onSubmit={props.handleSubmit(props.onClickSubmit)}>
       <S.TalkHeader />
       <S.TalkContents>
-        {props.data?.map((el) => (
+        {props.data?.fetchChatHistory.map((el) => (
           <div key={uuidv4()}>
             {el.user.id === props.userId ? (
               <S.Right>

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import InfiniteScroll from "react-infinite-scroller";
 import { breakPoints } from "../../../commons/styles/Media";
+import { IQuery } from "../../../commons/types/generated/types";
 import { useMoveToPage } from "../hooks/useMoveToPage/index";
 
 const Wrapper = styled.div`
@@ -89,7 +89,11 @@ const ColumnHover = styled.div`
   }
 `;
 
-export default function BoardRecords(props) {
+interface IPropsBoardRecords {
+  BoardUserData? : Pick<IQuery,"fetchBoardsOfUser">
+}
+
+export default function BoardRecords(props:IPropsBoardRecords) {
   const { moveToPage } = useMoveToPage();
 
   return (
@@ -99,7 +103,6 @@ export default function BoardRecords(props) {
         <ColumnHead style={{ width: "68%" }}>제목</ColumnHead>
         <ColumnHead style={{ width: "25%" }}>작성 날짜</ColumnHead>
       </RowHead>
-      <InfiniteScroll>
         {props.BoardUserData?.fetchBoardsOfUser.map((el, index) => (
           <Row key={index}>
             <Column style={{ width: "7%" }}>{index + 1}</Column>
@@ -114,7 +117,6 @@ export default function BoardRecords(props) {
             </Column>
           </Row>
         ))}
-      </InfiniteScroll>
     </Wrapper>
   );
 }

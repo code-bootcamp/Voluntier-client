@@ -32,7 +32,7 @@ export default function Navigation() {
       Modal.success({ content: "로그아웃되었습니다." });
       router.push(`/login`)
     } catch (error) {
-      Modal.error({ content: error.message });
+    if(error instanceof Error)  Modal.error({ content: error.message });
     }
   };
 

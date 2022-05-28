@@ -1,9 +1,10 @@
 import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
-import InfiniteScroll from "react-infinite-scroller";
 import { breakPoints } from "../../../commons/styles/Media";
 import { useMoveToPage } from "../hooks/useMoveToPage/index";
 import { Modal } from "antd";
+import { MouseEvent } from "react";
+import { IQuery } from "../../../commons/types/generated/types";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -129,14 +130,18 @@ const FETCH_PURCHASES = gql`
   }
 `;
 
-export default function PurchaseRecords(props) {
+interface IPropsPurchaseRecords {
+  PurchasesData? : Pick<IQuery,"fetchPurchases">
+}
+
+export default function PurchaseRecords(props:IPropsPurchaseRecords) {
   const { moveToPage } = useMoveToPage();
   const [cancelPurchase] = useMutation(CANCEL_PURCHASE);
 
-  const CancelPurchase = (event) => {
+  const CancelPurchase = (event:MouseEvent<HTMLDivElement>) => {
     try {
       cancelPurchase({
-        variables: { purchaseId: event.target.id },
+        variables: { purchaseId: (event.target as HTMLDivElement).id },
         refetchQueries: [{ query: FETCH_PURCHASES }],
       });
     } catch (error) {
@@ -152,8 +157,7 @@ export default function PurchaseRecords(props) {
         <ColumnHead style={{ width: "30%" }}>구매 날짜</ColumnHead>
         <ColumnHead style={{ width: "30%" }}>결제 취소</ColumnHead>
       </RowHead>
-      <InfiniteScroll>
-        {props.PurchasesData?.fetchPurchases.map((el, index) => (
+        {props.PurchasesData?.fetchPurchases.map((el, index:number) => (
           <Row key={index}>
             <Column style={{ width: "7%" }}>{index + 1}</Column>
             <ColumnHover
@@ -180,7 +184,6 @@ export default function PurchaseRecords(props) {
             </Column>
           </Row>
         ))}
-      </InfiniteScroll>
     </Wrapper>
   );
 }

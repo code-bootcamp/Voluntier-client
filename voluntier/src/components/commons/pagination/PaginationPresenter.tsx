@@ -1,5 +1,6 @@
 import * as S from "./PaginationStyles";
 import { IPropsPaginationUI } from "./PaginationTypes";
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -30,7 +31,7 @@ export default function PaginationUI(props: IPropsPaginationUI) {
               {index + props.startPage}
             </S.Page>
           ) : (
-            <span></span>
+            <span key={uuidv4()}></span>
           )
         )}
         <S.Next

@@ -8,9 +8,11 @@ export const ChatWrapper = styled.div`
   position: fixed;
   z-index: 10;
 `;
-
+interface IProps{
+  isChat: boolean
+}
 export const Wrapper = styled.div`
-  background: ${(props) => (props.isChat ? "rgba(0,0,0,0.1)" : "none")};
+  background: ${(props:IProps) => (props.isChat ? "rgba(0,0,0,0.1)" : "none")};
   padding: 20px;
 `;
 
