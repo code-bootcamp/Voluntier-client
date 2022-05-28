@@ -20,7 +20,7 @@ export default function BoardListUI(props:IPropsBoardListUI) {
         </S.SearchTitle>
       </S.SearchWrapper>
       <S.MapWrapper>
-        <KakaomapGeolocation address={""} data={undefined} />
+        <KakaomapGeolocation/>
       </S.MapWrapper>
       <S.SearchWrapper>
         <S.SearchTitle>
