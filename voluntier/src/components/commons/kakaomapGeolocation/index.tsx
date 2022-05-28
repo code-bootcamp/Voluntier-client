@@ -1,0 +1,215 @@
+import { gql, useQuery } from "@apollo/client";
+import styled from "@emotion/styled";
+import { Modal } from "antd";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { myLocationState } from "../../../commons/store";
+import { breakPoints } from "../../../commons/styles/Media";
+import { IQuery } from "../../../commons/types/generated/types";
+import { useMoveToPage } from "../hooks/useMoveToPage";
+
+declare const window: typeof globalThis & {
+  kakao: any;
+};
+
+interface IPropsKakaoMap {
+  address: string;
+  data: any;
+  makeOverListener(map: any, marker: any, infowindow: any): () => void;
+  makeOutListener: (infowindow: any) => void;
+}
+
+const FETCH_BOARDS_ALL = gql`
+  query fetchBoardsAll {
+    fetchBoardsAll {
+      id
+      centerName
+      address
+    }
+  }
+`;
+
+const Mymap = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 200px;
+  }
+`;
+
+export default function KakaomapGeolocation(props: IPropsKakaoMap) {
+  const [windowSize, setWindowSize] = useState(false);
+  const [location, setLocation] = useRecoilState(myLocationState);
+
+  const { data } = useQuery<Pick<IQuery, "fetchBoardsAll">>(FETCH_BOARDS_ALL);
+
+  const { moveToPage } = useMoveToPage();
+
+  const handleResize = () => {
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    } else {
+      setWindowSize(false);
+    }
+  };
+
+  function getLocation() {
+    if (window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLocation([position.coords.latitude, position.coords.longitude]);
+        },
+        function (error) {
+          return error;
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: 10000,
+        }
+      );
+    } else {
+      Modal.error({ content: "GPS를 지원하지 않습니다" });
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      getLocation();
+    }
+
+    const script = document.createElement("script");
+    script.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=6fd48e92f18946d0fc326142df70d236&libraries=services&autoload=false";
+    document.head.appendChild(script);
+
+    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+    function makeOverListener(map: any, marker: any, infowindow: any) {
+      return function () {
+        infowindow.open(map, marker);
+      };
+    }
+
+    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+    function makeOutListener(infowindow: any) {
+      return function () {
+        infowindow.close();
+      };
+    }
+
+    script.onload = () => {
+      window.kakao.maps.load(function () {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(location[0], location[1]),
+          level: 3,
+        };
+        const map = new window.kakao.maps.Map(container, options);
+
+        const imageSrc = "/images/marker-center.png";
+        const imageSize = new window.kakao.maps.Size(47.5, 40);
+        const markerImage = new window.kakao.maps.MarkerImage(
+          imageSrc,
+          imageSize
+        );
+
+        // 지도를 클릭한 위치에 표출할 마커입니다
+        const marker = new window.kakao.maps.Marker({
+          // 지도 중심좌표에 마커를 생성합니다
+          position: map.getCenter(),
+          image: markerImage,
+        });
+
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: `<div style="width:150px;text-align:center;padding:6px 0;font-size:15px;color:#FF602A">${"당신은 여기 있다냥!"}</div>`,
+        });
+        infowindow.open(map, marker);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        const geocoder = new window.kakao.maps.services.Geocoder();
+
+        data?.fetchBoardsAll?.map((el) => {
+          return geocoder.addressSearch(
+            el.address,
+            function (result: any, status: boolean) {
+              if (status === window.kakao.maps.services.Status.OK) {
+                const coords = new window.kakao.maps.LatLng(
+                  result[0].y,
+                  result[0].x
+                );
+
+                const imageSrc = "/images/marker.png";
+                const imageSize = new window.kakao.maps.Size(43.5, 35);
+                const markerImage = new window.kakao.maps.MarkerImage(
+                  imageSrc,
+                  imageSize
+                );
+
+                const marker = new window.kakao.maps.Marker({
+                  map,
+                  position: coords,
+                  title: el.centerName,
+                  image: markerImage,
+                });
+
+                const infowindow = new window.kakao.maps.InfoWindow({
+                  content: `<div style="width:150px;text-align:center;padding:3px;font-size:12px;color:#0085CB">
+                    ${el.centerName}
+                  </div>`, // 인포윈도우에 표시할 내용
+                });
+
+                // 마커에 클릭이벤트를 등록합니다
+                window.kakao.maps.event.addListener(
+                  marker,
+                  "click",
+                  { passive: true },
+                  moveToPage(`/boards/${el.id}`)
+                );
+
+                // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+                // 이벤트 리스너로는 클로저를 만들어 등록합니다
+                // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+                window.kakao.maps.event.addListener(
+                  marker,
+                  "mouseover",
+                  { passive: true },
+                  makeOverListener(map, marker, infowindow)
+                );
+                window.kakao.maps.event.addListener(
+                  marker,
+                  "mouseout",
+                  { passive: true },
+                  makeOutListener(infowindow)
+                );
+
+                makeOverListener(map, marker, infowindow);
+
+                makeOutListener(infowindow);
+              }
+            }
+          );
+        });
+      });
+    };
+
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowSize, moveToPage]);
+
+  return <Mymap id="map"></Mymap>;
+}
