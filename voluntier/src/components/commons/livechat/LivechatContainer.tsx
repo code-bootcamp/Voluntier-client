@@ -18,9 +18,9 @@ export default function Livechat(props:IPropsLiveChat) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [accessToken] = useRecoilState(accessTokenState);
   const router = useRouter();
-  const [nickname, setNickName] = useState<string>("");
+  const [nickname, setNickName] = useState<string | undefined>("");
   const [room, setRoom] = useState<string>("");
-  const [userId, setUserId] = useState<string>("");
+  const [userId, setUserId] = useState<string | undefined>("");
   const [resultMsg, setResultMsg] = useState<string[]>([]);
   const { data } = useQuery<Pick<IQuery,"fetchChatHistory">>(FETCH_CHAT_HISTORY, {
     variables: { boardId: String(router.query.boardId) },
@@ -51,7 +51,7 @@ export default function Livechat(props:IPropsLiveChat) {
     setUserId(props.userData?.fetchLoginUser.id);
     setRoom(String(router.query.boardId));
     setNickName(props.userData?.fetchLoginUser.name);
-  }, [props.userData]);
+  },[props.userData]);
 
   const onClickSubmit = async (data:IFormValueChat) => {
     const message = await data.contents;

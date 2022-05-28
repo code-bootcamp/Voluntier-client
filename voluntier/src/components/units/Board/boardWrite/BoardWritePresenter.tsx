@@ -24,7 +24,7 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
           <S.TitleWrapper>
             <S.Title>Title</S.Title>
             <S.TitleInput
-              defaultValue={props.defaultData?.fetchBoard.title}
+              defaultValue={props.defaultData?.fetchBoard.title || ""}
               placeholder="제목을 입력해주세요"
               {...props.register("title")}
             />
@@ -48,7 +48,7 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
                 <S.SmallInput
                   type="text"
                   placeholder="대표자 이름을 입력해주세요"
-                  defaultValue={props.defaultData?.fetchBoard.centerOwnerName}
+                  defaultValue={props.defaultData?.fetchBoard.centerOwnerName || ""}
                   {...props.register("centerOwnerName")}
                 />
               </S.SmallInputWrapper>
@@ -60,13 +60,13 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
                 <S.SmallInput
                   placeholder="센터명을 입력해주세요"
                   {...props.register("centerName")}
-                  defaultValue={props.defaultData?.fetchBoard.centerName}
+                  defaultValue={props.defaultData?.fetchBoard.centerName || ""}
                   style={{ marginBottom: "8px" }}
                 />
                 <S.SmallInput
                   placeholder="센터 전화번호를 입력해주세요"
                   {...props.register("centerPhone")}
-                  defaultValue={props.defaultData?.fetchBoard.centerPhone}
+                  defaultValue={props.defaultData?.fetchBoard.centerPhone || ""}
                 />
               </S.SmallInputWrapper>
               <S.HalfWrapper>
@@ -78,7 +78,7 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
                   <S.TimeWrapper>
                     <S.SmallInput
                       {...props.register("serviceTime")}
-                      defaultValue={props.defaultData?.fetchBoard.serviceTime}
+                      defaultValue={props.defaultData?.fetchBoard.serviceTime || ""}
                       style={{ width: "25%" }}
                     />
                     <S.Time>시간</S.Time>
@@ -105,16 +105,16 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <S.Address
                   readOnly
-                  value={props.address || props.defaultData?.fetchBoard.address}
+                  value={props.address || props.defaultData?.fetchBoard.address || ""}
                   onChange={props.setValue(
                     "address",
-                    props.address || props.defaultData?.fetchBoard.address
+                    props.address || props.defaultData?.fetchBoard.address || ""
                   )}
                 />
                 <S.AddressDetail
                   placeholder="상세주소를 입력해주세요"
                   {...props.register("addressDetail")}
-                  defaultValue={props.defaultData?.fetchBoard.addressDetail}
+                  defaultValue={props.defaultData?.fetchBoard.addressDetail || ""}
                 />
               </div>
             </S.InputWrapperRight>

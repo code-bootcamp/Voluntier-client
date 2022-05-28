@@ -58,7 +58,7 @@ export default function ProductWrite(props: IPropsProductWrite) {
   const UpdateProduct = async (data: IFormValuesProductWrite) => {
     const currentFiles = JSON.stringify(myImage);
     const defaultFiles = JSON.stringify(
-      props.data?.fetchProduct.productImage.imageUrl
+      props.data?.fetchProduct.productImage[0].imageUrl
     );
     const isChangedFiles = currentFiles !== defaultFiles;
     const contentsvalue = editorRef.current?.getInstance().getMarkdown();
