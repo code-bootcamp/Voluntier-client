@@ -1,16 +1,33 @@
 import _ from "lodash";
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent } from "react";
 import BoardListUI from "./BoardListPresenter";
 import { IPropsBoardList } from "./BoardListTypes";
 
-
-
-export default function BoardList(props:IPropsBoardList) {
+export default function BoardList(props: IPropsBoardList) {
   const [, setKeyword] = useState("");
-  const [key,setKey] = useState("전체")
-  const [big,setBig] = useState("전체")
-  const [small,setSmall] = useState("전체")
-  const Big = ["전체","서울","경기","인천","대전","대구","광주","울산","부산","세종특별자치시","강원","충북","충남","전북","전남","경북","경남","제주특별자치도"]
+  const [key, setKey] = useState("전체");
+  const [big, setBig] = useState("전체");
+  const [small, setSmall] = useState("전체");
+  const Big = [
+    "전체",
+    "서울",
+    "경기",
+    "인천",
+    "대전",
+    "대구",
+    "광주",
+    "울산",
+    "부산",
+    "세종특별자치시",
+    "강원",
+    "충북",
+    "충남",
+    "전북",
+    "전남",
+    "경북",
+    "경남",
+    "제주특별자치도",
+  ];
 
   const Small:any = 
                   { "전체":["전체"],
@@ -41,24 +58,24 @@ export default function BoardList(props:IPropsBoardList) {
       setBig("")
       setSmall("") 
     }
-  },[key])
+  }, [key]);
 
-  const onChangeKey = (event:ChangeEvent<HTMLSelectElement>) => {
-    setKey(event.target.value)
-    setBig(event.target.value)
-  }
-  const onChangeSmall = (event:ChangeEvent<HTMLSelectElement>) =>{
-    setSmall(event.target.value) 
-  }
-  
+  const onChangeKey = (event: ChangeEvent<HTMLSelectElement>) => {
+    setKey(event.target.value);
+    setBig(event.target.value);
+  };
+  const onChangeSmall = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSmall(event.target.value);
+  };
+
   const onClickSearch = () => {
-    props.refetch({ page: 1, location1:big, location2:small});
-    props.CountRefetch({location1:big,location2:small})
+    props.refetch({ page: 1, location1: big, location2: small });
+    props.CountRefetch({ location1: big, location2: small });
   };
 
   const getDebounce = _.debounce((data) => {
-    props.refetch({page:1,search:data});
-    props.CountRefetch({search:data})
+    props.refetch({ page: 1, search: data });
+    props.CountRefetch({ search: data });
     setKeyword(data);
   }, 1000);
 
@@ -66,14 +83,17 @@ export default function BoardList(props:IPropsBoardList) {
     getDebounce(event.target.value);
   };
 
-
-  return <BoardListUI 
-  onChangeSearch={onChangeSearch}
-  onClickSearch={onClickSearch} 
-  onChangeSmall={onChangeSmall} 
-  onChangeKey={onChangeKey} 
-  Big={Big} S={S} 
-  data={props.data}
-  refetch={props.refetch}
-  BoardsCountData={props.BoardsCountData}/>;
+  return (
+    <BoardListUI
+      onChangeSearch={onChangeSearch}
+      onClickSearch={onClickSearch}
+      onChangeSmall={onChangeSmall}
+      onChangeKey={onChangeKey}
+      Big={Big}
+      S={S}
+      data={props.data}
+      refetch={props.refetch}
+      BoardsCountData={props.BoardsCountData}
+    />
+  );
 }

@@ -4,11 +4,13 @@ import { IPropsProductDetailUI } from "./ProductDetailTypes";
 import { gql, useQuery } from "@apollo/client";
 import dynamic from "next/dynamic";
 import { Tooltip } from "@mui/material";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 const ProductDetailViewer = dynamic(
   () => import("../../../commons/texteditor/viewer/productViewer"),
   { ssr: false }
 );
+
 const FETCH_USER_LOGIN = gql`
   query fetchLoginUser {
     fetchLoginUser {
@@ -22,7 +24,8 @@ const FETCH_USER_LOGIN = gql`
 `;
 
 export default function ProductDetailUI(props: IPropsProductDetailUI) {
-  const { data: UserData } = useQuery(FETCH_USER_LOGIN);
+  const { data: UserData } =
+    useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER_LOGIN);
 
   return (
     <S.Body>
@@ -74,13 +77,13 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
                     lineHeight: "25px",
                   }}
                 >
-                  {props.data?.fetchProduct.price / 10}젤리할인
+                  {Number(props.data?.fetchProduct.price) / 10}젤리할인
                 </S.Price>
               </S.PriceWrapper>
               <S.PriceWrapper>
                 <S.Label>바로 구매</S.Label>
                 <S.Price style={{ color: "#FF6A9E" }}>
-                  {(props.data?.fetchProduct.price / 10) * 9} 젤리
+                  {(Number(props.data?.fetchProduct.price) / 10) * 9} 젤리
                 </S.Price>
               </S.PriceWrapper>
               <S.PriceWrapper>

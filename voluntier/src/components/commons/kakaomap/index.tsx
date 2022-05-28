@@ -4,6 +4,7 @@ import { IQuery } from "../../../commons/types/generated/types";
 declare const window: typeof globalThis & {
   kakao: any;
 };
+
 interface IPropsKakaoMap {
   data?: Pick<IQuery,"fetchBoard">
   address?: string;

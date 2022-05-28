@@ -2,10 +2,13 @@ import * as S from "./ProductListStyles";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { MouseEvent } from "react";
 import { gql, useQuery } from "@apollo/client";
+import { IProduct } from "../../../../commons/types/generated/types";
+
 interface IPropsProductListUI {
   data: any;
   MoveProduct: (event: MouseEvent<HTMLImageElement>) => void;
 }
+
 const FETCH_USER_LOGIN = gql`
   query fetchLoginUser {
     fetchLoginUser {
@@ -29,7 +32,7 @@ export default function ProductListUI(props: IPropsProductListUI) {
           <S.Title></S.Title>
         </S.TitleWrapper>
         <S.Contents>
-          {props.data?.fetchProducts.map((el) => (
+          {props.data?.fetchProducts.map((el: IProduct) => (
             <S.ProductWrapper key={el.id}>
               <S.ProductImage
                 onClick={props.MoveProduct}
