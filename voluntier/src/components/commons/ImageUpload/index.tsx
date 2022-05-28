@@ -70,15 +70,18 @@ export default function UploadFile(props:IUploadFile) {
   }
 
   useEffect(() => {
-    if(props.data?.fetchProduct.productImage?.length)
-      props.setMyImage(props.data?.fetchProduct.productImage.imageUrl)
-    },[props.data])
-
+    if(props.data?.fetchProduct.productImage?.length){
+      const imageArr = props.data?.fetchProduct.productImage.map((el:any) => {
+        return  el.imageUrl
+      })
+      props.setMyImage(imageArr)
+    }
+  },[props.data])
   return (
     <Wrapper>
         <Button type="button" onClick={onClickImg}>대표이미지등록</Button>
         <InputImage ref={fileRef} style={{display:"none"}} type="file" multiple onChange={addImage} accept=".jpg,.jpeg,.png"/>
-     {props.myImage.map((el:any ,index:number)=>(
+     {props.myImage?.map((el:any ,index:number)=>(
          <Img key={uuidv4()} id={String(index)} onClick={deleteImage} src={`https://storage.googleapis.com/${el}`}/>
       ))}
     </Wrapper>
