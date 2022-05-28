@@ -73,6 +73,8 @@ interface ISpringprops {
       <>
 
       <S.Body>
+        <S.FallingJellyPink/>
+        <S.FallingJellyPink/>
         <S.Top>
           <S.TopTitle>
             <S.Title>여러분의 젤리로</S.Title>
