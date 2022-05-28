@@ -12,7 +12,42 @@ export const Body = styled.div`
   padding-right: 10%;
 
 `;
+export const FallingJellyPink = styled.div`
+  width: 20px;
+  height: 20px;
+  background-image: url('../../../../images/boardList/jellybean_pink.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: FallingJelly 10s linear 1;
 
+  @keyframes FallingJelly{
+    0%{
+      opacity : 0;
+      transform: translateY(0);
+
+    }
+    20%{
+      opacity : 1;
+      transform: translate(400px,20vh);
+    }
+    40%{
+      opacity : 1;
+      transform: translate(50px,40vh);
+    }
+    60%{
+      opacity : 1;
+      transform: translate(-50px,60vh);
+    }
+    80%{
+      opacity : 1;
+      transform: translate(50px,80vh);
+    }
+    100%{
+      opacity : 1;
+      transform: translateY(100vh);
+    }
+  }
+`
 export const Top = styled.div`
   /* width: 920px; */
   width: 100%;
