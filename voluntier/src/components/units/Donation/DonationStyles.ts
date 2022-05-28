@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import Slider from "react-slick";
 import { breakPoints } from "../../../commons/styles/Media";
 import 'animate.css';
-import {animated} from 'react-spring'
+import {animated } from 'react-spring'
 
 export const Body = styled.div`
   width: 100%;

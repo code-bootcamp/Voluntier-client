@@ -3,7 +3,7 @@ import { FieldValues, UseFormHandleSubmit, UseFormRegister } from "react-hook-fo
 import { IQuery } from "../../../commons/types/generated/types";
 
 export interface IPropsLiveChat {
-    data? : Pick<IQuery,"fetchLoginUser">
+    userData? : Pick<IQuery,"fetchLoginUser">
   }
 
 export interface IFormValueChat{
@@ -12,12 +12,12 @@ export interface IFormValueChat{
 
 export interface IPropsLiveChatUI{
     resultMsg : string[]
-    userId : string
+    userId? : string
     register: UseFormRegister<{contents:string}>
     handleSubmit: UseFormHandleSubmit<FieldValues>
     data?: Pick<IQuery,"fetchChatHistory">
     onClickSubmit : (data:IFormValueChat) => void
-    onKeyDown : any
-    accessToken : string
-    messagesEndRef : LegacyRef<HTMLDivElement>
+    onKeyDown? : any
+    accessToken? : string
+    messagesEndRef? : LegacyRef<HTMLDivElement>
   }

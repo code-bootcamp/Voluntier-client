@@ -30,7 +30,7 @@ export default function ProductDetail() {
 
   const CreateDibs = async (event: MouseEvent<HTMLButtonElement>) => {
     try {
-      if (event.target instanceof HTMLDivElement) {
+      if (event.target instanceof HTMLButtonElement) {
         const result = await createDibs({
           variables: { productId: event.target.id },
         });

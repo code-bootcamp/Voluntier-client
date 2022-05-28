@@ -32,7 +32,6 @@ const CREATE_DONATION = gql`
 `
 interface IPropsPaymentPage {
   PayRef: LegacyRef<HTMLButtonElement> | undefined;
-  
 }
 
 export default function PaymentPage(props:IPropsPaymentPage) {

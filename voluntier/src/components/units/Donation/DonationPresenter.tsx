@@ -1,6 +1,6 @@
 import * as S from "../Donation/DonationStyles";
 import PaymentPage from "../../commons/payment";
-import { useEffect, useRef, useState, MouseEvent } from 'react';
+import { useRef, MouseEvent } from 'react';
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from "../../../commons/store";
 import {SpringValue, useSpring} from 'react-spring'
@@ -12,7 +12,7 @@ interface IDonationUIProps{
 }
 
 export default function DonationUI(props:IDonationUIProps) {
-  const [isTrue,setIsTrue] = useState(false)
+  // const [isTrue,setIsTrue] = useState(false)
   const PayRef = useRef<HTMLButtonElement>(null);
   const [,setAmount] = useRecoilState(setAmountDonation)
   
@@ -25,11 +25,11 @@ export default function DonationUI(props:IDonationUIProps) {
     return PayRef.current?.click()
   }
   
-  useEffect(()=>{
-    setIsTrue(true)
-  },[])
-  console.log(isTrue)
+  // useEffect(()=>{
+  //   setIsTrue(true)
+  // },[])
   
+
   const settings = {
     dots: false,
     infinite: true,
@@ -47,27 +47,19 @@ interface ISpringprops {
 }
     const Springprops : ISpringprops = useSpring({ 
       to: async (next,cancel) => {
-       await next ({val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount))})
        await next ({from: { val: 0 }})
-       await next ({to: { val: Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount)) }})
+       await next ({to: { val: props.allAmount? Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount)) : 0}})
        await next ({config:{duration: 3000}})
       },
     })
 
     const Springprops2 : ISpringprops = useSpring({ 
       to: async (next,cancel) => {
-       await next ({val:Number(props.allAmount?.fetchAllUsersDonationsAmount)/700})
        await next ({from: { val: 0 }})
-       await next ({to: { val: Number(props.allAmount?.fetchAllUsersDonationsAmount)/700 }})
+       await next ({to: { val: props.allAmount? Math.floor(Number(props.allAmount?.fetchAllUsersDonationsAmount)/700) : 0 }})
        await next ({config:{duration: 3000}})
       },
     })
-
-
-
-  
-
-
   
     return (
       <>
@@ -83,27 +75,20 @@ interface ISpringprops {
           <S.TopContents>
             <S.Contents>
               <S.ContentPink>
-                {isTrue &&(
                   <S.Animated>
-                  {Springprops.val?.interpolate(val => Math.floor(val))}
-                </S.Animated>)}
+                  {props.allAmount? Springprops.val?.to(val => Math.floor(Number(val))):0}
+                </S.Animated>
                 <S.ContentsJelly>젤리</S.ContentsJelly>
               </S.ContentPink>
               <S.ContentDetail>기부된 젤리</S.ContentDetail>
             </S.Contents>
             <S.Contents>
            <S.ContentBlue>
-           {isTrue &&(
              <S.Animated>
-               
-                {Springprops2.val?.interpolate(val => Math.floor(val))}
-                
-              </S.Animated>)}
-            
+                {props.allAmount? Springprops2.val?.to(val => Math.floor(Number(val))):0}               
+              </S.Animated>
             <S.ContentsMary>마리</S.ContentsMary>
-           </S.ContentBlue>
-                
-                            
+           </S.ContentBlue>                      
               <S.ContentDetail>행복해진 동물들</S.ContentDetail>
             </S.Contents>
           </S.TopContents>

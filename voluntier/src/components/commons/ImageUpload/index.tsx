@@ -69,10 +69,17 @@ export default function UploadFile(props:IUploadFile) {
     props.setMyImage([...props.myImage])
   }
 
+  
+  
+
   useEffect(() => {
-    if(props.data?.fetchProduct.productImage?.length)
-      props.setMyImage(props.data?.fetchProduct.productImage.imageUrl)
-    },[props.data])
+    if(props.data?.fetchProduct.productImage?.length){
+      const imageArr = props.data?.fetchProduct.productImage.map((el:any) => {
+        return  el.imageUrl
+      })
+      props.setMyImage(imageArr)
+    }
+  },[props.data])
 
   return (
     <Wrapper>
