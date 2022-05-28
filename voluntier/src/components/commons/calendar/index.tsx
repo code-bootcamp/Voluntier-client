@@ -1,15 +1,19 @@
 import { DatePicker, Space } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { calendarDateState } from '../../../commons/store';
 import moment from 'moment';
+import { IQuery } from '../../../commons/types/generated/types';
 
+interface IPropsMycalendar {
+  defaultData? : Pick<IQuery,"fetchBoard">
+  isEdit?:boolean
+}
 
-
-export default function Mycalendar(props){
+export default function Mycalendar(props:IPropsMycalendar){
 const [good,setGood] = useState(false)
 const [mydate,setMydate] = useState(new Date())
-const [calendardate,setCalendarState] = useRecoilState(calendarDateState)
+const [,setCalendarState] = useRecoilState(calendarDateState)
 
 const onChangeDate =(date: any)=>{
   setMydate(date?._d)

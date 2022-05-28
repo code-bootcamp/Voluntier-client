@@ -1,12 +1,13 @@
 import { useEffect } from "react";
+import { IQuery } from "../../../commons/types/generated/types";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
 interface IPropsKakaoMap {
-  address: string;
-  data: any;
+  data?: Pick<IQuery,"fetchBoard">
+  address?: string;
 }
 
 export default function KakaoMap(props: IPropsKakaoMap) {

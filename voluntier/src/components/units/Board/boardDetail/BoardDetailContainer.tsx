@@ -10,23 +10,24 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Modal } from "antd";
+import { IQuery } from '../../../../commons/types/generated/types';
 
 export default function BoardDetail() {
   const [isEdit, setIsEdit] = useState(false);
   const [isChat, setIsChat] = useState(false);
   const router = useRouter();
-  const { data: Userdata } = useQuery(FETCH_LOGIN_USER);
+  const { data: userData } = useQuery<Pick<IQuery,"fetchLoginUser">>(FETCH_LOGIN_USER);
   const [createenroll] = useMutation(CREATE_ENROLL);
   const [deleteBoard] = useMutation(DELETE_BOARD);
-  const { data } = useQuery(FETCH_BOARD, {
+  const { data } = useQuery<Pick<IQuery,"fetchBoard">>(FETCH_BOARD, {
     variables: { boardId: String(router.query.boardId) },
   });
 
-  const { data: enrolldata, refetch } = useQuery(FETCH_ENROLL, {
+  const { data: enrollData, refetch } = useQuery<Pick<IQuery,"fetchEnrollsByBoardId">>(FETCH_ENROLL, {
     variables: { boardId: String(router.query.boardId) },
   });
 
-  useEffect(() => {}, [enrolldata]);
+  useEffect(() => {}, [enrollData]);
 
   const CreateEnroll = async () => {
     try {
@@ -75,8 +76,8 @@ export default function BoardDetail() {
   return (
     <BoardDetailUI
       data={data}
-      Userdata={Userdata}
-      enrolldata={enrolldata}
+      userData={userData}
+      enrollData={enrollData}
       CreateEnroll={CreateEnroll}
       DeleteBoard={DeleteBoard}
       onClickEdit={onClickEdit}

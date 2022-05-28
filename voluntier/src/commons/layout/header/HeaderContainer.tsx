@@ -21,7 +21,7 @@ export default function Header() {
       await logout();
       Modal.success({ content: "로그아웃되었습니다." });
     } catch (error) {
-      Modal.error({ content: error.message });
+    if(error instanceof Error)  Modal.error({ content: error.message });
     }
     router.push('/')
     window.location.reload();

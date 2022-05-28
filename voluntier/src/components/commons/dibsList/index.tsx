@@ -1,8 +1,9 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { gql, useMutation} from "@apollo/client";
 import styled from "@emotion/styled";
 import { Modal } from "antd";
-import InfiniteScroll from "react-infinite-scroller";
+import { MouseEvent } from "react";
 import { breakPoints } from "../../../commons/styles/Media";
+import { IQuery } from "../../../commons/types/generated/types";
 import { useMoveToPage } from "../hooks/useMoveToPage/index";
 
 const Wrapper = styled.div`
@@ -122,18 +123,22 @@ const FETCH_USER_DIBS = gql`
     }
   }
 `;
-export default function DibsList(props) {
+interface IPropsDibsList{
+  DibsData? : Pick<IQuery,"fetchLogInUserDibs">
+}
+
+export default function DibsList(props: IPropsDibsList) {
   const { moveToPage } = useMoveToPage();
   const [deleteDibs] = useMutation(DELETE_DIBS);
-  const DeleteDibs = async (event) => {
+  const DeleteDibs = async (event: MouseEvent<HTMLDivElement>) => {
     try {
       const result = await deleteDibs({
-        variables: { productId: event.target.id },
+        variables: { productId: (event.target as HTMLDivElement).id },
         refetchQueries: [{ query: FETCH_USER_DIBS }],
       });
       console.log(result);
     } catch (error) {
-      Modal.error({ content: error.message });
+    if(error instanceof Error)  Modal.error({ content: error.message });
     }
   };
 
@@ -145,7 +150,6 @@ export default function DibsList(props) {
         <ColumnHead style={{ width: "30%" }}>상품가격</ColumnHead>
         <ColumnHead style={{ width: "30%" }}>찜취소</ColumnHead>
       </RowHead>
-      <InfiniteScroll>
         {props.DibsData?.fetchLogInUserDibs.map((el, index) => (
           <Row key={index}>
             <Column style={{ width: "10%" }}>{index + 1}</Column>
@@ -161,7 +165,6 @@ export default function DibsList(props) {
             </Button>
           </Row>
         ))}
-      </InfiniteScroll>
     </Wrapper>
   );
 }

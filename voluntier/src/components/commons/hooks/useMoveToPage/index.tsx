@@ -4,7 +4,7 @@ export function useMoveToPage() {
   const router = useRouter();
 
 
-  const moveToPage = (page) => () => {
+  const moveToPage = (page:string) => () => {
     router.push(page);
   };
 

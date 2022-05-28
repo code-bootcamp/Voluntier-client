@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import InfiniteScroll from "react-infinite-scroller";
 import { breakPoints } from "../../../commons/styles/Media";
+import { IQuery } from "../../../commons/types/generated/types";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -38,7 +38,11 @@ const Column = styled.div`
   }
 `;
 
-export default function DonationRecords(props) {
+interface IPropsDonationRecords{
+  DonationData? : Pick<IQuery,"fetchDonations">
+}
+
+export default function DonationRecords(props:IPropsDonationRecords) {
   return (
     <Wrapper>
       <Row style={{ fontWeight: "800", borderBottom: "1px solid #000000" }}>
@@ -46,7 +50,6 @@ export default function DonationRecords(props) {
         <Column style={{ width: "68%" }}>후원 금액</Column>
         <Column style={{ width: "25%" }}>후원 날짜</Column>
       </Row>
-      <InfiniteScroll>
         {props.DonationData?.fetchDonations.map((el, index) => (
           <Row key={index}>
             <Column style={{ width: "7%" }}>{index + 1}</Column>
@@ -56,7 +59,6 @@ export default function DonationRecords(props) {
             </Column>
           </Row>
         ))}
-      </InfiniteScroll>
     </Wrapper>
   );
 }
