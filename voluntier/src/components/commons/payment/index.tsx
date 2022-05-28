@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil';
 import { setAmountDonation } from '../../../commons/store';
 import {useRouter }from 'next/router'
 import { Modal } from "antd";
+import { LegacyRef } from "react";
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -29,8 +30,12 @@ const CREATE_DONATION = gql`
     }
   }
 `
+interface IPropsPaymentPage {
+  PayRef: LegacyRef<HTMLButtonElement> | undefined;
+  
+}
 
-export default function PaymentPage(props) {
+export default function PaymentPage(props:IPropsPaymentPage) {
   const [amount,] = useRecoilState(setAmountDonation)
   const {data} = useQuery(FETCH_USER_LOGIN)
   const [createDonation] = useMutation(CREATE_DONATION)

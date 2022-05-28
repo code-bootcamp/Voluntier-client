@@ -1,79 +1,19 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
+import { IQuery } from "../../../commons/types/generated/types";
 import useAuth from "../../commons/hooks/useAuth";
 import MypageUI from "./MypagePresenter";
+import { FETCH_BOARDS_USER, FETCH_DONATIONS, FETCH_ENROLLS, FETCH_PURCHASES, FETCH_USER_DIBS } from "./MypageQueries";
 
-const FETCH_PURCHASES = gql`
-  query fetchPurchases {
-    fetchPurchases {
-      id
-      user {
-        name
-      }
-      product {
-        id
-        name
-      }
-      createdAt
-      usedPoint
-      cancelledAt
-    }
-  }
-`;
-
-const FETCH_DONATIONS = gql`
-  query fetchDonations {
-    fetchDonations {
-      amount
-      createdAt
-    }
-  }
-`;
-
-const FETCH_ENROLLS = gql`
-  query fetchEnrollsByUserId {
-    fetchEnrollsByUserId {
-      board {
-        centerName
-        id
-      }
-      createdAt
-      status
-    }
-  }
-`;
-
-const FETCH_BOARDS_USER = gql`
-  query fetchBoardsOfUser {
-    fetchBoardsOfUser {
-      id
-      title
-      createdAt
-    }
-  }
-`;
-
-const FETCH_USER_DIBS = gql`
-  query fetchLogInUserDibs {
-    fetchLogInUserDibs {
-      id
-      product {
-        id
-        name
-        price
-      }
-    }
-  }
-`;
 
 export default function Mypage() {
   useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const { data: PurchasesData } = useQuery(FETCH_PURCHASES);
-  const { data: DonationData } = useQuery(FETCH_DONATIONS);
-  const { data: EnrollsData } = useQuery(FETCH_ENROLLS);
-  const { data: BoardUserData } = useQuery(FETCH_BOARDS_USER);
-  const { data: DibsData } = useQuery(FETCH_USER_DIBS);
+  const { data: PurchasesData } = useQuery<Pick<IQuery,"fetchPurchases">>(FETCH_PURCHASES);
+  const { data: DonationData } = useQuery<Pick<IQuery,"fetchDonations">>(FETCH_DONATIONS);
+  const { data: EnrollsData } = useQuery<Pick<IQuery,"fetchEnrollsByUserId">>(FETCH_ENROLLS);
+  const { data: BoardUserData } = useQuery<Pick<IQuery,"fetchBoardsOfUser">>(FETCH_BOARDS_USER);
+  const { data: DibsData } = useQuery<Pick<IQuery,"fetchLogInUserDibs">>(FETCH_USER_DIBS);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };

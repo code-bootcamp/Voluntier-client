@@ -5,6 +5,9 @@ import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../store";
 
 interface IPropsNavigationUI {
+  hide: () => void
+  handleVisibleChange: () => void
+  visible : boolean
   moveToPage(arg0: string): import("react").MouseEventHandler<HTMLImageElement>;
   onClickLogout: () => void;
   isBoards: boolean;
@@ -14,7 +17,7 @@ interface IPropsNavigationUI {
   isMagazine: boolean;
 }
 
-export const FETCH_USER_LOGIN = gql`
+const FETCH_USER_LOGIN = gql`
   query fetchLoginUser {
     fetchLoginUser {
       id

@@ -1,7 +1,7 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
 import styled from '@emotion/styled'
 import { Modal } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, ChangeEvent } from 'react';
 
 const Magazine = styled.img`
     width: 100%;
@@ -100,7 +100,7 @@ export default function JellyPaperPage(){
       fileRef.current?.click()
   
     }
-    const addImage = async(event) =>{
+    const addImage = async(event:ChangeEvent<HTMLInputElement>) =>{
       const file = event.target.files?.[0]
       console.log(file)
       try{

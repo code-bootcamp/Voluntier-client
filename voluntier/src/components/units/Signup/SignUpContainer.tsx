@@ -52,7 +52,7 @@ export default function SignUp() {
       });
       Modal.success({ content: "인증번호를 전송하였습니다." });
     } catch (error) {
-      Modal.error({ content: error.message });
+      if(error instanceof Error)  Modal.error({ content: error.message });
     }
   };
   const onClickCheckPhoneAuthToken = async () => {
@@ -63,7 +63,7 @@ export default function SignUp() {
       Modal.success({ content: "번호인증이 완료되었습니다." });
       setPhoneAuth(true);
     } catch (error) {
-      Modal.error({ content: error.message });
+    if(error instanceof Error)  Modal.error({ content: error.message });
     }
   };
 
@@ -85,7 +85,7 @@ export default function SignUp() {
       router.push("/login");
       console.log(result);
     } catch (error) {
-      Modal.error({ content: error.message });
+      if(error instanceof Error)  Modal.error({ content: error.message });
     }
   };
 

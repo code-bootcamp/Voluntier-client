@@ -3,10 +3,39 @@ import "slick-carousel/slick/slick-theme.css";
 import Header from "../../../commons/layout/header/HeaderContainer";
 import * as S from "./MainStyles";
 
-export default function MainUI(props) {
+interface IPropsMain{
+  moveToPage: (page: string) => () => void;
+}
+interface ISettings{
+  dots: boolean
+  fade: boolean
+  speed: number
+  infinite: boolean
+  autoplay: boolean
+  autoplaySpeed: number
+  slidesToShow: number
+  slidesToScroll: number
+  responsive: any
+  arrows: boolean
+}
+
+export default function MainUI(props:IPropsMain) {
+  const settings : ISettings = {
+    dots: false,
+    fade: true,
+    speed: 3000,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    responsive: [{ breakpoint: 1024 }],
+    arrows: false,
+  };
+
   return (
     <S.Wrapper>
-      <S.MySlider {...props.settings}>
+      <S.MySlider {...settings}>
         <S.SliderItem1 style={{ paddingTop: "5%", paddingLeft: "1%" }}>
           <Header />
           <S.SliderDisplay>

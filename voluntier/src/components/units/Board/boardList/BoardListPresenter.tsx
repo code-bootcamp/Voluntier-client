@@ -3,7 +3,7 @@ import KakaomapGeolocation from "../../../commons/kakaomapGeolocation";
 import Pagination from "../../../commons/pagination/PaginationContainer";
 import * as S from "./BoardListStyles";
 import { IPropsBoardListUI } from "./BoardListTypes";
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default function BoardListUI(props:IPropsBoardListUI) {
@@ -31,14 +31,14 @@ export default function BoardListUI(props:IPropsBoardListUI) {
         <div style={{ display: "flex" }}>
           <S.Dropdown onChange={props.onChangeKey}>
             {props.Big.map((el, index) => (
-              <S.Option id={el} key={index} value={el}>
+              <S.Option id={el} key={uuidv4()} value={el}>
                 {el}
               </S.Option>
             ))}
           </S.Dropdown>
           <S.Dropdown onChange={props.onChangeSmall}>
-            {props.S?.map((el) => (
-              <option id={el} key={el} value={el}>
+            {props.S?.map((el:string) => (
+              <option id={el} key={uuidv4()} value={el}>
                 {el}
               </option>
             ))}
@@ -94,7 +94,7 @@ export default function BoardListUI(props:IPropsBoardListUI) {
           </S.ColumnHeaderBasic>
         </S.TitleRow>
         {props.data?.fetchBoards.map((el, index) => (
-          <S.Row key={index}>
+          <S.Row key={uuidv4()}>
             <S.ColumnHeaderTitle onClick={moveToPage(`/boards/${el.id}`)}>
               <S.TitleBox>
                 <S.TitleImage
