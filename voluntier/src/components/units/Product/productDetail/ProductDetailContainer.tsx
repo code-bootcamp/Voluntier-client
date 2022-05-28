@@ -1,9 +1,11 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import ProductDetailUI from "./ProductDetailPresenter";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { DELETE_PRODUCT, FETCH_PRODUCT } from "./ProductDetailQueries";
+
+import { IQuery } from "../../../../commons/types/generated/types";
 
 const CREATE_DIBS = gql`
   mutation createDibs($productId: String!) {
@@ -18,7 +20,7 @@ export default function ProductDetail() {
   const [, setIsEdit] = useState(false);
   const [isClosed, setIsClosed] = useState(true);
   const [deleteProduct] = useMutation(DELETE_PRODUCT);
-  const { data } = useQuery(FETCH_PRODUCT, {
+  const { data } = useQuery<Pick<IQuery, "fetchProduct">>(FETCH_PRODUCT, {
     variables: { productId: router.query.productId },
   });
   const [createDibs] = useMutation(CREATE_DIBS);
@@ -26,15 +28,17 @@ export default function ProductDetail() {
     setIsClosed((prev) => !prev);
   };
 
-  const CreateDibs = async (event) => {
+  const CreateDibs = async (event: MouseEvent<HTMLButtonElement>) => {
     try {
-      const result = await createDibs({
-        variables: { productId: event.target.id },
-      });
-      console.log(result);
-      Modal.success({ content: "찜했다냥! 마이페이지에서 확인하시개!" });
+      if (event.target instanceof HTMLDivElement) {
+        const result = await createDibs({
+          variables: { productId: event.target.id },
+        });
+        console.log(result);
+        Modal.success({ content: "찜했다냥! 마이페이지에서 확인하시개!" });
+      }
     } catch (error) {
-      Modal.error({ content: error.message });
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
 
@@ -52,7 +56,7 @@ export default function ProductDetail() {
       Modal.success({ content: "게시물 삭제에 성공했습니다." });
       router.push("/products");
     } catch (error) {
-      Modal.error({ content: error.message });
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
   return (

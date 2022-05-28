@@ -3,8 +3,10 @@ import { useEffect } from "react";
 declare const window: typeof globalThis & {
   kakao: any;
 };
+
 interface IPropsKakaoMap {
   address: string;
+  data: any;
 }
 
 export default function KakaoMap(props: IPropsKakaoMap) {
