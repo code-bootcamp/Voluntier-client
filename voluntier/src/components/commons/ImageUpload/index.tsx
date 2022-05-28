@@ -85,7 +85,7 @@ export default function UploadFile(props:IUploadFile) {
     <Wrapper>
         <Button type="button" onClick={onClickImg}>대표이미지등록</Button>
         <InputImage ref={fileRef} style={{display:"none"}} type="file" multiple onChange={addImage} accept=".jpg,.jpeg,.png"/>
-     {props.myImage.map((el:any ,index:number)=>(
+     {props.myImage?.map((el:any ,index:number)=>(
          <Img key={uuidv4()} id={String(index)} onClick={deleteImage} src={`https://storage.googleapis.com/${el}`}/>
       ))}
     </Wrapper>

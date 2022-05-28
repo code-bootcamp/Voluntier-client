@@ -71,7 +71,7 @@ export default function NavigationUI(props: IPropsNavigationUI) {
             onClick={props.moveToPage("/mypage")}
           />
 
-          {accessToken ? (
+          {data?.fetchLoginUser ? (
             <S.UserLoginWrapper>
               <S.Font>{data?.fetchLoginUser.name}님 환영합니다!</S.Font>
               <S.UserInfoWrapper>
