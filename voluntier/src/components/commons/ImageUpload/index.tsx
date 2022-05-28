@@ -69,6 +69,9 @@ export default function UploadFile(props:IUploadFile) {
     props.setMyImage([...props.myImage])
   }
 
+  
+  
+
   useEffect(() => {
     if(props.data?.fetchProduct.productImage?.length){
       const imageArr = props.data?.fetchProduct.productImage.map((el:any) => {
@@ -77,6 +80,7 @@ export default function UploadFile(props:IUploadFile) {
       props.setMyImage(imageArr)
     }
   },[props.data])
+
   return (
     <Wrapper>
         <Button type="button" onClick={onClickImg}>대표이미지등록</Button>

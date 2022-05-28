@@ -46,7 +46,7 @@ export default function BoardDetailUI(props:IPropsBoardDetailUI) {
       <S.Wrapper isChat={props.isChat}>
         {props.isChat && (
           <S.ChatWrapper>
-            <Livechat data={props.userData} />
+            <Livechat userData={props.userData} />
           </S.ChatWrapper>
         )}
 
@@ -158,7 +158,7 @@ export default function BoardDetailUI(props:IPropsBoardDetailUI) {
           </S.InnerWrapperLeft>
           {!windowSize && (
             <S.InnerWrapperRight>
-              <Livechat data={props.userData} />
+              <Livechat userData={props.userData} />
               <VolunteerList
                 enrollData={props.enrollData}
                 data={props.data}

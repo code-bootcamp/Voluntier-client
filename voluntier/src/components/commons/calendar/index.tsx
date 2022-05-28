@@ -1,5 +1,5 @@
 import { DatePicker, Space } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { calendarDateState } from '../../../commons/store';
 import moment from 'moment';
@@ -20,8 +20,10 @@ const onChangeDate =(date: any)=>{
 }
 
 const realdate = mydate?.getFullYear() + '-' +  (mydate?.getMonth() + 1)  + '-' + mydate?.getDate() 
-  setCalendarState(realdate)
 
+useEffect(()=>{  
+setCalendarState(realdate)
+},[])
 
 const onClick = () => {
   setGood(true)

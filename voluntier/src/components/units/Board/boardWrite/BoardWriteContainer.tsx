@@ -6,13 +6,13 @@ import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWriteQueries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRecoilState } from "recoil";
-import { calendarDateState } from "../../../../commons/store";
 import useAuth from "../../../commons/hooks/useAuth";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { IBoardSubmitFormValues, IBoardWrite, ImyupdateBoardInput, IMyVariables } from "./BoardWriteTypes";
 import { FETCH_LOGIN_USER } from "../boardDetail/BoardDetailQueries";
 import BoardWriteUI from "./BoardWritePresenter";
+import { calendarDateState } from '../../../../commons/store/index';
 
 
 const schema = yup.object({

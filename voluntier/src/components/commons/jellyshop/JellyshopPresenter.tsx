@@ -1,46 +1,21 @@
-import { Modal } from "antd";
 import * as S from "./JellyshopStyles";
 import DaumPostcode from "react-daum-postcode";
 import useAuth from "../hooks/useAuth";
-import { gql, useMutation } from "@apollo/client";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
-const CREATE_PURCHASE = gql`
-  mutation createPurchase($createPurchaseInput: CreatePurchaseInput!) {
-    createPurchase(createPurchaseInput: $createPurchaseInput) {
-      id
-    }
-  }
-`;
+import { Modal } from "antd";
+import { IPropsJellyshopModalUI } from "./JellyshopTypes";
 
-const schema = yup.object({
-  receiverName: yup.string().required("수령인 입력은 필수입니다."),
-  receiverPhone: yup.string().required("핸드폰 번호는 필수입니다."),
-  address: yup.string().required("주소입력은 필수입니다."),
-  addressDetail: yup.string().required("상세주소는 필수입니다."),
-});
 
-export default function JellyshopModalUI(props) {
+
+
+
+
+
+export default function JellyshopModalUI(props:IPropsJellyshopModalUI) {
   useAuth();
-  const [createPurchase] = useMutation(CREATE_PURCHASE);
-  const { register, handleSubmit, setValue } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
+  
 
-  const CreatePurchase = async (data) => {
-    data.userId = props.UserData?.fetchLoginUser.id;
-    data.productId = props.data?.fetchProduct.id;
-    data.itemCount = 1;
-    await createPurchase({
-      variables: { createPurchaseInput: { ...data } },
-    });
-    Modal.success({ content: "젤리 사용 완료!" });
-    props.setIsClosed?.(true);
-  };
-
+  
   return (
     <>
       {props.isOpen && (
@@ -53,7 +28,7 @@ export default function JellyshopModalUI(props) {
           <DaumPostcode onComplete={props.onCompleteAddressSearch} />
         </Modal>
       )}
-      <form onSubmit={handleSubmit(CreatePurchase)}>
+      <form onSubmit={props.handleSubmit(props.CreatePurchase)}>
         <S.Wrapper>
           <S.UpperWrapper>
             <S.UpperLeftWrapper>
@@ -70,9 +45,9 @@ export default function JellyshopModalUI(props) {
             <S.UpperRightWrapper>
               <S.Label style={{ marginBottom: "30px" }}>배송지 정보</S.Label>
               <S.SmallLabel>수령인</S.SmallLabel>
-              <S.Input {...register("receiverName")} />
+              <S.Input {...props.register("receiverName")} />
               <S.SmallLabel>연락처</S.SmallLabel>
-              <S.Input {...register("receiverPhone")} />
+              <S.Input {...props.register("receiverPhone")} />
               <S.SmallLabel>배송지 주소</S.SmallLabel>
               <S.ZipcodeWrapper>
                 <S.Zipcode value={props.zipcode} readOnly={true} />
@@ -85,12 +60,12 @@ export default function JellyshopModalUI(props) {
                   marginBottom: "8px",
                   paddingLeft: "10px",
                 }}
-                onChange={setValue("address", props.address || "")}
+                onChange={props.setValue("address", props.address || "")}
                 value={props.address}
                 readOnly={true}
               />
               <S.Input
-                {...register("addressDetail")}
+                {...props.register("addressDetail")}
                 style={{ marginBottom: "30px" }}
               />
               <S.PriceWrapper>
