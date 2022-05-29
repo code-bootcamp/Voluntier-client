@@ -3,7 +3,8 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect} from "react";
 import { useQuery } from '@apollo/client';
-import { FETCH_LOGIN_USER } from '../../../units/Board/boardDetail/BoardDetailQueries';
+import { FETCH_LOGIN_USER } from "../../../units/Mypage/MypageQueries";
+
 
 // @ts-ignore
 
