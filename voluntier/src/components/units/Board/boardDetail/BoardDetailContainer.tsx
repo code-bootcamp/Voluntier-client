@@ -7,7 +7,7 @@ import {
   FETCH_ENROLL,
 } from "./BoardDetailQueries";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "antd";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
