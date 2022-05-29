@@ -53,7 +53,6 @@ export default function BoardList(props: IPropsBoardList) {
   const S = Small[key]
 
   useEffect(()=>{
-    setSmall(Small[key][0])
     if(Small[key][0]==="전체"){
       setBig("")
       setSmall("") 

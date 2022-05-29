@@ -1,6 +1,6 @@
 import * as S from "../Donation/DonationStyles";
 import PaymentPage from "../../commons/payment";
-import { useRef, MouseEvent } from 'react';
+import { useRef, MouseEvent, useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { setAmountDonation } from "../../../commons/store";
 import {SpringValue, useSpring} from 'react-spring'
@@ -12,7 +12,7 @@ interface IDonationUIProps{
 }
 
 export default function DonationUI(props:IDonationUIProps) {
-  // const [isTrue,setIsTrue] = useState(false)
+  const [isTrue,setIsTrue] = useState(false)
   const PayRef = useRef<HTMLButtonElement>(null);
   const [,setAmount] = useRecoilState(setAmountDonation)
   
@@ -25,9 +25,9 @@ export default function DonationUI(props:IDonationUIProps) {
     return PayRef.current?.click()
   }
   
-  // useEffect(()=>{
-  //   setIsTrue(true)
-  // },[])
+  useEffect(()=>{
+    setIsTrue(true)
+  },[])
   
 
   const settings = {
@@ -76,7 +76,7 @@ interface ISpringprops {
             <S.Contents>
               <S.ContentPink>
                   <S.Animated>
-                  {props.allAmount? Springprops.val?.to(val => Math.floor(Number(val))):0}
+                  {isTrue? Springprops.val?.to(val => Math.floor(Number(val))):0}
                 </S.Animated>
                 <S.ContentsJelly>젤리</S.ContentsJelly>
               </S.ContentPink>
@@ -85,7 +85,7 @@ interface ISpringprops {
             <S.Contents>
            <S.ContentBlue>
              <S.Animated>
-                {props.allAmount? Springprops2.val?.to(val => Math.floor(Number(val))):0}               
+                {isTrue? Springprops2.val?.to(val => Math.floor(Number(val))):0}               
               </S.Animated>
             <S.ContentsMary>마리</S.ContentsMary>
            </S.ContentBlue>                      
@@ -135,7 +135,7 @@ interface ISpringprops {
           </S.MySlider>
         </S.Middle>
         <S.Bottom>
-          <S.Pricediv style={{marginLeft : "10%"}}>
+          <S.Pricediv>
           <S.Price
             id={String(10000)}
             onClick={onClickPayment}

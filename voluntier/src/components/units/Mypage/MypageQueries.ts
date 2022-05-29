@@ -62,3 +62,21 @@ export const FETCH_USER_DIBS = gql`
     }
   }
 `;
+
+export const FETCH_LOGIN_USER = gql`
+query fetchLoginUser {
+  fetchLoginUser {
+    id
+    name
+    email
+    phone
+    isAdmin
+    profileImageUrl
+    donationAmount
+    point
+    serviceTime
+    provider
+    createdAt
+  }
+}
+`;

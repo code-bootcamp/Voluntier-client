@@ -40,7 +40,7 @@ export default function VolunteerList(props:IPropsVolunteerList) {
         refetchQueries: [
           {
             query: FETCH_ENROLL,
-            variables: { boardI: String(router.query.boardId) },
+            variables: { boarId: String(router.query.boardId) },
           },
         ],
       });

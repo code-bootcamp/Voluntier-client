@@ -101,12 +101,11 @@ export default function FindPassword() {
     data.phone = `010${data.phone}`;
     const { passwordCheck, phoneNumberCheck, ...rest } = data;
     try{
-    const result = await resetPassword({
+      await resetPassword({
       variables:{...rest}
     })
     Modal.success({content:"비밀번호 변경에 성공하였습니다."})
     router.back()
-    console.log(result)
   }catch(error){
    if(error instanceof Error) Modal.error({content:error.message})
   }

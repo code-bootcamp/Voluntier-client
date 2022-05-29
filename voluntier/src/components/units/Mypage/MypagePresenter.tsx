@@ -5,7 +5,7 @@ import VolunteerRecords from "../../commons/volunteerRecords";
 import DonationRecords from "../../commons/donationRecords";
 import BoardRecords from "../../commons/boardRecords";
 import PurchaseRecords from "../../commons/purchaseRecords";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import DibsList from "../../commons/dibsList/index";
 import { useEffect, useState } from "react";
 import {
@@ -15,30 +15,15 @@ import {
   MiniJelly4,
 } from "../../commons/myJelly";
 import { IPropsMyPageUI } from "./MypageTypes";
+import { FETCH_LOGIN_USER } from "./MypageQueries";
 
-const FETCH_USER_LOGIN = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-      profileImageUrl
-      donationAmount
-      point
-      serviceTime
-      provider
-    }
-  }
-`;
 
 const { TabPane } = Tabs;
 
 
 
 export default function MypageUI(props:IPropsMyPageUI) {
-  const { data } = useQuery(FETCH_USER_LOGIN);
+  const { data } = useQuery(FETCH_LOGIN_USER);
   const [myjelly, setMyjelly] = useState(1);
 
   useEffect(() => {
@@ -61,8 +46,6 @@ export default function MypageUI(props:IPropsMyPageUI) {
       setMyjelly(4);
     }
   });
-  console.log(data?.fetchLoginUser.point);
-  console.log(myjelly);
 
   return (
     <>
@@ -118,6 +101,9 @@ export default function MypageUI(props:IPropsMyPageUI) {
                   <S.TooltipText>
                     {data?.fetchLoginUser.serviceTime}시간 봉사를 한 당신은
                     최고!
+                  </S.TooltipText>
+                  <S.TooltipText>
+                    현재까지 모인 포인트는 {data?.fetchLoginUser.point}
                   </S.TooltipText>
                 </S.Tooltip>
               </S.TooltipWrapper>

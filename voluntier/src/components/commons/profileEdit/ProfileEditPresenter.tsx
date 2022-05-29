@@ -1,6 +1,7 @@
 import { gql, useMutation } from '@apollo/client'
 import { Modal } from 'antd';
 import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from 'react'
+import { FETCH_LOGIN_USER } from '../../units/Mypage/MypageQueries';
 import * as S from './ProfileEditStyles'
 
 
@@ -15,22 +16,6 @@ const UPDATE_USER_IMAGE = gql`
       id
     }
   }
-`
-const FETCH_USER_LOGIN = gql`
-    query fetchLoginUser{
-        fetchLoginUser{
-            id
-            name
-            email
-            phone
-            isAdmin
-            profileImageUrl
-            donationAmount
-            point
-            serviceTime
-            provider
-        }
-    }
 `
 interface IPropsProfileEditUI {
   setIsOpen : Dispatch<SetStateAction<boolean>>
@@ -58,7 +43,7 @@ export default function ProfileEditUI(props:IPropsProfileEditUI) {
     await updateUserImage({
       variables:{profileImageUrl:Img},
       refetchQueries:[{
-        query: FETCH_USER_LOGIN
+        query: FETCH_LOGIN_USER
       }]
     })
     props.setIsOpen(false)
