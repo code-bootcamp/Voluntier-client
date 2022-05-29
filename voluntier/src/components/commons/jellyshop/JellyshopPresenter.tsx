@@ -70,7 +70,7 @@ export default function JellyshopModalUI(props:IPropsJellyshopModalUI) {
               />
               <S.PriceWrapper>
                 <S.Label>필요한 젤리</S.Label>
-                <S.Price>{props.data?.fetchProduct.price} 개</S.Price>
+                <S.Price>{Number(props.data?.fetchProduct.price)} 개</S.Price>
               </S.PriceWrapper>
             </S.UpperRightWrapper>
           </S.UpperWrapper>

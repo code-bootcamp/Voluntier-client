@@ -65,8 +65,8 @@ interface ISpringprops {
       <>
 
       <S.Body>
-        <S.FallingJellyPink/>
-        <S.FallingJellyPink/>
+        <S.Jellybox>
+        </S.Jellybox>
         <S.Top>
           <S.TopTitle>
             <S.Title>여러분의 젤리로</S.Title>
@@ -91,6 +91,7 @@ interface ISpringprops {
            </S.ContentBlue>                      
               <S.ContentDetail>행복해진 동물들</S.ContentDetail>
             </S.Contents>
+
           </S.TopContents>
         </S.Top>
         <S.Middle>
