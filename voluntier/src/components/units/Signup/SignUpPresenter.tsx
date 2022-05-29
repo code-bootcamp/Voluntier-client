@@ -1,11 +1,13 @@
+import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 import * as S from "../Signup/SignUpStyles";
 import { IPropsSignUpUI } from "./SignUpTypes";
 
 export default function SignUpUI(props: IPropsSignUpUI) {
+  const {moveToPage} = useMoveToPage()
   return (
     <S.Form onSubmit={props.handleSubmit(props.onClickSignUp)}>
       <S.SignUpWrapper>
-        <S.Logo></S.Logo>
+        <S.Logo onClick={moveToPage("/")}></S.Logo>
         <S.InputWrapper>
           <S.Label>Name</S.Label>
           <S.Input

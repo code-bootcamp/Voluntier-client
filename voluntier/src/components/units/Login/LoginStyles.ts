@@ -54,7 +54,8 @@ export const Logo = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-
+  cursor: pointer;
+  
   @media ${breakPoints.mobile} {
     width: 50px;
     background-image: url("../../../../../images/login.png");
@@ -108,6 +109,7 @@ export const Input = styled.input`
     height: 50px;
     border: 1px solid #c4c4c4;
     padding-left: 12px;
+    color: #000000;
     ::placeholder {
       color: #c4c4c4;
       font-size: 12px;
