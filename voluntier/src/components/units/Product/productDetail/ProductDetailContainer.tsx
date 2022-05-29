@@ -31,10 +31,9 @@ export default function ProductDetail() {
   const CreateDibs = async (event: MouseEvent<HTMLButtonElement>) => {
     try {
       if (event.target instanceof HTMLButtonElement) {
-        const result = await createDibs({
+          await createDibs({
           variables: { productId: event.target.id },
         });
-        console.log(result);
         Modal.success({ content: "찜했다냥! 마이페이지에서 확인하시개!" });
       }
     } catch (error) {
@@ -49,10 +48,9 @@ export default function ProductDetail() {
 
   const ProductDelete = async () => {
     try {
-      const result = await deleteProduct({
+        await deleteProduct({
         variables: { productId: router.query.productId },
       });
-      console.log(result);
       Modal.success({ content: "게시물 삭제에 성공했습니다." });
       router.push("/products");
     } catch (error) {

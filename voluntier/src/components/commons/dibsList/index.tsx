@@ -132,11 +132,10 @@ export default function DibsList(props: IPropsDibsList) {
   const [deleteDibs] = useMutation(DELETE_DIBS);
   const DeleteDibs = async (event: MouseEvent<HTMLDivElement>) => {
     try {
-      const result = await deleteDibs({
+      await deleteDibs({
         variables: { productId: (event.target as HTMLDivElement).id },
         refetchQueries: [{ query: FETCH_USER_DIBS }],
       });
-      console.log(result);
     } catch (error) {
     if(error instanceof Error)  Modal.error({ content: error.message });
     }

@@ -56,7 +56,6 @@ export default function EditorUI(props:any){
                 const result = await uploadImage({
                     variables: {file}
                 })
-                console.log(result)
                 const result1 = result?.data.uploadImage.replaceAll(' ','%20')
                 const url = `https://storage.googleapis.com/${String(result1)}`
                 callback(url)
@@ -78,11 +77,9 @@ export default function EditorUI(props:any){
     plugins={[colorSyntax]}
     hooks={{addImageBlobHook: async(file : Blob | File, callback)=>{
         try{
-            
             const result = await uploadImage({
                 variables: {file}
             })
-            console.log(result)
             const result1 = result?.data.uploadImage.replaceAll(' ','%20')
             const url = `https://storage.googleapis.com/${String(result1)}`
             callback(url)

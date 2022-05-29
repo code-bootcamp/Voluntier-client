@@ -227,6 +227,33 @@ export const Question = styled.div`
   }
 `;
 
+export const QuestionHome = styled.div`
+  display: none;
+  font-weight: 400;
+  font-size: 13px;
+  color: #ffffff;
+  margin-top: 10px;
+  text-align: center;
+  /* text-decoration: underline; */
+  cursor: pointer;
+  :hover {
+    border-bottom: 1px solid #ffffff;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 14px;
+    color: #000000;
+    width: 100%;
+    height: 60px;
+    border: 1px solid #0085cb;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+
 export const ErrorMsg = styled.div`
   width: 100%;
   font-size: 5px;

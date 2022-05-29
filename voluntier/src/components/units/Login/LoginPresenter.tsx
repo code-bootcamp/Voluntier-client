@@ -7,7 +7,7 @@ export default function LoginUI(props: IPropsLoginUI) {
   return (
     <S.Form onSubmit={props.handleSubmit(props.onClickLogin)}>
       <S.Login>
-        <S.Logo></S.Logo>
+        <S.Logo onClick={props.moveToPage("/")}></S.Logo>
         <S.Contents>
           <S.Label>E-mail</S.Label>
           <S.Input
@@ -31,7 +31,7 @@ export default function LoginUI(props: IPropsLoginUI) {
             <S.SocialA href="https://backendapi.voluntier.site/login/kakao">
               <S.SocialButton src="/images/btn-kakao.png" />
             </S.SocialA>
-            <S.SocialA href="http://backendapi.voluntier.site/login/naver">
+            <S.SocialA href="https://backendapi.voluntier.site/login/naver">
               <S.SocialButton src="/images/btn-naver.png" />
             </S.SocialA>
             <S.SocialA href="https://backendapi.voluntier.site/login/google">
@@ -39,6 +39,9 @@ export default function LoginUI(props: IPropsLoginUI) {
             </S.SocialA>
           </S.SocialLoginButtonWrapper>
         </S.SocialLoginWrapper>
+        <S.QuestionHome onClick={props.moveToPage("/")}>
+          HOME으로 이동하기
+        </S.QuestionHome>
         <S.Question onClick={props.moveToPage("/signup")}>
           계정이 없으신가요? 회원가입하기
         </S.Question>

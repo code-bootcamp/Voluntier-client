@@ -10,7 +10,9 @@ export const Body = styled.div`
   flex-direction: column;
   padding-top: 5px;
   padding-right: 10%;
-
+  @media ${breakPoints.mobile}{
+    margin-left: 10%;
+  }
 `;
 export const FallingJellyPink = styled.div`
   width: 20px;
@@ -183,6 +185,10 @@ font-family: GmarketSans;
 @media ${breakPoints.tablet}{
   font-size:15px;
 }
+@media ${breakPoints.mobile}{
+  line-height: 40%;
+  font-size:10px;
+}
  `
 
 export const ContentsJelly= styled.span`
@@ -192,6 +198,10 @@ margin-bottom: 10px;
 font-family: GmarketSans;
 @media ${breakPoints.tablet}{
   font-size:15px;
+}
+@media ${breakPoints.mobile}{
+  line-height: 40%;
+  font-size:10px;
 }
 `
 export const ContentDetail = styled.div`
@@ -254,7 +264,7 @@ export const SliderContent= styled.div`
   width: 800px;
   height: 330px;
   border-radius: 20px;
-  background-image:url('../../../../images/donation/Donation1.png');
+  background-image:url('../../../../images/donation/donation1.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -334,10 +344,14 @@ export const Bottom = styled.div`
   height: 20%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 10px;
-  margin-left: 5%;
+  margin-left: 10%;
   @media ${breakPoints.tablet}{
+    margin-left: 0%;
+
+  }
+  @media ${breakPoints.mobile}{
     margin-left: 0%;
 
   }
