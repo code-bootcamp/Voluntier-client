@@ -42,7 +42,7 @@ export const Title = styled.div`
 `;
 
 export const TitleInput = styled.input`
-  width: 100%;
+  width: 90%;
   border: 1px solid #d9d9d9;
   padding-left: 10px;
   font-size: 15px;
@@ -109,6 +109,18 @@ export const SearchButton = styled.button`
   margin: 0px 0px 0px 10px;
   border-radius: 20px;
   cursor: pointer;
+
+  @media ${breakPoints.tablet} {
+    width: 60px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 50px;
+    height: 18px;
+    font-size: 10px;
+  }
 `;
 
 export const Address = styled.input`
@@ -224,6 +236,7 @@ export const HalfWrapper = styled.div`
   @media (min-width: 768px) and (max-width: 1382px) {
     width: 100%;
   }
+
   @media ${breakPoints.mobile} {
     width: 100%;
   }
@@ -241,10 +254,6 @@ export const Time = styled.div`
 
 export const Volun = styled.div`
   width: 100%;
-  @media (min-width: 768px) and (max-width: 1382px) {
-  }
-  @media ${breakPoints.mobile} {
-  }
 `;
 
 export const DateWrapper = styled.div`
@@ -267,10 +276,15 @@ export const SubmitButton = styled.button`
   margin-bottom: 20px;
   cursor: pointer;
 
-  @media ${breakPoints.mobile} {
-    width: 20%;
+  @media ${breakPoints.tablet} {
+    width: 75px;
     height: 30px;
-    font-size: 13px;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 70px;
+    height: 25px;
+    font-size: 11px;
     margin-bottom: 50px;
     align-self: center;
   }

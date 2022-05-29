@@ -31,14 +31,14 @@ export default function BoardListUI(props:IPropsBoardListUI) {
         <div style={{ display: "flex" }}>
           <S.Dropdown onChange={props.onChangeKey}>
             {props.Big.map((el, index) => (
-              <S.Option id={el} key={uuidv4()} value={el}>
+              <option id={el} key={index} value={el}>
                 {el}
-              </S.Option>
+              </option>
             ))}
           </S.Dropdown>
           <S.Dropdown onChange={props.onChangeSmall}>
-            {props.S?.map((el:string) => (
-              <option id={el} key={uuidv4()} value={el}>
+            {props.S?.map((el:any) => (
+              <option id={el} key={el} value={el}>
                 {el}
               </option>
             ))}

@@ -74,7 +74,7 @@ export default function SignUp() {
     data.phone = `010${data.phone}`;
     const { passwordCheck, phoneNumberCheck, ...rest } = data;
     try {
-      const result = await createUser({
+        await createUser({
         variables: {
           createUserInput: {
             ...rest,
@@ -83,7 +83,6 @@ export default function SignUp() {
       });
       Modal.success({ content: "회원가입에 성공했습니다." });
       router.push("/login");
-      console.log(result);
     } catch (error) {
       if(error instanceof Error)  Modal.error({ content: error.message });
     }

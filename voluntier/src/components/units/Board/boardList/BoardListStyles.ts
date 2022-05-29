@@ -93,6 +93,17 @@ export const Jellybean = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 10px;
+
+  @media ${breakPoints.tablet} {
+    width: 15px;
+    height: 15px;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 12px;
+    height: 12px;
+    margin-right: 7px;
+  }
 `;
 
 export const Dropdown = styled.select`
@@ -129,8 +140,7 @@ export const Dropdown = styled.select`
   }
 `;
 
-export const Option = styled.option`
-`;
+export const Option = styled.option``;
 
 export const SearchButton = styled.div`
   width: 40px;
@@ -176,7 +186,7 @@ export const Searchbar = styled.input`
   }
 
   @media ${breakPoints.mobile} {
-    width: 50%;
+    width: 40%;
     margin: 0px;
     ::placeholder {
       font-size: 10px;
@@ -283,7 +293,6 @@ export const TitleImage = styled.img`
   width: 20%;
   height: 80px;
   margin-right: 3%;
-  
 
   @media ${breakPoints.tablet} {
     width: 30%;

@@ -1,8 +1,7 @@
 import * as S from "../navigation/NavigationStyles";
 import { useEffect, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../store";
+import { useQuery } from "@apollo/client";
+import { FETCH_LOGIN_USER } from "../../../components/units/Mypage/MypageQueries";
 
 interface IPropsNavigationUI {
   hide: () => void
@@ -17,23 +16,10 @@ interface IPropsNavigationUI {
   isMagazine: boolean;
 }
 
-const FETCH_USER_LOGIN = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-      profileImageUrl
-    }
-  }
-`;
 
 export default function NavigationUI(props: IPropsNavigationUI) {
   const [windowSize, setWindowSize] = useState(false);
-  const { data } = useQuery(FETCH_USER_LOGIN);
-  const [accessToken] = useRecoilState(accessTokenState);
+  const { data } = useQuery(FETCH_LOGIN_USER);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {

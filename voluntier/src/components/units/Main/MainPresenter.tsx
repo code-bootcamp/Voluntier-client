@@ -3,24 +3,25 @@ import "slick-carousel/slick/slick-theme.css";
 import Header from "../../../commons/layout/header/HeaderContainer";
 import * as S from "./MainStyles";
 
-interface IPropsMain{
+interface IPropsMain {
   moveToPage: (page: string) => () => void;
 }
-interface ISettings{
-  dots: boolean
-  fade: boolean
-  speed: number
-  infinite: boolean
-  autoplay: boolean
-  autoplaySpeed: number
-  slidesToShow: number
-  slidesToScroll: number
-  responsive: any
-  arrows: boolean
+
+interface ISettings {
+  dots: boolean;
+  fade: boolean;
+  speed: number;
+  infinite: boolean;
+  autoplay: boolean;
+  autoplaySpeed: number;
+  slidesToShow: number;
+  slidesToScroll: number;
+  responsive: any;
+  arrows: boolean;
 }
 
-export default function MainUI(props:IPropsMain) {
-  const settings : ISettings = {
+export default function MainUI(props: IPropsMain) {
+  const settings: ISettings = {
     dots: false,
     fade: true,
     speed: 3000,

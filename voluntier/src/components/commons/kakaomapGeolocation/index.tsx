@@ -51,7 +51,7 @@ export default function KakaomapGeolocation() {
     }
   };
 
-  function getLocation() {
+  const getLocation = () => {
     if (window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         function (position) {
@@ -63,13 +63,13 @@ export default function KakaomapGeolocation() {
         {
           enableHighAccuracy: true,
           maximumAge: 0,
-          timeout: 10000,
+          timeout: 7000,
         }
       );
     } else {
       Modal.error({ content: "GPS를 지원하지 않습니다" });
     }
-  }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -82,29 +82,29 @@ export default function KakaomapGeolocation() {
     document.head.appendChild(script);
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-    function makeOverListener(map: any, marker: any, infowindow: any) {
+    const makeOverListener = (map: any, marker: any, infowindow: any) => {
       return function () {
         infowindow.open(map, marker);
       };
-    }
+    };
 
     // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-    function makeOutListener(infowindow: any) {
+    const makeOutListener = (infowindow: any) => {
       return function () {
         infowindow.close();
       };
-    }
+    };
 
     script.onload = () => {
       window.kakao.maps.load(function () {
         const container = document.getElementById("map");
         const options = {
           center: new window.kakao.maps.LatLng(location[0], location[1]),
-          level: 3,
+          level: 5,
         };
         const map = new window.kakao.maps.Map(container, options);
 
-        const imageSrc = "/images/marker-center.png";
+        const imageSrc = "/images/marker-center.webp";
         const imageSize = new window.kakao.maps.Size(47.5, 40);
         const markerImage = new window.kakao.maps.MarkerImage(
           imageSrc,
@@ -139,7 +139,7 @@ export default function KakaomapGeolocation() {
                   result[0].x
                 );
 
-                const imageSrc = "/images/marker.png";
+                const imageSrc = "/images/marker.webp";
                 const imageSize = new window.kakao.maps.Size(43.5, 35);
                 const markerImage = new window.kakao.maps.MarkerImage(
                   imageSrc,
@@ -163,7 +163,6 @@ export default function KakaomapGeolocation() {
                 window.kakao.maps.event.addListener(
                   marker,
                   "click",
-                  { passive: true },
                   moveToPage(`/boards/${el.id}`)
                 );
 
@@ -173,18 +172,16 @@ export default function KakaomapGeolocation() {
                 window.kakao.maps.event.addListener(
                   marker,
                   "mouseover",
-                  { passive: true },
                   makeOverListener(map, marker, infowindow)
                 );
+
                 window.kakao.maps.event.addListener(
                   marker,
                   "mouseout",
-                  { passive: true },
                   makeOutListener(infowindow)
                 );
 
                 makeOverListener(map, marker, infowindow);
-
                 makeOutListener(infowindow);
               }
             }

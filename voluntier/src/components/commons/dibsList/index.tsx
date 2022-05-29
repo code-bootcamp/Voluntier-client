@@ -1,4 +1,4 @@
-import { gql, useMutation} from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { Modal } from "antd";
 import { MouseEvent } from "react";
@@ -76,6 +76,9 @@ const ColumnHover = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   :hover {
     color: #0085cb;
     cursor: pointer;
@@ -86,7 +89,7 @@ const ColumnHover = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -123,8 +126,8 @@ const FETCH_USER_DIBS = gql`
     }
   }
 `;
-interface IPropsDibsList{
-  DibsData? : Pick<IQuery,"fetchLogInUserDibs">
+interface IPropsDibsList {
+  DibsData?: Pick<IQuery, "fetchLogInUserDibs">;
 }
 
 export default function DibsList(props: IPropsDibsList) {
@@ -132,13 +135,12 @@ export default function DibsList(props: IPropsDibsList) {
   const [deleteDibs] = useMutation(DELETE_DIBS);
   const DeleteDibs = async (event: MouseEvent<HTMLDivElement>) => {
     try {
-      const result = await deleteDibs({
+      await deleteDibs({
         variables: { productId: (event.target as HTMLDivElement).id },
         refetchQueries: [{ query: FETCH_USER_DIBS }],
       });
-      console.log(result);
     } catch (error) {
-    if(error instanceof Error)  Modal.error({ content: error.message });
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
 
@@ -150,21 +152,21 @@ export default function DibsList(props: IPropsDibsList) {
         <ColumnHead style={{ width: "30%" }}>상품가격</ColumnHead>
         <ColumnHead style={{ width: "30%" }}>찜취소</ColumnHead>
       </RowHead>
-        {props.DibsData?.fetchLogInUserDibs.map((el, index) => (
-          <Row key={index}>
-            <Column style={{ width: "10%" }}>{index + 1}</Column>
-            <ColumnHover
-              style={{ width: "30%" }}
-              onClick={moveToPage(`products/${el.product.id}`)}
-            >
-              {el.product.name}
-            </ColumnHover>
-            <Column style={{ width: "30%" }}>{el.product.price}</Column>
-            <Button id={el.id} onClick={DeleteDibs} style={{ width: "30%" }}>
-              취소하기
-            </Button>
-          </Row>
-        ))}
+      {props.DibsData?.fetchLogInUserDibs.map((el, index) => (
+        <Row key={index}>
+          <Column style={{ width: "10%" }}>{index + 1}</Column>
+          <ColumnHover
+            style={{ width: "30%" }}
+            onClick={moveToPage(`products/${el.product.id}`)}
+          >
+            {el.product.name}
+          </ColumnHover>
+          <Column style={{ width: "30%" }}>{el.product.price}</Column>
+          <Button id={el.id} onClick={DeleteDibs} style={{ width: "30%" }}>
+            취소하기
+          </Button>
+        </Row>
+      ))}
     </Wrapper>
   );
 }

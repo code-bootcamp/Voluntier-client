@@ -6,7 +6,7 @@ declare const window: typeof globalThis & {
 };
 
 interface IPropsKakaoMap {
-  data?: Pick<IQuery,"fetchBoard">
+  data?: Pick<IQuery, "fetchBoard">;
   address?: string;
 }
 
@@ -38,7 +38,7 @@ export default function KakaoMap(props: IPropsKakaoMap) {
                 result[0].x
               );
 
-              const imageSrc = "/images/marker.png";
+              const imageSrc = "/images/marker.webp";
               const imageSize = new window.kakao.maps.Size(43.5, 35);
               const markerImage = new window.kakao.maps.MarkerImage(
                 imageSrc,
@@ -53,9 +53,9 @@ export default function KakaoMap(props: IPropsKakaoMap) {
 
               const infowindow = new window.kakao.maps.InfoWindow({
                 content: `<div style="width:200px;text-align:center;padding:6px;color:#FF602A;font-size:12px">${
-                  props.data?.fetchBoard?.address
-                    ? props.data?.fetchBoard?.address
-                    : "센터위치 주소를 검색해주세요"
+                  props.address ||
+                  props.data?.fetchBoard?.address ||
+                  "센터위치 주소를 검색해주세요"
                 }</div>`,
               });
               infowindow.open(map, marker);
