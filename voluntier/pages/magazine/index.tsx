@@ -44,6 +44,12 @@ const Warning = styled.span`
   font-size: 15px;
   font-family: GmarketSans;
 `
+
+const FETCH_LAST_WALLPAPER = gql`
+  query fetchLastWallpaper{
+    fetchLastWallpaper{
+`
+
 const FETCH_WALLPAPER = gql`
   query fetchWallpapers{
     fetchWallpapers{
@@ -76,6 +82,7 @@ export default function JellyPaperPage(){
     const [myfile,setFile] = useState([])
     const { data } = useQuery(FETCH_LOGIN_USER);
     const {data : urlData} = useQuery(FETCH_WALLPAPER)
+
     const [uploadImage] = useMutation(UPLOAD_IMAGE);
     const [uploadMagazine] = useMutation(UPLOAD_MAGAZINE)
     const handleResize = () => {
@@ -130,21 +137,19 @@ export default function JellyPaperPage(){
       }
 
     }
-
-
 return (
     
     <div style={{ padding : "5%"}}>
 {/* 월간젤리 하드코딩  */}
         {!windowSize && (
-        <Img src={`https://storage.googleapis.com/${urlData?.fetchWallpapers[0]?.imageUrl}`}/>
+        <Img src={`https://storage.googleapis.com/${urlData?.fetchLastWallpaper?.imageUrl}`}/>
         )}
           {windowSize && (
         <Magazine src='/images/jellypaper/mobile_월간젤리5월호.png'/>
           )}
 
 {/* backend에서 fetch한 월간젤리 파일 보여주기 */}
-          {/* <Img src={`https://storage.googleapis.com/${urlData?.fetchWallpapers[0]?.imageUrl}`}/> */}
+          {/* <Img src={`https://storage.googleapis.com/${urlData?.fetchLastWallpapers[0]?.imageUrl}`}/> */}
         {data?.fetchLoginUser.isAdmin ? (
         <>
         <br/>

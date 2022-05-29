@@ -31,9 +31,9 @@ export default function ProductListUI(props: IPropsProductListUI) {
               />
               <S.ProductName>{el.name}</S.ProductName>
               <>
-                <S.ProductPrice>{el.price}젤리</S.ProductPrice>
+                <S.ProductPrice>{Number(el.price)/10*11}젤리</S.ProductPrice>
                 <S.ProductRealPrice>
-                  {(el.price / 10) * 9}젤리
+                  {el.price}젤리
                 </S.ProductRealPrice>
               </>
             </S.ProductWrapper>

@@ -28,7 +28,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
           bodyStyle={{
             border: "3px solid #696969",
             borderRadius: "30px",
-            backgroundColor: "#E5E5E5",
+            backgroundColor: "white",
           }}
           footer={null}
           centered={true}
@@ -58,7 +58,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
               <S.PriceWrapper>
                 <S.Label>젤리 원가</S.Label>
                 <S.Price style={{ textDecoration: "line-through" }}>
-                  {props.data?.fetchProduct.price} 젤리
+                  {Number(props.data?.fetchProduct.price)/10*11} 젤리
                 </S.Price>
                 <S.Price
                   style={{
@@ -73,7 +73,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
               <S.PriceWrapper>
                 <S.Label>바로 구매</S.Label>
                 <S.Price style={{ color: "#FF6A9E" }}>
-                  {(Number(props.data?.fetchProduct.price) / 10) * 9} 젤리
+                  {props.data?.fetchProduct.price} 젤리
                 </S.Price>
               </S.PriceWrapper>
               <S.PriceWrapper>
