@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 0px 80px;
   margin-top: 70px;
-  /* border: 1px solid red; */
 
   @media ${breakPoints.tablet} {
     margin-top: 25px;
@@ -47,7 +46,6 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid red; */
 
   @media ${breakPoints.tablet} {
     width: 25%;
@@ -76,6 +74,6 @@ export const Button = styled.button`
     height: 20px;
     background-color: transparent;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 9px;
   }
 `;

@@ -9,11 +9,15 @@ import { useRecoilState } from "recoil";
 import useAuth from "../../../commons/hooks/useAuth";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { IBoardSubmitFormValues, IBoardWrite, ImyupdateBoardInput, IMyVariables } from "./BoardWriteTypes";
+import {
+  IBoardSubmitFormValues,
+  IBoardWrite,
+  ImyupdateBoardInput,
+  IMyVariables,
+} from "./BoardWriteTypes";
 import { FETCH_LOGIN_USER } from "../boardDetail/BoardDetailQueries";
 import BoardWriteUI from "./BoardWritePresenter";
-import { calendarDateState } from '../../../../commons/store/index';
-
+import { calendarDateState } from "../../../../commons/store/index";
 
 const schema = yup.object({
   title: yup.string().required("봉사모집 제목을 작성해주세요 "),
@@ -37,8 +41,7 @@ const nonschema = yup.object({
   addressDetail: yup.string(),
 });
 
-
-export default function BoardWrite(props:IBoardWrite) {
+export default function BoardWrite(props: IBoardWrite) {
   useAuth();
 
   const router = useRouter();
@@ -48,18 +51,21 @@ export default function BoardWrite(props:IBoardWrite) {
   const editorRef = useRef<Editor>(null);
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
-  const {data: Userdata} = useQuery(FETCH_LOGIN_USER)
+  const { data: Userdata } = useQuery(FETCH_LOGIN_USER);
   const { register, handleSubmit, setValue, getValues } = useForm({
     resolver: yupResolver(props.isEdit ? nonschema : schema),
     mode: "onChange",
   });
 
-  if(Userdata?.fetchLoginUser?.isAdmin){
-    Modal.error({content:"관리자는 게시글 작성이 불가합니다.일반유저로 로그인해주세요", width: 320})
-    router.push('/boards')
+  if (Userdata?.fetchLoginUser?.isAdmin) {
+    Modal.error({
+      content: "관리자는 게시글 작성이 불가합니다.일반유저로 로그인해주세요",
+      width: 320,
+    });
+    router.push("/boards");
   }
 
-  const handleComplete = (data:any) => {
+  const handleComplete = (data: any) => {
     setIsModalVisible((prev) => !prev);
     setAddress(data.address);
   };
@@ -76,17 +82,14 @@ export default function BoardWrite(props:IBoardWrite) {
     setIsModalVisible(false);
   };
 
-  
-
   // 봉사 등록 함수
-
   const onClickSubmit = async (data: IBoardSubmitFormValues) => {
     const contentsvalue = editorRef.current?.getInstance().getMarkdown();
     data.recruitCount = 10;
     data.contents = contentsvalue;
     data.serviceDate = calendardate;
-    data.location1 = data.address?.split(" ")[0]
-    data.location2 = data.address?.split(" ")[1]
+    data.location1 = data.address?.split(" ")[0];
+    data.location2 = data.address?.split(" ")[1];
     try {
       const result = await createBoard({
         variables: {
@@ -101,11 +104,12 @@ export default function BoardWrite(props:IBoardWrite) {
       });
       router.push("/boards");
     } catch (error) {
-      if(error instanceof Error) Modal.error({content:error.message})
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
+
   // 봉사 수정함수
-  const onClickEdit = async (data:IBoardSubmitFormValues) => {
+  const onClickEdit = async (data: IBoardSubmitFormValues) => {
     const contentsvalue = editorRef.current?.getInstance().getMarkdown();
     data.contents = contentsvalue;
     data.serviceDate = calendardate;
@@ -119,15 +123,16 @@ export default function BoardWrite(props:IBoardWrite) {
     if (data.title) myupdateBoardInput.title = data.title;
     if (data.contents) myupdateBoardInput.contents = data.contents;
     if (data.centerName) myupdateBoardInput.centerName = data.centerName;
-    if (data.centerOwnerName) myupdateBoardInput.centerOwnerName = data.centerOwnerName;
+    if (data.centerOwnerName)
+      myupdateBoardInput.centerOwnerName = data.centerOwnerName;
     if (data.centerPhone) myupdateBoardInput.centerPhone = data.centerPhone;
     if (data.serviceTime) myupdateBoardInput.serviceTime = data.serviceTime;
     if (data.serviceDate) myupdateBoardInput.serviceDate = data.serviceDate;
     if (data.address) myupdateBoardInput.address = data.address;
-    if (data.addressDetail) myupdateBoardInput.addressDetail = data.addressDetail;
+    if (data.addressDetail)
+      myupdateBoardInput.addressDetail = data.addressDetail;
     if (data.location1) myupdateBoardInput.location1 = data.location1;
     if (data.location2) myupdateBoardInput.location2 = data.location2;
-
 
     try {
       const result = await updateBoard({

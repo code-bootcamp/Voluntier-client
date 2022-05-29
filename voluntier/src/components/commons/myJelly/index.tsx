@@ -1,18 +1,32 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/Media";
+// import { breakPoints } from "../../../commons/styles/Media";
 
 const Myjelly1 = styled.img`
   width: 100%;
+  height: 100%;
 `;
 const Myjelly2 = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 const Myjelly3 = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 const Myjelly4 = styled.img`
   width: 100%;
+  height: 100%;
+
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const MiniJelly1 = () => {

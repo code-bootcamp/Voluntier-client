@@ -66,8 +66,8 @@ export const ProfileImage = styled.img`
   border-radius: 50%;
 
   @media ${breakPoints.tablet} {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
   }
 
   @media ${breakPoints.mobile} {
@@ -136,7 +136,6 @@ export const GradeContents = styled.div`
 `;
 
 export const GradePicture = styled.div`
-  width: 100%;
   padding: 30px;
 
   @media ${breakPoints.tablet} {
