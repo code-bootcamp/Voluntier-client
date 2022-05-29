@@ -9,29 +9,30 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Modal } from "antd";
-import { IQuery } from '../../../../commons/types/generated/types';
+import { IQuery } from "../../../../commons/types/generated/types";
 import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
 
 export default function BoardDetail() {
   const [isEdit, setIsEdit] = useState(false);
   const [isChat, setIsChat] = useState(false);
   const router = useRouter();
-  const { data: userData } = useQuery<Pick<IQuery,"fetchLoginUser">>(FETCH_LOGIN_USER);
+  const { data: userData } =
+    useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_LOGIN_USER);
   const [createenroll] = useMutation(CREATE_ENROLL);
   const [deleteBoard] = useMutation(DELETE_BOARD);
-  const { data } = useQuery<Pick<IQuery,"fetchBoard">>(FETCH_BOARD, {
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">>(FETCH_BOARD, {
     variables: { boardId: String(router.query.boardId) },
   });
 
-  const { data: enrollData, refetch } = useQuery<Pick<IQuery,"fetchEnrollsByBoardId">>(FETCH_ENROLL, {
+  const { data: enrollData, refetch } = useQuery<
+    Pick<IQuery, "fetchEnrollsByBoardId">
+  >(FETCH_ENROLL, {
     variables: { boardId: String(router.query.boardId) },
   });
-
-  useEffect(() => {}, [enrollData]);
 
   const CreateEnroll = async () => {
     try {
-        await createenroll({
+      await createenroll({
         variables: {
           boardId: router.query.boardId,
         },
@@ -39,7 +40,7 @@ export default function BoardDetail() {
       Modal.success({
         content: "신청이 완료되었습니다! 마이페이지에서 확인하세요!",
       });
-      window.location.reload();
+      refetch();
     } catch (error) {
       Modal.error({
         content: "이미 신청이 완료되었거나, 지금은 신청할 수 없습니다.",
