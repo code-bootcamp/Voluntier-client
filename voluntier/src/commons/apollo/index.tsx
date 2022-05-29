@@ -40,7 +40,7 @@ export default function ApolloSetting(props:IApolloSetting){
       });
 
     const uploadLink = createUploadLink({
-        uri: "http://backendapi.voluntier.site/graphql",
+        uri: "https://backendapi.voluntier.site/graphql",
         headers:{authorization : `Bearer ${accessToken}`},
         credentials: "include",
       });
