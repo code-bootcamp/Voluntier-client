@@ -73,7 +73,7 @@ export default function KakaomapGeolocation() {
           infowindow.open(map, marker);
         };
       };
-a
+
       const makeOutListener = (infowindow: any) => {
         return function () {
           infowindow.close();
