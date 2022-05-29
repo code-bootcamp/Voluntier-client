@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/Media";
 

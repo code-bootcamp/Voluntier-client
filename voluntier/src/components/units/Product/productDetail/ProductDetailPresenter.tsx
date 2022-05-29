@@ -100,7 +100,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
                     찜하기
                   </S.PickButton>
                   <S.BuyButton onClick={props.onToggleModal}>
-                    <S.ButtonImage src="/DogImg.png" />
+                    <S.ButtonImage src="/dogImg.png" />
                     젤리사용
                   </S.BuyButton>
                 </S.PickWrapper>
