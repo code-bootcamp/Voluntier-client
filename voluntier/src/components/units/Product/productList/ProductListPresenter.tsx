@@ -1,29 +1,19 @@
 import * as S from "./ProductListStyles";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { MouseEvent } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { IProduct } from "../../../../commons/types/generated/types";
+import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
 
 interface IPropsProductListUI {
   data: any;
   MoveProduct: (event: MouseEvent<HTMLImageElement>) => void;
 }
 
-const FETCH_USER_LOGIN = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-    }
-  }
-`;
 
 export default function ProductListUI(props: IPropsProductListUI) {
   const { moveToPage } = useMoveToPage();
-  const { data } = useQuery(FETCH_USER_LOGIN);
+  const { data } = useQuery(FETCH_LOGIN_USER);
   return (
     <>
       <S.Wrapper>
@@ -41,9 +31,9 @@ export default function ProductListUI(props: IPropsProductListUI) {
               />
               <S.ProductName>{el.name}</S.ProductName>
               <>
-                <S.ProductPrice>{el.price}젤리</S.ProductPrice>
+                <S.ProductPrice>{Number(el.price)/10*11}젤리</S.ProductPrice>
                 <S.ProductRealPrice>
-                  {(el.price / 10) * 9}젤리
+                  {el.price}젤리
                 </S.ProductRealPrice>
               </>
             </S.ProductWrapper>

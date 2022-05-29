@@ -6,7 +6,8 @@ import { useRouter } from "next/router";
 import Footer from "./footer/FooterContainer";
 import io, { Socket } from "socket.io-client";
 import { useToasts } from "react-toast-notifications";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { FETCH_LOGIN_USER } from "../../components/units/Mypage/MypageQueries";
 
 const OuterWrapper = styled.div`
   min-height: 100vh;
@@ -41,17 +42,6 @@ const MobileWrapper = styled.div`
 interface LayOutPageProps {
   children: ReactNode;
 }
-const FETCH_LOGIN_USER = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-    }
-  }
-`;
 
 
 const HIDDEN = ["/login", "/signup", "/","/login/findpassword"];

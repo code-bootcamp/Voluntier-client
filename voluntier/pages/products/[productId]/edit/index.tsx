@@ -23,7 +23,6 @@ export default function ProductEditPage(){
     const {data} = useQuery(FETCH_PRODUCT,{
         variables:{productId:router.query.productId}
       })
-      console.log(data)
     return(
     <ProductWrite data={data} isEdit={true}/>
     )

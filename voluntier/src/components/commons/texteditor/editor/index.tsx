@@ -30,6 +30,7 @@ const UPLOAD_IMAGE = gql`
   }
 `;
 
+
 export default function EditorUI(props: any) {
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
   return (

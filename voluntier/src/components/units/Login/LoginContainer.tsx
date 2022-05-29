@@ -38,11 +38,11 @@ export default function Login() {
     const result = await login({
       variables: { ...data },
     });
-    console.log(result);
     const accessToken = result.data.login;
     setAccessToken(accessToken);
     router.push("/boards");
   };
+
 
   return (
     <LoginUI

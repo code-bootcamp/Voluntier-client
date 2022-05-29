@@ -6,22 +6,12 @@ import { setAmountDonation } from '../../../commons/store';
 import {useRouter }from 'next/router'
 import { Modal } from "antd";
 import { LegacyRef } from "react";
+import { FETCH_LOGIN_USER } from '../../units/Mypage/MypageQueries';
 
 declare const window: typeof globalThis & {
   IMP: any;
 };
 
-const FETCH_USER_LOGIN = gql`
-    query fetchLoginUser{
-        fetchLoginUser{
-            id
-            name
-            email
-            phone
-            isAdmin
-        }
-    }
-`
 const CREATE_DONATION = gql`
   mutation createDonation($impUid:String! $amount:Float!){
     createDonation(impUid:$impUid amount:$amount){
@@ -36,7 +26,7 @@ interface IPropsPaymentPage {
 
 export default function PaymentPage(props:IPropsPaymentPage) {
   const [amount,] = useRecoilState(setAmountDonation)
-  const {data} = useQuery(FETCH_USER_LOGIN)
+  const {data} = useQuery(FETCH_LOGIN_USER)
   const [createDonation] = useMutation(CREATE_DONATION)
   const router = useRouter()
  
@@ -58,7 +48,7 @@ export default function PaymentPage(props:IPropsPaymentPage) {
             createDonation({
               variables:{impUid : rsp.imp_uid , amount},
               refetchQueries:[{
-                query: FETCH_USER_LOGIN,
+                query: FETCH_LOGIN_USER,
               }]
             })
             Modal.success({content:"충전에 성공하였습니다."})

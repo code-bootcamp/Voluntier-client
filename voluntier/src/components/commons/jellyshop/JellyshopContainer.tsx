@@ -54,7 +54,6 @@ export default function JellyshopModal(props:IPropsJellyshopModal) {
     setIsOpen((prev) => !prev);
     setZipcode(data.zonecode);
     setAddress(data.address);
-    console.log(data);
   };
 
   const onTogglePostModal = () => {

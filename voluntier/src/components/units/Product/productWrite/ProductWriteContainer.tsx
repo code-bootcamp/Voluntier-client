@@ -47,7 +47,6 @@ export default function ProductWrite(props: IPropsProductWrite) {
           },
         },
       });
-      console.log(result);
       Modal.success({ content: "상품 등록에 성공했습니다." });
       router.push(`/products/${result.data?.createProduct.id}`);
     } catch (error) {
@@ -73,7 +72,6 @@ export default function ProductWrite(props: IPropsProductWrite) {
       const result = await updateProduct({
         variables: { productId: router.query.productId, updateProductInput },
       });
-      console.log(result);
       Modal.success({ content: "상품 수정에 성공하였습니다." });
       router.push(`/products/${result.data?.updateProduct.id}`);
     } catch (error) {

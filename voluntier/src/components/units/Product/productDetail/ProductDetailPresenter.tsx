@@ -1,31 +1,21 @@
 import JellyshopModal from "../../../commons/jellyshop/JellyshopContainer";
 import * as S from "./ProductDetailStyles";
 import { IPropsProductDetailUI } from "./ProductDetailTypes";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import dynamic from "next/dynamic";
 import { Tooltip } from "@mui/material";
 import { IQuery } from "../../../../commons/types/generated/types";
+import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
 
 const ToastUIViewer = dynamic(
   () => import("../../../commons/texteditor/viewer"),
   { ssr: false }
 );
 
-const FETCH_USER_LOGIN = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-    }
-  }
-`;
 
 export default function ProductDetailUI(props: IPropsProductDetailUI) {
   const { data: UserData } =
-    useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER_LOGIN);
+    useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_LOGIN_USER);
 
   return (
     <S.Body>
@@ -38,7 +28,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
           bodyStyle={{
             border: "3px solid #696969",
             borderRadius: "30px",
-            backgroundColor: "#E5E5E5",
+            backgroundColor: "white",
           }}
           footer={null}
           centered={true}
@@ -68,7 +58,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
               <S.PriceWrapper>
                 <S.Label>젤리 원가</S.Label>
                 <S.Price style={{ textDecoration: "line-through" }}>
-                  {props.data?.fetchProduct.price} 젤리
+                  {Number(props.data?.fetchProduct.price)/10*11} 젤리
                 </S.Price>
                 <S.Price
                   style={{
@@ -83,7 +73,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
               <S.PriceWrapper>
                 <S.Label>바로 구매</S.Label>
                 <S.Price style={{ color: "#FF6A9E" }}>
-                  {(Number(props.data?.fetchProduct.price) / 10) * 9} 젤리
+                  {props.data?.fetchProduct.price} 젤리
                 </S.Price>
               </S.PriceWrapper>
               <S.PriceWrapper>

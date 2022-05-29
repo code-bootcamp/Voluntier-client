@@ -9,15 +9,11 @@ import { useRecoilState } from "recoil";
 import useAuth from "../../../commons/hooks/useAuth";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import {
-  IBoardSubmitFormValues,
-  IBoardWrite,
-  ImyupdateBoardInput,
-  IMyVariables,
-} from "./BoardWriteTypes";
-import { FETCH_LOGIN_USER } from "../boardDetail/BoardDetailQueries";
+import { IBoardSubmitFormValues, IBoardWrite, ImyupdateBoardInput, IMyVariables } from "./BoardWriteTypes";
 import BoardWriteUI from "./BoardWritePresenter";
-import { calendarDateState } from "../../../../commons/store/index";
+import { calendarDateState } from '../../../../commons/store/index';
+import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
+
 
 const schema = yup.object({
   title: yup.string().required("봉사모집 제목을 작성해주세요 "),
@@ -91,18 +87,17 @@ export default function BoardWrite(props: IBoardWrite) {
     data.location1 = data.address?.split(" ")[0];
     data.location2 = data.address?.split(" ")[1];
     try {
-      const result = await createBoard({
+        const result = await createBoard({
         variables: {
           createBoardInput: {
             ...data,
           },
         },
       });
-      console.log(result);
       Modal.success({
         content: "봉사모집 등록성공! 상세조회 페이지로 이동합니다 ",
       });
-      router.push("/boards");
+      router.push(`/boards/${result.data?.createBoard.id}`);
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
@@ -135,10 +130,9 @@ export default function BoardWrite(props: IBoardWrite) {
     if (data.location2) myupdateBoardInput.location2 = data.location2;
 
     try {
-      const result = await updateBoard({
+        await updateBoard({
         variables: myVariables,
       });
-      console.log(result);
       Modal.success({
         content: "봉사 모집글 수정완료! 상품 상세조회 페이지로 이동합니다",
       });

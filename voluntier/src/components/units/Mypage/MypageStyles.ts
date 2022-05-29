@@ -149,16 +149,16 @@ export const GradePicture = styled.div`
 
 export const TooltipWrapper = styled.div`
   width: 100%;
-  height: 106px;
+  height: 140px;
 
   @media ${breakPoints.tablet} {
     width: 100%;
-    height: 70px;
+    height: 90px;
   }
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    height: 50px;
+    height: 80px;
   }
 `;
 
@@ -172,6 +172,9 @@ export const Tooltip = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    padding-top: 5px;
+  }
 `;
 
 export const TooltipText = styled.div`
