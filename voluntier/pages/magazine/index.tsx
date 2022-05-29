@@ -42,28 +42,23 @@ const UpdateButton = styled.button`
 const Warning = styled.span`
   
   font-size: 15px;
-  font-family: GmarketSans;
+  font-family: "GmarketSans";
 `
 
 const FETCH_LAST_WALLPAPER = gql`
   query fetchLastWallpaper{
     fetchLastWallpaper{
-`
-
-const FETCH_WALLPAPER = gql`
-  query fetchWallpapers{
-    fetchWallpapers{
-      imageUrl
+    imageUrl
     }
   }
-
 `
+
 
 const UPLOAD_IMAGE = gql`
 mutation uploadImage($file: Upload!) {
   uploadImage(file:$file)
 }
-`;
+`
 
 
 const UPLOAD_MAGAZINE = gql`
@@ -81,8 +76,7 @@ export default function JellyPaperPage(){
     const [windowSize, setWindowSize] = useState(false);
     const [myfile,setFile] = useState([])
     const { data } = useQuery(FETCH_LOGIN_USER);
-    const {data : urlData} = useQuery(FETCH_WALLPAPER)
-
+    const {data : urlData} = useQuery(FETCH_LAST_WALLPAPER)
     const [uploadImage] = useMutation(UPLOAD_IMAGE);
     const [uploadMagazine] = useMutation(UPLOAD_MAGAZINE)
     const handleResize = () => {
