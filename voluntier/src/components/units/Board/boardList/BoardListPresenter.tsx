@@ -37,7 +37,7 @@ export default function BoardListUI(props:IPropsBoardListUI) {
             ))}
           </S.Dropdown>
           <S.Dropdown onChange={props.onChangeSmall}>
-            {props.S?.map((el:string) => (
+            {props.S?.map((el:any) => (
               <option id={el} key={uuidv4()} value={el}>
                 {el}
               </option>
