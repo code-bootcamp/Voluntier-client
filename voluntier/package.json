@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:ssg" : "next build && next export",
+    "build:ssr" : "next build",
     "BBB": "node server.js",
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "graphql-codegen"

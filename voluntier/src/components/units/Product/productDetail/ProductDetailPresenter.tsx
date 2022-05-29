@@ -6,8 +6,8 @@ import dynamic from "next/dynamic";
 import { Tooltip } from "@mui/material";
 import { IQuery } from "../../../../commons/types/generated/types";
 
-const ProductDetailViewer = dynamic(
-  () => import("../../../commons/texteditor/viewer/productViewer"),
+const ToastUIViewer = dynamic(
+  () => import("../../../commons/texteditor/viewer"),
   { ssr: false }
 );
 
@@ -119,7 +119,7 @@ export default function ProductDetailUI(props: IPropsProductDetailUI) {
           </S.InnerWrapperHead>
           <S.InnerWrapperRight>
             <S.InfoLabel>상품 정보</S.InfoLabel>
-            {props.data ? <ProductDetailViewer data={props.data} /> : <></>}
+            {props.data ? <ToastUIViewer productData={props.data} /> : <></>}
           </S.InnerWrapperRight>
         </S.InnerWrapper>
         {UserData?.fetchLoginUser.isAdmin && (

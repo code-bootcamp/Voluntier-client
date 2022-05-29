@@ -12,13 +12,6 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-interface IPropsKakaoMap {
-  address: string;
-  data: any;
-  makeOverListener(map: any, marker: any, infowindow: any): () => void;
-  makeOutListener: (infowindow: any) => void;
-}
-
 const FETCH_BOARDS_ALL = gql`
   query fetchBoardsAll {
     fetchBoardsAll {
@@ -42,7 +35,7 @@ const Mymap = styled.div`
   }
 `;
 
-export default function KakaomapGeolocation(props: IPropsKakaoMap) {
+export default function KakaomapGeolocation() {
   const [windowSize, setWindowSize] = useState(false);
   const [location, setLocation] = useRecoilState(myLocationState);
 

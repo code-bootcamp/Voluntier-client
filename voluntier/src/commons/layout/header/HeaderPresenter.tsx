@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../store";
 import * as S from "./HeaderStyles";
 
-export default function HeaderUI(props) {
+export default function HeaderUI(props:any) {
   const [accessToken] = useRecoilState(accessTokenState);
 
   return (
