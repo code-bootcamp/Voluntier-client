@@ -1,31 +1,21 @@
 import JellyshopModal from "../../../commons/jellyshop/JellyshopContainer";
 import * as S from "./ProductDetailStyles";
 import { IPropsProductDetailUI } from "./ProductDetailTypes";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import dynamic from "next/dynamic";
 import { Tooltip } from "@mui/material";
 import { IQuery } from "../../../../commons/types/generated/types";
+import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
 
 const ToastUIViewer = dynamic(
   () => import("../../../commons/texteditor/viewer"),
   { ssr: false }
 );
 
-const FETCH_USER_LOGIN = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-    }
-  }
-`;
 
 export default function ProductDetailUI(props: IPropsProductDetailUI) {
   const { data: UserData } =
-    useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER_LOGIN);
+    useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_LOGIN_USER);
 
   return (
     <S.Body>

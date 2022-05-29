@@ -19,7 +19,7 @@ const FETCH_PRODUCTS = gql`
 export default function ProductList(){
 const router = useRouter()
 const {data} = useQuery(FETCH_PRODUCTS)
-console.log(data)
+
 const MoveProduct = (event:MouseEvent<HTMLImageElement>) => {
     router.push(`/products/${(event.target as HTMLImageElement).id}`)
 }

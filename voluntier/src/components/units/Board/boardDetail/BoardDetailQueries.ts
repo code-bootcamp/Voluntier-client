@@ -24,18 +24,6 @@ export const FETCH_BOARD = gql`
   }
 `;
 
-export const FETCH_LOGIN_USER = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-    }
-  }
-`;
-
 export const CREATE_ENROLL = gql`
   mutation createEnroll($boardId: String!) {
     createEnroll(boardId: $boardId) {

@@ -1,29 +1,19 @@
 import * as S from "./ProductListStyles";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { MouseEvent } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { IProduct } from "../../../../commons/types/generated/types";
+import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
 
 interface IPropsProductListUI {
   data: any;
   MoveProduct: (event: MouseEvent<HTMLImageElement>) => void;
 }
 
-const FETCH_USER_LOGIN = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      name
-      email
-      phone
-      isAdmin
-    }
-  }
-`;
 
 export default function ProductListUI(props: IPropsProductListUI) {
   const { moveToPage } = useMoveToPage();
-  const { data } = useQuery(FETCH_USER_LOGIN);
+  const { data } = useQuery(FETCH_LOGIN_USER);
   return (
     <>
       <S.Wrapper>

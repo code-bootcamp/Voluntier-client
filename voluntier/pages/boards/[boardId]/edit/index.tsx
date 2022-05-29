@@ -10,7 +10,6 @@ export default function BoardEditPage() {
   const router = useRouter()
   const {data : defaultData} = useQuery<Pick<IQuery,"fetchBoard">>(FETCH_BOARD,
     {variables:{boardId: String(router.query.boardId)}})
-  console.log(defaultData)
   
   return <BoardWrite isEdit={true} defaultData={defaultData}
   />;

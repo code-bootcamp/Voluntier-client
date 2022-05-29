@@ -5,12 +5,12 @@ import {
   DELETE_BOARD,
   FETCH_BOARD,
   FETCH_ENROLL,
-  FETCH_LOGIN_USER,
 } from "./BoardDetailQueries";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Modal } from "antd";
 import { IQuery } from '../../../../commons/types/generated/types';
+import { FETCH_LOGIN_USER } from "../../Mypage/MypageQueries";
 
 export default function BoardDetail() {
   const [isEdit, setIsEdit] = useState(false);
@@ -31,12 +31,11 @@ export default function BoardDetail() {
 
   const CreateEnroll = async () => {
     try {
-      const result = await createenroll({
+        await createenroll({
         variables: {
           boardId: router.query.boardId,
         },
       });
-      console.log(result);
       Modal.success({
         content: "신청이 완료되었습니다! 마이페이지에서 확인하세요!",
       });

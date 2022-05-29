@@ -11,5 +11,5 @@ export interface IPropsLoginUI {
     handleSubmit: UseFormHandleSubmit<FieldValues>
     formState: FormState<FieldValues>
     onClickLogin: (data:IFormValuesLogin) => void;
-    moveToPage: (page: any) => () => void;
+    moveToPage: (page: string) => () => void;
   }
