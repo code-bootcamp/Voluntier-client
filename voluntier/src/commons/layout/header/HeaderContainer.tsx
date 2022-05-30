@@ -10,7 +10,7 @@ const LOGOUT = gql`
     logout
   }
 `;
-
+a
 export default function Header() {
   const router = useRouter()
   const { moveToPage } = useMoveToPage();
