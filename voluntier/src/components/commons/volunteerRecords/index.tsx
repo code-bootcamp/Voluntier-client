@@ -87,7 +87,7 @@ const ColumnHover = styled.div`
   @media ${breakPoints.mobile} {
     font-size: 10px;
   }
-`;a
+`;
 
 interface IPropsVolunteerRecords {
   EnrollsData? : Pick<IQuery,"fetchEnrollsByUserId">
