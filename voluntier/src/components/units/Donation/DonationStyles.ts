@@ -15,7 +15,7 @@ export const Body = styled.div`
     margin-left: 10%;
   }
 `;
-
+a
 export const Jellybox = styled.div`
   width: 100%;
   height: 20px;
