@@ -3,7 +3,7 @@ import * as S from "../Signup/SignUpStyles";
 import { IPropsSignUpUI } from "./SignUpTypes";
 
 export default function SignUpUI(props: IPropsSignUpUI) {
-  const {moveToPage} = useMoveToPage()
+  const { moveToPage } = useMoveToPage();
   return (
     <S.Form onSubmit={props.handleSubmit(props.onClickSignUp)}>
       <S.SignUpWrapper>
@@ -61,7 +61,7 @@ export default function SignUpUI(props: IPropsSignUpUI) {
               인증받기
             </S.CertificationButton>
           </S.PhoneNumberInputWrapper>
-          <S.ErrorMsg>{props.formState.errors.phoneNumber?.message}</S.ErrorMsg>
+          <S.ErrorMsg>{props.formState.errors.phone?.message}</S.ErrorMsg>
         </S.InputWrapper>
         <S.InputWrapper>
           <S.PhoneNumberInputWrapper>

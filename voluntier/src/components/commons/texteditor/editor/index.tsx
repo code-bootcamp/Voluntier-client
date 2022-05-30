@@ -30,7 +30,6 @@ const UPLOAD_IMAGE = gql`
   }
 `;
 
-
 export default function EditorUI(props: any) {
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
   return (
@@ -48,7 +47,6 @@ export default function EditorUI(props: any) {
                   const result = await uploadImage({
                     variables: { file },
                   });
-                  console.log(result);
                   const result1 = result?.data.uploadImage.replaceAll(
                     " ",
                     "%20"
@@ -78,7 +76,6 @@ export default function EditorUI(props: any) {
                   const result = await uploadImage({
                     variables: { file },
                   });
-                  console.log(result);
                   const result1 = result?.data.uploadImage.replaceAll(
                     " ",
                     "%20"
