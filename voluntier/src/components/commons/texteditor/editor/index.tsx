@@ -6,6 +6,7 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import { Modal } from "antd";
+import { breakPoints } from "../../../../commons/styles/Media";
 
 const EditorBox = styled.div`
   .ProseMirror {
@@ -21,7 +22,13 @@ const Editor = styled(OurEditor)``;
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+
+  @media ${breakPoints.tablet} {
+    width: 500px;
+  }
+
+  @media ${breakPoints.mobile} {
+  }
 `;
 
 const UPLOAD_IMAGE = gql`
