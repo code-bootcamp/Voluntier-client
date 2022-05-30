@@ -56,7 +56,7 @@ export default function KakaomapGeolocation() {
           {
             enableHighAccuracy: false,
             maximumAge: 0,
-            timeout: 7000,
+            timeout: 6000,
           }
         );
       } else {
@@ -110,8 +110,8 @@ export default function KakaomapGeolocation() {
 
           const geocoder = new window.kakao.maps.services.Geocoder();
 
-          data?.fetchBoardsAll?.map((el) => {
-            return geocoder.addressSearch(
+          data?.fetchBoardsAll?.map(async(el) => {
+            await geocoder.addressSearch(
               el.address,
               function (result: any, status: boolean) {
                 if (status === window.kakao.maps.services.Status.OK) {
@@ -167,7 +167,7 @@ export default function KakaomapGeolocation() {
         });
       };
     }
-  }, [isTrue]);
+  }, [isTrue,location]);
 
   return <Mymap id="map"></Mymap>;
 }

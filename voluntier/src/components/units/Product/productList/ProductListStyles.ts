@@ -84,19 +84,21 @@ export const Contents = styled.div`
   padding: 0 3% 3% 3% 3%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
+  @media ${breakPoints.mobile} {
+    padding-bottom: 7%;
+  }
 `;
 
 export const ProductWrapper = styled.div`
-  width: 230px;
-  height: 230px;
-  margin: 3%;
+  width: 20%;
+  height: 20%;
+  margin: 2%;
 
   @media ${breakPoints.mobile} {
-    width: 125px;
-    height: 125px;
-    margin: 6%;
+    width: 40%;
+    height: 40%;
   }
 `;
 
