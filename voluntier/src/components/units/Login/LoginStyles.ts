@@ -3,7 +3,6 @@ import { breakPoints } from "../../../commons/styles/Media";
 
 export const Form = styled.form`
   width: 100%;
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +54,7 @@ export const Logo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
-  
+
   @media ${breakPoints.mobile} {
     width: 50px;
     background-image: url("../../../../../images/login.png");
@@ -94,7 +93,6 @@ export const Input = styled.input`
   border-bottom: 2px solid #ffffff;
   outline: none;
   letter-spacing: 0.5px;
-  margin-bottom: 24px;
   color: #ffffff;
   font-size: 16px;
   ::placeholder {
@@ -205,12 +203,12 @@ export const SocialButton = styled.img`
 `;
 
 export const Question = styled.div`
+  height: 20px;
   font-weight: 400;
   font-size: 13px;
   color: #ffffff;
   margin-top: 10px;
   text-align: center;
-  /* text-decoration: underline; */
   cursor: pointer;
   :hover {
     border-bottom: 1px solid #ffffff;
@@ -236,7 +234,6 @@ export const QuestionHome = styled.div`
   color: #ffffff;
   margin-top: 10px;
   text-align: center;
-  /* text-decoration: underline; */
   cursor: pointer;
   :hover {
     border-bottom: 1px solid #ffffff;
@@ -255,12 +252,11 @@ export const QuestionHome = styled.div`
   }
 `;
 
-
 export const ErrorMsg = styled.div`
   width: 100%;
-  font-size: 5px;
+  height: 30px;
+  font-size: 12px;
   color: red;
-  margin-bottom: 4%;
 `;
 
 export const IconBox = styled.div`

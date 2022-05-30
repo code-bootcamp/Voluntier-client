@@ -8,11 +8,11 @@ export const ChatWrapper = styled.div`
   position: fixed;
   z-index: 10;
 `;
-interface IProps{
-  isChat: boolean
+interface IProps {
+  isChat: boolean;
 }
 export const Wrapper = styled.div`
-  background: ${(props:IProps) => (props.isChat ? "rgba(0,0,0,0.1)" : "none")};
+  background: ${(props: IProps) => (props.isChat ? "rgba(0,0,0,0.1)" : "none")};
   padding: 20px;
 `;
 
@@ -316,9 +316,9 @@ export const Button = styled.button`
   }
 
   @media ${breakPoints.mobile} {
-    width: 66px;
+    width: 72px;
     height: 30px;
-    font-size: 12px;
+    font-size: 11px;
   }
 `;
 

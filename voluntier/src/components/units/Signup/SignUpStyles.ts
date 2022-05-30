@@ -60,7 +60,6 @@ export const Logo = styled.div`
 
 export const InputWrapper = styled.div`
   width: 100%;
-  margin-bottom: 24px;
 `;
 
 export const Label = styled.div`
@@ -208,8 +207,8 @@ export const SignUpSubmitButton = styled.button`
 
 export const ErrorMsg = styled.div`
   width: 100%;
-  height: 15px;
-  font-size: 5px;
+  height: 30px;
+  font-size: 12px;
   color: red;
 `;
 
