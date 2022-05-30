@@ -139,6 +139,7 @@ export default function DibsList(props: IPropsDibsList) {
         variables: { productId: (event.target as HTMLDivElement).id },
         refetchQueries: [{ query: FETCH_USER_DIBS }],
       });
+
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
@@ -162,7 +163,7 @@ export default function DibsList(props: IPropsDibsList) {
             {el.product.name}
           </ColumnHover>
           <Column style={{ width: "30%" }}>{el.product.price}</Column>
-          <Button id={el.id} onClick={DeleteDibs} style={{ width: "30%" }}>
+          <Button id={el.product.id} onClick={DeleteDibs} style={{ width: "30%" }}>
             취소하기
           </Button>
         </Row>

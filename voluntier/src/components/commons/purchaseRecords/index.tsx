@@ -103,6 +103,7 @@ const Button = styled.div`
   color: #ffffff;
   border-radius: 15px;
   padding: 3px 10px 3px 10px;
+  cursor: pointer;
 `;
 
 const CANCEL_PURCHASE = gql`

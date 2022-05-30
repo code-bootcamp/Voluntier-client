@@ -17,7 +17,7 @@ export default function Mypage() {
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
-
+  
   return (
     <MypageUI
       setIsOpen={setIsOpen}

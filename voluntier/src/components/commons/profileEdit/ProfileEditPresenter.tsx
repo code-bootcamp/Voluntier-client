@@ -58,7 +58,7 @@ export default function ProfileEditUI(props:IPropsProfileEditUI) {
     <S.Wrapper>
       <S.WrapperLeft>
         <S.ProfileImageWrapper>
-          <S.ProfileImage src={Img? `https://storage.googleapis.com/${Img}` : '/images/marker.png' }/>
+          <S.ProfileImage src={Img? `https://storage.googleapis.com/${Img}` : '/images/marker.webp' }/>
         </S.ProfileImageWrapper>
         <input type="file" ref={fileRef} style={{display:"none"}} onChange={addImage}/>
       <S.buttonWrapper>
