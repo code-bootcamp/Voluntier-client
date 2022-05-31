@@ -5,12 +5,14 @@ import { useRecoilState } from "recoil";
 import { setAmountDonation } from "../../../commons/store";
 import { SpringValue, useSpring } from "react-spring";
 import { IQuery } from "../../../commons/types/generated/types";
+import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 
 interface IDonationUIProps {
   allAmount?: Pick<IQuery, "fetchAllUsersDonationsAmount">;
 }
 
 export default function DonationUI(props: IDonationUIProps) {
+  const { moveToPage } = useMoveToPage();
   const [isTrue, setIsTrue] = useState(false);
   const PayRef = useRef<HTMLButtonElement>(null);
   const [, setAmount] = useRecoilState(setAmountDonation);
@@ -108,7 +110,12 @@ export default function DonationUI(props: IDonationUIProps) {
           </S.TopContents>
         </S.Top>
         <S.Middle>
-          <S.MiddleTitle>기부된 젤리는 이렇게 쓰여요!</S.MiddleTitle>
+          <S.MiddleTitle>
+            <div>기부된 젤리는 이렇게 쓰여요!</div>
+            <S.Magazine onClick={moveToPage("/magazine")}>
+              월간젤리 보러 가기
+            </S.Magazine>
+          </S.MiddleTitle>
           <S.MySlider {...settings}>
             <S.SliderContent>
               <S.SliderText>
