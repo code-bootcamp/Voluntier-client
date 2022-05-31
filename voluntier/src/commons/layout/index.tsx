@@ -73,7 +73,7 @@ export default function LayOut(props: LayOutPageProps) {
       
     useEffect(() => {
         socket.on(userId, (data) => {
-        return addToast(`채팅왔어요 ${data[0]}님에게 ${data[1]}`,{appearance:"info"})
+        return addToast(`${data[0]}님에게 채팅 왔어요! ${data[1]} `,{appearance:"info"})
       })
       }, [userId]);
 

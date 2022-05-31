@@ -48,19 +48,19 @@ export interface IPropsBoardWriteUI {
 }
 
 export interface ImyupdateBoardInput {
-  title?: String;
-  contents?: String;
-  centerName?: String;
-  centerOwnerName?: String;
-  centerPhone?: String;
-  recruitCount?: Number;
-  serviceTime?: Number;
-  serviceDate?: String;
-  address?: String;
-  addressDetail?: String;
-  location1?: String;
-  location2?: String;
-  urls?: String;
+  title?: string;
+  contents?: string;
+  centerName?: string;
+  centerOwnerName?: string;
+  centerPhone?: string;
+  recruitCount?: number;
+  serviceTime?: number;
+  serviceDate?: string;
+  address?: string;
+  addressDetail?: string;
+  location1?: string;
+  location2?: string;
+  urls?: string;
 }
 
 export interface IMyVariables {

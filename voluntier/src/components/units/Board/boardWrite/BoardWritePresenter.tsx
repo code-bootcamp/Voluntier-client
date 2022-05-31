@@ -7,10 +7,13 @@ import Mycalendar from "../../../../components/commons/calendar";
 import { IPropsBoardWriteUI } from "./BoardWriteTypes";
 
 
+
 const EditorUI = dynamic(() => import("../../../commons/texteditor/editor"), {
   ssr: false,
 });
-
+const EditorUInonEdit = dynamic(() => import("../../../commons/texteditor/editor2"), {
+  ssr: false,
+});
 
 export default function BoardWriteUI(props: IPropsBoardWriteUI) {
   return (
@@ -76,7 +79,7 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
                     <S.Label>봉사 소요 시간</S.Label>
                   </S.LabelWrapper>
                   <S.TimeWrapper>
-                    <S.SmallInput
+                    <S.SmallInput type='number'
                       {...props.register("serviceTime")}
                       defaultValue={props.defaultData?.fetchBoard.serviceTime || ""}
                       style={{ width: "25%" }}
@@ -124,11 +127,12 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
             <S.LabelImage src="/images/boardWrite/activity.png" />
             <S.Label>활동 내용</S.Label>
           </S.LabelWrapper>
-
+          {props.isEdit?  
           <EditorUI
             editorRef={props.editorRef}
             defaultData={props.defaultData}
-          />
+          />:
+          <EditorUInonEdit></EditorUInonEdit>}
           <S.SubmitButton>
             {props.isEdit ? "수정하기" : "등록하기"}
           </S.SubmitButton>
