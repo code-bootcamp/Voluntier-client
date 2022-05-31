@@ -210,6 +210,9 @@ export const Middle = styled.div`
 export const MiddleTitle = styled.div`
   font-size: 15px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media ${breakPoints.tablet} {
     font-size: 12px;
@@ -219,6 +222,20 @@ export const MiddleTitle = styled.div`
   @media ${breakPoints.mobile} {
     font-size: 10px;
     margin-bottom: 10px;
+  }
+`;
+
+export const Magazine = styled.div`
+  font-family: "GmarketSans";
+  font-size: 12px;
+  font-weight: 500;
+  color: #0085cb;
+  border-bottom: 1.5px solid #0085cb;
+  margin-top: 5px;
+  cursor: pointer;
+  :hover {
+    color: #ff6a9e;
+    border-bottom: 1.5px solid #ff6a9e;
   }
 `;
 

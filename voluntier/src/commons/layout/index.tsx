@@ -16,8 +16,7 @@ const OuterWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Wrapper = styled.div`
-  /* height: 110vh; */
+const Wrapper = styled.main`
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -28,7 +27,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Body = styled.div`
+const Body = styled.main`
   width: 100vw;
 `;
 
@@ -43,8 +42,7 @@ interface LayOutPageProps {
   children: ReactNode;
 }
 
-
-const HIDDEN = ["/login", "/signup", "/","/login/findpassword"];
+const HIDDEN = ["/login", "/signup", "/", "/login/findpassword"];
 const url = "backendapi.voluntier.site/chat";
 const socket: Socket = io(url, { transports: ["websocket"] });
 
@@ -55,28 +53,26 @@ export default function LayOut(props: LayOutPageProps) {
   const { data: Userdata } = useQuery(FETCH_LOGIN_USER);
   const [userId, setUserId] = useState("");
   const { addToast } = useToasts();
-  
-  
-  
+
   const disconnect = () => {
-    socket.off()
-  }
+    socket.off();
+  };
 
-    useEffect(() => {
-        setUserId(Userdata?.fetchLoginUser?.id);
-        router.events.on("routeChangeComplete",disconnect)
-      return () => {
-        router.events.off('routeChangeComplete', disconnect)
-    }
-      }, [Userdata,router]);
+  useEffect(() => {
+    setUserId(Userdata?.fetchLoginUser?.id);
+    router.events.on("routeChangeComplete", disconnect);
+    return () => {
+      router.events.off("routeChangeComplete", disconnect);
+    };
+  }, [Userdata, router]);
 
-      
-    useEffect(() => {
-        socket.on(userId, (data) => {
-        return addToast(`채팅왔어요 ${data[0]}님에게 ${data[1]}`,{appearance:"info"})
-      })
-      }, [userId]);
-
+  useEffect(() => {
+    socket.on(userId, (data) => {
+      return addToast(`채팅왔어요 ${data[0]}님에게 ${data[1]}`, {
+        appearance: "info",
+      });
+    });
+  }, [userId]);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -92,7 +88,7 @@ export default function LayOut(props: LayOutPageProps) {
     }
     window.addEventListener("resize", handleResize);
     return () => {
-    window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [windowSize]);
 

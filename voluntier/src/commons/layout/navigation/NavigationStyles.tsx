@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../styles/Media";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.nav`
   width: 300px;
   height: 100%;
   display: flex;
@@ -130,7 +130,6 @@ export const CategoryWrapper = styled.div`
 
 export const Category = styled.div`
   margin-bottom: 10px;
-  /* font-size: 24px; */
   font-size: 18px;
   cursor: pointer;
   :hover {
