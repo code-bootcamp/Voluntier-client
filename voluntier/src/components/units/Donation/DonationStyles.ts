@@ -8,11 +8,10 @@ export const Body = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 5px;
-  padding-right: 10%;
 
   @media ${breakPoints.mobile} {
-    margin-left: 10%;
+    padding-right: 0%;
+    margin-left: 0%;
   }
 `;
 
@@ -25,7 +24,6 @@ export const Jellybox = styled.div`
 `;
 
 export const Top = styled.div`
-  /* width: 920px; */
   width: 100%;
   height: 259px;
   background-image: url("../../../../images/donation/후원박스.png");

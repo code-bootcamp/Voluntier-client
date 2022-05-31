@@ -3,9 +3,11 @@ import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   padding: 20px;
   display: flex;
   flex-direction: column;
+
   @media ${breakPoints.mobile} {
     padding: 10px;
   }
@@ -22,7 +24,6 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  width: 54px;
   color: #0085cb;
   font-size: 24px;
   font-weight: 700;
@@ -111,7 +112,7 @@ export const SearchButton = styled.button`
   cursor: pointer;
 
   @media ${breakPoints.tablet} {
-    width: 60px;
+    width: 70px;
     height: 20px;
     font-size: 11px;
   }
@@ -279,6 +280,7 @@ export const SubmitButton = styled.button`
   @media ${breakPoints.tablet} {
     width: 75px;
     height: 30px;
+    font-size: 12px;
   }
 
   @media ${breakPoints.mobile} {
