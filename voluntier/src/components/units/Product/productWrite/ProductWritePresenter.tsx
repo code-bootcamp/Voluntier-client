@@ -6,6 +6,9 @@ import { IPropsIProductWriteUI } from "./ProductWriteTypes";
 const EditorUI = dynamic(() => import("../../../commons/texteditor/editor"), {
   ssr: false,
 });
+const EditorUInonEdit = dynamic(() => import("../../../commons/texteditor/editor2"), {
+  ssr: false,
+});
 
 export default function ProductWriteUI(props: IPropsIProductWriteUI) {
   return (
@@ -34,7 +37,12 @@ export default function ProductWriteUI(props: IPropsIProductWriteUI) {
           </S.InputWrapper>
           <S.InputWrapper>
             <S.Label>상품정보</S.Label>
-            <EditorUI editorRef={props.editorRef} data={props.data} />
+            {props.isEdit?  
+          <EditorUI
+            editorRef={props.editorRef}
+            data={props.data}
+          />:
+          <EditorUInonEdit></EditorUInonEdit>}
           </S.InputWrapper>
           <S.InputWrapper>
             <S.Label>상품 이미지 등록</S.Label>

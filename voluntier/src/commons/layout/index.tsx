@@ -58,6 +58,7 @@ export default function LayOut(props: LayOutPageProps) {
     socket.off();
   };
 
+
   useEffect(() => {
     setUserId(Userdata?.fetchLoginUser?.id);
     router.events.on("routeChangeComplete", disconnect);
@@ -66,13 +67,13 @@ export default function LayOut(props: LayOutPageProps) {
     };
   }, [Userdata, router]);
 
-  useEffect(() => {
-    socket.on(userId, (data) => {
-      return addToast(`채팅왔어요 ${data[0]}님에게 ${data[1]}`, {
-        appearance: "info",
-      });
-    });
-  }, [userId]);
+      
+    useEffect(() => {
+        socket.on(userId, (data) => {
+        return addToast(`${data[0]}님에게 채팅 왔어요! ${data[1]} `,{appearance:"info"})
+      })
+      }, [userId]);
+
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {

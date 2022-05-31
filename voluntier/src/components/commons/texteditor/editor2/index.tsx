@@ -37,18 +37,17 @@ const UPLOAD_IMAGE = gql`
   }
 `;
 
-export default function EditorUI(props: any) {
+export default function EditorUInonEdit(props: any) {
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
   console.log(props.defaultData)
   
   return (
     <Wrapper>
         <EditorBox>
-          {props.defaultData || props.data?
           <Editor
             previewStyle="vertical"
             ref={props.editorRef}
-            initialValue={props.defaultData?.fetchBoard.contents || props.data?.fetchProduct.details || ""}
+            placeholder="세부사항, 특이사항등을 상세히 설명해주시고, 사진을 끌어다 놓아보세요!"
             plugins={[colorSyntax]}
             hooks={{
               addImageBlobHook: async (file: Blob | File, callback) => {
@@ -71,7 +70,6 @@ export default function EditorUI(props: any) {
               },
             }}
           />
-        :<></>}
         </EditorBox>
     </Wrapper>
   );
