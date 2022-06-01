@@ -42,7 +42,7 @@ export default function ProductWriteUI(props: IPropsIProductWriteUI) {
             editorRef={props.editorRef}
             data={props.data}
           />:
-          <EditorUInonEdit></EditorUInonEdit>}
+          <EditorUInonEdit editorRef={props.editorRef}></EditorUInonEdit>}
           </S.InputWrapper>
           <S.InputWrapper>
             <S.Label>상품 이미지 등록</S.Label>
