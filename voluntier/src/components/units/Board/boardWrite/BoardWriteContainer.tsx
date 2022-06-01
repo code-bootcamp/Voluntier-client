@@ -35,6 +35,9 @@ const nonschema = yup.object({
   centerPhone: yup.string(),
   address: yup.string(),
   addressDetail: yup.string(),
+  serviceTime: yup
+    .number()
+    .typeError("숫자로 입력해주세요.")
 });
 
 export default function BoardWrite(props: IBoardWrite) {

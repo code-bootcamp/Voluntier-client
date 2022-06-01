@@ -3,7 +3,6 @@ import { breakPoints } from "../../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   padding: 30px 24px;
-
   @media ${breakPoints.tablet} {
     padding: 10px;
   }
@@ -117,7 +116,6 @@ export const Dropdown = styled.select`
   border-radius: 10px;
   -webkit-appearance: none;
   -moz-appearance: none;
-
   appearance: none;
   cursor: pointer;
   select::-ms-expand {
@@ -195,7 +193,6 @@ export const Searchbar = styled.input`
 `;
 
 export const TableWrapper = styled.div`
-  margin-bottom: 0px;
   border: 1px solid #b5b5b5;
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
@@ -222,6 +219,7 @@ export const Row = styled.div`
   height: 110px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e3e3e3;
   margin: 5px 0px;
@@ -241,32 +239,40 @@ export const Row = styled.div`
 
 export const ColumnHeaderBasic = styled.div`
   width: 15%;
+
   height: 40px;
   font-size: 17px;
   color: black;
   overflow: hidden;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   @media ${breakPoints.tablet} {
-    font-size: 12px;
+    width: 60px;
+    font-size: 10px;
   }
   @media ${breakPoints.mobile} {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
 export const ColumnHeaderDate = styled.div`
   width: 15%;
+
   height: 40px;
   font-size: 17px;
   color: black;
   overflow: hidden;
   text-align: center;
+
   @media ${breakPoints.tablet} {
-    font-size: 12px;
+    width: 60px;
+    font-size: 10px;
   }
   @media ${breakPoints.mobile} {
     display: none;
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -293,9 +299,10 @@ export const TitleImage = styled.img`
   width: 20%;
   height: 80px;
   margin-right: 3%;
+  padding-top: 10px;
 
   @media ${breakPoints.tablet} {
-    width: 30%;
+    width: 90px;
     height: 70px;
   }
 
@@ -324,6 +331,7 @@ export const TitleContents = styled.div`
 `;
 
 export const CenterTitle = styled.div`
+  width: 90%;
   height: 40px;
   font-size: 18px;
   font-weight: bold;
@@ -332,6 +340,7 @@ export const CenterTitle = styled.div`
   white-space: nowrap;
 
   @media ${breakPoints.tablet} {
+    width: 240px;
     font-size: 15px;
   }
 
@@ -342,15 +351,20 @@ export const CenterTitle = styled.div`
 `;
 
 export const CenterAddress = styled.div`
+  width: 300px;
   font-size: 13px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media ${breakPoints.tablet} {
+    width: 240px;
     font-size: 11px;
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 10px;
+    width: 100%;
     height: 30px;
+    font-size: 10px;
   }
 `;

@@ -63,7 +63,7 @@ export const DeleteIcon = styled.img`
 `;
 
 export const CompleteButton = styled.button`
-  width: 99px;
+  width: 78px;
   height: 31px;
   color: #ffffff;
   font-size: 13px;

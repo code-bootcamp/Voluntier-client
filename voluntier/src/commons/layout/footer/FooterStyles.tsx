@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../styles/Media";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.footer`
   width: 100%;
   height: 160px;
   background-color: #d6d6d6;

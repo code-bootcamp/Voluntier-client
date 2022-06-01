@@ -94,7 +94,7 @@ export default function MainUI(props: IPropsMain) {
         ></S.Category>
         <S.Category
           style={{
-            backgroundImage: `url("../../../../images/main/category_2.jpeg")`,
+            backgroundImage: `url("../../../../images/main/category_2.png")`,
           }}
           onClick={props.moveToPage("/boards/new")}
         ></S.Category>

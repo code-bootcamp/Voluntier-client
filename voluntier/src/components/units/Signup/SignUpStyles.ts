@@ -50,6 +50,7 @@ export const Logo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: 23px;
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     width: 38px;
@@ -59,7 +60,6 @@ export const Logo = styled.div`
 
 export const InputWrapper = styled.div`
   width: 100%;
-  margin-bottom: 24px;
 `;
 
 export const Label = styled.div`
@@ -87,6 +87,7 @@ export const Input = styled.input`
 
   @media ${breakPoints.mobile} {
     border-bottom: 1px solid #c4c4c4;
+    color: #000000;
     ::placeholder {
       color: #c4c4c4;
       font-size: 12px;
@@ -131,6 +132,7 @@ export const PhoneNumberInput = styled.input`
 
   @media ${breakPoints.mobile} {
     border-bottom: 1px solid #c4c4c4;
+    color: #000000;
     ::placeholder {
       color: #c4c4c4;
       font-size: 12px;
@@ -153,6 +155,7 @@ export const CertificationInput = styled.input`
 
   @media ${breakPoints.mobile} {
     border-bottom: 1px solid #c4c4c4;
+    color: #000000;
     ::placeholder {
       font-size: 12px;
       color: #c4c4c4;
@@ -204,8 +207,8 @@ export const SignUpSubmitButton = styled.button`
 
 export const ErrorMsg = styled.div`
   width: 100%;
-  height: 15px;
-  font-size: 5px;
+  height: 30px;
+  font-size: 12px;
   color: red;
 `;
 

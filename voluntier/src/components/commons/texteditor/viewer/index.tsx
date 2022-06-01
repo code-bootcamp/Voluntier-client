@@ -23,8 +23,7 @@ export default function ToastUIViewer(props:IPropsToastUIViewer){
 
     return(
         <ViewerBox>
-
-    < Viewer initialValue={props.data?.fetchBoard.contents || props.productData?.fetchProduct.details}/>
+            <Viewer initialValue={props.data?.fetchBoard.contents || props.productData?.fetchProduct.details}/>
         </ViewerBox>
     )
 

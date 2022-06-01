@@ -11,17 +11,17 @@ const ToastUIViewer = dynamic(
   { ssr: false }
 );
 
-
-export default function BoardDetailUI(props:IPropsBoardDetailUI) {
+export default function BoardDetailUI(props: IPropsBoardDetailUI) {
   const [windowSize, setWindowSize] = useState(false);
-  const [whois,setWhois] = useState(1)
+  const [whois, setWhois] = useState(1);
 
-
-  useEffect(()=>{
-  if(props.data?.fetchBoard?.user.id !== props.userData?.fetchLoginUser.id) setWhois(1)
-  if(props.data?.fetchBoard?.user.id === props.userData?.fetchLoginUser.id) setWhois(2)
-  if(props.userData?.fetchLoginUser?.isAdmin) setWhois(3)
-  },[props.data, props.userData])
+  useEffect(() => {
+    if (props.data?.fetchBoard?.user.id !== props.userData?.fetchLoginUser.id)
+      setWhois(1);
+    if (props.data?.fetchBoard?.user.id === props.userData?.fetchLoginUser.id)
+      setWhois(2);
+    if (props.userData?.fetchLoginUser?.isAdmin) setWhois(3);
+  }, [props.data, props.userData]);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -134,26 +134,18 @@ export default function BoardDetailUI(props:IPropsBoardDetailUI) {
               </S.ContentsWrapper>
             </S.InnerWrapperLeftUpper>
             <S.ButtonWrapper>
-              {/* {props.data?.fetchBoard?.user.id ===
-              props.userData?.fetchLoginUser.id ? (
+              {whois === 1 && (
+                <S.Button onClick={props.CreateEnroll}>신청하기</S.Button>
+              )}
+              {whois === 2 && (
                 <>
-                  <S.Button onClick={props.onClickEdit}>수정하기</S.Button>
-                  <S.Button onClick={props.DeleteBoard}>삭제하기</S.Button>
-                </>
-              ) : (
-                <>
-                  <S.Button onClick={props.CreateEnroll}>신청하기</S.Button>
-                </>
-              )
-              
-              } */}
-              {whois === 1 && <S.Button onClick={props.CreateEnroll}>신청하기</S.Button> }
-              {whois === 2 && (<>
                   <S.Button onClick={props.onClickEdit}>수정하기</S.Button>
                   <S.Button onClick={props.DeleteBoard}>삭제하기</S.Button>
                 </>
               )}
-              {whois ===3 &&<S.Button onClick={props.DeleteBoard}>삭제하기</S.Button> }
+              {whois === 3 && (
+                <S.Button onClick={props.DeleteBoard}>삭제하기</S.Button>
+              )}
             </S.ButtonWrapper>
           </S.InnerWrapperLeft>
           {!windowSize && (
