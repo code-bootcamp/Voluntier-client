@@ -132,7 +132,7 @@ export default function BoardWriteUI(props: IPropsBoardWriteUI) {
             editorRef={props.editorRef}
             defaultData={props.defaultData}
           />:
-          <EditorUInonEdit></EditorUInonEdit>}
+          <EditorUInonEdit editorRef={props.editorRef}></EditorUInonEdit>}
           <S.SubmitButton>
             {props.isEdit ? "수정하기" : "등록하기"}
           </S.SubmitButton>
