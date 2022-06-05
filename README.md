@@ -23,6 +23,24 @@
 <img width="1440" alt="스크린샷 2022-06-05 오후 4 30 24" src="https://user-images.githubusercontent.com/97964123/172040384-34cc95c0-c1d1-4402-b215-c97960db9110.png">
 
 2. 랜딩페이지
-3. ![화면 기록 2022-06-05 오후 3 47 08-1](https://user-images.githubusercontent.com/97964123/172040534-1371f899-c17d-4d76-b24d-2f926c3e0c0f.gif)
 
+![화면 기록 2022-06-05 오후 3 47 08-1](https://user-images.githubusercontent.com/97964123/172040534-1371f899-c17d-4d76-b24d-2f926c3e0c0f.gif)
+
+3. 로그인
+
+![화면_기록_2022-06-05_오후_3_47_41_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041525-1a677e61-efb2-4c73-be07-390727f44c4b.gif)
+
+4. 회원가입
+
+![화면_기록_2022-06-05_오후_3_48_24_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041665-eff89c27-6094-4a55-9757-7bae39134442.gif)
+
+5. 봉사목록
+
+![화면_기록_2022-06-05_오후_3_48_51_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041744-3c0152b6-63f5-418a-b0a3-cdc9357b5f61.gif)
+
+6. 검색기능
+
+![화면_기록_2022-06-05_오후_3_49_49_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041836-6ff7b9b5-dea2-43d9-b25b-dcf88095ec37.gif)
+
+![화면_기록_2022-06-05_오후_3_50_57_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041838-4eae062a-3947-4ac9-8eda-843f5de57258.gif)
 
