@@ -44,3 +44,8 @@
 
 ![화면_기록_2022-06-05_오후_3_50_57_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041838-4eae062a-3947-4ac9-8eda-843f5de57258.gif)
 
+7. 봉사 모집글 작성
+
+![화면_기록_2022-06-05_오후_3_51_24_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/97964123/172041949-f5231f37-890a-4c86-991c-8403888525f7.gif)
+
+
