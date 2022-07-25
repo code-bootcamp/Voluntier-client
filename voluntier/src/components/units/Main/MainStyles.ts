@@ -76,19 +76,19 @@ export const SliderItem3 = styled.div`
 `;
 
 export const SliderDisplay = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
   padding: 5% 12%;
 
   @media ${breakPoints.tablet} {
     display: flex;
-  justify-content: center;
+    justify-content: center;
     padding: 3% 12% 3% 8%;
   }
 
   @media (max-width: 470px) {
     display: flex;
-  justify-content: center;
+    justify-content: center;
     padding: 3% 5%;
   }
 `;
@@ -277,4 +277,3 @@ export const Category = styled.div`
     margin-bottom: 10px;
   }
 `;
-
