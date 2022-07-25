@@ -38,7 +38,7 @@ export default function MainUI(props: IPropsMain) {
     <S.Wrapper>
       <S.MySlider {...settings}>
         <S.SliderItem1>
-          <Header />
+          {/* <Header /> */}
           <S.SliderDisplay>
             <S.SliderText>
               <S.Text>
@@ -52,7 +52,7 @@ export default function MainUI(props: IPropsMain) {
           </S.SliderDisplay>
         </S.SliderItem1>
         <S.SliderItem2>
-          <Header />
+          {/* <Header /> */}
           <S.SliderDisplay>
             <S.SliderText>
               <S.Text>
@@ -69,7 +69,7 @@ export default function MainUI(props: IPropsMain) {
         </S.SliderItem2>
 
         <S.SliderItem3>
-          <Header />
+          {/* <Header /> */}
           <S.SliderText>
             <S.Text
               style={{

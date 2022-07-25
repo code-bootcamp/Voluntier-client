@@ -8,7 +8,8 @@ export const Wrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0px 80px;
-  margin-top: 70px;
+  /* margin-top: 70px; */
+  z-index: 9999;
 
   @media ${breakPoints.tablet} {
     margin-top: 25px;
