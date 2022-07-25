@@ -10,42 +10,24 @@ export const Wrapper = styled.div`
 `;
 
 export const MySlider = styled(Slider)`
-  width: 1900px;
+  width: 100%;
   margin-bottom: 80px;
-
-  @media ${breakPoints.tablet} {
-    width: 100%;
-    height: 650px;
-    margin-bottom: 15px;
-  }
-
-  @media ${breakPoints.mobile} {
-    width: 100%;
-    height: 440px;
-    margin-bottom: 45px;
-  }
-
-  @media (max-width: 470px) {
-    width: 100%;
-    height: 300px;
-  }
 `;
 
 export const SliderItem1 = styled.div`
-  width: 900px;
-  height: 1200px;
+  width: 100%;
+  height: 110vh;
   background: url("../../../../images/main/메인 이미지 blue.png") no-repeat
     center;
-  background-size: cover;
-
+  background-size: auto;
   @media ${breakPoints.tablet} {
-    width: 100%;
     height: 600px;
     background-size: cover;
   }
 
   @media ${breakPoints.mobile} {
-    height: 430px;
+    height: 600px;
+    background-size: cover;
   }
 
   @media (max-width: 470px) {
@@ -54,18 +36,18 @@ export const SliderItem1 = styled.div`
 `;
 
 export const SliderItem2 = styled.div`
-  width: 1440px;
-  height: 1200px;
+  width: 100%;
+  height: 110vh;
   background: url("../../../../images/main/캐러셀2.png") no-repeat center;
-  background-size: cover;
-
+  background-size: auto;
   @media ${breakPoints.tablet} {
-    width: 100%;
     height: 600px;
+    background-size: cover;
   }
 
   @media ${breakPoints.mobile} {
-    height: 430px;
+    height: 600px;
+    background-size: cover;
   }
 
   @media (max-width: 470px) {
@@ -74,19 +56,18 @@ export const SliderItem2 = styled.div`
 `;
 
 export const SliderItem3 = styled.div`
-  width: 1440px;
-  height: 1200px;
+  width: 100%;
+  height: 110vh;
   background: url("../../../../images/main/캐러셀3.png") no-repeat center;
-  background-size: cover;
-
+  background-size: auto;
   @media ${breakPoints.tablet} {
-    width: 100%;
     height: 600px;
     background-size: cover;
   }
 
   @media ${breakPoints.mobile} {
-    height: 430px;
+    height: 600px;
+    background-size: cover;
   }
 
   @media (max-width: 470px) {
@@ -95,25 +76,29 @@ export const SliderItem3 = styled.div`
 `;
 
 export const SliderDisplay = styled.div`
-  display: flex;
-  flex-direction: row;
+display: flex;
+justify-content: center;
   padding: 5% 12%;
 
   @media ${breakPoints.tablet} {
+    display: flex;
+  justify-content: center;
     padding: 3% 12% 3% 8%;
   }
 
   @media (max-width: 470px) {
+    display: flex;
+  justify-content: center;
     padding: 3% 5%;
   }
 `;
 
-export const SliderBean = styled.div`
-  width: 400px;
+export const SliderBean = styled.img`
+  width: 35%;
   height: 660px;
-  background: url("../../../../images/main/콩모음집.png") no-repeat center;
-  background-size: cover;
-  margin-top: -220px;
+  display: block;
+  margin: auto;
+  position: absolute;
   animation: motion 2s linear 0s infinite alternate;
 
   @keyframes motion {
@@ -121,7 +106,7 @@ export const SliderBean = styled.div`
       margin-top: -100px;
     }
     100% {
-      margin-top: -300px;
+      margin-top: -200px;
     }
   }
 
@@ -134,7 +119,7 @@ export const SliderBean = styled.div`
         margin-top: -20px;
       }
       100% {
-        margin-top: -200px;
+        margin-top: -100px;
       }
     }
   }
@@ -149,7 +134,7 @@ export const SliderBean = styled.div`
         margin-top: 10px;
       }
       100% {
-        margin-top: -180px;
+        margin-top: -80px;
       }
     }
   }
@@ -163,7 +148,7 @@ export const SliderBean = styled.div`
         margin-top: 10px;
       }
       100% {
-        margin-top: -100px;
+        margin-top: -80px;
       }
     }
   }
@@ -194,31 +179,45 @@ export const SliderItem = styled.div`
 
 export const SliderText = styled.div`
   color: #ffffff;
+  width: 100%;
   font-family: "GmarketSans", sans-serif;
+  @media ${breakPoints.tablet} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 470px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Text = styled.div`
   font-size: 38px;
-  width: 510px;
+  width: 100%;
 
   @media ${breakPoints.tablet} {
     font-size: 20px;
-    width: 290px;
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 14px;
-    width: 160px;
+    font-size: 20px;
   }
   @media (max-width: 470px) {
-    font-size: 10.9px;
-    width: 135px;
+    font-size: 15px;
   }
 `;
 
 export const CategoryWrapper = styled.div`
   padding: 0% 5%;
-  width: 1900px;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
@@ -245,9 +244,10 @@ export const CategoryWrapper = styled.div`
 `;
 
 export const Category = styled.div`
-  width: 350px;
-  height: 380px;
-  background-size: cover;
+  width: 280px;
+  height: 304px;
+  background-size: contain;
+  background-repeat: no-repeat;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -256,7 +256,7 @@ export const Category = styled.div`
   cursor: pointer;
 
   @media ${breakPoints.tablet} {
-    width: 184px;
+    width: 100%;
     height: 200px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -277,3 +277,4 @@ export const Category = styled.div`
     margin-bottom: 10px;
   }
 `;
+
