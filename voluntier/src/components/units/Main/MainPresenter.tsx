@@ -37,49 +37,39 @@ export default function MainUI(props: IPropsMain) {
   return (
     <S.Wrapper>
       <S.MySlider {...settings}>
-        <S.SliderItem1 style={{ paddingTop: "5%", paddingLeft: "1%" }}>
+        <S.SliderItem1>
           <Header />
           <S.SliderDisplay>
             <S.SliderText>
-              <S.Text>보호소 동물친구들과 </S.Text>
-              <S.Text>당신을 이어줄 특별한 공간</S.Text>
+              <S.Text>
+                보호소 동물친구들과<br/>
+                당신을 이어줄 특별한 공간<br/>
+              </S.Text>
             </S.SliderText>
-            <S.SliderBean></S.SliderBean>
+            <S.SliderBean src="/images/main/콩모음집.png"/>
           </S.SliderDisplay>
         </S.SliderItem1>
-
-        <S.SliderItem2 style={{ paddingTop: "16%", paddingLeft: "60%" }}>
+        <S.SliderItem2>
           <Header />
           <S.SliderDisplay>
             <S.SliderText>
-              <S.Text style={{ paddingTop: "10%", marginLeft: "12%" }}>
-                여러분의 소중한 후원 젤리는{" "}
+              <S.Text >
+                여러분의 소중한 후원 젤리는<br/>
+                보호소 동물친구들을 위한<br/>
+                활동에 사용됩니다<br/>
               </S.Text>
-              <S.Text style={{ marginLeft: "12%" }}>
-                보호소 동물친구들을 위한{" "}
-              </S.Text>
-              <S.Text style={{ marginLeft: "12%" }}>활동에 사용됩니다</S.Text>
             </S.SliderText>
-            <S.SliderBean></S.SliderBean>
+            <S.SliderBean src="/images/main/콩모음집.png"/>
           </S.SliderDisplay>
         </S.SliderItem2>
 
         <S.SliderItem3
-          style={{
-            paddingTop: "16%",
-            paddingLeft: "35%",
-            paddingRight: "35%",
-          }}
         >
           <Header />
           <S.SliderText>
-            <S.Text style={{ paddingTop: "10%", marginLeft: "32%" }}>
-              {" "}
-              후원하고 받은 젤리로{" "}
-            </S.Text>
-            <S.Text style={{ marginLeft: "32%" }}>
-              {" "}
-              귀여운 굿즈를 받아가세요!
+            <S.Text style={{display:"flex", justifyContent:"center", marginTop:"100px"}}>
+              후원하고 받은 젤리로<br/>
+              귀여운 굿즈를 받아가세요!<br/>
             </S.Text>
           </S.SliderText>
         </S.SliderItem3>
