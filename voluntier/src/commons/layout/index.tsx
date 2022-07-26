@@ -8,7 +8,6 @@ import io, { Socket } from "socket.io-client";
 import { useToasts } from "react-toast-notifications";
 import { useQuery } from "@apollo/client";
 import { FETCH_LOGIN_USER } from "../../components/units/Mypage/MypageQueries";
-import Header from "./header/HeaderContainer";
 
 const OuterWrapper = styled.div`
   min-height: 100vh;
@@ -28,11 +27,6 @@ const Wrapper = styled.main`
   }
 `;
 
-const HeaderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const Body = styled.main`
   width: 100vw;
 `;
@@ -48,7 +42,6 @@ interface LayOutPageProps {
   children: ReactNode;
 }
 
-const ISHEADER = ["/"];
 const HIDDEN = ["/login", "/signup", "/", "/login/findpassword"];
 const url = "backendapi.voluntier.site/chat";
 const socket: Socket = io(url, { transports: ["websocket"] });
@@ -56,7 +49,6 @@ const socket: Socket = io(url, { transports: ["websocket"] });
 export default function LayOut(props: LayOutPageProps) {
   const router = useRouter();
   const isHidden = HIDDEN.includes(router.asPath);
-  const isHeader = ISHEADER.includes(router.asPath);
   const [windowSize, setWindowSize] = useState(false);
   const { data: Userdata } = useQuery(FETCH_LOGIN_USER);
   const [userId, setUserId] = useState("");
@@ -107,10 +99,7 @@ export default function LayOut(props: LayOutPageProps) {
         <OuterWrapper>
           <Wrapper>
             {!isHidden && <Navigation />}
-            <HeaderWrapper>
-              {isHeader && <Header />}
-              <Body>{props.children}</Body>
-            </HeaderWrapper>
+            <Body>{props.children}</Body>
           </Wrapper>
           <Footer />
         </OuterWrapper>
@@ -120,7 +109,6 @@ export default function LayOut(props: LayOutPageProps) {
       {windowSize && (
         <Wrapper>
           <MobileWrapper>
-            <Header />
             <Body>{props.children}</Body>
             {!isHidden && <Navigation />}
           </MobileWrapper>
