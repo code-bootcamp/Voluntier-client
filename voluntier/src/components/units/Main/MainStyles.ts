@@ -4,8 +4,6 @@ import { breakPoints } from "../../../commons/styles/Media";
 
 export const Wrapper = styled.div`
   width: 100%;
-  /* height: 110vh; */
-  margin-top: -150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,16 +12,14 @@ export const Wrapper = styled.div`
 export const MySlider = styled(Slider)`
   width: 100%;
   margin-bottom: 80px;
-  /* margin-top: 81px; */
 `;
 
 export const SliderItem1 = styled.div`
   width: 100%;
-  /* height: 110vh; */
-  height: 830px;
+  height: 120vh;
   background: url("../../../../images/main/메인 이미지 blue.png") no-repeat
     center;
-  background-size: auto;
+  background-size: cover;
   @media ${breakPoints.tablet} {
     height: 600px;
     background-size: cover;
@@ -41,18 +37,15 @@ export const SliderItem1 = styled.div`
 
 export const SliderItem2 = styled.div`
   width: 100%;
-  /* height: 110vh; */
-  height: 830px;
+  height: 120vh;
   background: url("../../../../images/main/캐러셀2.png") no-repeat center;
-  background-size: auto;
+  background-size: cover;
   @media ${breakPoints.tablet} {
     height: 600px;
-    background-size: cover;
   }
 
   @media ${breakPoints.mobile} {
     height: 600px;
-    background-size: cover;
   }
 
   @media (max-width: 470px) {
@@ -62,18 +55,15 @@ export const SliderItem2 = styled.div`
 
 export const SliderItem3 = styled.div`
   width: 100%;
-  /* height: 110vh; */
-  height: 830px;
+  height: 120vh;
   background: url("../../../../images/main/캐러셀3.png") no-repeat center;
-  background-size: auto;
+  background-size: cover;
   @media ${breakPoints.tablet} {
     height: 600px;
-    background-size: cover;
   }
 
   @media ${breakPoints.mobile} {
     height: 600px;
-    background-size: cover;
   }
 
   @media (max-width: 470px) {
@@ -82,19 +72,19 @@ export const SliderItem3 = styled.div`
 `;
 
 export const SliderDisplay = styled.div`
-  display: flex;
-  justify-content: center;
+display: flex;
+justify-content: center;
   padding: 5% 12%;
 
   @media ${breakPoints.tablet} {
     display: flex;
-    justify-content: center;
+  justify-content: center;
     padding: 3% 12% 3% 8%;
   }
 
   @media (max-width: 470px) {
     display: flex;
-    justify-content: center;
+  justify-content: center;
     padding: 3% 5%;
   }
 `;
@@ -187,8 +177,6 @@ export const SliderText = styled.div`
   color: #ffffff;
   width: 100%;
   font-family: "GmarketSans", sans-serif;
-  margin-top: 130px;
-
   @media ${breakPoints.tablet} {
     display: flex;
     align-items: center;
@@ -285,3 +273,4 @@ export const Category = styled.div`
     margin-bottom: 10px;
   }
 `;
+
