@@ -8,6 +8,7 @@ import io, { Socket } from "socket.io-client";
 import { useToasts } from "react-toast-notifications";
 import { useQuery } from "@apollo/client";
 import { FETCH_LOGIN_USER } from "../../components/units/Mypage/MypageQueries";
+import Header from "./header/HeaderContainer";
 
 const OuterWrapper = styled.div`
   min-height: 100vh;
@@ -27,6 +28,11 @@ const Wrapper = styled.main`
   }
 `;
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Body = styled.main`
   width: 100vw;
 `;
@@ -42,6 +48,7 @@ interface LayOutPageProps {
   children: ReactNode;
 }
 
+const ISHEADER = ["/"];
 const HIDDEN = ["/login", "/signup", "/", "/login/findpassword"];
 const url = "backendapi.voluntier.site/chat";
 const socket: Socket = io(url, { transports: ["websocket"] });
@@ -49,6 +56,7 @@ const socket: Socket = io(url, { transports: ["websocket"] });
 export default function LayOut(props: LayOutPageProps) {
   const router = useRouter();
   const isHidden = HIDDEN.includes(router.asPath);
+  const isHeader = ISHEADER.includes(router.asPath);
   const [windowSize, setWindowSize] = useState(false);
   const { data: Userdata } = useQuery(FETCH_LOGIN_USER);
   const [userId, setUserId] = useState("");
@@ -58,7 +66,6 @@ export default function LayOut(props: LayOutPageProps) {
     socket.off();
   };
 
-
   useEffect(() => {
     setUserId(Userdata?.fetchLoginUser?.id);
     router.events.on("routeChangeComplete", disconnect);
@@ -67,13 +74,13 @@ export default function LayOut(props: LayOutPageProps) {
     };
   }, [Userdata, router]);
 
-      
-    useEffect(() => {
-        socket.on(userId, (data) => {
-        return addToast(`${data[0]}님에게 채팅 왔어요! ${data[1]} `,{appearance:"info"})
-      })
-      }, [userId]);
-
+  useEffect(() => {
+    socket.on(userId, (data) => {
+      return addToast(`${data[0]}님에게 채팅 왔어요! ${data[1]} `, {
+        appearance: "info",
+      });
+    });
+  }, [userId]);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -100,7 +107,10 @@ export default function LayOut(props: LayOutPageProps) {
         <OuterWrapper>
           <Wrapper>
             {!isHidden && <Navigation />}
-            <Body>{props.children}</Body>
+            <HeaderWrapper>
+              {isHeader && <Header />}
+              <Body>{props.children}</Body>
+            </HeaderWrapper>
           </Wrapper>
           <Footer />
         </OuterWrapper>
@@ -110,6 +120,7 @@ export default function LayOut(props: LayOutPageProps) {
       {windowSize && (
         <Wrapper>
           <MobileWrapper>
+            <Header />
             <Body>{props.children}</Body>
             {!isHidden && <Navigation />}
           </MobileWrapper>
